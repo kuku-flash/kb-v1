@@ -14,7 +14,7 @@
 				<!-- Header Contetnt -->
 				<div class="content-block">
 					<h1>Buy & Sell Near You </h1>
-					<p>Joinnnnnnnnnn the millions who buy and sell from each other <br> everyday in local communities around kenya</p>
+					<p>Join the millions who buy and sell from each other <br> everyday in local communities around kenya</p>
 					<div class="short-popular-category-list text-center">
 						<h2>Popular Category</h2>
 						<ul class="list-inline">
@@ -106,29 +106,31 @@
 	<div class="card">
 		<div class="thumb-content">
 			<!-- <div class="price">$200</div> -->
-			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
+			<a href="{{ route('single') }}">
+				<img class="index-img-fluid" src="images/amg1.jpg" alt="">
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
+		   <h4 class="card-title"><a href="{{ route('single') }}">2013 Mercedes Benz E-Class AMG</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
+		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
 		    	</li>
 		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
+		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
 		    	</li>
 		    </ul>
-		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
-		    	<ul class="list-inline">
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-		    	</ul>
+		    	<ul class="list-horizontal">
+				<li><span class="car-li">Mileage:</span>20,00km</li>
+				<li><span class="car-li">YOM:</span>2012</li>
+				<li><span class="car-li">Gear box:</span>Automatic</li>
+				<li><span class="car-li">Interior:</span>Cloth</li>
+				</ul>  
+				<div class="property-price">
+					<p class="badge-sale">For Sale</p>
+					<p class="price">Ksh9.4M</p></a>
+					</div>
 		    </div>
 		</div>
 	</div>
@@ -143,29 +145,31 @@
 	<div class="card">
 		<div class="thumb-content">
 			<!-- <div class="price">$200</div> -->
-			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
+			<a href="{{ route('single') }}">
+				<img class="index-img-fluid" src="images/wrxsti.jpg" alt="">
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">Full Study Table Combo</a></h4>
+		   <h4 class="card-title"><a href="{{ route('single') }}">2012 Subaru WRX STI</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Furnitures</a>
+		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
 		    	</li>
 		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
+		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
 		    	</li>
 		    </ul>
-		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
-		    	<ul class="list-inline">
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-		    	</ul>
+		    	<ul class="list-horizontal">
+				<li><span class="car-li">Mileage:</span>20,00km</li>
+				<li><span class="car-li">YOM:</span>2012</li>
+				<li><span class="car-li">Gear box:</span>Automatic</li>
+				<li><span class="car-li">Interior:</span>Cloth</li>
+				</ul>  
+				<div class="property-price">
+					<p class="badge-sale">For Sale</p>
+					<p class="price">Ksh9.4M</p></a>
+					</div>
 		    </div>
 		</div>
 	</div>
@@ -175,34 +179,38 @@
 
 					</div>
 					<div class="col-sm-12 col-lg-4">
-						<!-- product card -->
+
+
+												<!-- product card -->
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
 			<!-- <div class="price">$200</div> -->
-			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-3.jpg" alt="Card image cap">
+			<a href="{{ route('single') }}">
+				<img class="index-img-fluid" src="images/rundahs0.jpg" alt="">
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
+		   <h4 class="card-title"><a href="{{ route('single') }}">House located in Runda</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>House</a>
 		    	</li>
 		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
+		    		<a href="#"><i class="fa fa-location-arrow"></i>Runda</a>
 		    	</li>
 		    </ul>
-		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
-		    	<ul class="list-inline">
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-		    	</ul>
+		    	<ul class="list-horizontal">
+				<li><span class="car-li">Bedrooms:</span>5</li>
+				<li><span class="car-li">Bathrooms:</span>4</li>
+				<li><span class="car-li">Parking:</span>6</li>
+				<li><span class="car-li">Funished:</span>No</li>
+				</ul>  
+				<div class="property-price">
+					<p class="badge-sale">For Rent</p>
+					<p class="price">Ksh 150,000</p></a>
+					</div>
 		    </div>
 		</div>
 	</div>
@@ -212,39 +220,84 @@
 
 					</div>
 					<div class="col-sm-12 col-lg-4">
+
+						<!-- product card -->
+						
 						<!-- product card -->
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
 			<!-- <div class="price">$200</div> -->
-			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
+			<a href="{{ route('single') }}">
+				<img class="index-img-fluid" src="images/sclass.jpg" alt="">
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">Full Study Table Combo</a></h4>
+		   <h4 class="card-title"><a href="{{ route('single') }}">2015 Mercedes Benz S-class</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Furnitures</a>
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Cars</a>
 		    	</li>
 		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
+		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
 		    	</li>
 		    </ul>
-		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
-		    	<ul class="list-inline">
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-		    	</ul>
+		    	<ul class="list-horizontal">
+				<li><span class="car-li">Mileage:</span>20,00km</li>
+				<li><span class="car-li">YOM:</span>2012</li>
+				<li><span class="car-li">Gear box:</span>Automatic</li>
+				<li><span class="car-li">Interior:</span>Cloth</li>
+				</ul>  
+				<div class="property-price">
+					<p class="badge-sale">For Sale</p>
+					<p class="price">Ksh9.4M</p></a>
+					</div>
 		    </div>
 		</div>
 	</div>
 </div>
 
+
+
+					</div>
+					<div class="col-sm-12 col-lg-4">
+
+						<!-- product card -->
+<div class="product-item bg-light">
+	<div class="card">
+		<div class="thumb-content">
+			<!-- <div class="price">$200</div> -->
+			<a href="{{ route('single') }}">
+				<img class="index-img-fluid" src="images/land1.jpg" alt="">
+			</a>
+		</div>
+		<div class="card-body">
+		   <h4 class="card-title"><a href="{{ route('single') }}">Land located in karen 
+		   </a></h4>
+		    <ul class="list-inline product-meta">
+		    	<li class="list-inline-item">
+		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
+		    	</li>
+		    	<li class="list-inline-item">
+		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
+		    	</li>
+		    </ul>
+		    <div class="product-ratings">
+		    	<ul class="list-horizontal">
+				<li><span class="car-li">Location:</span>Karen</li>
+				<li><span class="car-li">Size:</span>...acres</li>
+				<li><span class="car-li">Title:</span>Ready</li>
+				<li><span class="car-li">Interior:</span>Cloth</li>
+				</ul>  
+				<div class="property-price">
+					<p class="badge-sale">For Sale</p>
+					<p class="price">Ksh9.4M</p></a>
+					</div>
+		    </div>
+		</div>
+	</div>
+</div>
 
 
 					</div>
@@ -255,8 +308,6 @@
 		</div>
 	</div>
 </section>
-
-
 <!--==========================================
 =            All Category Section            =
 ===========================================-->
