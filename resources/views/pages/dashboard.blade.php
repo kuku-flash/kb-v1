@@ -87,8 +87,8 @@
                   <h3 class="title">Macbook Pro 15inch</h3>
                   <span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
                   <span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
-                  <span class="status active"><strong>Status</strong>Active</span>
-                  <span class="location"><strong>Location</strong>Dhaka,Bangladesh</span>
+                  <span class="status active"><strong>Status:</strong>Active</span>
+                  <span class="location"><strong>Location:</strong>Dhaka,Bangladesh</span>
                 </td>
                 <td class="product-category"><span class="categories">Laptops</span></td>
                 <td class="action" data-title="Action">
@@ -121,8 +121,8 @@
                   <h3 class="title">Study Table Combo</h3>
                   <span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
                   <span><strong>Posted on: </strong><time>Feb 12, 2017</time> </span>
-                  <span class="status active"><strong>Status</strong>Active</span>
-                  <span class="location"><strong>Location</strong>USA</span>
+                  <span class="status active"><strong>Status:</strong>Active</span>
+                  <span class="location"><strong>Location:</strong>USA</span>
                 </td>
                 <td class="product-category"><span class="categories">Laptops</span></td>
                 <td class="action" data-title="Action">
@@ -154,8 +154,8 @@
                   <h3 class="title">Macbook Pro 15inch</h3>
                   <span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
                   <span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
-                  <span class="status active"><strong>Status</strong>Active</span>
-                  <span class="location"><strong>Location</strong>Dhaka,Bangladesh</span>
+                  <span class="status active"><strong>Status:</strong>Active</span>
+                  <span class="location"><strong>Location:</strong>Dhaka,Bangladesh</span>
                 </td>
                 <td class="product-category"><span class="categories">Laptops</span></td>
                 <td class="action" data-title="Action">
@@ -188,8 +188,8 @@
                   <h3 class="title">Macbook Pro 15inch</h3>
                   <span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
                   <span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
-                  <span class="status active"><strong>Status</strong>Active</span>
-                  <span class="location"><strong>Location</strong>Dhaka,Bangladesh</span>
+                  <span class="status active"><strong>Status:</strong>Active</span>
+                  <span class="location"><strong>Location:</strong>Dhaka,Bangladesh</span>
                 </td>
                 <td class="product-category"><span class="categories">Laptops</span></td>
                 <td class="action" data-title="Action">
@@ -222,8 +222,8 @@
                   <h3 class="title">Macbook Pro 15inch</h3>
                   <span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
                   <span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
-                  <span class="status active"><strong>Status</strong>Active</span>
-                  <span class="location"><strong>Location</strong>Dhaka,Bangladesh</span>
+                  <span class="status active"><strong>Status:</strong>Active</span>
+                  <span class="location"><strong>Location:</strong>Dhaka,Bangladesh</span>
                 </td>
                 <td class="product-category"><span class="categories">Laptops</span></td>
                 <td class="action" data-title="Action">

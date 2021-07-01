@@ -105,7 +105,7 @@
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			<div class="price">Gold Package</div>
 			<a href="{{ route('single') }}">
 				<img class="index-img-fluid" src="images/amg1.jpg" alt="">
 			</a>
@@ -144,7 +144,7 @@
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			<div class="price">Gold Package</div>
 			<a href="{{ route('single') }}">
 				<img class="index-img-fluid" src="images/wrxsti.jpg" alt="">
 			</a>
@@ -185,7 +185,7 @@
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			<div class="price">Gold Package</div>
 			<a href="{{ route('single') }}">
 				<img class="index-img-fluid" src="images/rundahs0.jpg" alt="">
 			</a>
@@ -227,7 +227,7 @@
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			<div class="price">Gold Package</div>
 			<a href="{{ route('single') }}">
 				<img class="index-img-fluid" src="images/sclass.jpg" alt="">
 			</a>
@@ -267,7 +267,7 @@
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			<div class="price">Gold Package</div>
 			<a href="{{ route('single') }}">
 				<img class="index-img-fluid" src="images/land1.jpg" alt="">
 			</a>

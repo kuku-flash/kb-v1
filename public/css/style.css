@@ -316,12 +316,12 @@ button {
 }
 
 .section {
-  padding: 100px 0;
+  padding: 130px 0;
 
 }
 
 .section-sm {
-  padding: 70px 0;
+  padding: 100px 0;
 }
 
 .section-title {
@@ -528,7 +528,6 @@ button {
 
 
 /* Start kingsbridge */
-
 .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -542,7 +541,8 @@ button {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
-  max-width: 100%; }
+  max-width: 100%; 
+}
 
 .single-property-area .property-desc-area .property-info-area p {
     -webkit-box-flex: 0;
@@ -603,8 +603,11 @@ text-align: right;
 display: -ms-flexbox;
 display: flex;
 
-}
 
+}
+.price:hover{
+  background-color: #d4af37;
+}
 
 .pt-md-4, .py-md-4{
   padding-top: 1.5rem !important;
@@ -614,12 +617,14 @@ display: flex;
 }
 .list-horizontal li {
   display:inline-block;
+
 }
 .list-horizontal li:before {
   content: '\00a0\2022\00a0\00a0';
   color:#999;
   color:rgba(0,0,0,0.5);
   font-size:11px;
+  flex: 0 0 50%;
 }
 
 
@@ -872,7 +877,7 @@ display: flex;
     border-top: none;
     padding: 20px 30px 30px; }
     .car-wrap .text .price {
-      color: #1089ff;
+      color: #d4af37;
       margin-bottom: 0;
       font-weight: 600; }
       .car-wrap .text .price span {
@@ -1081,11 +1086,7 @@ display: flex;
   margin-bottom: 0; }
   .contact-section .contact-info p a {
     color: #1a1a1a; }
-  .contact-section .contact-info p span {
-    display: block;
-    font-size: 13px;
-    font-weight: 400;
-    color: #999999; }
+  
 
 .contact-section .contact-info .icon {
   margin-top: 10px; }
@@ -1186,7 +1187,7 @@ display: flex;
   display: block; }
 
 .navbar {
-  position: relative;
+  position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1602,7 +1603,7 @@ ul.pagination .active a {
 }
 
 .page-search .advance-search .form-group {
-  margin-bottom: 0;
+  margin-bottom: 5;
 }
 
 .page-search .advance-search .form-control {
@@ -1901,7 +1902,7 @@ ul.pagination .active a {
 }
 
 .hero-area {
-  padding: 100px 0 0;
+  padding: 200px 0 0;
 }
 
 .hero-area .content-block {
@@ -2130,7 +2131,7 @@ ul.pagination .active a {
 .dashboard-container .product-details span strong {
   color: #666;
   width: 30%;
-  display: inline-block;
+  display: contents;
 }
 
 .dashboard-container .product-details .title {
@@ -2139,6 +2140,7 @@ ul.pagination .active a {
 
 .dashboard-container .product-details .status.active {
   color: #59d659;
+
 }
 
 .dashboard-container .product-category {
@@ -2474,6 +2476,14 @@ ul.pagination .active a {
   font-size: 18px;
   margin-bottom: 5px;
   font-weight: 600;
+  font-weight: 400;
+line-height: 1.2em;
+max-height: 1.2em;
+display: inline-block;
+white-space: nowrap;
+overflow: hidden!important;
+text-overflow: ellipsis;
+max-width: 100%;
 }
 
 .product-item .card .card-body .card-text {
@@ -2488,7 +2498,7 @@ ul.pagination .active a {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: #5672f9;
+  background: #d4af37;
   color: #fff;
   display: inline-block;
   padding: 4px 8px;

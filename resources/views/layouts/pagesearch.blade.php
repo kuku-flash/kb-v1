@@ -45,9 +45,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar  ftco-navbar-light" id="ftco-navbar">
+          <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <a class="navbar-brand" href="/"><img src="images/king2.png" 
-            style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " ><span style="color:#d4af37">Kings</span><span>bridge</span></a>
+            style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " >Kings<span>bridge</span></a>
   
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,7 +103,7 @@
               </ul>
               <ul class="navbar-nav ml-auto mt-10">
                 <li class="nav-item">
-                  <a class="nav-link login-button " href="{{ route('login')}}">Login</a>
+                  <a class="nav-link login-button " href="login.html">Login</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Add Listing</a>
@@ -116,133 +116,126 @@
     </div>
   </section>
 
+  
+  
 
-
-  @yield('content')
-
-
-
-  <!--============================
+ <!--============================
 =            Footer            =
 =============================-->
 
 <footer class="footer section section-sm">
-  <!-- Container Start -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3 col-md-7 offset-md-1 offset-lg-0">
-        <!-- About -->
-        <div class="block about">
-          <!-- footer logo -->
-          <a class="navbar-brand" href="/"><img src="images/king2.png" 
-          style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " >KingsBridge<p>Kingsbridge Properties</p></a>
-          <p>The leading online platform that sells both Vehicles and Houses.</p>
-        </div>
-      </div>
-      <!-- Link list -->
-      <div class="col-lg-2 offset-lg-1 col-md-3">
-        <div class="block">
-          <h4>Site Pages</h4>
-          <ul>
-            <li><a href="#">Boston</a></li>
-            <li><a href="#">How It works</a></li>
-            <li><a href="#">Deals & Coupons</a></li>
-            <li><a href="#">Articls & Tips</a></li>
-            <li><a href="terms-condition.html">Terms & Conditions</a></li>
-          </ul>
-        </div>
-      </div>
-      <!-- Link list -->
-      <div class="col-lg-2 col-md-3 offset-md-1 offset-lg-0">
-        <div class="block">
-          <h4>Admin Pages</h4>
-          <ul>
-            <li><a href="category.html">Category</a></li>
-            <li><a href="single.html">Single Page</a></li>
-            <li><a href="store.html">Store Single</a></li>
-            <li><a href="single-blog.html">Single Post</a>
-            </li>
-            <li><a href="blog.html">Blog</a></li>
-
-
-
-          </ul>
-        </div>
-      </div>
-      <!-- Promotion -->
-      <div class="col-lg-4 col-md-7">
-        <!-- App promotion -->
-        <div class="block-2 app-promotion">
-          <div class="mobile d-flex">
-            <a href="">
-              <!-- Icon -->
-              <img src="images/footer/phone-icon.png" alt="mobile-icon">
-            </a>
-            <p>Get the Dealsy Mobile App and Save more</p>
+    <!-- Container Start -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-7 offset-md-1 offset-lg-0">
+          <!-- About -->
+          <div class="block about">
+            <!-- footer logo -->
+            <a class="navbar-brand" href="/"><img src="images/king2.png" 
+            style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " >KingsBridge<p>Kingsbridge Properties</p></a>
+            <p>The leading online platform that sells both Vehicles and Houses.</p>
           </div>
-          <div class="download-btn d-flex my-3">
-            <a href="#"><img src="images/apps/google-play-store.png" class="img-fluid" alt=""></a>
-            <a href="#" class=" ml-3"><img src="images/apps/apple-app-store.png" class="img-fluid" alt=""></a>
+        </div>
+        <!-- Link list -->
+        <div class="col-lg-2 offset-lg-1 col-md-3">
+          <div class="block">
+            <h4>Site Pages</h4>
+            <ul>
+              <li><a href="#">Boston</a></li>
+              <li><a href="#">How It works</a></li>
+              <li><a href="#">Deals & Coupons</a></li>
+              <li><a href="#">Articls & Tips</a></li>
+              <li><a href="terms-condition.html">Terms & Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- Link list -->
+        <div class="col-lg-2 col-md-3 offset-md-1 offset-lg-0">
+          <div class="block">
+            <h4>Admin Pages</h4>
+            <ul>
+              <li><a href="category.html">Category</a></li>
+              <li><a href="single.html">Single Page</a></li>
+              <li><a href="store.html">Store Single</a></li>
+              <li><a href="single-blog.html">Single Post</a>
+              </li>
+              <li><a href="blog.html">Blog</a></li>
+  
+  
+  
+            </ul>
+          </div>
+        </div>
+        <!-- Promotion -->
+        <div class="col-lg-4 col-md-7">
+          <!-- App promotion -->
+          <div class="block-2 app-promotion">
+            <div class="mobile d-flex">
+              <a href="">
+                <!-- Icon -->
+                <img src="images/footer/phone-icon.png" alt="mobile-icon">
+              </a>
+              <p>Get the Dealsy Mobile App and Save more</p>
+            </div>
+            <div class="download-btn d-flex my-3">
+              <a href="#"><img src="images/apps/google-play-store.png" class="img-fluid" alt=""></a>
+              <a href="#" class=" ml-3"><img src="images/apps/apple-app-store.png" class="img-fluid" alt=""></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Container End -->
-</footer>
-<!-- Footer Bottom -->
-<footer class="footer-bottom">
-  <!-- Container Start -->
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6 col-12">
-        <!-- Copyright -->
-        <div class="copyright">
-          <p>Copyright © <script>
-              var CurrentYear = new Date().getFullYear()
-              document.write(CurrentYear)
-            </script>. Kingsbridge</p>
+    <!-- Container End -->
+  </footer>
+  <!-- Footer Bottom -->
+  <footer class="footer-bottom">
+    <!-- Container Start -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-12">
+          <!-- Copyright -->
+          <div class="copyright">
+            <p>Copyright © <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+              </script>. Kingsbridge</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-12">
+          <!-- Social Icons -->
+          <ul class="social-media-icons text-right">
+            <li><a class="fa fa-facebook" href="#" target="_blank"></a></li>
+            <li><a class="fa fa-twitter" href="#" target="_blank"></a></li>
+            <li><a class="fa fa-pinterest-p" href="#" target="_blank"></a></li>
+            <li><a class="fa fa-vimeo" href=""></a></li>
+          </ul>
         </div>
       </div>
-      <div class="col-sm-6 col-12">
-        <!-- Social Icons -->
-        <ul class="social-media-icons text-right">
-          <li><a class="fa fa-facebook" href="#" target="_blank"></a></li>
-          <li><a class="fa fa-twitter" href="#" target="_blank"></a></li>
-          <li><a class="fa fa-pinterest-p" href="#" target="_blank"></a></li>
-          <li><a class="fa fa-vimeo" href=""></a></li>
-        </ul>
-      </div>
     </div>
-  </div>
-  <!-- Container End -->
-  <!-- To Top -->
-  <div class="top-to">
-    <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
-  </div>
-</footer>
-
-<!-- JAVASCRIPTS -->
-<script src="{{ asset('js/main.js')}}"></script>
-<script src="{{ asset('plugins/jQuery/jquery.min.js')}}"></script>
-<script src="{{ asset('plugins/bootstrap/js/popper.min.js')}}"></script>
-<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{ asset('plugins/bootstrap/js/bootstrap-slider.js')}}"></script>
-  <!-- tether js -->
-<script src="{{ asset('plugins/tether/js/tether.min.js')}}"></script>
-<script src="{{ asset('plugins/raty/jquery.raty-fa.js')}}"></script>
-<script src="{{ asset('plugins/slick-carousel/slick/slick.min.js')}}"></script>
-<script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
-<script src="{{ asset('plugins/fancybox/jquery.fancybox.pack.js')}}"></script>
-<script src="{{ asset('plugins/smoothscroll/SmoothScroll.min.js')}}"></script>
-<!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-<script src="{{ asset('plugins/google-map/gmap.js')}}"></script>
-<script src="{{ asset('js/script.js')}}"></script>
-
-</body>
-
-</html>
-
-
-
+    <!-- Container End -->
+    <!-- To Top -->
+    <div class="top-to">
+      <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
+    </div>
+  </footer>
+  
+  <!-- JAVASCRIPTS -->
+  <script src="{{ asset('plugins/jQuery/jquery.min.js')}}"></script>
+  <script src="{{ asset('plugins/bootstrap/js/popper.min.js')}}"></script>
+  <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('plugins/bootstrap/js/bootstrap-slider.js')}}"></script>
+    <!-- tether js -->
+  <script src="{{ asset('plugins/tether/js/tether.min.js')}}"></script>
+  <script src="{{ asset('plugins/raty/jquery.raty-fa.js')}}"></script>
+  <script src="{{ asset('plugins/slick-carousel/slick/slick.min.js')}}"></script>
+  <script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+  <script src="{{ asset('plugins/fancybox/jquery.fancybox.pack.js')}}"></script>
+  <script src="{{ asset('plugins/smoothscroll/SmoothScroll.min.js')}}"></script>
+  <!-- google map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+  <script src="{{ asset('plugins/google-map/gmap.js')}}"></script>
+  <script src="{{ asset('js/script.js')}}"></script>
+  
+  </body>
+  
+  </html>

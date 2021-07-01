@@ -1,34 +1,6 @@
 @extends('layouts.kingsbridge')
 @section('content')
 
-<section class="page-search">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<!-- Advance Search -->
-				<div class="advance-search">
-					<form>
-						<div class="form-row">
-							<div class="form-group col-md-4">
-								<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for">
-							</div>
-							<div class="form-group col-md-3">
-								<input type="text" class="form-control my-2 my-lg-0" id="inputCategory4" placeholder="Category">
-							</div>
-							<div class="form-group col-md-3">
-								<input type="text" class="form-control my-2 my-lg-0" id="inputLocation4" placeholder="Location">
-							</div>
-							<div class="form-group col-md-2">
-								
-								<button type="submit" class="btn btn-primary">Search Now</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 <section class=" section-sm">
 	<div class="container">
 		<div class="row">
@@ -151,7 +123,7 @@
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			<div class="price">Gold Package</div>
 			<a href="single.html">
 				<img class="card-img-top category-img-fluid" src="images/amg1.jpg" alt="Card image cap">
 			</a>
@@ -165,7 +137,8 @@
 		    	<li class="list-inline-item">
 		    		<a href="#"><i class="fa fa-location-arrow"></i>Kiambu</a>
 		    	</li>
-		    </ul>
+			</ul>
+			<a href="single.html">
 		       <ul class="list-horizontal">
                 <li>Engine Size <span class="car-li">2.5L</span></li>
                 <li>Transmission <span class="car-li">Automatic</span></li>
@@ -174,263 +147,280 @@
                 <li>Year <span class="car-li">2015</span></li>
                 <li>Body Type <span class="car-li">Saloon</span></li>
                 </ul>
-                </div>
-		                <div class="property-price">
+				</div>
+		        <div class="property-price">
                 <p class="badge-sale">For Sale</p>
-                <p class="price">Ksh4.8M</p></a>
+                <p class="price">Ksh4.8M</p>
                 </div>
                 <div>
-                	
+				
                 
 		</div>
 	</div>
 </div>
-
-
-					</div>
-					<div class="col-sm-12 col-lg-4 col-md-6">
-							<!-- product card -->
-
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="single.html">
-				<img class="card-img-top category-img-fluid" src="images/sclass.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">Mercedes Benz S-class</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Vehicles</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Kiambu</a>
-		    	</li>
-		    </ul>
-		              <ul class="list-horizontal">
-                <li>Engine Size <span class="car-li">4.0L</span></li>
-                <li>Transmission <span class="car-li">Automatic</span></li>
-                <li>Mileage<span class="car-li">10,000Km</span></li>
-                <li>Fuel Type <span class="car-li">Petrol</span></li>
-                <li>Year <span class="car-li">2016</span></li>
-                <li>Body Type <span class="car-li">Saloon</span></li>
-                </ul>
-                </div>
-		                <div class="property-price">
-                <p class="badge-sale">For Sale</p>
-                <p class="price">Ksh9.4M</p></a>
-                </div>
-                <div>
-                	
-                </div>
-		</div>
-</div>
-
-
-					</div>
-					<div class="col-sm-12 col-lg-4 col-md-6">
-
-							<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="single.html">
-				<img class="card-img-top category-img-fluid" src="images/wrxsti.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">Subaru WRX STI</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Vehicle</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Kiambu</a>
-		    	</li>
-		    </ul>
-		              <ul class="list-horizontal">
-                <li>Engine Size <span class="car-li">2.5L</span></li>
-                <li>Transmission <span class="car-li">Manual</span></li>
-                <li>Mileage<span class="car-li">40,550Km</span></li>
-                <li>Fuel Type <span class="car-li">Petrol</span></li>
-                <li>Year <span class="car-li">2013</span></li>
-                <li>Body Type <span class="car-li">Saloon</span></li>
-                </ul>
-                </div>
-		                <div class="property-price">
-                <p class="badge-sale">For Sale</p>
-                <p class="price">Ksh2.1M</p></a>
-                </div>
-                <div>
-                	
-                </div>
-		</div>
-</div>
-
-
-					</div>
-						<div class="col-sm-12 col-lg-4 col-md-6">
-							<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="single.html">
-				<img class="card-img-top category-img-fluid" src="images/audi1.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">Audi RS5</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Car Hire</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Kiambu</a>
-		    	</li>
-		    </ul>
-		       <ul class="list-horizontal">
-                <li>Engine Size <span class="car-li">2.5L</span></li>
-                <li>Transmission <span class="car-li">Automatic</span></li>
-                <li>Mileage<span class="car-li">10,000Km</span></li>
-                <li>Fuel Type <span class="car-li">Petrol</span></li>
-                <li>Year <span class="car-li">2015</span></li>
-                <li>Body Type <span class="car-li">Saloon</span></li>
-                </ul>
-                </div>
-		                <div class="property-price">
-                <p class="badge-sale">For Sale</p>
-                <p class="price">Ksh4.8M</p></a>
-                </div>
-                <div>
-                	
-                
-		</div>
-	</div>
-</div>
-
+</a>
 
 					</div>
 					<div class="col-sm-12 col-lg-4 col-md-6">
 							<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="single.html">
-				<img class="card-img-top category-img-fluid" src="images/Bmwm3.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">Audi RS5</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Car Hire</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Kiambu</a>
-		    	</li>
-		    </ul>
-		       <ul class="list-horizontal">
-                <li>Engine Size <span class="car-li">2.5L</span></li>
-                <li>Transmission <span class="car-li">Automatic</span></li>
-                <li>Mileage<span class="car-li">10,000Km</span></li>
-                <li>Fuel Type <span class="car-li">Petrol</span></li>
-                <li>Year <span class="car-li">2015</span></li>
-                <li>Body Type <span class="car-li">Saloon</span></li>
-                </ul>
-                </div>
-		                <div class="property-price">
-                <p class="badge-sale">For Sale</p>
-                <p class="price">Ksh4.8M</p></a>
-                </div>
-                <div>
-                	
-                
-		</div>
-	</div>
-</div>
 
-
-					</div>
-					<div class="col-sm-12 col-lg-4 col-md-6">
+							<div class="product-item bg-light">
+								<div class="card">
+									<div class="thumb-content">
+										<div class="price">Gold Package</div>
+										<a href="single.html">
+											<img class="card-img-top category-img-fluid" src="images/sclass.jpg" alt="Card image cap">
+										</a>
+									</div>
+									<div class="card-body">
+										<h4 class="card-title"><a href="single.html">Mercedes Benz S-Class</a></h4>
+										<ul class="list-inline product-meta">
+											<li class="list-inline-item">
+												<a href="single.html"><i class="fa fa-folder-open-o"></i>Vehicle</a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#"><i class="fa fa-location-arrow"></i>Kiambu</a>
+											</li>
+										</ul>
+										<a href="single.html">
+										   <ul class="list-horizontal">
+											<li>Engine Size <span class="car-li">4.0L</span></li>
+											<li>Transmission <span class="car-li">Automatic</span></li>
+											<li>Mileage<span class="car-li">10,000Km</span></li>
+											<li>Fuel Type <span class="car-li">Petrol</span></li>
+											<li>Year <span class="car-li">2013</span></li>
+											<li>Body Type <span class="car-li">Saloon</span></li>
+											</ul>
+											</div>
+											<div class="property-price">
+											<p class="badge-sale">For Sale</p>
+											<p class="price">Ksh4.8M</p>
+											</div>
+											<div>
+											
+											
+									</div>
+								</div>
+							</div>
+							</a>
+							
+												</div>
+												<div class="col-sm-12 col-lg-4 col-md-6">
 							<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="single.html">
-				<img class="card-img-top category-img-fluid" src="images/Bmwm3.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">Audi RS5</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Car Hire</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Kiambu</a>
-		    	</li>
-		    </ul>
-		       <ul class="list-horizontal">
-                <li>Engine Size <span class="car-li">2.5L</span></li>
-                <li>Transmission <span class="car-li">Automatic</span></li>
-                <li>Mileage<span class="car-li">10,000Km</span></li>
-                <li>Fuel Type <span class="car-li">Petrol</span></li>
-                <li>Year <span class="car-li">2015</span></li>
-                <li>Body Type <span class="car-li">Saloon</span></li>
-                </ul>
-                </div>
-		                <div class="property-price">
-                <p class="badge-sale">For Sale</p>
-                <p class="price">Ksh4.8M</p></a>
-                </div>
-                <div>
-                	
-                
-		</div>
-	</div>
-</div>
-
-
-					</div>
-					<div class="col-sm-12 col-lg-4 col-md-6">
+							<div class="product-item bg-light">
+								<div class="card">
+									<div class="thumb-content">
+										<div class="price">Bronze Package</div>
+										<a href="single.html">
+											<img class="card-img-top category-img-fluid" src="images/wrxsti.jpg" alt="Card image cap">
+										</a>
+									</div>
+									<div class="card-body">
+										<h4 class="card-title"><a href="single.html">Subaru WRX STI</a></h4>
+										<ul class="list-inline product-meta">
+											<li class="list-inline-item">
+												<a href="single.html"><i class="fa fa-folder-open-o"></i>Car Hire</a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#"><i class="fa fa-location-arrow"></i>Kiambu</a>
+											</li>
+										</ul>
+										<a href="single.html">
+										   <ul class="list-horizontal">
+											<li>Engine Size <span class="car-li">2.5L</span></li>
+											<li>Transmission <span class="car-li">Automatic</span></li>
+											<li>Mileage<span class="car-li">10,000Km</span></li>
+											<li>Fuel Type <span class="car-li">Petrol</span></li>
+											<li>Year <span class="car-li">2015</span></li>
+											<li>Body Type <span class="car-li">Saloon</span></li>
+											</ul>
+											</div>
+											<div class="property-price">
+											<p class="badge-sale">For Sale</p>
+											<p class="price">Ksh4.8M</p>
+											</div>
+											<div>
+											
+											
+									</div>
+								</div>
+							</div>
+							</a>
+							
+												</div>
+												<div class="col-sm-12 col-lg-4 col-md-6">
 							<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-3.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
-		    </ul>
-		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-		    <div class="product-ratings">
-		    	<ul class="list-inline">
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-		    	</ul>
-		    </div>
-		</div>
-	</div>
-</div>
+							<div class="product-item bg-light">
+								<div class="card">
+									<div class="thumb-content">
+										<div class="price">Gold Package</div>
+										<a href="single.html">
+											<img class="card-img-top category-img-fluid" src="images/audi1.jpg" alt="Card image cap">
+										</a>
+									</div>
+									<div class="card-body">
+										<h4 class="card-title"><a href="single.html">Audi RS5</a></h4>
+										<ul class="list-inline product-meta">
+											<li class="list-inline-item">
+												<a href="single.html"><i class="fa fa-folder-open-o"></i>Car Hire</a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#"><i class="fa fa-location-arrow"></i>Kiambu</a>
+											</li>
+										</ul>
+										<a href="single.html">
+										   <ul class="list-horizontal">
+											<li>Engine Size <span class="car-li">2.5L</span></li>
+											<li>Transmission <span class="car-li">Automatic</span></li>
+											<li>Mileage<span class="car-li">10,000Km</span></li>
+											<li>Fuel Type <span class="car-li">Petrol</span></li>
+											<li>Year <span class="car-li">2015</span></li>
+											<li>Body Type <span class="car-li">Saloon</span></li>
+											</ul>
+											</div>
+											<div class="property-price">
+											<p class="badge-sale">For Sale</p>
+											<p class="price">Ksh4.8M</p>
+											</div>
+											<div>
+											
+											
+									</div>
+								</div>
+							</div>
+							</a>
+							
+												</div>
+												<div class="col-sm-12 col-lg-4 col-md-6">
+							<!-- product card -->
+							<div class="product-item bg-light">
+								<div class="card">
+									<div class="thumb-content">
+										<div class="price">Gold Package</div>
+										<a href="single.html">
+											<img class="card-img-top category-img-fluid" src="images/20201230-maxresdefault (1).jpg" alt="Card image cap">
+										</a>
+									</div>
+									<div class="card-body">
+										<h4 class="card-title"><a href="single.html">Rolls-Roys Ghost</a></h4>
+										<ul class="list-inline product-meta">
+											<li class="list-inline-item">
+												<a href="single.html"><i class="fa fa-folder-open-o"></i>Car Hire</a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#"><i class="fa fa-location-arrow"></i>Kiambu</a>
+											</li>
+										</ul>
+										<a href="single.html">
+										   <ul class="list-horizontal">
+											<li>Engine Size <span class="car-li">2.5L</span></li>
+											<li>Transmission <span class="car-li">Automatic</span></li>
+											<li>Mileage<span class="car-li">10,000Km</span></li>
+											<li>Fuel Type <span class="car-li">Petrol</span></li>
+											<li>Year <span class="car-li">2015</span></li>
+											<li>Body Type <span class="car-li">Saloon</span></li>
+											</ul>
+											</div>
+											<div class="property-price">
+											<p class="badge-sale">For Sale</p>
+											<p class="price">Ksh4.8M</p>
+											</div>
+											<div>
+											
+											
+									</div>
+								</div>
+							</div>
+							</a>
+							
+												</div>
+												<div class="col-sm-12 col-lg-4 col-md-6">
+							<!-- product card -->
+							<div class="product-item bg-light">
+								<div class="card">
+									<div class="thumb-content">
+										<div class="price">Bronze Package</div>
+										<a href="single.html">
+											<img class="card-img-top category-img-fluid" src="images/20201103-house3.jpg" alt="Card image cap">
+										</a>
+									</div>
+									<div class="card-body">
+										<h4 class="card-title"><a href="single.html">Located in Kiambu</a></h4>
+										<ul class="list-inline product-meta">
+											<li class="list-inline-item">
+												<a href="single.html"><i class="fa fa-folder-open-o"></i>Houses</a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#"><i class="fa fa-location-arrow"></i>Kiambu</a>
+											</li>
+										</ul>
+										<a href="single.html">
+										   <ul class="list-horizontal">
+											<li>Acres <span class="car-li">2 </span></li>
+											<li>Parking <span class="car-li">4</span></li>
+											<li>Rooms<span class="car-li">5</span></li>
+											<li>Bathrooms <span class="car-li">6</span></li>
+											<li>.. <span class="car-li">...</span></li>
+											<li>.. <span class="car-li">..</span></li>
+											</ul>
+											</div>
+											<div class="property-price">
+											<p class="badge-sale">For Sale</p>
+											<p class="price">Ksh4.8M</p>
+											</div>
+											<div>
+											
+											
+									</div>
+								</div>
+							</div>
+							</a>
+							
+												</div>
+												<div class="col-sm-12 col-lg-4 col-md-6">
+							<!-- product card -->
+							<div class="product-item bg-light">
+								<div class="card">
+									<div class="thumb-content">
+										<div class="price">Gold Package</div>
+										<a href="single.html">
+											<img class="card-img-top category-img-fluid" src="images/20201104-rangerover.jpg" alt=""style="max-height: 400px;">
+										</a>
+									</div>
+									<div class="card-body">
+										<h4 class="card-title"><a href="single.html">Range Rover Sport</a></h4>
+										<ul class="list-inline product-meta">
+											<li class="list-inline-item">
+												<a href="single.html"><i class="fa fa-folder-open-o"></i>Vehicles</a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#"><i class="fa fa-location-arrow"></i>Karen</a>
+											</li>
+										</ul>
+										<a href="single.html">
+										   <ul class="list-horizontal">
+											<li>Engine Size <span class="car-li">4.0L</span></li>
+											<li>Transmission <span class="car-li">Automatic</span></li>
+											<li>Mileage<span class="car-li">19,400Km</span></li>
+											<li>Fuel Type <span class="car-li">Petrol</span></li>
+											<li>Year <span class="car-li">2014</span></li>
+											<li>Body Type <span class="car-li">SUV</span></li>
+											</ul>
+											</div>
+											<div class="property-price">
+											<p class="badge-sale">For Sale</p>
+											<p class="price">Ksh7.2M</p>
+											</div>
+											<div>
+											
+											
+									</div>
+								</div>
+							</div>
+							</a>
+							
+												</div>
+												<div class="col-sm-12 col-lg-4 col-md-6">
 
 
 
