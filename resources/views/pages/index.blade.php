@@ -286,7 +286,7 @@
 		    <div class="product-ratings">
 		    	<ul class="list-horizontal">
 				<li><span class="car-li">Location:</span>Karen</li>
-				<li><span class="car-li">Size:</span>...acres</li>
+				<li><span class="car-li">Size:</span>....acres</li>
 				<li><span class="car-li">Title:</span>Ready</li>
 				<li><span class="car-li">Interior:</span>Cloth</li>
 				</ul>  
