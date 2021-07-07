@@ -41,8 +41,9 @@
                                 <option value="9">Study Table Combo</option>
                                 <option value="10">11inch Macbook Air</option>
                             </select>
+                            @if(!$vechiles)
                             <div class="price">
-                                <h6 class="font-weight-bold pt-4 pb-1">Item Price ($ USD):</h6>
+                                <h6 class="font-weight-bold pt-4 pb-1"> Vechiles Item Price ($ USD):</h6>
                                 <div class="row px-3">
                                     <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
                                         <input type="text" name="price" class="border-0 py-2 w-100 price" placeholder="Price"
@@ -63,6 +64,30 @@
                                     <input type="file" class="form-control-file d-none" id="file-upload" name="file">
                                 </label>
                             </div>
+                           @else
+                            <div class="price">
+                                <h6 class="font-weight-bold pt-4 pb-1"> Proptery Item Price ($ USD):</h6>
+                                <div class="row px-3">
+                                    <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
+                                        <input type="text" name="price" class="border-0 py-2 w-100 price" placeholder="Price"
+                                            id="price">
+                                    </div>
+                                    <div class="col-lg-4 mrx-4 rounded bg-white my-2 ">
+                                        <input type="checkbox" value="Negotiable" id="Negotiable">
+                                        <label for="Negotiable" class="py-2">Negotiable</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="choose-file text-center my-4 py-4 rounded">
+                                <label for="file-upload">
+                                    <span class="d-block font-weight-bold text-dark">Drop files anywhere to upload</span>
+                                    <span class="d-block">or</span>
+                                    <span class="d-block btn bg-primary text-white my-3 select-files">Select files</span>
+                                    <span class="d-block">Maximum upload file size: 500 KB</span>
+                                    <input type="file" class="form-control-file d-none" id="file-upload" name="file">
+                                </label>
+                            </div>
+                            @endif
                         </div>
                     </div>
             </fieldset>

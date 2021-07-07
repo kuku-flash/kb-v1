@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Request;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,8 @@ Route :: get ('register',  [PagesController::class, 'register'])->name('register
 Route :: get ('single_blog',  [PagesController::class, 'single_blog'])->name('single_blog');
 Route :: get ('terms_condition',  [PagesController::class, 'terms_condition'])->name('terms_condition');
 Route :: get ('user_profile',  [PagesController::class, 'user_profile'])->name('user_profile');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route :: get ('/admin/dashboard',  [AdminController::class, 'dashboard'])->name('admin.dashboard');

@@ -39,7 +39,9 @@ Public function ad_list_view (){
 
 Public function post_ad (){
 
-    return view ('pages.post_ad');
+    $arr['vechiles'] = 1;
+    $arr['propteries'] = 2;
+    return view ('pages.post_ad')->with($arr);
     
 }
 

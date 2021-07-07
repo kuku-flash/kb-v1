@@ -2432,6 +2432,7 @@ ul.pagination .active a {
 }
 
 .arrow-right, .arrow-left {
+  padding: 10px;
   cursor: pointer;
   width: 35px;
   height: 35px;
