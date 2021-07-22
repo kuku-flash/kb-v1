@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Kingbridge</title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="{{ asset('image/png')}}" sizes="16x16" href="{{ asset('images/favicon.png')}}">
+
     <!-- Pignose Calender -->
-    <link href="{{ asset('./plugins/pg-calendar/css/pignose.calendar.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin/plugins/pg-calendar/css/pignose.calendar.min.css')}}" rel="stylesheet">
     <!-- Chartist -->
-    <link rel="stylesheet" href="{{ asset('./plugins/chartist/css/chartist.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/chartist/css/chartist.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
     <!-- Custom Stylesheet -->
-    <link href="{{ asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin/css/style.css')}}" rel="stylesheet">
 
 </head>
 
@@ -46,10 +45,10 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="index.html">
-                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                        <img src="images/logo-text.png" alt="">
+                    <b class="logo-abbr" style="color: #fff; font-size: 22px;">K </b>
+                    <span class="logo-compact" style="color: #fff;">K</span>
+                    <span class="brand-title" style="color: #fff; font-size: 22px;">
+                        Kingsbridge
                     </span>
                 </a>
             </div>
@@ -212,7 +211,7 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="images/user/1.png" height="40" width="40" alt="">
+                                <img src="{{ asset('admin/images/user/1.png')}}" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -230,7 +229,17 @@
                                         <li>
                                             <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                         </li>
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li>
+                                            <a href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                               <i class="icon-key"></i> <span>Logout</span>
+                                            </a>
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -249,151 +258,53 @@
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label">Dashboard</li>
+                <?php
+                     $segment = Request::segment(2);
+                ?>
+                    <li>                 
+                        <a href="{{ route('admin.dashboard')}}" class="nav-text 
+                            @if(!$segment)
+                            active
+                            @endif "><i class="icon-speedometer menu-icon"></i>Dashboard 
+                        </a>
+                    </li>
+                    <li>
+                            <a href="{{ route('admin.category.index')}}" class="nav-text  
+                                @if($segment=='categories')
+                                active   
+                                @endif "> <i class="icon-note menu-icon"></i>Category</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.package.index')}}" class="nav-text  
+                            @if($segment=='packages')
+                            active   
+                            @endif "> <i class="icon-diamond menu-icon"></i>Package</a>
+                    </li>
+                  
+                   
+            
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                            <i class="icon-note menu-icon"></i><span class="nav-text">Car Models&Makes</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./index.html">Home 1</a></li>
-                            <!-- <li><a href="./index-2.html">Home 2</a></li> -->
-                        </ul>
-                    </li>
-                    <li class="mega-menu mega-menu-sm">
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Layouts</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./layout-blank.html">Blank</a></li>
-                            <li><a href="./layout-one-column.html">One Column</a></li>
-                            <li><a href="./layout-two-column.html">Two column</a></li>
-                            <li><a href="./layout-compact-nav.html">Compact Nav</a></li>
-                            <li><a href="./layout-vertical.html">Vertical</a></li>
-                            <li><a href="./layout-horizontal.html">Horizontal</a></li>
-                            <li><a href="./layout-boxed.html">Boxed</a></li>
-                            <li><a href="./layout-wide.html">Wide</a></li>
-                            
-                            
-                            <li><a href="./layout-fixed-header.html">Fixed Header</a></li>
-                            <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">Apps</li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./email-inbox.html">Inbox</a></li>
-                            <li><a href="./email-read.html">Read</a></li>
-                            <li><a href="./email-compose.html">Compose</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Apps</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./app-profile.html">Profile</a></li>
-                            <li><a href="./app-calender.html">Calender</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-graph menu-icon"></i> <span class="nav-text">Charts</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./chart-flot.html">Flot</a></li>
-                            <li><a href="./chart-morris.html">Morris</a></li>
-                            <li><a href="./chart-chartjs.html">Chartjs</a></li>
-                            <li><a href="./chart-chartist.html">Chartist</a></li>
-                            <li><a href="./chart-sparkline.html">Sparkline</a></li>
-                            <li><a href="./chart-peity.html">Peity</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">UI Components</li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-grid menu-icon"></i><span class="nav-text">UI Components</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./ui-accordion.html">Accordion</a></li>
-                            <li><a href="./ui-alert.html">Alert</a></li>
-                            <li><a href="./ui-badge.html">Badge</a></li>
-                            <li><a href="./ui-button.html">Button</a></li>
-                            <li><a href="./ui-button-group.html">Button Group</a></li>
-                            <li><a href="./ui-cards.html">Cards</a></li>
-                            <li><a href="./ui-carousel.html">Carousel</a></li>
-                            <li><a href="./ui-dropdown.html">Dropdown</a></li>
-                            <li><a href="./ui-list-group.html">List Group</a></li>
-                            <li><a href="./ui-media-object.html">Media Object</a></li>
-                            <li><a href="./ui-modal.html">Modal</a></li>
-                            <li><a href="./ui-pagination.html">Pagination</a></li>
-                            <li><a href="./ui-popover.html">Popover</a></li>
-                            <li><a href="./ui-progressbar.html">Progressbar</a></li>
-                            <li><a href="./ui-tab.html">Tab</a></li>
-                            <li><a href="./ui-typography.html">Typography</a></li>
-                        <!-- </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-layers menu-icon"></i><span class="nav-text">Components</span>
-                        </a>
-                        <ul aria-expanded="false"> -->
-                            <li><a href="./uc-nestedable.html">Nestedable</a></li>
-                            <li><a href="./uc-noui-slider.html">Noui Slider</a></li>
-                            <li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
-                            <li><a href="./uc-toastr.html">Toastr</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="widgets.html" aria-expanded="false">
-                            <i class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
-                        </a>
-                    </li>
-                    <li class="nav-label">Forms</li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./form-basic.html">Basic Form</a></li>
-                            <li><a href="./form-validation.html">Form Validation</a></li>
-                            <li><a href="./form-step.html">Step Form</a></li>
-                            <li><a href="./form-editor.html">Editor</a></li>
-                            <li><a href="./form-picker.html">Picker</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">Table</li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Table</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./table-basic.html" aria-expanded="false">Basic Table</a></li>
-                            <li><a href="./table-datatable.html" aria-expanded="false">Data Table</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">Pages</li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-notebook menu-icon"></i><span class="nav-text">Pages</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./page-login.html">Login</a></li>
-                            <li><a href="./page-register.html">Register</a></li>
-                            <li><a href="./page-lock.html">Lock Screen</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="./page-error-404.html">Error 404</a></li>
-                                    <li><a href="./page-error-403.html">Error 403</a></li>
-                                    <li><a href="./page-error-400.html">Error 400</a></li>
-                                    <li><a href="./page-error-500.html">Error 500</a></li>
-                                    <li><a href="./page-error-503.html">Error 503</a></li>
-                                </ul>
+                            <li>
+                                <a href="{{ route('admin.carmake.index')}}" class="nav-text  
+                                    @if($segment=='carmakes')
+                                    active   
+                                    @endif ">Makes</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.carmodel.index')}}" class="nav-text  
+                                    @if($segment=='carmodel')
+                                    active   
+                                    @endif ">Models</a>
                             </li>
                         </ul>
                     </li>
+                  
+                  
+            
                 </ul>
             </div>
         </div>
@@ -431,34 +342,39 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="{{ asset('plugins/common/common.min.js')}}"></script>
-    <script src="{{ asset('js/custom.min.js')}}"></script>
-    <script src="{{ asset('js/settings.js')}}"></script>
-    <script src="{{ asset('js/gleek.js')}}"></script>
-    <script src="{{ asset('js/styleSwitcher.js')}}"></script>
+    <script src="{{ asset('admin/plugins/common/common.min.js')}}"></script>
+    <script src="{{ asset('admin/js/custom.min.js')}}"></script>
+    <script src="{{ asset('admin/js/settings.js')}}"></script>
+    <script src="{{ asset('admin/js/gleek.js')}}"></script>
+    <script src="{{ asset('admin/js/styleSwitcher.js')}}"></script>
 
     <!-- Chartjs -->
-    <script src="{{ asset('./plugins/chart.js/Chart.bundle.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/chart.js/Chart.bundle.min.js')}}"></script>
     <!-- Circle progress -->
-    <script src="{{ asset('./plugins/circle-progress/circle-progress.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/circle-progress/circle-progress.min.js')}}"></script>
     <!-- Datamap -->
-    <script src="{{ asset('./plugins/d3v3/index.js')}}"></script>
-    <script src="{{ asset('./plugins/topojson/topojson.min.js')}}"></script>
-    <script src="{{ asset('./plugins/datamaps/datamaps.world.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/d3v3/index.js')}}"></script>
+    <script src="{{ asset('admin/plugins/topojson/topojson.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/datamaps/datamaps.world.min.js')}}"></script>
     <!-- Morrisjs -->
-    <script src="{{ asset('./plugins/raphael/raphael.min.js')}}"></script>
-    <script src="{{ asset('./plugins/morris/morris.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/raphael/raphael.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/morris/morris.min.js')}}"></script>
     <!-- Pignose Calender -->
-    <script src="{{ asset('./plugins/moment/moment.min.js')}}"></script>
-    <script src="{{ asset('./plugins/pg-calendar/js/pignose.calendar.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/moment/moment.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/pg-calendar/js/pignose.calendar.min.js')}}"></script>
     <!-- ChartistJS -->
-    <script src="{{ asset('./plugins/chartist/js/chartist.min.js')}}"></script>
-    <script src="{{ asset('./plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/chartist/js/chartist.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
 
 
 
-    <script src="{{ asset('./js/dashboard/dashboard-1.js')}}"></script>
+    <script src="{{ asset('admin/js/dashboard/dashboard-1.js')}}"></script>
+    <script src="{{ asset('admin/plugins/tables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/tables/js/datatable/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/tables/js/datatable-init/datatable-basic.min.js')}}"></script>
 
+    <script src="{{ asset('admin/plugins/summernote/dist/summernote.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/summernote/dist/summernote-init.js')}}"></script>
 </body>
 
 </html>

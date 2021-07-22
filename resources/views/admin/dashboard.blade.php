@@ -2,6 +2,16 @@
 @section('content')
 
 <div class="container-fluid mt-3">
+
+    <div class="card-body">
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        {{ __('You are logged in!') }}
+    </div>
     <div class="row">
         <div class="col-lg-3 col-sm-6">
             <div class="card gradient-1">

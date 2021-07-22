@@ -3,7 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Request;
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\CarmakeController;
+use App\Http\Controllers\Admin\CarmodelController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +43,11 @@ Route :: get ('user_profile',  [PagesController::class, 'user_profile'])->name('
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route :: get ('/admin/dashboard',  [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get ('/dashboard',  [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::resource('category', CategoryController::class);
+    Route::resource('package', PackageController::class);
+    Route::resource('carmake', CarmakeController::class);
+    Route::resource('carmodel', CarmodelController::class);
+
+});
