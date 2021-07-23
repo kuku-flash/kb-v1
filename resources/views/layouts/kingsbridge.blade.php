@@ -103,7 +103,7 @@
               </ul>
               <ul class="navbar-nav ml-auto mt-10">
                 <li class="nav-item">
-                  <a class="nav-link login-button " href="{{ route('login')}}">Login</a>
+                  <a class="nav-link login-button " href="{{ route('user.login')}}">Login</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Add Listing</a>

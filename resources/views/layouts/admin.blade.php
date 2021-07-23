@@ -285,7 +285,7 @@
             
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-note menu-icon"></i><span class="nav-text">Car Models&Makes</span>
+                            <i class="icon-note menu-icon"></i><span class="nav-text">Car Make & Model</span>
                         </a>
                         <ul aria-expanded="false">
                             <li>
@@ -299,6 +299,26 @@
                                     @if($segment=='carmodel')
                                     active   
                                     @endif ">Models</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-map menu-icon"></i><span class="nav-text">Address</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li>
+                                <a href="{{ route('admin.county.index')}}" class="nav-text  
+                                    @if($segment=='counties')
+                                    active   
+                                    @endif ">County</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.city.index')}}" class="nav-text  
+                                    @if($segment=='cities')
+                                    active   
+                                    @endif ">City</a>
                             </li>
                         </ul>
                     </li>

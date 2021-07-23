@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\CarmakeController;
 use App\Http\Controllers\Admin\CarmodelController;
+use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\CountyController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -34,7 +36,7 @@ Route :: get ('dashboard_favourite_ads',  [PagesController::class, 'dashboard_fa
 Route :: get ('dashboard_my_ads',  [PagesController::class, 'dashboard_my_ads'])->name('dashboard_my_ads');
 Route :: get ('dashboard_pending_ads',  [PagesController::class, 'dashboard_pending_ads'])->name('dashboard_pending_ads');
 Route :: get ('dashboard',  [PagesController::class, 'dashboard'])->name('dashboard');
-Route :: get ('login',  [PagesController::class, 'login'])->name('login');
+Route :: get ('user/login',  [PagesController::class, 'login'])->name('user.login');
 Route :: get ('package',  [PagesController::class, 'package'])->name('package');
 Route :: get ('register',  [PagesController::class, 'register'])->name('register');
 Route :: get ('single_blog',  [PagesController::class, 'single_blog'])->name('single_blog');
@@ -49,5 +51,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('package', PackageController::class);
     Route::resource('carmake', CarmakeController::class);
     Route::resource('carmodel', CarmodelController::class);
+    Route::resource('city', CityController::class);
+    Route::resource('county', CountyController::class);
 
 });
