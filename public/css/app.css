@@ -3873,7 +3873,9 @@ input[type=button].btn-block {
     transition: none;
   }
 }
-
+.single-property-area .property-desc-area .property-info-area p span {
+  color: #2a303b;
+  }
 .nav {
   display: flex;
   flex-wrap: wrap;

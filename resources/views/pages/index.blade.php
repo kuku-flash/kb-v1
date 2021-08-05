@@ -13,7 +13,7 @@
 			<div class="col-md-12">
 				<!-- Header Contetnt -->
 				<div class="content-block">
-					<h1>Buyyyyyyyyy & Sell Near You </h1>
+					<h1>Buy & Sell Near You </h1>
 					<p>Join the millions who buy and sell from each other <br> everyday in local communities around kenya</p>
 					<div class="short-popular-category-list text-center">
 						<h2>Popular Category</h2>
@@ -121,11 +121,10 @@
 		    	</li>
 		    </ul>
 		    <div class="product-ratings">
-		    	<ul class="list-horizontal">
-				<li><span class="car-li">Mileage:</span>20,00km</li>
-				<li><span class="car-li">YOM:</span>2012</li>
-				<li><span class="car-li">Gear box:</span>Automatic</li>
-				<li><span class="car-li">Interior:</span>Cloth</li>
+		    	<ul class="trending-horizontal">
+					<li>Mileage:<span class="car-li">19400Km</span></li>
+					<li>Year:<span class="car-li">2014</span></li>
+					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">
 					<p class="badge-sale">For Sale</p>
@@ -160,11 +159,10 @@
 		    	</li>
 		    </ul>
 		    <div class="product-ratings">
-		    	<ul class="list-horizontal">
-				<li><span class="car-li">Mileage:</span>20,00km</li>
-				<li><span class="car-li">YOM:</span>2012</li>
-				<li><span class="car-li">Gear box:</span>Automatic</li>
-				<li><span class="car-li">Interior:</span>Cloth</li>
+		    	<ul class="trending-horizontal">
+					<li>Mileage:<span class="car-li">19400Km</span></li>
+					<li>Year:<span class="car-li">2014</span></li>
+					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">
 					<p class="badge-sale">For Sale</p>
@@ -201,7 +199,7 @@
 		    	</li>
 		    </ul>
 		    <div class="product-ratings">
-		    	<ul class="list-horizontal">
+		    	<ul class="trending-horizontal">
 				<li><span class="car-li">Bedrooms:</span>5</li>
 				<li><span class="car-li">Bathrooms:</span>4</li>
 				<li><span class="car-li">Parking:</span>6</li>
@@ -243,11 +241,10 @@
 		    	</li>
 		    </ul>
 		    <div class="product-ratings">
-		    	<ul class="list-horizontal">
-				<li><span class="car-li">Mileage:</span>20,00km</li>
-				<li><span class="car-li">YOM:</span>2012</li>
-				<li><span class="car-li">Gear box:</span>Automatic</li>
-				<li><span class="car-li">Interior:</span>Cloth</li>
+		    	<ul class="trending-horizontal">
+					<li>Mileage:<span class="car-li">19400Km</span></li>
+					<li>Year:<span class="car-li">2014</span></li>
+					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">
 					<p class="badge-sale">For Sale</p>
@@ -284,11 +281,10 @@
 		    	</li>
 		    </ul>
 		    <div class="product-ratings">
-		    	<ul class="list-horizontal">
-				<li><span class="car-li">Location:</span>Karen</li>
-				<li><span class="car-li">Size:</span>....acres</li>
-				<li><span class="car-li">Title:</span>Ready</li>
-				<li><span class="car-li">Interior:</span>Cloth</li>
+		    	<ul class="trending-horizontal">
+					<li>Acres:<span class="car-li">30</span></li>
+					<li>Year:<span class="car-li">2014</span></li>
+					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">
 					<p class="badge-sale">For Sale</p>

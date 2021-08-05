@@ -12,13 +12,9 @@
 			<!-- Left sidebar -->
 			<div class="col-md-8">
 				<div class="product-details">
-					<h1 class="product-title">Hp Dual Core 2gb Ram-Slim Laptop Available In Very Low Price</h1>
+					<h1 class="product-title">Subaru Impreza WRX STI 2011</h1>
 					<div class="product-meta">
-						<ul class="list-inline">
-							<li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href="">Andrew</a></li>
-							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Category<a href="">Electronics</a></li>
-							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="">Dhaka Bangladesh</a></li>
-						</ul>
+					
 					</div>
 
 					<!-- product slider -->
@@ -83,8 +79,11 @@
 								<h3 class="tab-title">Product Specifications</h3>
 								<table class="table table-bordered product-table">
 									<tbody>
+										
 										<tr>
+											
 											<td>Seller Price</td>
+											
 											<td>$450</td>
 										</tr>
 										<tr>
@@ -191,8 +190,16 @@
 			<div class="col-md-4">
 				<div class="sidebar">
 					<div class="widget price text-center">
+						<h1 class="product-title">Subaru Impreza WRX STI 2011</h1>
+					<div class="product-meta">
+						<ul class="list-inline">
+							<li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href="">Andrew</a></li>
+							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Category<a href="">Electronics</a></li>
+							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="">Dhaka Bangladesh</a></li>
+						</ul>
 						<h4>Price</h4>
 						<p>$230</p>
+					</div>
 					</div>
 					<!-- User Profile widget -->
 					<div class="widget user text-center">
