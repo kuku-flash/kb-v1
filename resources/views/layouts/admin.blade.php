@@ -269,11 +269,17 @@
                         </a>
                     </li>
                     <li>
-                            <a href="{{ route('admin.category.index')}}" class="nav-text  
-                                @if($segment=='categories')
+                            <a href="{{ route('admin.user.index')}}" class="nav-text  
+                                @if($segment=='users')
                                 active   
-                                @endif "> <i class="icon-note menu-icon"></i>Category</a>
+                                @endif "> <i class="icon-user menu-icon"></i>Users</a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.category.index')}}" class="nav-text  
+                            @if($segment=='categories')
+                            active   
+                            @endif "> <i class="icon-note menu-icon"></i>Category</a>
+                </li>
                     <li>
                         <a href="{{ route('admin.package.index')}}" class="nav-text  
                             @if($segment=='packages')

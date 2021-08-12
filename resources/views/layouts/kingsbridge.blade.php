@@ -9,7 +9,7 @@
     <title>KingsBridge</title>
     
     <!-- FAVICON -->
-    <link href="img/favicon.png" rel="shortcut icon">
+    <link href="{{ asset('img/favicon.png')}}" rel="shortcut icon">
     <!-- PLUGINS CSS STYLE -->
     <!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
     <!-- Bootstrap -->
@@ -46,7 +46,7 @@
       <div class="row">
         <div class="col-md-12">
           <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar  ftco-navbar-light" id="ftco-navbar">
-            <a class="navbar-brand" href="/"><img src="images/king2.png" 
+            <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
             style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " ><span style="color:#d4af37">Kings</span><span>bridge</span></a>
   
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -134,7 +134,7 @@
         <!-- About -->
         <div class="block about">
           <!-- footer logo -->
-          <a class="navbar-brand" href="/"><img src="images/king2.png" 
+          <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
           style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " >KingsBridge<p>Kingsbridge Properties</p></a>
           <p>The leading online platform that sells both Vehicles and Houses.</p>
         </div>
@@ -176,13 +176,13 @@
           <div class="mobile d-flex">
             <a href="">
               <!-- Icon -->
-              <img src="images/footer/phone-icon.png" alt="mobile-icon">
+              <img src="{{ asset('images/footer/phone-icon.png')}}" alt="mobile-icon">
             </a>
             <p>Get the Dealsy Mobile App and Save more</p>
           </div>
           <div class="download-btn d-flex my-3">
-            <a href="#"><img src="images/apps/google-play-store.png" class="img-fluid" alt=""></a>
-            <a href="#" class=" ml-3"><img src="images/apps/apple-app-store.png" class="img-fluid" alt=""></a>
+            <a href="#"><img src="{{ asset('images/apps/google-play-store.png')}}" class="img-fluid" alt=""></a>
+            <a href="#" class=" ml-3"><img src="{{ asset('images/apps/apple-app-store.png')}}" class="img-fluid" alt=""></a>
           </div>
         </div>
       </div>

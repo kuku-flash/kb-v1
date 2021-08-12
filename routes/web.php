@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CarmakeController;
 use App\Http\Controllers\Admin\CarmodelController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountyController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -53,5 +54,6 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('carmodel', CarmodelController::class);
     Route::resource('city', CityController::class);
     Route::resource('county', CountyController::class);
+    Route::resource('user', UserController::class);
 
 });
