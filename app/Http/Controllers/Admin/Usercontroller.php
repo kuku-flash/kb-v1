@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class Usercontroller extends Controller
 {
@@ -47,7 +48,16 @@ class Usercontroller extends Controller
             'user_type' => 'nullable',
         ]);
     
-      User::create($validatedData);
+      User::create([
+          
+                'name' => $validatedData['name'],
+                'phone_number' => $validatedData['phone_number'],
+                'social_link' => $validatedData['social_link'],
+                'avatar' => $validatedData['avatar'],
+                'user_type' => $validatedData['user_type'],
+                'email' => $validatedData['email'],
+                'password' => Hash::make($validatedData['password']),
+            ]);
       return redirect() -> route('admin.user.index')->with('success','Succesfully Added');
     }
 

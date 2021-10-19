@@ -42,7 +42,10 @@ class LoginController extends Controller
         if (auth()->user()->user_type == 'admin') {
             return route('admin.dashboard');
         }
+        if (auth()->user()->user_type == 'user') {
+            return route('user.dashboard');
+        }
 
-        return route('user.dashboard');
+        return route('index');
     }
 }

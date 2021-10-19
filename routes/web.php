@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\CarmodelController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountyController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\User\DashboardController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -29,14 +30,8 @@ Route :: get ('category',  [PagesController::class, 'category'])->name('category
 Route :: get ('single',  [PagesController::class, 'single'])->name('single');
 Route :: get ('about_us',  [PagesController::class, 'about_us'])->name('about_us');
 Route :: get ('ad_list_view',  [PagesController::class, 'ad_list_view'])->name('ad_list_view');
-Route :: get ('post_ad',  [PagesController::class, 'post_ad'])->name('post_ad');
 Route :: get ('blog',  [PagesController::class, 'blog'])->name('blog');
 Route :: get ('contact_us',  [PagesController::class, 'contact_us'])->name('contact_us');
-Route :: get ('dashboard_archived_ads',  [PagesController::class, 'dashboard_archived_ads'])->name('dashboard_archived_ads');
-Route :: get ('dashboard_favourite_ads',  [PagesController::class, 'dashboard_favourite_ads'])->name('dashboard_favourite_ads');
-Route :: get ('dashboard_my_ads',  [PagesController::class, 'dashboard_my_ads'])->name('dashboard_my_ads');
-Route :: get ('dashboard_pending_ads',  [PagesController::class, 'dashboard_pending_ads'])->name('dashboard_pending_ads');
-Route :: get ('dashboard',  [PagesController::class, 'dashboard'])->name('dashboard');
 Route :: get ('user/login',  [PagesController::class, 'login'])->name('user.login');
 Route :: get ('package',  [PagesController::class, 'package'])->name('package');
 Route :: get ('register',  [PagesController::class, 'register'])->name('register');
@@ -55,5 +50,19 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('city', CityController::class);
     Route::resource('county', CountyController::class);
     Route::resource('user', UserController::class);
+
+});
+
+Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.'], function () {
+    Route::get ('/dashboard',  [DashboardController::class, 'myads'])->name('dashboard');
+    Route :: get ('dashboard_archived_ads',  [DashboardController::class, 'dashboard_archived_ads'])->name('dashboard_archived_ads');
+    Route :: get ('dashboard_favourite_ads',  [DashboardController::class, 'dashboard_favourite_ads'])->name('dashboard_favourite_ads');
+    Route :: get ('dashboard_my_ads',  [DashboardController::class, 'dashboard_my_ads'])->name('dashboard_my_ads');
+    Route :: get ('dashboard_pending_ads',  [DashboardController::class, 'dashboard_pending_ads'])->name('dashboard_pending_ads');
+    Route :: get ('dashboard',  [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route :: get ('post_ad',  [DashboardController::class, 'post_ad'])->name('post_ad');
+    Route :: get ('vehicle_ad',  [DashboardController::class, 'vehicle_ad'])->name('vehicle_ad');
+    Route :: get ('model',  [DashboardController::class, 'model'])->name('model');
+
 
 });

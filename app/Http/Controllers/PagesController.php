@@ -37,14 +37,6 @@ Public function ad_list_view (){
     
 }
 
-Public function post_ad (){
-
-    $arr['vechiles'] = 1;
-    $arr['propteries'] = 2;
-    return view ('pages.post_ad')->with($arr);
-    
-}
-
 Public function blog(){
 
     return view ('pages.blog');
@@ -57,31 +49,7 @@ Public function contact_us(){
     
 }
 
-Public function dashboard_archived_ads(){
 
-    return view ('pages.dashboard_archived_ads');
-    
-}
-
-
-Public function dashboard_favourite_ads(){
-
-    return view ('pages.dashboard_favourite_ads');
-    
-}
-
-Public function dashboard_my_ads(){
-
-    return view ('pages.dashboard_my_ads');
-    
-}
-
-
-Public function dashboard(){
-
-    return view ('pages.dashboard');
-    
-}
 
 Public function login(){
 

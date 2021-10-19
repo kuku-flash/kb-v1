@@ -6,6 +6,37 @@
         <form action="#">
             <!-- Post Your ad start -->
             <fieldset class="border border-gary p-4 mb-5">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Post Your ad</h3>
+                        <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
+                        <select name="" id="inputGroupSelect" class="w-100">
+                            <option value="">Select category</option>
+                            @foreach ($categories as $category )
+                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                            @endforeach
+               
+                        </select>
+                        <h6 class="font-weight-bold pt-4 pb-1">Select Your City</h6>
+                        <select name="" id="inputGroupSelect" class="w-100">
+                            <option value="">Select City</option>
+                            @foreach ($cities as $city )
+                            <option value="{{ $city->id }}">{{ $city->city }}</option>
+                            @endforeach
+                        </select>
+                        <h6 class="font-weight-bold pt-4 pb-1">Title Of Ad:</h6>
+                        <input type="text" class="border w-100 p-2 bg-white text-capitalize" placeholder="Ad title go There">
+                        <h6 class="font-weight-bold pt-4 pb-1">Title Of Ad:</h6>
+                        <input type="text" class="border w-100 p-2 bg-white text-capitalize" placeholder="Ad title go There">
+
+                        <h6 class="font-weight-bold pt-4 pb-1">Address:</h6>
+                        <textarea name="" id="" class="border p-3 w-100" rows="7" placeholder="Write details about your product"></textarea>
+                        <button type="submit" class="btn btn-primary d-block mt-2">Next</button>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="border border-gary p-4 mb-5">
                     <div class="row">
                         <div class="col-lg-12">
                             <h3>Post Your ad</h3>
@@ -41,7 +72,7 @@
                                 <option value="9">Study Table Combo</option>
                                 <option value="10">11inch Macbook Air</option>
                             </select>
-                            @if(!$vechiles)
+                           
                             <div class="price">
                                 <h6 class="font-weight-bold pt-4 pb-1"> Vechiles Item Price ($ USD):</h6>
                                 <div class="row px-3">
@@ -64,7 +95,7 @@
                                     <input type="file" class="form-control-file d-none" id="file-upload" name="file">
                                 </label>
                             </div>
-                           @else
+                           
                             <div class="price">
                                 <h6 class="font-weight-bold pt-4 pb-1"> Proptery Item Price ($ USD):</h6>
                                 <div class="row px-3">
@@ -87,7 +118,7 @@
                                     <input type="file" class="form-control-file d-none" id="file-upload" name="file">
                                 </label>
                             </div>
-                            @endif
+                          
                         </div>
                     </div>
             </fieldset>
