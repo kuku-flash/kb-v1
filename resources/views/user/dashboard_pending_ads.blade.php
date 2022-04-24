@@ -4,7 +4,7 @@
 <!--==================================
 =            User Profile            =
 ===================================-->
-<section class=" section-categories">
+<section class=" section-sm">
 	<!-- Container Start -->
 	<div class="container">
 		<!-- Row Start -->

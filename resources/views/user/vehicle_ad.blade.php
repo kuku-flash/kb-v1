@@ -8,7 +8,7 @@
             <fieldset class="border border-gary p-4 mb-5">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>Post Your Vehicle</h3>
+                        <h3>Post Your Vehicle <!--  $currentId --></h3>
                         <h6 class="font-weight-bold pt-4 pb-1">Select Car Model:</h6>
                         
                         <div class="input-group mt-2 mb-2 col-md-6"> 
@@ -24,13 +24,15 @@
                             <select name="model" class="form-control model  @error('model') is-invalid  @enderror">
 
                               <option value="0" disabled="true" selected="true">Choose a model</option>
-                              @if ($make->id = $model->make_id)
+                             
 
                                  @foreach($models as $model)
+                                 @if ($make->id = $model->make_id)
                                   <option value="{{ $model->id }}">{{ $model->model }}</option>
+                                  @endif
                                 @endforeach
 
-                                @endif
+                                
                             </select>
                               @error('model')
                               <span class="invalid-feedback" role="alert">

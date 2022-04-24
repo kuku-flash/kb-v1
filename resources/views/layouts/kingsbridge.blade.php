@@ -57,7 +57,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto main-nav ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home</a>
+                  <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item dropdown dropdown-slide">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Dashboard<span><i class="fa fa-angle-down"></i></span>
@@ -97,7 +97,7 @@
                   <!-- Dropdown list -->
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('category')}}">Ad-Gird View</a>
-                    <a class="dropdown-item" href="ad-listing-list.html">Ad-List View</a>
+                    <a class="dropdown-item" href="#">Ad-List View</a>
                   </div>
                 </li>
               </ul>
@@ -106,7 +106,7 @@
                   <a class="nav-link login-button " href="{{ route('user.login')}}">Login</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white add-button" href="{{ route('user.post_ad')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
+                  <a class="nav-link text-white add-button" href="{{ route('user.listing')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
                 </li>
               </ul>
             </div>
@@ -148,7 +148,7 @@
             <li><a href="#">How It works</a></li>
             <li><a href="#">Deals & Coupons</a></li>
             <li><a href="#">Articls & Tips</a></li>
-            <li><a href="terms-condition.html">Terms & Conditions</a></li>
+            <li><a href="{{ route('terms_condition')}}">Terms & Conditions</a></li>
           </ul>
         </div>
       </div>

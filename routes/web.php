@@ -60,9 +60,16 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('dashboard_my_ads',  [DashboardController::class, 'dashboard_my_ads'])->name('dashboard_my_ads');
     Route :: get ('dashboard_pending_ads',  [DashboardController::class, 'dashboard_pending_ads'])->name('dashboard_pending_ads');
     Route :: get ('dashboard',  [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route :: get ('post_ad',  [DashboardController::class, 'post_ad'])->name('post_ad');
+    Route :: get ('listing',  [DashboardController::class, 'create_listing'])->name('listing');
+    Route :: post ('store_listing',  [DashboardController::class, 'store_listing'])->name('store_listing');
+    Route :: get ('category',  [DashboardController::class, 'category'])->name('category');
     Route :: get ('vehicle_ad',  [DashboardController::class, 'vehicle_ad'])->name('vehicle_ad');
     Route :: get ('model',  [DashboardController::class, 'model'])->name('model');
+   
+
 
 
 });
+
+Route::  get('user/export', [DashboardController::class, 'export'])->name('export');
+Route::  get('user/exportpackage', [DashboardController::class, 'exportpackage'])->name('exportpackage');
