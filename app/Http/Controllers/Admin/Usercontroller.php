@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -25,9 +26,11 @@ class Usercontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.user.create');
+        
+        $roles = Role::all();
+        return view('admin.user.create', compact('roles'));
     }
 
     /**
@@ -39,25 +42,20 @@ class Usercontroller extends Controller
     public function store(Request $request)
     {
         $validatedData = $this->validate($request, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone_number' => 'nullable',
-            'social_link' => 'nullable',
-            'avatar' => 'nullable',
-            'user_type' => 'nullable',
+            'name' => 'required|max:255',
+            'email' => 'required|unique:users|email|max:255',
+            'password' => 'required|between:8,255|confirmed',
+            'password_confirmation' => 'required',
+            'phone_number' => 'required',
+            'role.*' => 'required',
+            'role' => 'required',
+            
         ]);
-    
-      User::create([
-          
-                'name' => $validatedData['name'],
-                'phone_number' => $validatedData['phone_number'],
-                'social_link' => $validatedData['social_link'],
-                'avatar' => $validatedData['avatar'],
-                'user_type' => $validatedData['user_type'],
-                'email' => $validatedData['email'],
-                'password' => Hash::make($validatedData['password']),
-            ]);
+       
+        $user = User::create($validatedData);
+        $user->roles()->sync($request->input('role',[]));
+
+
       return redirect() -> route('admin.user.index')->with('success','Succesfully Added');
     }
 
@@ -80,8 +78,10 @@ class Usercontroller extends Controller
      */
     public function edit(User $user)
     {
-        $arr['user'] = $user;
-        return view('admin.user.edit')->with($arr);
+        $roles = Role::all()->pluck('title', 'id');
+        $user->load('roles');
+        return view('admin.user.edit', compact('roles', 'user'));;
+
     }
 
     /**
@@ -94,16 +94,15 @@ class Usercontroller extends Controller
     public function update(Request $request, User $user)
     {
         $validatedData = $this->validate($request, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
-            'phone_number' => 'nullable',
-            'social_link' => 'nullable',
-            'avatar' => 'nullable',
-            'user_type' => 'nullable',
+            'name' => 'required|max:255',
+            'role.*' => 'required',
+            'role' => 'required',
         ]);
+       
+   
+        $user->update($validatedData);
+        $user->roles()->sync($request->input('role',[]));
     
-      $user->update($validatedData);
       return redirect() -> route('admin.user.index')->with('success','Updated Successfully');
     }
 

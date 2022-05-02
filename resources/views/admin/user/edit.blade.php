@@ -23,76 +23,25 @@
                                 </span>
                             @enderror
                     </div>
+          
+              
                     <div class="form-group">
-                        <label>Email</label>
-                        <input id="email" type="email" class="form-control input-default @error('email') is-invalid @enderror" name="email" 
-                        value="{{ $user->email }}">
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                    </div>
-                    <div class="form-group ">
-                        <label>Password</label>
-                            <input id="password" type="password" class="form-control input-default @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
+                        <div style="padding-bottom: 4px">
+                            <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                            <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
                         </div>
-                    </div>
-
-                    <div class="form-group ">
-                        <label>Confirm Password</label>
-                            <input id="password-confirm" type="password" class="form-control input-default" name="password_confirmation" required autocomplete="new-password">
-                    </div>
-                    <div class="form-group">
-                        <label>Phone Number </label>
-                        <input type="text" name="phone_number" class="form-control input-default @error('phone_number') is-invalid @enderror" placeholder="+25492947351"
-                        value="{{ $user->phone_number}}"  >
-                            @error('phone_number')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>social Links </label>
-                        <input type="text" name="social_link" class="form-control input-default @error('social_link') is-invalid @enderror" placeholder="social link"
-                        value="{{$user->social_link }}" >
-                            @error('social_link')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>User Type</label>
-                      <select name="user_type" class="form-control input-default  @error('user_type') is-invalid @enderror">
-                          <option value="{{ $user->user_type }}">Choose a User Type</option>
-                            <option value="isUser">isUser</option>
-                            <option value="isAdmin">isAdmin</option>
-                      </select>
-                        @error('county_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                    </div>
-                  
-
-                    <div class="form-group">
-                        <label>Avatar </label>
-                
-                            <label class="form-check-label">
-                                <input type="file" name="avatar" class="form-control input-default" value="{{ old('avatar') }}">
-                                @error('avatar')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="role[]" id="role" multiple required>
+                            @foreach($roles as $id => $roles)
+                                <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || $user->roles->contains($id)) ? 'selected' : '' }}>{{ $roles }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('role'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('roles') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
                     </div>
                     
                     <button type="submit" class="btn btn-dark">Update</button>

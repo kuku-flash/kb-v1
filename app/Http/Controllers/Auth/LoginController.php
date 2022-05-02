@@ -39,13 +39,22 @@ class LoginController extends Controller
     }
     public function redirectPath()
     {
-        if (auth()->user()->user_type == 'admin') {
+        /** 
+        *if (auth()->user()->user_type == 'admin') {
+        *    return route('admin.dashboard');
+       * }
+       * if (auth()->user()->user_type == 'user') {
+        *    return route('user.dashboard');
+       * } return route('index');
+        */
+
+        if (auth()->user()->is_admin) {
             return route('admin.dashboard');
         }
-        if (auth()->user()->user_type == 'user') {
-            return route('user.dashboard');
+        if (auth()->user()->is_manager) {
+            return route('index');
         }
 
-        return route('index');
+        return route('user.dashboard');
     }
 }

@@ -57,43 +57,19 @@
                                 </span>
                             @enderror
                     </div>
-                    <div class="form-group">
-                        <label>social Links </label>
-                        <input type="text" name="social_link" class="form-control input-default @error('social_link') is-invalid @enderror" placeholder="social link"
-                        value="{{ old('social_link') }}" >
-                            @error('social_link')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>User Type</label>
-                      <select name="user_type" class="form-control input-default  @error('user_type') is-invalid @enderror">
-                          <option value="{{ old('user_type') }}">Choose a User Type</option>
-                            <option value="isUser">isUser</option>
-                            <option value="isAdmin">isAdmin</option>
-                      </select>
-                        @error('county_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                    </div>
-                  
-
-                    <div class="form-group">
-                        <label>Avatar </label>
                 
-                            <label class="form-check-label">
-                                <input type="file" name="avatar" class="form-control input-default" value="{{ old('avatar') }}">
-                                @error('avatar')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                    <div class="form-group">
+                        <label for="role">Select Role</label>
+                
+                        <select class="role form-control" name="role" id="role">
+                            <option value="">Select Role...</option>
+                            @foreach ($roles as $role)
+                            <option  value="{{$role->id}}">{{$role->title}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    
+
+                
                     <button type="submit" class="btn btn-dark">Add</button>
                     
                 </form>
@@ -103,4 +79,8 @@
 </div>
 </div>
 </div>
+
+
 @endsection
+
+  
