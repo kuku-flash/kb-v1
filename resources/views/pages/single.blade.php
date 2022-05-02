@@ -12,27 +12,31 @@
 			<!-- Left sidebar -->
 			<div class="col-md-8">
 				<div class="product-details">
-					<h1 class="product-title">Subaru Impreza WRX STI 2011</h1>
+					<h1 class="product-title">Subaru Impreza WRX STI 2013</h1>
 					<div class="product-meta">
-					
+						<ul class="list-inline">
+							<li class="list-inline-item"><i class="fa fa-money"></i> KSH 1800000</li>
+							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Category<a href="">Electronics</a></li>
+							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="">Dhaka Bangladesh</a></li>
+						</ul>
 					</div>
 
 					<!-- product slider -->
 					<div class="product-slider">
-						<div class="product-slider-item my-4" data-image="images/products/products-1.jpg">
-							<img class="img-fluid w-100" src="images/products/products-1.jpg" alt="product-img">
+						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_fqh_evox_1_815.jpg">
+							<img class="img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_fqh_evox_1_815.jpg" alt="product-img">
 						</div>
-						<div class="product-slider-item my-4" data-image="images/products/products-2.jpg">
-							<img class="d-block img-fluid w-100" src="images/products/products-2.jpg" alt="Second slide">
+						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_ajp_evox_1_815.jpg">
+							<img class="d-block img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_ajp_evox_1_815.jpg" alt="Second slide">
 						</div>
-						<div class="product-slider-item my-4" data-image="images/products/products-3.jpg">
-							<img class="d-block img-fluid w-100" src="images/products/products-3.jpg" alt="Third slide">
+						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_boc_evox_1_815.jpg">
+							<img class="d-block img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_boc_evox_1_815.jpg" alt="Third slide">
 						</div>
-						<div class="product-slider-item my-4" data-image="images/products/products-1.jpg">
-							<img class="d-block img-fluid w-100" src="images/products/products-1.jpg" alt="Third slide">
+						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_rqh_evox_1_815.jpg">
+							<img class="d-block img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_rqh_evox_1_815.jpg" alt="Third slide">
 						</div>
-						<div class="product-slider-item my-4" data-image="images/products/products-2.jpg">
-							<img class="d-block img-fluid w-100" src="images/products/products-2.jpg" alt="Third slide">
+						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_tlb_evox_1_815.jpg">
+							<img class="d-block img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_tlb_evox_1_815.jpg" alt="Third slide">
 						</div>
 					</div>
 					<!-- product slider -->
@@ -122,7 +126,7 @@
 								<div class="product-review">
 									<div class="media">
 										<!-- Avater -->
-										<img src="images/user/user-thumb.jpg" alt="avater">
+										<img src="images/joshua.jpeg" alt="avater">
 										<div class="media-body">
 											<!-- Ratings -->
 											<div class="ratings">
@@ -190,21 +194,13 @@
 			<div class="col-md-4">
 				<div class="sidebar">
 					<div class="widget price text-center">
-						<h1 class="product-title">Subaru Impreza WRX STI 2011</h1>
-					<div class="product-meta">
-						<ul class="list-inline">
-							<li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href="">Andrew</a></li>
-							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Category<a href="">Electronics</a></li>
-							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="">Dhaka Bangladesh</a></li>
-						</ul>
 						<h4>Price</h4>
-						<p>$230</p>
-					</div>
+						<p>KSH 1,800,000</p>
 					</div>
 					<!-- User Profile widget -->
 					<div class="widget user text-center">
-						<img class="rounded-circle img-fluid mb-5 px-5" src="images/user/user-thumb.jpg" alt="">
-						<h4><a href="">Jonathon Andrew</a></h4>
+						<img class="rounded-circle img-fluid mb-5 px-5" src="images/joshua.jpeg" alt="">
+						<h4><a href="">Warutere Jnr</a></h4>
 						<p class="member-time">Member Since Jun 27, 2017</p>
 						<a href="">See all ads</a>
 						<ul class="list-inline mt-20">

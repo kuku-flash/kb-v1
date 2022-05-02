@@ -23,6 +23,11 @@ Public function single (){
     return view ('pages.single');
     
 }
+Public function houses (){
+
+    return view ('pages.houses');
+    
+}
 
 Public function about_us (){
 

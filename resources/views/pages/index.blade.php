@@ -19,21 +19,21 @@
 						<h2>Popular Category</h2>
 						<ul class="list-inline">
 							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-home"></i> Houses</a></li>
+								<a href="{{ route('category') }}"><i class="fa fa-home"></i> Houses</a></li>
 							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-car"></i> Cars</a>
+								<a href="{{ route('category') }}"><i class="fa fa-car"></i> Cars</a>
 							</li>
 							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-bed"></i> BnB</a>
+								<a href="{{ route('category') }}"><i class="fa fa-bed"></i> BnB</a>
 							</li>
 							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-leaf"></i> Lands</a>
+								<a href="{{ route('category') }}"><i class="fa fa-leaf"></i> Lands</a>
 							</li>
 							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-building"></i> Commercials</a>
+								<a href="{{ route('category') }}"><i class="fa fa-building"></i> Commercials</a>
 							</li>
 							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-taxi"></i> Car hire</a>
+								<a href="{{ route('category') }}"><i class="fa fa-taxi"></i> Car hire</a>
 							</li>
 						</ul>
 					</div>
@@ -61,7 +61,8 @@
 													<input type="text" class="form-control my-2 my-lg-1" id="inputLocation4" placeholder="Location">
 												</div>
 												<div class="form-group col-md-2 align-self-center">
-													<button type="submit" class="btn btn-primary">Search Now</button>
+													<button type="submit" class="btn btn-primary"><a href="{{ route('category') }}">Search Now</a></button>
+													
 												</div>
 											</div>
 										</form>
@@ -303,6 +304,228 @@
 			
 		</div>
 	</div>
+</section>
+<!--==========================================
+=           BNBs PACKAGE           =
+===========================================-->
+<section  class="section-bnb section bg-gray">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-title">
+					<h2>Bed and Breakfast pakages(BnB) </h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<!-- offer 01 -->
+			<div class="col-lg-12">
+				<div class="trending-ads-slide">
+					<div class="col-sm-12 col-lg-4">
+						<!-- product card -->
+<div class="product-item bg-light">
+	<div class="card">
+		<div class="thumb-content">
+			<div class="price">Gold Package</div>
+			<a href="{{ route('single') }}">
+				<img class="index-img-fluid" src="images/BNB1.jpg" alt="">
+			</a>
+		</div>
+		<div class="card-body">
+		   <h4 class="card-title"><a href="{{ route('single') }}">Apartemnt located in Kilimani</a></h4>
+		    <ul class="list-inline product-meta">
+		    	<li class="list-inline-item">
+		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
+		    	</li>
+		    	<li class="list-inline-item">
+		    		<a href="#"><i class="fa fa-location-arrow"></i>Kilimani</a>
+		    	</li>
+		    </ul>
+		    <div class="product-ratings">
+		    	<ul class="trending-horizontal">
+					<li>Rooms:<span class="car-li">3</span></li>
+					<li>.....:<span class="car-li">...</span></li>
+					<li>...:<span class="car-li">...</span></li>
+				</ul>  
+				<div class="property-price">
+					<p class="badge-sale">Per day</p>
+					<p class="price">Ksh 14k</p></a>
+					</div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+
+
+					</div>
+					<div class="col-sm-12 col-lg-4">
+						<!-- product card -->
+<div class="product-item bg-light">
+	<div class="card">
+		<div class="thumb-content">
+			<div class="price">Gold Package</div>
+			<a href="{{ route('single') }}">
+				<img class="index-img-fluid" src="images/BNB2.jpg" alt="">
+			</a>
+		</div>
+		<div class="card-body">
+		   <h4 class="card-title"><a href="{{ route('single') }}">Apartment located in Kitusuru</a></h4>
+		    <ul class="list-inline product-meta">
+		    	<li class="list-inline-item">
+		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
+		    	</li>
+		    	<li class="list-inline-item">
+		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
+		    	</li>
+		    </ul>
+		    <div class="product-ratings">
+		    	<ul class="trending-horizontal">
+					<li>Rooms:<span class="car-li">1</span></li>
+					<li>...:<span class="car-li">...</span></li>
+					<li>...:<span class="car-li">...</span></li>
+				</ul>  
+				<div class="property-price">
+					<p class="badge-sale">Per day</p>
+					<p class="price">Ksh 10k</p></a>
+					</div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+
+
+					</div>
+					<div class="col-sm-12 col-lg-4">
+
+
+												<!-- product card -->
+<div class="product-item bg-light">
+	<div class="card">
+		<div class="thumb-content">
+			<div class="price">Gold Package</div>
+			<a href="{{ route('single') }}">
+				<img class="index-img-fluid" src="images/rundahs0.jpg" alt="">
+			</a>
+		</div>
+		<div class="card-body">
+		   <h4 class="card-title"><a href="{{ route('single') }}">House located in Runda</a></h4>
+		    <ul class="list-inline product-meta">
+		    	<li class="list-inline-item">
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>House</a>
+		    	</li>
+		    	<li class="list-inline-item">
+		    		<a href="#"><i class="fa fa-location-arrow"></i>Runda</a>
+		    	</li>
+		    </ul>
+		    <div class="product-ratings">
+		    	<ul class="trending-horizontal">
+				<li><span class="car-li">Bedrooms:</span>5</li>
+				<li><span class="car-li">Bathrooms:</span>4</li>
+				<li><span class="car-li">Parking:</span>6</li>
+				<li><span class="car-li">Funished:</span>No</li>
+				</ul>  
+				<div class="property-price">
+					<p class="badge-sale">For Rent</p>
+					<p class="price">Ksh 150,000</p></a>
+					</div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+
+
+					</div>
+					<div class="col-sm-12 col-lg-4">
+
+						<!-- product card -->
+						
+						<!-- product card -->
+<div class="product-item bg-light">
+	<div class="card">
+		<div class="thumb-content">
+			<div class="price">Gold Package</div>
+			<a href="{{ route('single') }}">
+				<img class="index-img-fluid" src="images/sclass.jpg" alt="">
+			</a>
+		</div>
+		<div class="card-body">
+		   <h4 class="card-title"><a href="{{ route('single') }}">2015 Mercedes Benz S-class</a></h4>
+		    <ul class="list-inline product-meta">
+		    	<li class="list-inline-item">
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Cars</a>
+		    	</li>
+		    	<li class="list-inline-item">
+		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
+		    	</li>
+		    </ul>
+		    <div class="product-ratings">
+		    	<ul class="trending-horizontal">
+					<li>Mileage:<span class="car-li">19400Km</span></li>
+					<li>Year:<span class="car-li">2014</span></li>
+					<li>Trans:<span class="car-li">Automatic</span></li>
+				</ul>  
+				<div class="property-price">
+					<p class="badge-sale">For Sale</p>
+					<p class="price">Ksh9.4M</p></a>
+					</div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+
+
+					</div>
+					<div class="col-sm-12 col-lg-4">
+
+						<!-- product card -->
+<div class="product-item bg-light">
+	<div class="card">
+		<div class="thumb-content">
+			<div class="price">Gold Package</div>
+			<a href="{{ route('single') }}">
+				<img class="index-img-fluid" src="images/land1.jpg" alt="">
+			</a>
+		</div>
+		<div class="card-body">
+		   <h4 class="card-title"><a href="{{ route('single') }}">Land located in karen 
+		   </a></h4>
+		    <ul class="list-inline product-meta">
+		    	<li class="list-inline-item">
+		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
+		    	</li>
+		    	<li class="list-inline-item">
+		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
+		    	</li>
+		    </ul>
+		    <div class="product-ratings">
+		    	<ul class="trending-horizontal">
+					<li>Acres:<span class="car-li">30</span></li>
+					<li>Year:<span class="car-li">2014</span></li>
+					<li>Trans:<span class="car-li">Automatic</span></li>
+				</ul>  
+				<div class="property-price">
+					<p class="badge-sale">For Sale</p>
+					<p class="price">Ksh9.4M</p></a>
+					</div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+		
+	
 </section>
 <!--==========================================
 =            All Category Section            =
