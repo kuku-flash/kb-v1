@@ -52,13 +52,22 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany(Role::class);
     }
-    public function getIsAdminAttribute()
+    public function getIsSuperAdminAttribute()
     {
         return $this->roles()->where('id', 1)->exists();
     }
+    
     public function getIsManagerAttribute()
     {
         return $this->roles()->where('id', 5)->exists();
+    }
+    public function getIsAdminAttribute()
+    {
+        return $this->roles()->where('id', 2)->exists();
+    }
+    public function getIsUserAttribute()
+    {
+        return $this->roles()->where('id', 3)->exists();
     }
     public function setPasswordAttribute($input)
     {

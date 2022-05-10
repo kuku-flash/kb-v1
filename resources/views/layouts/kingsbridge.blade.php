@@ -46,7 +46,7 @@
       <div class="row">
         <div class="col-md-12">
           <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar  ftco-navbar-light" id="ftco-navbar">
-            <a class="navbar-brand" href="/"><img src="images/king2.png" 
+            <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
             style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " ><span style="color:#d4af37">Kings</span><span>bridge</span></a>
   
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -102,12 +102,41 @@
                 </li>
               </ul>
               <ul class="navbar-nav ml-auto mt-10">
+                @guest
+                  
+                @if ((Route::has('user.login')))
+                    <li class="nav-item">
+                      <a class="nav-link login-button " href="{{ route('user.login')}}">Login</a>
+                    </li>
+                @endif
+                @if ((Route::has('user.listing')))
                 <li class="nav-item">
-                  <a class="nav-link login-button " href="{{ route('user.login')}}">Login</a>
+                  <a class="nav-link text-white add-button" href="{{ route('user.listing')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white add-button" href="{{ route('post_ad_form')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
-                </li>
+                @endif
+                @else
+              
+                   <li class="nav-item dropdown dropdown-slide">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{ Auth::user()->name }} <span></i></span>
+                    </a>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Settings</a> 
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                     <i class="icon-key"></i> <span>Logout</span>
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+                    </div>
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link text-white add-button" href="{{ route('user.listing')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
+                  </li>
+                @endguest
               </ul>
             </div>
           </nav>
@@ -134,7 +163,7 @@
         <!-- About -->
         <div class="block about">
           <!-- footer logo -->
-          <a class="navbar-brand" href="/"><img src="images/king2.png" 
+          <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
           style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " >KingsBridge<p>Kingsbridge Properties</p></a>
           <p>The leading online platform that sells both Vehicles and Houses.</p>
         </div>

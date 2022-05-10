@@ -48,13 +48,19 @@ class LoginController extends Controller
        * } return route('index');
         */
 
-        if (auth()->user()->is_admin) {
+        if (auth()->user()->is_superadmin) {
             return route('admin.dashboard');
         }
         if (auth()->user()->is_manager) {
             return route('index');
         }
+        if (auth()->user()->is_admin) {
+            return route('admin.dashboard');
+        }
+        if (auth()->user()->is_user) {
+            return route('user.dashboard');
+        }
 
-        return route('user.dashboard');
+        return abort(404);
     }
 }

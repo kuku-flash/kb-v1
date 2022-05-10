@@ -4,7 +4,7 @@
   
   <section class="ad-post bg-gray py-5">
       <div class="container">
-          <form action="#">
+          <form >
 
               <!-- Post Your ad start -->
 <!-- Post ad step 1 -->
