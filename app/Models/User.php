@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -20,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone_number',
+        'avatar',
+        'social_links',
     ];
 
     /**
@@ -39,5 +43,28 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'phone_verified_at' => 'datetime',
     ];
+    public function listing () {
+        return $this->hasMany( 'App\Models\Listing');
+    }
+
+    public function roles(){
+        return $this->belongsToMany(Role::class);
+    }
+    public function getIsAdminAttribute()
+    {
+        return $this->roles()->where('id', 1)->exists();
+    }
+    public function getIsManagerAttribute()
+    {
+        return $this->roles()->where('id', 5)->exists();
+    }
+    public function setPasswordAttribute($input)
+    {
+        if ($input) {
+            $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
+        }
+    }
+
 }

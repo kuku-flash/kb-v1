@@ -14,5 +14,7 @@ class Category extends Model
     {
         return 'slug';
     }
-
+    public function listing () {
+        return $this->hasMany( 'App\Models\Listing');
+    }
 }

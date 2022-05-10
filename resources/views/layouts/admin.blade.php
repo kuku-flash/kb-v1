@@ -269,11 +269,38 @@
                         </a>
                     </li>
                     <li>
-                            <a href="{{ route('admin.category.index')}}" class="nav-text  
-                                @if($segment=='categories')
-                                active   
-                                @endif "> <i class="icon-note menu-icon"></i>Category</a>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-note menu-icon"></i><span class="nav-text">User Management</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li>
+                                <a href="{{ route('admin.permission.index')}}" class="nav-text  
+                                    @if($segment=='permissions')
+                                    active   
+                                    @endif "> <i class="icon-key menu-icon"></i>Permissions</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.role.index')}}" class="nav-text  
+                                    @if($segment=='roles')
+                                    active   
+                                    @endif "><i class="icon-plus menu-icon"></i>Roles</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.user.index')}}" class="nav-text  
+                                    @if($segment=='users')
+                                    active   
+                                    @endif "> <i class="icon-user menu-icon"></i>Users</a>
+                            </li>
+                            
+                        </ul>
                     </li>
+
+                    <li>
+                        <a href="{{ route('admin.category.index')}}" class="nav-text  
+                            @if($segment=='categories')
+                            active   
+                            @endif "> <i class="icon-note menu-icon"></i>Category</a>
+                </li>
                     <li>
                         <a href="{{ route('admin.package.index')}}" class="nav-text  
                             @if($segment=='packages')

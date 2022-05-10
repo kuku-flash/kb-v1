@@ -65,11 +65,11 @@
   
                   <!-- Dropdown list -->
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a>
-                    <a class="dropdown-item" href="{{route('dashboard_my_ads')}}">Dashboard My Ads</a>
-                    <a class="dropdown-item" href="{{route('dashboard_favourite_ads')}}">Dashboard Favourite Ads</a>
-                    <a class="dropdown-item" href="{{route('dashboard_archived_ads')}}">Dashboard Archived Ads</a>
-                    <a class="dropdown-item" href="{{route('dashboard_pending_ads')}}">Dashboard Pending Ads</a>
+                    <a class="dropdown-item" href="{{route('user.dashboard')}}">Dashboard</a>
+                    <a class="dropdown-item" href="{{route('user.dashboard_my_ads')}}">Dashboard My Ads</a>
+                    <a class="dropdown-item" href="{{route('user.dashboard_favourite_ads')}}">Dashboard Favourite Ads</a>
+                    <a class="dropdown-item" href="{{route('user.dashboard_archived_ads')}}">Dashboard Archived Ads</a>
+                    <a class="dropdown-item" href="{{route('user.dashboard_pending_ads')}}">Dashboard Pending Ads</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown dropdown-slide">
@@ -106,7 +106,7 @@
                   <a class="nav-link login-button " href="{{ route('user.login')}}">Login</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white add-button" href="{{ route('post_ad')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
+                  <a class="nav-link text-white add-button" href="{{ route('post_ad_form')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
                 </li>
               </ul>
             </div>
