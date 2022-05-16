@@ -3781,9 +3781,16 @@ a.ssolink {
   height: 247px !important; }
 
 /* End Post Ad Form */
+.border{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23), 0 0 5px #aaa9ad  inset;
+  border-radius: 19px;
+  
+}
 
+}
 .ad-post form fieldset input:focus {
   outline: 0;
+  
 }
 
 .ad-post form fieldset label {

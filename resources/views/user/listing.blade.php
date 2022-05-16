@@ -7,16 +7,9 @@
         @csrf
             <!-- Post Your ad start -->
             <fieldset class="border border-gary p-4 mb-5">
-                <h4>Account Details</h4>
+                <h4 style=" text-align: center;">Post your AD</h4>
                 <section>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h3>Post Your ad</h3>
-                        <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
-  
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog  " role="document">
@@ -54,7 +47,6 @@
                             @endforeach
                         </select>
                       <button type="submit" class="btn btn-primary d-block mt-2">Next</button>
-                    </div>
                 </div>
                 </section>
             </fieldset>
