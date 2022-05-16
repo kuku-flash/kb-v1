@@ -15,24 +15,25 @@
 					<div class="widget user-dashboard-profile">
 						<!-- User Image -->
 						<div class="profile-thumb">
-							<img src="images/user/user-thumb.jpg" alt="" class="rounded-circle">
+							<img src="{{ asset('images/user/user-thumb.jpg')}}" alt="" class="rounded-circle">
 						</div>
 						<!-- User Name -->
-						<h5 class="text-center">Samanta Doe</h5>
-						<p>Joined February 06, 2017</p>
+						<h5 class="text-center">{{ auth()->user()->name }}</h5>
+						<p>Joined {{ auth()->user()->created_at->diffForHumans() }}</p>
 						<a href="user-profile.html" class="btn btn-main-sm">Edit Profile</a>
 					</div>
 					<!-- Dashboard Links -->
 					<div class="widget user-dashboard-menu">
 						<ul>
-							<li><a href="dashboard-my-ads.html"><i class="fa fa-user"></i> My Ads</a></li>
-							<li>
-								<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite Ads <span>5</span></a>
-							</li>
-							<li>
-								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archeved Ads <span>12</span></a>
-							</li>
 							<li class="active">
+								<a href="dashboard-my-ads.html"><i class="fa fa-user"></i> My List</a></li>
+							<li>
+								<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite List <span>5</span></a>
+							</li>
+							<li>
+								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archeved List <span>12</span></a>
+							</li>
+							<li>
 								<a href="dashboard-pending-ads.html"><i class="fa fa-bolt"></i> Pending Approval<span>23</span></a>
 							</li>
 							<li>
@@ -77,7 +78,7 @@
 			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
 				<!-- Recently Favorited -->
 				<div class="widget dashboard-container my-adslist">
-					<h3 class="widget-header">My Ads</h3>
+					<h3 class="widget-header">My List</h3>
 					<table class="table table-responsive product-dashboard-table">
 						<thead>
 							<tr>
@@ -89,7 +90,6 @@
 						</thead>
 						<tbody>
 							<tr>
-
 								<td class="product-thumb">
 									<img width="80px" height="auto" src="images/products/products-1.jpg" alt="image description"></td>
 								<td class="product-details">
@@ -103,6 +103,11 @@
 								<td class="action" data-title="Action">
 									<div class="">
 										<ul class="list-inline justify-content-center">
+											<li class="list-inline-item">
+												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
+													<i class="fa fa-eye"></i>
+												</a>
+											</li>
 											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
 													<i class="fa fa-pencil"></i>
@@ -133,6 +138,11 @@
 									<div class="">
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
+												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
+													<i class="fa fa-eye"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
 													<i class="fa fa-pencil"></i>
 												</a>
@@ -161,6 +171,11 @@
 								<td class="action" data-title="Action">
 									<div class="">
 										<ul class="list-inline justify-content-center">
+											<li class="list-inline-item">
+												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
+													<i class="fa fa-eye"></i>
+												</a>
+											</li>
 											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
 													<i class="fa fa-pencil"></i>
@@ -191,6 +206,11 @@
 									<div class="">
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
+												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
+													<i class="fa fa-eye"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
 													<i class="fa fa-pencil"></i>
 												</a>
@@ -220,6 +240,11 @@
 									<div class="">
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
+												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
+													<i class="fa fa-eye"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
 													<i class="fa fa-pencil"></i>
 												</a>
@@ -237,7 +262,7 @@
 					</table>
 
 				</div>
-				
+
 				<!-- pagination -->
 				<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">

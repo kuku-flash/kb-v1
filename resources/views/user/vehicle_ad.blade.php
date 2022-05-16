@@ -3,14 +3,15 @@
 
 <section class="ad-post bg-gray py-5">
     <div class="container">
-        <form action="#" method="POST">
+        <form method="POST" action="{{ route('user.store_vehicle_ad')}}" >
+            @csrf
             <!-- Post Your ad start -->
             <fieldset class="border border-gary p-4 mb-5">
                 <div class="row">
                     <div class="col-lg-12">
                         <h3>Post Your Vehicle <!--  $currentId --></h3>
                         <h6 class="font-weight-bold pt-4 pb-1">Select Car Model:</h6>
-                        
+                        <input type="text" name="listing_id" value="{{$currentId}}">
                         <div class="input-group mt-2 mb-2 col-md-6"> 
                             <select name="make" class="form-control make  @error('make') is-invalid  @enderror">
                               <option value="">Choose a Make</option>
@@ -42,7 +43,12 @@
                         </div>
                         
                         <h6 class="font-weight-bold pt-4 pb-1">Year of Build:</h6>
-                        <input type="number" name="year_of_build" class="border w-100 p-2 bg-white text-capitalize" placeholder="1964">
+                        <input type="number" name="year_of_build" class="border w-100 p-2 bg-white text-capitalize @error('year_of_build') is-invalid @enderror" placeholder="1964">
+                            @error('year_of_build')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         
                         <h6 class="font-weight-bold pt-4 pb-1">Car Condition</h6>
                         <select name="condition" id="inputGroupSelect" class="w-100">
@@ -105,7 +111,7 @@
                         
                         <h6 class="font-weight-bold pt-4 pb-1">Description:</h6>
                         <textarea name="description" id="" class="border p-3 w-100" rows="7" placeholder="Write details about your product"></textarea>
-                        <button type="submit" class="btn btn-primary d-block mt-2">Next</button>
+                        <button class="btn btn-primary d-block mt-2">Next</button>
                     </div>
                 </div>
             </fieldset>

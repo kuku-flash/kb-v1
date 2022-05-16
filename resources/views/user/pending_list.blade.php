@@ -4,7 +4,7 @@
 <!--==================================
 =            User Profile            =
 ===================================-->
-<section class="dashboard section">
+<section class=" section-sm">
 	<!-- Container Start -->
 	<div class="container">
 		<!-- Row Start -->
@@ -15,24 +15,24 @@
 					<div class="widget user-dashboard-profile">
 						<!-- User Image -->
 						<div class="profile-thumb">
-							<img src="images/user/user-thumb.jpg" alt="" class="rounded-circle">
+							<img src="{{ asset('images/user/user-thumb.jpg')}}" alt="" class="rounded-circle">
 						</div>
 						<!-- User Name -->
-						<h5 class="text-center">Samanta Doe</h5>
-						<p>Joined February 06, 2017</p>
+						<h5 class="text-center">{{ auth()->user()->name }}</h5>
+						<p>Joined {{ auth()->user()->created_at->diffForHumans() }}</p>
 						<a href="user-profile.html" class="btn btn-main-sm">Edit Profile</a>
 					</div>
 					<!-- Dashboard Links -->
 					<div class="widget user-dashboard-menu">
 						<ul>
-							<li><a href="dashboard-my-ads.html"><i class="fa fa-user"></i> My Ads</a></li>
+							<li><a href="dashboard-my-ads.html"><i class="fa fa-user"></i> My list</a></li>
 							<li>
-								<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite Ads <span>5</span></a>
+								<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite List <span>5</span></a>
+							</li>
+							<li>
+								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archeved List <span>12</span></a>
 							</li>
 							<li class="active">
-								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archeved Ads <span>12</span></a>
-							</li>
-							<li>
 								<a href="dashboard-pending-ads.html"><i class="fa fa-bolt"></i> Pending Approval<span>23</span></a>
 							</li>
 							<li>
@@ -105,7 +105,7 @@
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-clipboard"></i>
+													<i class="fa fa-pencil"></i>
 												</a>
 											</li>
 											<li class="list-inline-item">
@@ -134,7 +134,7 @@
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-clipboard"></i>
+													<i class="fa fa-pencil"></i>
 												</a>
 											</li>
 											<li class="list-inline-item">
@@ -163,7 +163,7 @@
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-clipboard"></i>
+													<i class="fa fa-pencil"></i>
 												</a>
 											</li>
 											<li class="list-inline-item">
@@ -192,7 +192,7 @@
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-clipboard"></i>
+													<i class="fa fa-pencil"></i>
 												</a>
 											</li>
 											<li class="list-inline-item">
@@ -221,7 +221,7 @@
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-clipboard"></i>
+													<i class="fa fa-pencil"></i>
 												</a>
 											</li>
 											<li class="list-inline-item">
@@ -237,7 +237,7 @@
 					</table>
 
 				</div>
-
+				
 				<!-- pagination -->
 				<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">
@@ -268,5 +268,4 @@
 	</div>
 	<!-- Container End -->
 </section>
-
 @endsection

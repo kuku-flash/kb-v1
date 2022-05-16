@@ -60,16 +60,15 @@
                   <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item dropdown dropdown-slide">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Dashboard<span><i class="fa fa-angle-down"></i></span>
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">List Dashboard<span><i class="fa fa-angle-down"></i></span>
                   </a>
   
                   <!-- Dropdown list -->
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('user.dashboard')}}">Dashboard</a>
-                    <a class="dropdown-item" href="{{route('user.dashboard_my_ads')}}">Dashboard My Ads</a>
-                    <a class="dropdown-item" href="{{route('user.dashboard_favourite_ads')}}">Dashboard Favourite Ads</a>
-                    <a class="dropdown-item" href="{{route('user.dashboard_archived_ads')}}">Dashboard Archived Ads</a>
-                    <a class="dropdown-item" href="{{route('user.dashboard_pending_ads')}}">Dashboard Pending Ads</a>
+                    <a class="dropdown-item" href="{{route('user.my_list')}}"> My List</a>
+                    <a class="dropdown-item" href="{{route('user.favourite_list')}}"> Favourite List</a>
+                    <a class="dropdown-item" href="{{route('user.archived_list')}}"> Archived List</a>
+                    <a class="dropdown-item" href="{{route('user.pending_list')}}"> Pending List</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown dropdown-slide">
@@ -121,6 +120,7 @@
                       {{ Auth::user()->name }} <span></i></span>
                     </a>
                     <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Chat</a> 
                     <a class="dropdown-item" href="#">Settings</a> 
                     <a class="dropdown-item" href="{{ route('logout') }}"
                      onclick="event.preventDefault();
@@ -205,13 +205,13 @@
           <div class="mobile d-flex">
             <a href="">
               <!-- Icon -->
-              <img src="images/footer/phone-icon.png" alt="mobile-icon">
+              <img src="{{ asset('images/footer/phone-icon.png')}}" alt="mobile-icon">
             </a>
             <p>Get the Dealsy Mobile App and Save more</p>
           </div>
           <div class="download-btn d-flex my-3">
-            <a href="#"><img src="images/apps/google-play-store.png" class="img-fluid" alt=""></a>
-            <a href="#" class=" ml-3"><img src="images/apps/apple-app-store.png" class="img-fluid" alt=""></a>
+            <a href="#"><img src="{{ asset('images/apps/google-play-store.png')}}" class="img-fluid" alt=""></a>
+            <a href="#" class=" ml-3"><img src="{{ asset('images/apps/apple-app-store.png')}}" class="img-fluid" alt=""></a>
           </div>
         </div>
       </div>
@@ -252,7 +252,6 @@
 </footer>
 
 <!-- JAVASCRIPTS -->
-<script src="{{ asset('js/main.js')}}"></script>
 <script src="{{ asset('plugins/jQuery/jquery.min.js')}}"></script>
 <script src="{{ asset('plugins/bootstrap/js/popper.min.js')}}"></script>
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -264,8 +263,7 @@
 <script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
 <script src="{{ asset('plugins/fancybox/jquery.fancybox.pack.js')}}"></script>
 <script src="{{ asset('plugins/smoothscroll/SmoothScroll.min.js')}}"></script>
-<!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+
 <script src="{{ asset('plugins/google-map/gmap.js')}}"></script>
 <script src="{{ asset('js/script.js')}}"></script>
 

@@ -30,4 +30,9 @@ class Listing extends Model
     public function user () {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
+
+    public function listing () {
+        return $this->hasMany(Vehicle::class);
+    }
+  
 }

@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\CountyController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\ListingController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -60,22 +60,21 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin', 'as' => 'admin.
 });
 
 Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.'], function () {
-    Route::get ('/dashboard',  [DashboardController::class, 'myads'])->name('dashboard');
-    Route :: get ('dashboard_archived_ads',  [DashboardController::class, 'dashboard_archived_ads'])->name('dashboard_archived_ads');
-    Route :: get ('dashboard_favourite_ads',  [DashboardController::class, 'dashboard_favourite_ads'])->name('dashboard_favourite_ads');
-    Route :: get ('dashboard_my_ads',  [DashboardController::class, 'dashboard_my_ads'])->name('dashboard_my_ads');
-    Route :: get ('dashboard_pending_ads',  [DashboardController::class, 'dashboard_pending_ads'])->name('dashboard_pending_ads');
-    Route :: get ('dashboard',  [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route :: get ('listing',  [DashboardController::class, 'create_listing'])->name('listing');
-    Route :: post ('store_listing',  [DashboardController::class, 'store_listing'])->name('store_listing');
-    Route :: get ('category',  [DashboardController::class, 'category'])->name('category');
-    Route :: get ('vehicle_ad',  [DashboardController::class, 'vehicle_ad'])->name('vehicle_ad');
-    Route :: get ('model',  [DashboardController::class, 'model'])->name('model');
+    Route :: get ('archived_list',  [ListingController::class, 'archived_list'])->name('archived_list');
+    Route :: get ('favourite_list',  [ListingController::class, 'favourite_list'])->name('favourite_list');
+    Route :: get ('my_list',  [ListingController::class, 'my_list'])->name('my_list');
+    Route :: get ('pending_list',  [ListingController::class, 'pending_list'])->name('pending_list');
+    Route :: get ('listing',  [ListingController::class, 'create_listing'])->name('listing');
+    Route :: post ('store_listing',  [ListingController::class, 'store_listing'])->name('store_listing');
+    Route :: get ('category',  [ListingController::class, 'category'])->name('category');
+    Route :: get ('vehicle_ad',  [ListingController::class, 'vehicle_ad'])->name('vehicle_ad');
+    Route :: post ('store_vehicle_ad',  [ListingController::class, 'store_vehicle_ad'])->name('store_vehicle_ad');
+    Route :: get ('model',  [ListingController::class, 'model'])->name('model');
    
 
 
 
 });
 
-Route::  get('user/export', [DashboardController::class, 'export'])->name('export');
-Route::  get('user/exportpackage', [DashboardController::class, 'exportpackage'])->name('exportpackage');
+Route::  get('user/export', [ListingController::class, 'export'])->name('export');
+Route::  get('user/exportpackage', [ListingController::class, 'exportpackage'])->name('exportpackage');

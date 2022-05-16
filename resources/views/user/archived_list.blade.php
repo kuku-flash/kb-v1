@@ -4,7 +4,7 @@
 <!--==================================
 =            User Profile            =
 ===================================-->
-<section class=" section-sm">
+<section class="dashboard section">
 	<!-- Container Start -->
 	<div class="container">
 		<!-- Row Start -->
@@ -25,13 +25,12 @@
 					<!-- Dashboard Links -->
 					<div class="widget user-dashboard-menu">
 						<ul>
-							<li class="active">
-								<a href="dashboard-my-ads.html"><i class="fa fa-user"></i> My Ads</a></li>
+							<li><a href="dashboard-my-ads.html"><i class="fa fa-user"></i> My List</a></li>
 							<li>
-								<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite Ads <span>5</span></a>
+								<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite List <span>5</span></a>
 							</li>
-							<li>
-								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archeved Ads <span>12</span></a>
+							<li class="active">
+								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archeved List <span>12</span></a>
 							</li>
 							<li>
 								<a href="dashboard-pending-ads.html"><i class="fa fa-bolt"></i> Pending Approval<span>23</span></a>
@@ -90,6 +89,7 @@
 						</thead>
 						<tbody>
 							<tr>
+
 								<td class="product-thumb">
 									<img width="80px" height="auto" src="images/products/products-1.jpg" alt="image description"></td>
 								<td class="product-details">
@@ -104,13 +104,8 @@
 									<div class="">
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
-													<i class="fa fa-eye"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
+													<i class="fa fa-clipboard"></i>
 												</a>
 											</li>
 											<li class="list-inline-item">
@@ -138,13 +133,8 @@
 									<div class="">
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
-													<i class="fa fa-eye"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
+													<i class="fa fa-clipboard"></i>
 												</a>
 											</li>
 											<li class="list-inline-item">
@@ -172,13 +162,8 @@
 									<div class="">
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
-													<i class="fa fa-eye"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
+													<i class="fa fa-clipboard"></i>
 												</a>
 											</li>
 											<li class="list-inline-item">
@@ -206,13 +191,8 @@
 									<div class="">
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
-													<i class="fa fa-eye"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
+													<i class="fa fa-clipboard"></i>
 												</a>
 											</li>
 											<li class="list-inline-item">
@@ -240,13 +220,8 @@
 									<div class="">
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
-													<i class="fa fa-eye"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
 												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
+													<i class="fa fa-clipboard"></i>
 												</a>
 											</li>
 											<li class="list-inline-item">
@@ -293,4 +268,5 @@
 	</div>
 	<!-- Container End -->
 </section>
+
 @endsection
