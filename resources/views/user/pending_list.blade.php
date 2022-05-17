@@ -19,7 +19,11 @@
 						</div>
 						<!-- User Name -->
 						<h5 class="text-center">{{ auth()->user()->name }}</h5>
+<<<<<<< HEAD:resources/views/user/pending_list.blade.php
 						<p>Joined {{ auth()->user()->created_at->diffForHumans() }}</p>
+=======
+						<p>{{ auth()->user()->created_at->diffForHumans() }}</p>
+>>>>>>> 8858ca6be508eaa862a5e198ef67d10b58f0db7c:resources/views/user/dashboard_pending_ads.blade.php
 						<a href="user-profile.html" class="btn btn-main-sm">Edit Profile</a>
 					</div>
 					<!-- Dashboard Links -->
