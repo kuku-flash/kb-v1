@@ -58,7 +58,7 @@ class LoginController extends Controller
             return route('admin.dashboard');
         }
         if (auth()->user()->is_user) {
-            return route('user.dashboard');
+            return route('user.my_list');
         }
 
         return abort(404);
