@@ -8,13 +8,7 @@
             <!-- Post Your ad start -->
             <fieldset class="border border-gary p-4 mb-5">
                 <h4 style=" text-align: center;">Post your AD</h4>
-                <section>
                 <div class="row">
-<<<<<<< HEAD
-                    <div class="col-lg-12">
-                        <h3>Post Your Listing</h3>
-
-=======
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog  " role="document">
@@ -36,7 +30,6 @@
     </div>
   </div>
  
->>>>>>> 8858ca6be508eaa862a5e198ef67d10b58f0db7c
                         <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
                         <select name="category" id="inputGroupSelect" class="w-100">
                             <option value="">Select category</option>
@@ -52,15 +45,10 @@
                             <option value="{{ $city->id }}">{{ $city->city }}</option>
                             @endforeach
                         </select>
-<<<<<<< HEAD
-                     
-                    </div>
-=======
                       <button type="submit" class="btn btn-primary d-block mt-2">Next</button>
->>>>>>> 8858ca6be508eaa862a5e198ef67d10b58f0db7c
                 </div>
-                </section>
             </fieldset>
+            
 <!-- Post Your ad start -->
 <fieldset class="border border-gary p-4 mb-5">
   <div class="row">
@@ -68,7 +56,7 @@
           <h3>Post Your Vehicle <!--  $currentId --></h3>
           <h6 class="font-weight-bold pt-4 pb-1">Select Car Model:</h6>
      
-          <div class="input-group mt-2 mb-2 col-md-6"> 
+          <div class="form-group  mt-2 mb-2 col-md-6"> 
               <select name="make" class="form-control make  @error('make') is-invalid  @enderror">
                 <option value="">Choose a Make</option>
     

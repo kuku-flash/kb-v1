@@ -41,12 +41,13 @@
           </div>
           <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
             <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-              <h1><a href="#"dofollow">Welcome to Kingsbridge</a></h1>
             </div>
             <div class="formbg-outer">
               <div class="formbg">
                 <div class="formbg-inner padding-horizontal--48">
-                  <span class="padding-bottom--15">Login in to your account</span>
+                  <div class="welcome-text">
+                    <p>Login to kingsbridge <p>
+                  </div>
                   <form  method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="field padding-bottom--24">
@@ -62,9 +63,6 @@
                     <div class="field padding-bottom--24">
                       <div class="grid--50-50">
                         <label for="password">Password</label>
-                        <div class="reset-pass">
-                          <a href="#">Forgot your password?</a>
-                        </div>
                       </div>
                       <input type="password"  @error('password') is-invalid @enderror" name="password" placeholder="Password" 
                       >
@@ -73,6 +71,9 @@
                               <strong>{{ $message }}</strong>
                           </span>
                        @enderror
+                    </div>
+                    <div class="reset-pass">
+                      <a href="#">Forgot your password?</a>
                     </div>
                     <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
                       <label for="checkbox">
