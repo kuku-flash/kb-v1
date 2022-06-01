@@ -101,6 +101,8 @@ $(window).stellar({
 	  console.log('show');
 	});
 
+
+
 	// scroll
 	var scrollWindow = function() {
 		$(window).scroll(function(){
@@ -161,3 +163,6 @@ $(window).stellar({
 			return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
 		}
 	};
+
+			
+

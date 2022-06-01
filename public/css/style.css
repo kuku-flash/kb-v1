@@ -362,7 +362,7 @@ button {
   right: 0;
   width: 40px;
   height: 5px;
-  background-color: #5672f9;
+  background-color: #d4af37;
 }
 
 .section-title p {
@@ -1140,6 +1140,40 @@ textarea.form-control {
 }
 /* kingsbridge */
 
+/* auto typing*/
+#autotext {
+  
+  font-family: sans-serif;
+  font-size: 20px;
+	text-align: center;
+}
+
+#text {
+	display: inline-block;
+	vertical-align: middle;
+	color: whitesmoke;
+	letter-spacing: 2px;
+}
+
+#cursor {
+	display: inline-block;
+	vertical-align: middle;
+	width: 3px;
+	height: 30px;
+	background-color: #d4af37;
+	animation: blink .75s step-end infinite;
+}
+
+@keyframes blink {
+	from, to { 
+		background-color: transparent 
+	}
+	50% { 
+		background-color: orange; 
+	}
+}
+
+/* end of auto typing */
 .footer {
     background-color: #000;
   }
@@ -2456,11 +2490,11 @@ ul.pagination .active a {
 .nice-select {
   float: none;
   display: inline-block;
-  border-radius: 0;
+  border-radius: 1;
 }
 
 .nice-select .list {
-  border-radius: 0;
+  border-radius: ;
 }
 
 .arrow-right, .arrow-left {
@@ -3531,6 +3565,10 @@ article.single-post p {
   margin-top: -5px;
 }
 /* User Animated Login */
+.welcome-text p{
+  text-align: center;
+  font-size: 15px;
+}
 .login-root {
     background: #fff;
     display: flex;
@@ -3545,7 +3583,7 @@ article.single-post p {
     bottom: 0;
     left: 0;
     right: 0;
-    top: 0;
+    top: -1;
     z-index: 0;
     overflow: visible;
 }

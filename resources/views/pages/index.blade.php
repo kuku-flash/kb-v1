@@ -12,9 +12,11 @@
 		<div class="row">
 			<div class="col-md-12">
 				<!-- Header Contetnt -->
-				<div class="content-block">
+				<div class="content-block" >
 					<h1>Buy & Sell Near You </h1>
-					<p>Join the millions who buy and sell from each other <br> everyday in local communities around kenya</p>
+					<div id="autotext">
+						<div id="text"></div><div id="cursor"></div>
+					</div>
 					<div class="short-popular-category-list text-center">
 						<h2>Popular Category</h2>
 						<ul class="list-inline">
@@ -92,8 +94,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="section-title">
-					<h2>Trending Adds</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
+					<h2>Trending Ads</h2>
 				</div>
 			</div>
 		</div>
@@ -638,6 +639,80 @@
 		</div>
 	</div>
 	<!-- Container End -->
+	<script type="text/javascript">
+		// List of sentences
+var _CONTENT = [ 
+"Buy, Sell and Consign", 
+"Advertising a Purpose, a Car at a Time,", 
+"With KingsBridge you get your money’s worth!!!.", 
+"Buy, Sell, Consign,"
+];
+
+// Current sentence being processed
+var _PART = 0;
+
+// Character number of the current sentence being processed 
+var _PART_INDEX = 0;
+
+// Holds the handle returned from setInterval
+var _INTERVAL_VAL;
+
+// Element that holds the text
+var _ELEMENT = document.querySelector("#text");
+
+// Cursor element 
+var _CURSOR = document.querySelector("#cursor");
+
+// Implements typing effect
+function Type() { 
+// Get substring with 1 characater added
+var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+_ELEMENT.innerHTML = text;
+_PART_INDEX++;
+
+// If full sentence has been displayed then start to delete the sentence after some time
+if(text === _CONTENT[_PART]) {
+// Hide the cursor
+_CURSOR.style.display = 'none';
+
+clearInterval(_INTERVAL_VAL);
+setTimeout(function() {
+	_INTERVAL_VAL = setInterval(Delete, 50);
+}, 1000);
+}
+}
+
+// Implements deleting effect
+function Delete() {
+// Get substring with 1 characater deleted
+var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+_ELEMENT.innerHTML = text;
+_PART_INDEX--;
+
+// If sentence has been deleted then start to display the next sentence
+if(text === '') {
+clearInterval(_INTERVAL_VAL);
+
+// If current sentence was last then display the first one, else move to the next
+if(_PART == (_CONTENT.length - 1))
+	_PART = 0;
+else
+	_PART++;
+
+_PART_INDEX = 0;
+
+// Start to display the next sentence after some time
+setTimeout(function() {
+	_CURSOR.style.display = 'inline-block';
+	_INTERVAL_VAL = setInterval(Type, 100);
+}, 200);
+}
+}
+
+// Start the typing effect on load
+_INTERVAL_VAL = setInterval(Type, 100);
+
+	</script>
 </section>
 
  @endsection
