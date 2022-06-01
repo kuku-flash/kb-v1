@@ -1,42 +1,18 @@
 @extends('layouts.kingsbridge')
 @section('content')
 
-<section class="ad-post bg-gray py-5">
+<section class="section-sm">
     <div class="container">
-      <form action="{{ route('user.store_listing')}}" method="POST" id="step-form-horizontal" class="step-form-horizontal">     
+      <form action="{{ route('user.store_listing')}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">     
         @csrf
             <!-- Post Your ad start -->
             <fieldset class="border border-gary p-4 mb-5">
                 <h4 style=" text-align: center;">Post your AD</h4>
                 <section>
                 <div class="row">
-<<<<<<< HEAD
                     <div class="col-lg-12">
                         <h3>Post Your Listing</h3>
 
-=======
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog  " role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
- 
->>>>>>> 8858ca6be508eaa862a5e198ef67d10b58f0db7c
                         <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
                         <select name="category" id="inputGroupSelect" class="w-100">
                             <option value="">Select category</option>
@@ -52,12 +28,8 @@
                             <option value="{{ $city->id }}">{{ $city->city }}</option>
                             @endforeach
                         </select>
-<<<<<<< HEAD
                      
                     </div>
-=======
-                      <button type="submit" class="btn btn-primary d-block mt-2">Next</button>
->>>>>>> 8858ca6be508eaa862a5e198ef67d10b58f0db7c
                 </div>
                 </section>
             </fieldset>
@@ -66,10 +38,10 @@
   <div class="row">
       <div class="col-lg-12">
           <h3>Post Your Vehicle <!--  $currentId --></h3>
-          <h6 class="font-weight-bold pt-4 pb-1">Select Car Model:</h6>
+          <h6>Select Car Model:</h6>
      
-          <div class="input-group mt-2 mb-2 col-md-6"> 
-              <select name="make" class="form-control make  @error('make') is-invalid  @enderror">
+          <div> 
+              <select name="make" class="make">
                 <option value="">Choose a Make</option>
     
                   @foreach($makes as $make)
@@ -78,21 +50,12 @@
              
               </select>
                               
-              <select name="model" class="form-control model  @error('model') is-invalid  @enderror">
+              <select name="model_id" class="model">
+                <option value="0" disabled="true" selected="true">Chose a model</option>
 
-                <option value="0" disabled="true" selected="true">Choose a model</option>
-               
-
-                   @foreach($models as $model)
-                   @if ($make->id = $model->make_id)
-                    <option value="{{ $model->id }}">{{ $model->model }}</option>
-                    @endif
-                  @endforeach
-
-                  
               </select>
                 @error('model')
-                <span class="invalid-feedback" role="alert">
+                <span role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
@@ -103,7 +66,7 @@
           <h6 class="font-weight-bold pt-4 pb-1">Year of Build:</h6>
           <input type="number" name="year_of_build" class="border w-100 p-2 bg-white text-capitalize @error('year_of_build') is-invalid @enderror" placeholder="1964">
               @error('year_of_build')
-                  <span class="invalid-feedback" role="alert">
+                  <span class="invalid"  role="alert">
                       <strong>{{ $message }}</strong>
                   </span>
               @enderror
@@ -114,8 +77,14 @@
               <option>Foreign Used</option>     
               <option>Local Used</option>    
           </select>
+          @error('condition')
+            <span class="invalid" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+          @enderror
+
           <h6 class="font-weight-bold pt-4 pb-1">Mileage:</h6>
-          <input type="text" name="mileage" class="border w-100 p-2 bg-white text-capitalize" placeholder="Mileage go There">
+          <input type="number" name="mileage" class="border w-100 p-2 bg-white text-capitalize" placeholder="Mileage go There">
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Transmission</h6>
           <select name="transmission" id="inputGroupSelect" class="w-100">
@@ -169,18 +138,11 @@
           
           <h6 class="font-weight-bold pt-4 pb-1">Description:</h6>
           <textarea name="description" id="" class="border p-3 w-100" rows="7" placeholder="Write details about your product"></textarea>
-   
-          <div class="form-group" >
-            <label class="label-control">photos</label>
-            <div class="input-group mb-3 col-md-12">
-            <span class="input-group-text"><i class="fa fa-image"></i></span>
-            <input type="file" name="photo" multiple="true" class="form-control  @error('photos') is-invalid  @enderror">
-              @error('photos')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-              @enderror
-            </div>
+
+
+          <div class="field" align="left">
+            <h3>Upload your images</h3>
+            <input type="file" id="files" name="images[]" multiple />
           </div>
       </div>
   </div>
@@ -193,4 +155,103 @@
     </div>
 </section>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<style>
+input[type="file"] {
+  display: block;
+}
+.imageThumb {
+  max-height: 100px;
+  border: 2px solid;
+  padding: 1px;
+  cursor: pointer;
+}
+.pip {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+}
+.remove {
+  display: block;
+  background: #444;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+.remove:hover {
+  background: white;
+  color: black;
+}
+</style>
+
+<script>
+$(document).ready(function() {
+    if (window.File && window.FileList && window.FileReader) {
+      $("#files").on("change", function(e) {
+        var files = e.target.files,
+          filesLength = files.length;
+        for (var i = 0; i < filesLength; i++) {
+          var f = files[i]
+          var fileReader = new FileReader();
+          fileReader.onload = (function(e) {
+            var file = e.target;
+            $("<span class=\"pip\">" +
+              "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+              "<br/><span class=\"remove\">Remove image</span>" +
+              "</span>").insertAfter("#files");
+            $(".remove").click(function(){
+              $(this).parent(".pip").remove();
+            });
+            
+            // Old code here
+            /*$("<img></img>", {
+              class: "imageThumb",
+              src: e.target.result,
+              title: file.name + " | Click to remove"
+            }).insertAfter("#files").click(function(){$(this).remove();});*/
+            
+          });
+          fileReader.readAsDataURL(f);
+        }
+      });
+    } else {
+      alert("Your browser doesn't support to File API")
+    }
+  });
+  </script>
+  <script>
+  $(document).ready(function(){
+
+$(document).on('change','.make',function(){
+  // console.log("hmm its change");
+
+  var make_id=$(this).val();
+  // console.log(cat_id);
+  var div=$(this).parent();
+
+  var op=" ";
+
+  $.ajax({
+    type:'get',
+    url:'{!!URL::to('user/model')!!}',
+    data:{'id':make_id},
+    success:function(data){
+      
+      for(var i=0;i<data.length;i++){
+      op+='<option value="'+data[i].id+'">'+data[i].model+'</option>';
+       }
+
+       div.find('.model').html(" ");
+       div.find('.model').append(op);
+    },
+    
+    error:function(){    }
+  });
+});
+
+
+});
+
+  </script>
   @endsection

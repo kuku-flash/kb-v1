@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listing;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -19,9 +20,9 @@ Public function category (){
     
 }
 
-Public function single (){
-
-    return view ('pages.single');
+Public function single (Listing $listing){
+    $arr['listing'] = $listing;
+    return view ('pages.single')->with($arr);
     
 }
 Public function houses (){

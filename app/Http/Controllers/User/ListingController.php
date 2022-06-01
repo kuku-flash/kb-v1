@@ -17,9 +17,12 @@ use Illuminate\Http\Request;
 
 class ListingController extends Controller
 {
-    public function my_list () {
-
-        return view('user.my_list');
+    public function my_list() {
+        $arr['listings'] = Listing::all();
+        $arr['vehicles'] = Vehicle::all();
+        $arr['vehiclephotos'] = Vehicle_photo::all();
+        return view('user.my_list')->with($arr);
+  
 
     }
     Public function archived_list(){
@@ -37,19 +40,20 @@ class ListingController extends Controller
         
     }
     
-
+//Post the ad or the list page
     public function create_listing(){
         $arr['categories'] = Category::all();
         $arr['cities'] = City::all();
         $arr['makes'] = Carmake::all();
         $arr['models'] = Carmodel::all();
-        return view('user.listing')->with($arr);
+        return view('user.create_listing')->with($arr);
     } 
 
-    public function store_listing(Request $request, Listing $listing, Vehicle $vehicle, Vehicle_photo $vehicle_photo) {
+    public function store_listing(Request $request, Listing $listing, Vehicle $vehicle) {
         $this->validate($request,[
             'category' => 'required',
             'city' => 'required',
+            'model_id' => 'required', 
             'title' => 'required', 
             'year_of_build' => 'required',
             'condition' => 'required',
@@ -63,6 +67,9 @@ class ListingController extends Controller
             'duty_type' => 'required',
             'interior_type' => 'required',
             'engine_size' => 'required',
+            'images' => 'required',
+            'images.*' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg'
+  
   
             ]);
 
@@ -75,6 +82,7 @@ class ListingController extends Controller
       $currentId = $listing->id;
 
       $vehicle->listing_id = $currentId;
+      $vehicle->model_id = $request->model_id;
       $vehicle->year_of_build = $request->year_of_build;
       $vehicle->title = $request->title;
       $vehicle->condition = $request->condition;
@@ -90,16 +98,37 @@ class ListingController extends Controller
       $vehicle->engine_size = $request->engine_size;
       $vehicle->save();
 
-      $vehiclecurrentId = $vehicle->id;
-      $vehicle_photo->vehicle_id = $vehiclecurrentId;
-      $vehicle_photo->photo = $request->photo;
-      $vehicle_photo->save();
-      
+      if ($request->hasFile('images')) 
+      {
+          $photos = $request->file('images');
+         foreach ($photos as $image) {
+             $name = time().'-'.$image->getClientOriginalName();
+             $name = str_replace('','-',$name);
+             $image->move('photos', $name);
 
+            #$vehicle_photo->photo = $name;
+            #$vehicle_photo->vehicle_id = $vehicle->id;
+            #$vehicle_photo->save();
+    
+            $vehicle->vehiclephotos()->create(['photo' => $name]);
+ 
+          }     
+        }
      
     return redirect() -> route('user.my_list')->with('success','Added');
      
+    }
 
+    public function edit_listing(Listing $listing, Vehicle $vehicle, Vehicle_photo $vehicle_photo){
+        $arr['categories'] = Category::all();
+        $arr['cities'] = City::all();
+        $arr['makes'] = Carmake::all();
+        $arr['models'] = Carmodel::all();
+        $arr['listing'] = $listing;
+        $arr['vehicle'] = $vehicle;
+        $arr['vehicle_photo'] = $vehicle_photo;
+
+        return view('user.edit_listing')->with($arr);
     }
    
 
@@ -108,39 +137,8 @@ class ListingController extends Controller
         $arr['models'] = Carmodel::all();
         return view ('user.vehicle_ad')->with($arr);
     } 
-    public function store_vehicle_ad(Request $request, Vehicle $vehicle){
-        $validatedData = $this->validate($request, [
-            'make' => 'required',
-            'year_of_build'  => 'required',
-            'title' => 'required', 
-            'ad_type' => 'required',
-            'year_of_build' => 'required',
-            'is_carhire' => 'required',
-            'condition' => 'required',
-            'mileage' => 'required',
-            'transmission' => 'required',
-            'fuel_type' => 'required',
-            'exchange' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'body_type' => 'required',
-            'duty_type' => 'required',
-            'interior_type' => 'required',
-            'engine_size' => 'required',
-            'address' => 'required',
-        ]);
-       
-        $vehicle = Vehicle::create($validatedData);
-        $vehicle->listing()->sync($request->input('currentId'));
 
-       
-      return redirect() -> route('user.my_list')->with('success','Added');
-    }
-    
-    public function property_ad(){
-      
-        return view ('user.property_ad');
-    }
+
     public function model(Request $request)
     {
        $data = Carmodel::select('model','id')->where('make_id',$request->id)->take(10)->get();

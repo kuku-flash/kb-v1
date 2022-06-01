@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route :: get ('/',  [PagesController::class, 'index'])->name('index');
 Route :: get ('category',  [PagesController::class, 'category'])->name('category');
-Route :: get ('single',  [PagesController::class, 'single'])->name('single');
+Route :: get ('single/',  [PagesController::class, 'single'])->name('single');
 Route :: get ('about_us',  [PagesController::class, 'about_us'])->name('about_us');
 Route :: get ('ad_list_view',  [PagesController::class, 'ad_list_view'])->name('ad_list_view');
 Route :: get ('blog',  [PagesController::class, 'blog'])->name('blog');
@@ -64,8 +64,9 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('favourite_list',  [ListingController::class, 'favourite_list'])->name('favourite_list');
     Route :: get ('my_list',  [ListingController::class, 'my_list'])->name('my_list');
     Route :: get ('pending_list',  [ListingController::class, 'pending_list'])->name('pending_list');
-    Route :: get ('listing',  [ListingController::class, 'create_listing'])->name('listing');
+    Route :: get ('create_listing',  [ListingController::class, 'create_listing'])->name('create_listing');
     Route :: post ('store_listing',  [ListingController::class, 'store_listing'])->name('store_listing');
+    Route :: get ('edit_listing/{listing}',  [ListingController::class, 'edit_listing'])->name('edit_listing');
     Route :: get ('category',  [ListingController::class, 'category'])->name('category');
     Route :: get ('vehicle_ad',  [ListingController::class, 'vehicle_ad'])->name('vehicle_ad');
     Route :: post ('store_vehicle_ad',  [ListingController::class, 'store_vehicle_ad'])->name('store_vehicle_ad');

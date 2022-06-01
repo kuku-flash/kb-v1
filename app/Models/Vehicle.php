@@ -32,8 +32,17 @@ class Vehicle extends Model
     ];
 
     public function listing(){
-        return $this->belongsTo(Listing::class, 'listing_id');
+        return $this->hasMany(Listing::class, 'listing_id');
     }
+    public function vehiclephotos(){
+        return $this->hasMany(Vehicle_photo::class, 'vehicle_id');
+    }
+    public function carmodel(){
+        return $this->belongsTo(Carmodel::class, 'model_id');
+    }
+ 
+
+
 
     use HasFactory;
 }

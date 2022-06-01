@@ -18,21 +18,20 @@ class Listing extends Model
         'user_id'
     ];
 
-    public function category () {
-        return $this->belongsTo('App\Models\Category', 'category_id');
+    public function category() {
+        return $this->belongsTo(Category::class, 'category_id');
     }
     public function city () {
-        return $this->belongsTo('App\Models\City', 'city_id');
+        return $this->belongsTo(City::class, 'city_id');
     }
     public function package () {
-        return $this->belongsTo('App\Models\Package', 'package_id');
+        return $this->belongsTo(Package::class, 'package_id');
     }
     public function user () {
-        return $this->belongsTo('App\Models\User', 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function listing () {
-        return $this->hasMany(Vehicle::class);
-    }
+    
+    
   
 }

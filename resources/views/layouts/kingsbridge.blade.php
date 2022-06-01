@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/slick-carousel/slick/slick-theme.css')}}" >
     <!-- Fancy Box -->
     <link rel="stylesheet"  href="{{ asset('plugins/fancybox/jquery.fancybox.pack.css')}}" >
-    <link rel="stylesheet" href="{{ asset('plugins/jquery-nice-select/css/nice-select.css')}}" >
+ <link rel="stylesheet" href="{{ asset('plugins/jquery-nice-select/css/nice-select.css')}}" > 
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css')}}" >
     <link rel="stylesheet"  href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" >
@@ -57,7 +57,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto main-nav ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home</a>
+                  <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item dropdown dropdown-slide">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">List Dashboard<span><i class="fa fa-angle-down"></i></span>
@@ -80,12 +80,12 @@
                     <a class="dropdown-item" href="{{ route('about_us')}}">About Us</a>
                     <a class="dropdown-item" href="{{ route('contact_us')}}">Contact Us</a>
                     <a class="dropdown-item" href="{{ route('user_profile')}}">User Profile</a>
-                    <a class="dropdown-item" href="404.html">404 Page</a>
-                    <a class="dropdown-item" href="package.html">Package</a>
+                    <a class="dropdown-item" href="#">404 Page</a>
+                    <a class="dropdown-item" href="#">Package</a>
                     <a class="dropdown-item" href="{{ route('single')}}">Single Page</a>
-                    <a class="dropdown-item" href="store.html">Store Single</a>
-                    <a class="dropdown-item" href="single-blog.html">Single Post</a>
-                    <a class="dropdown-item" href="blog.html">Blog</a>
+                    <a class="dropdown-item" href="#">Store Single</a>
+                    <a class="dropdown-item" href="#">Single Post</a>
+                    <a class="dropdown-item" href="#">Blog</a>
   
                   </div>
                 </li>
@@ -96,7 +96,7 @@
                   <!-- Dropdown list -->
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('category')}}">Ad-Gird View</a>
-                    <a class="dropdown-item" href="ad-listing-list.html">Ad-List View</a>
+                    <a class="dropdown-item" href="{{ route('category')}}">Ad-List View</a>
                   </div>
                 </li>
               </ul>
@@ -134,7 +134,7 @@
                     </div>
                   </li> 
                   <li class="nav-item">
-                    <a class="nav-link text-white add-button" href="{{ route('user.listing')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
+                    <a class="nav-link text-white add-button" href="{{ route('user.create_listing')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
                   </li>
                 @endguest
               </ul>
@@ -260,12 +260,13 @@
 <script src="{{ asset('plugins/tether/js/tether.min.js')}}"></script>
 <script src="{{ asset('plugins/raty/jquery.raty-fa.js')}}"></script>
 <script src="{{ asset('plugins/slick-carousel/slick/slick.min.js')}}"></script>
-<script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+<script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script> 
 <script src="{{ asset('plugins/fancybox/jquery.fancybox.pack.js')}}"></script>
 <script src="{{ asset('plugins/smoothscroll/SmoothScroll.min.js')}}"></script>
 
 <script src="{{ asset('plugins/google-map/gmap.js')}}"></script>
 <script src="{{ asset('js/script.js')}}"></script>
+
 
 </body>
 

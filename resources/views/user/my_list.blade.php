@@ -4,7 +4,12 @@
 <!--==================================
 =            User Profile            =
 ===================================-->
-<section class=" section-sm">
+@if(session('success'))
+<div class="mt-3 alert alert-success">
+ <span> {{ session('success') }} </span>
+</div>
+@endif
+<section class="section-sm">
 	<!-- Container Start -->
 	<div class="container">
 		<!-- Row Start -->
@@ -89,163 +94,45 @@
 							</tr>
 						</thead>
 						<tbody>
+						
+						
+							@foreach($listings as $listing)
 							<tr>
-								<td class="product-thumb">
-									<img width="80px" height="auto" src="images/products/products-1.jpg" alt="image description"></td>
-								<td class="product-details">
-									<h3 class="title">Subaru WRX STI</h3>
-									<span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
-									<span><strong>Posted on: </strong><time>Jun 27, 2020</time> </span>
-									<span class="status active"><strong>Status</strong>Active</span>
-									<span class="location"><strong>Location</strong>Karen</span>
-								</td>
-								<td class="product-category"><span class="categories">Laptops</span></td>
-								<td class="action" data-title="Action">
-									<div class="">
-										<ul class="list-inline justify-content-center">
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
-													<i class="fa fa-eye"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Delete" class="delete" href="">
-													<i class="fa fa-trash"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-							<tr>
+								@foreach ($vehicles as $vehicle)
+										@if($listing->id == $vehicle->listing_id)
+										
+										<td class="product-thumb">
+											@foreach ($vehiclephotos as $vehiclephoto )
+											@if($vehiclephoto->vehicle_id == $vehicle->id)
+									
+											<img width="80px" height="auto" src="/photos/{{ $vehiclephoto->photo }}" alt="image description">
+										</td>
+											@endif
+											@endforeach
 
-								<td class="product-thumb">
-									<img width="80px" height="auto" src="images/products/products-2.jpg" alt="image description"></td>
-								<td class="product-details">
-									<h3 class="title">Mercedes Benz E250</h3>
-									<span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
-									<span><strong>Posted on: </strong><time>Feb 12, 2021</time> </span>
-									<span class="status active"><strong>Status</strong>Active</span>
-									<span class="location"><strong>Location</strong>Kiambu</span>
-								</td>
-								<td class="product-category"><span class="categories">Laptops</span></td>
-								<td class="action" data-title="Action">
-									<div class="">
-										<ul class="list-inline justify-content-center">
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
-													<i class="fa fa-eye"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Delete" class="delete" href="">
-													<i class="fa fa-trash"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-							<tr>
 
-								<td class="product-thumb">
-									<img width="80px" height="auto" src="images/products/products-3.jpg" alt="image description"></td>
-								<td class="product-details">
-									<h3 class="title">Mitsubishi Evo 10</h3>
-									<span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
-									<span><strong>Posted on: </strong><time>Dec 27, 2020</time> </span>
-									<span class="status active"><strong>Status</strong>Active</span>
-									<span class="location"><strong>Location</strong>Machakos</span>
-								</td>
-								<td class="product-category"><span class="categories">Cars</span></td>
-								<td class="action" data-title="Action">
-									<div class="">
-										<ul class="list-inline justify-content-center">
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
-													<i class="fa fa-eye"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Delete" class="delete" href="">
-													<i class="fa fa-trash"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-							<tr>
+										<td class="product-details">
+											<h3 class="title">  {{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}}</h3>
+											<span class="add-id"><strong>Ad ID:</strong> {{ $vehicle->id }}</span>
+											<span><strong>Posted on: </strong><time> {{ $vehicle->created_at->diffForHumans() }}</time> </span>
+											<span class="status active"><strong>Status: </strong>Active</span>
+											<span class="location"><strong>Location: </strong>{{ $listing->city->city }}</span>
+										</td>
+									
 
-								<td class="product-thumb">
-									<img width="80px" height="auto" src="images/products/products-4.jpg" alt="image description"></td>
-								<td class="product-details">
-									<h3 class="title">Audi RS7</h3>
-									<span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
-									<span><strong>Posted on: </strong><time>March 26, 2022</time> </span>
-									<span class="status active"><strong>Status</strong>Active</span>
-									<span class="location"><strong>Location</strong>Lavington</span>
-								</td>
-								<td class="product-category"><span class="categories">Cars</span></td>
-								<td class="action" data-title="Action">
-									<div class="">
-										<ul class="list-inline justify-content-center">
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
-													<i class="fa fa-eye"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Delete" class="delete" href="">
-													<i class="fa fa-trash"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-							<tr>
 
-								<td class="product-thumb">
-									<img width="80px" height="auto" src="images/products/products-1.jpg" alt="image description"></td>
-								<td class="product-details">
-									<h3 class="title">Macbook Pro 15inch</h3>
-									<span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
-									<span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
-									<span class="status active"><strong>Status</strong>Active</span>
-									<span class="location"><strong>Location</strong>Dhaka,Bangladesh</span>
-								</td>
-								<td class="product-category"><span class="categories">Laptops</span></td>
+								
+								<td class="product-category"><span class="categories">{{ $listing->category->category_name }}</span></td>
 								<td class="action" data-title="Action">
 									<div class="">
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="category.html">
+												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('single',$listing->id)}}">
 													<i class="fa fa-eye"></i>
 												</a>
 											</li>
 											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
+												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_listing',$listing->id)}}">
 													<i class="fa fa-pencil"></i>
 												</a>
 											</li>
@@ -258,6 +145,10 @@
 									</div>
 								</td>
 							</tr>
+							@endif
+							@endforeach
+							@endforeach
+
 						</tbody>
 					</table>
 
