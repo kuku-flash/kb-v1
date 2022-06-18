@@ -25,7 +25,7 @@ class CarmakeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.carmake.create');
     }
 
     /**
@@ -36,7 +36,12 @@ class CarmakeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $this->validate($request, [
+            'make' => 'required',
+        ]);
+    
+      Carmake::create($validatedData);
+      return redirect() -> route('admin.carmake.index')->with('success','Succesfully Added');
     }
 
     /**
@@ -56,9 +61,10 @@ class CarmakeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Carmake $carmake)
     {
-        //
+        $arr['carmake'] = $carmake;
+        return view('admin.carmake.edit')->with($arr);
     }
 
     /**
@@ -68,9 +74,14 @@ class CarmakeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Carmake $carmake)
     {
-        //
+        $validatedData = $this->validate($request, [
+            'make' => 'required',
+        ]);
+    
+        $carmake->update($validatedData);
+        return redirect() -> route('admin.carmake.index')->with('success','Updated Successfully');
     }
 
     /**
@@ -81,6 +92,7 @@ class CarmakeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Carmake::destroy($id);
+        return redirect() -> route('admin.carmake.index');
     }
 }

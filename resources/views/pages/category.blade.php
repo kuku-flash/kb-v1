@@ -17,10 +17,12 @@
 					<div class="widget category-list">
 	<h4 class="widget-header">All Category</h4>
 	<ul class="category-list">
-		<li><a href="category.html">Laptops <span>93</span></a></li>
-		<li><a href="category.html">Iphone <span>233</span></a></li>
-		<li><a href="category.html">Microsoft  <span>183</span></a></li>
-		<li><a href="category.html">Monitors <span>343</span></a></li>
+		<li><a href="category.html">Houses <span>600</span></a></li>
+		<li><a href="category.html">Vehicles <span>233</span></a></li>
+		<li><a href="category.html">Bnb  <span>183</span></a></li>
+		<li><a href="category.html">Lands <span>257</span></a></li>
+		<li><a href="category.html">Commercials <span>343</span></a></li>
+		<li><a href="category.html">Car hire <span>570</span></a></li>
 	</ul>
 </div>
 
@@ -116,7 +118,7 @@
 				</div>
 				<div class="product-grid-list">
 					<div class="row mt-30">
-						<div class="col-sm-12 col-lg-4 col-md-6">
+						<div class="col-sm-13 col-lg-4 col-md-6">
 
 
 							<!-- product card -->
@@ -141,11 +143,11 @@
 			<a href="single.html">
 		       <ul class="list-horizontal">
                 <li>Engine Size <span class="car-li">2.5L</span></li>
-                <li>Transmission <span class="car-li">Automatic</span></li>
-                <li>Mileage<span class="car-li">10,000Km</span></li>
-                <li>Fuel Type <span class="car-li">Petrol</span></li>
-                <li>Year <span class="car-li">2015</span></li>
-                <li>Body Type <span class="car-li">Saloon</span></li>
+                <li>Trans:<span class="car-li">Automatic</span></li>
+                <li>Miles:<span class="car-li">10000Km</span></li>
+                <li>Fuel:<span class="car-li">Petrol</span></li>
+                <li>Year:<span class="car-li">2015</span></li>
+                <li>Body:<span class="car-li">Saloon</span></li>
                 </ul>
 				</div>
 		        <div class="property-price">
@@ -161,7 +163,7 @@
 </a>
 
 					</div>
-					<div class="col-sm-12 col-lg-4 col-md-6">
+					<div class="col-sm-13 col-lg-4 col-md-6">
 							<!-- product card -->
 
 							<div class="product-item bg-light">
@@ -184,17 +186,17 @@
 										</ul>
 										<a href="single.html">
 										   <ul class="list-horizontal">
-											<li>Engine Size <span class="car-li">4.0L</span></li>
-											<li>Transmission <span class="car-li">Automatic</span></li>
-											<li>Mileage<span class="car-li">10,000Km</span></li>
-											<li>Fuel Type <span class="car-li">Petrol</span></li>
-											<li>Year <span class="car-li">2013</span></li>
-											<li>Body Type <span class="car-li">Saloon</span></li>
+											<li>Engine Size:<span class="car-li">5.0L</span></li>
+											<li>Trans:<span class="car-li">Automatic</span></li>
+											<li>Miles:<span class="car-li">7000Km</span></li>
+											<li>Fuel:<span class="car-li">Petrol</span></li>
+											<li>Year:<span class="car-li">2016</span></li>
+											<li>Body:<span class="car-li">Saloon</span></li>
 											</ul>
 											</div>
 											<div class="property-price">
 											<p class="badge-sale">For Sale</p>
-											<p class="price">Ksh4.8M</p>
+											<p class="price">Ksh9.2M</p>
 											</div>
 											<div>
 											
@@ -227,17 +229,17 @@
 										</ul>
 										<a href="single.html">
 										   <ul class="list-horizontal">
-											<li>Engine Size <span class="car-li">2.5L</span></li>
-											<li>Transmission <span class="car-li">Automatic</span></li>
-											<li>Mileage<span class="car-li">10,000Km</span></li>
-											<li>Fuel Type <span class="car-li">Petrol</span></li>
-											<li>Year <span class="car-li">2015</span></li>
-											<li>Body Type <span class="car-li">Saloon</span></li>
+											<li>Engine Size:<span class="car-li">2.5L</span></li>
+											<li>Trans:<span class="car-li">Manual</span></li>
+											<li>Miles:<span class="car-li">80765Km</span></li>
+											<li>Fuel:<span class="car-li">Petrol</span></li>
+											<li>Year:<span class="car-li">2014</span></li>
+											<li>Body:<span class="car-li">Saloon</span></li>
 											</ul>
 											</div>
 											<div class="property-price">
 											<p class="badge-sale">For Sale</p>
-											<p class="price">Ksh4.8M</p>
+											<p class="price">Ksh1.8M</p>
 											</div>
 											<div>
 											
@@ -270,17 +272,17 @@
 										</ul>
 										<a href="single.html">
 										   <ul class="list-horizontal">
-											<li>Engine Size <span class="car-li">2.5L</span></li>
-											<li>Transmission <span class="car-li">Automatic</span></li>
-											<li>Mileage<span class="car-li">10,000Km</span></li>
-											<li>Fuel Type <span class="car-li">Petrol</span></li>
-											<li>Year <span class="car-li">2015</span></li>
-											<li>Body Type <span class="car-li">Saloon</span></li>
+											<li>Engine Size:<span class="car-li">4L</span></li>
+											<li>Trans:<span class="car-li left ">Automatic</span></li>
+											<li>Miles:<span class="car-li">560681Km</span></li>
+											<li>Fuel:<span class="car-li left">Petrol</span></li>
+											<li>Year: <span class="car-li">2015</span></li>
+											<li>Body:<span class="car-li">Coupe</span></li>
 											</ul>
 											</div>
 											<div class="property-price">
-											<p class="badge-sale">For Sale</p>
-											<p class="price">Ksh4.8M</p>
+											<p class="badge-sale">For Hire</p>
+											<p class="price">Ksh60k/day</p>
 											</div>
 											<div>
 											
@@ -291,7 +293,7 @@
 							</a>
 							
 												</div>
-												<div class="col-sm-12 col-lg-4 col-md-6">
+												<div class="col-sm-13 col-lg-4 col-md-6">
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card">
@@ -313,12 +315,12 @@
 										</ul>
 										<a href="single.html">
 										   <ul class="list-horizontal">
-											<li>Engine Size <span class="car-li">2.5L</span></li>
-											<li>Transmission <span class="car-li">Automatic</span></li>
-											<li>Mileage<span class="car-li">10,000Km</span></li>
-											<li>Fuel Type <span class="car-li">Petrol</span></li>
+											<li>Engine Size:<span class="car-li">2.5L</span></li>
+											<li>Trans:<span class="car-li">Automatic</span></li>
+											<li>Miles:<span class="car-li">10000Km</span></li>
+											<li>Fuel:<span class="car-li">Petrol</span></li>
 											<li>Year <span class="car-li">2015</span></li>
-											<li>Body Type <span class="car-li">Saloon</span></li>
+											<li>Body:<span class="car-li">Saloon</span></li>
 											</ul>
 											</div>
 											<div class="property-price">
@@ -334,7 +336,7 @@
 							</a>
 							
 												</div>
-												<div class="col-sm-12 col-lg-4 col-md-6">
+												<div class="col-sm-13 col-lg-4 col-md-6">
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card">
@@ -377,7 +379,8 @@
 							</a>
 							
 												</div>
-												<div class="col-sm-12 col-lg-4 col-md-6">
+
+							<div class="col-sm-13 col-lg-4 col-md-6">
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card">
@@ -399,12 +402,12 @@
 										</ul>
 										<a href="single.html">
 										   <ul class="list-horizontal">
-											<li>Engine Size <span class="car-li">4.0L</span></li>
-											<li>Transmission <span class="car-li">Automatic</span></li>
-											<li>Mileage<span class="car-li">19,400Km</span></li>
-											<li>Fuel Type <span class="car-li">Petrol</span></li>
-											<li>Year <span class="car-li">2014</span></li>
-											<li>Body Type <span class="car-li">SUV</span></li>
+											<li>Engine Size:<span class="car-li">4.0L</span></li>
+											<li>Trans:<span class="car-li">Automatic</span></li>
+											<li>Miles:<span class="car-li">19400Km</span></li>
+											<li>Fuel Type:<span class="car-li">Petrol</span></li>
+											<li>Year:<span class="car-li">2014</span></li>
+											<li>Body:<span class="car-li">SUV</span></li>
 											</ul>
 											</div>
 											<div class="property-price">
@@ -414,15 +417,55 @@
 											<div>
 											
 											
-									</div>
-								</div>
-							</div>
-							</a>
-							
 												</div>
-												<div class="col-sm-12 col-lg-4 col-md-6">
+											</div>
+										</div>
+										</a>
+									</div>
 
-
+									<div class="col-sm-13 col-lg-4 col-md-6">
+										<!-- product card -->
+										<div class="product-item bg-light">
+											<div class="card">
+												<div class="thumb-content">
+													<div class="price">Silver Package</div>
+													<a href="single.html">
+														<img class="card-img-top category-img-fluid" src="images/car3.jpg" alt=""style="max-height: 400px;">
+													</a>
+												</div>
+												<div class="card-body">
+													<h4 class="card-title"><a href="single.html">Range Rover Sport</a></h4>
+													<ul class="list-inline product-meta">
+														<li class="list-inline-item">
+															<a href="single.html"><i class="fa fa-folder-open-o"></i>Vehicles</a>
+														</li>
+														<li class="list-inline-item">
+															<a href="#"><i class="fa fa-location-arrow"></i>Karen</a>
+														</li>
+													</ul>
+													<a href="single.html">
+													   <ul class="list-horizontal">
+														<li>Engine Size:<span class="car-li">4.0L</span></li>
+														<li>Trans:<span class="car-li">Automatic</span></li>
+														<li>Miles:<span class="car-li">19400Km</span></li>
+														<li>Fuel Type:<span class="car-li">Petrol</span></li>
+														<li>Year:<span class="car-li">2014</span></li>
+														<li>Body:<span class="car-li">SUV</span></li>
+														</ul>
+														</div>
+														<div class="property-price">
+														<p class="badge-sale">For Sale</p>
+														<p class="price">Ksh7.2M</p>
+														</div>
+														<div>
+														
+														
+															</div>
+														</div>
+													</div>
+													</a>
+												</div>
+						<div class="col-sm-13 col-lg-4 col-md-6">
 
 						</div>
 					</div>

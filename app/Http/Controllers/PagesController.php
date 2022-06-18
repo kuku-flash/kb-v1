@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listing;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    Public function index (){
+    
+Public function index (){
 
         return view ('pages.index');
         
@@ -18,9 +20,14 @@ Public function category (){
     
 }
 
-Public function single (){
+Public function single (Listing $listing){
+    $arr['listing'] = $listing;
+    return view ('pages.single')->with($arr);
+    
+}
+Public function houses (){
 
-    return view ('pages.single');
+    return view ('pages.houses');
     
 }
 
@@ -37,14 +44,6 @@ Public function ad_list_view (){
     
 }
 
-Public function post_ad (){
-
-    $arr['vechiles'] = 1;
-    $arr['propteries'] = 2;
-    return view ('pages.post_ad')->with($arr);
-    
-}
-
 Public function blog(){
 
     return view ('pages.blog');
@@ -54,6 +53,17 @@ Public function blog(){
 Public function contact_us(){
 
     return view ('pages.contact_us');
+    
+}
+
+Public function vehicles(){
+
+    return view ('pages.vehicles');
+    
+}
+Public function post_ad_form(){
+
+    return view ('pages.post_ad_form');
     
 }
 
@@ -82,6 +92,7 @@ Public function dashboard(){
     return view ('pages.dashboard');
     
 }
+
 
 Public function login(){
 

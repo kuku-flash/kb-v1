@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/slick-carousel/slick/slick-theme.css')}}" >
     <!-- Fancy Box -->
     <link rel="stylesheet"  href="{{ asset('plugins/fancybox/jquery.fancybox.pack.css')}}" >
-    <link rel="stylesheet" href="{{ asset('plugins/jquery-nice-select/css/nice-select.css')}}" >
+ <link rel="stylesheet" href="{{ asset('plugins/jquery-nice-select/css/nice-select.css')}}" > 
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css')}}" >
     <link rel="stylesheet"  href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" >
@@ -46,7 +46,7 @@
       <div class="row">
         <div class="col-md-12">
           <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar  ftco-navbar-light" id="ftco-navbar">
-            <a class="navbar-brand" href="/"><img src="images/king2.png" 
+            <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
             style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " ><span style="color:#d4af37">Kings</span><span>bridge</span></a>
   
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -57,19 +57,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto main-nav ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home</a>
+                  <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item dropdown dropdown-slide">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Dashboard<span><i class="fa fa-angle-down"></i></span>
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">List Dashboard<span><i class="fa fa-angle-down"></i></span>
                   </a>
   
                   <!-- Dropdown list -->
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a>
-                    <a class="dropdown-item" href="{{route('dashboard_my_ads')}}">Dashboard My Ads</a>
-                    <a class="dropdown-item" href="{{route('dashboard_favourite_ads')}}">Dashboard Favourite Ads</a>
-                    <a class="dropdown-item" href="{{route('dashboard_archived_ads')}}">Dashboard Archived Ads</a>
-                    <a class="dropdown-item" href="{{route('dashboard_pending_ads')}}">Dashboard Pending Ads</a>
+                    <a class="dropdown-item" href="{{route('user.my_list')}}"> My List</a>
+                    <a class="dropdown-item" href="{{route('user.favourite_list')}}"> Favourite List</a>
+                    <a class="dropdown-item" href="{{route('user.archived_list')}}"> Archived List</a>
+                    <a class="dropdown-item" href="{{route('user.pending_list')}}"> Pending List</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown dropdown-slide">
@@ -81,12 +80,12 @@
                     <a class="dropdown-item" href="{{ route('about_us')}}">About Us</a>
                     <a class="dropdown-item" href="{{ route('contact_us')}}">Contact Us</a>
                     <a class="dropdown-item" href="{{ route('user_profile')}}">User Profile</a>
-                    <a class="dropdown-item" href="404.html">404 Page</a>
-                    <a class="dropdown-item" href="package.html">Package</a>
+                    <a class="dropdown-item" href="#">404 Page</a>
+                    <a class="dropdown-item" href="#">Package</a>
                     <a class="dropdown-item" href="{{ route('single')}}">Single Page</a>
-                    <a class="dropdown-item" href="store.html">Store Single</a>
-                    <a class="dropdown-item" href="single-blog.html">Single Post</a>
-                    <a class="dropdown-item" href="blog.html">Blog</a>
+                    <a class="dropdown-item" href="#">Store Single</a>
+                    <a class="dropdown-item" href="#">Single Post</a>
+                    <a class="dropdown-item" href="#">Blog</a>
   
                   </div>
                 </li>
@@ -97,17 +96,47 @@
                   <!-- Dropdown list -->
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('category')}}">Ad-Gird View</a>
-                    <a class="dropdown-item" href="ad-listing-list.html">Ad-List View</a>
+                    <a class="dropdown-item" href="{{ route('category')}}">Ad-List View</a>
                   </div>
                 </li>
               </ul>
               <ul class="navbar-nav ml-auto mt-10">
+                @guest
+                  
+                @if ((Route::has('user.login')))
+                    <li class="nav-item">
+                      <a class="nav-link login-button " href="{{ route('user.login')}}">Login</a>
+                    </li>
+                @endif
+                @if ((Route::has('user.listing')))
                 <li class="nav-item">
-                  <a class="nav-link login-button " href="{{ route('login')}}">Login</a>
+                  <a class="nav-link text-white add-button" href="{{ route('user.listing')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Add Listing</a>
-                </li>
+                @endif
+                @else
+              
+                   <li class="nav-item dropdown dropdown-slide">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{ Auth::user()->name }} <span></i></span>
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Chat</a> 
+                    <a class="dropdown-item" href="#">Settings</a> 
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                     <i class="icon-key"></i> <span>Logout</span>
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+                    </div>
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link text-white add-button" href="{{ route('user.create_listing')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
+                  </li>
+                @endguest
               </ul>
             </div>
           </nav>
@@ -134,7 +163,7 @@
         <!-- About -->
         <div class="block about">
           <!-- footer logo -->
-          <a class="navbar-brand" href="/"><img src="images/king2.png" 
+          <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
           style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " >KingsBridge<p>Kingsbridge Properties</p></a>
           <p>The leading online platform that sells both Vehicles and Houses.</p>
         </div>
@@ -176,13 +205,13 @@
           <div class="mobile d-flex">
             <a href="">
               <!-- Icon -->
-              <img src="images/footer/phone-icon.png" alt="mobile-icon">
+              <img src="{{ asset('images/footer/phone-icon.png')}}" alt="mobile-icon">
             </a>
             <p>Get the Dealsy Mobile App and Save more</p>
           </div>
           <div class="download-btn d-flex my-3">
-            <a href="#"><img src="images/apps/google-play-store.png" class="img-fluid" alt=""></a>
-            <a href="#" class=" ml-3"><img src="images/apps/apple-app-store.png" class="img-fluid" alt=""></a>
+            <a href="#"><img src="{{ asset('images/apps/google-play-store.png')}}" class="img-fluid" alt=""></a>
+            <a href="#" class=" ml-3"><img src="{{ asset('images/apps/apple-app-store.png')}}" class="img-fluid" alt=""></a>
           </div>
         </div>
       </div>
@@ -223,7 +252,6 @@
 </footer>
 
 <!-- JAVASCRIPTS -->
-<script src="{{ asset('js/main.js')}}"></script>
 <script src="{{ asset('plugins/jQuery/jquery.min.js')}}"></script>
 <script src="{{ asset('plugins/bootstrap/js/popper.min.js')}}"></script>
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -232,13 +260,13 @@
 <script src="{{ asset('plugins/tether/js/tether.min.js')}}"></script>
 <script src="{{ asset('plugins/raty/jquery.raty-fa.js')}}"></script>
 <script src="{{ asset('plugins/slick-carousel/slick/slick.min.js')}}"></script>
-<script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+<script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script> 
 <script src="{{ asset('plugins/fancybox/jquery.fancybox.pack.js')}}"></script>
 <script src="{{ asset('plugins/smoothscroll/SmoothScroll.min.js')}}"></script>
-<!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+
 <script src="{{ asset('plugins/google-map/gmap.js')}}"></script>
 <script src="{{ asset('js/script.js')}}"></script>
+
 
 </body>
 

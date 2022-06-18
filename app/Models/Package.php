@@ -15,4 +15,8 @@ class Package extends Model
      'package_featured',
      'description',
     ];
+
+    public function listing () {
+        return $this->hasMany( 'App\Models\Listing');
+    }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Carmake;
+use App\Models\Carmodel;
 use Illuminate\Http\Request;
 
 class CarmodelController extends Controller
@@ -14,7 +16,9 @@ class CarmodelController extends Controller
      */
     public function index()
     {
-        //
+        $arr['carmakes'] = Carmake::all();
+        $arr['carmodels'] = Carmodel::all();
+        return view ('admin.carmodel.index') ->with($arr);
     }
 
     /**
@@ -24,7 +28,8 @@ class CarmodelController extends Controller
      */
     public function create()
     {
-        //
+        $arr['carmakes'] = Carmake::all();
+        return view('admin.carmodel.create')->with($arr);
     }
 
     /**
@@ -35,7 +40,13 @@ class CarmodelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $this->validate($request, [
+            'model' => 'required',
+            'model_year' => 'required',
+            'make_id' => 'required',
+        ]);
+       Carmodel::create($validatedData);
+       return redirect() -> route('admin.carmodel.index')->with('success','Succesfully Added');
     }
 
     /**
@@ -55,9 +66,11 @@ class CarmodelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Carmodel $carmodel)
     {
-        //
+        $arr['carmakes'] = Carmake::all();
+        $arr['carmodel'] = $carmodel;
+        return view('admin.carmodel.edit')->with($arr);
     }
 
     /**
@@ -67,9 +80,15 @@ class CarmodelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Carmodel $carmodel)
     {
-        //
+        $validatedData = $this->validate($request, [
+            'model' => 'required',
+            'model_year' => 'required',
+            'make_id' => 'required',
+        ]);
+       $carmodel->update($validatedData);
+       return redirect() -> route('admin.carmodel.index')->with('success','Updated Successfully');
     }
 
     /**
@@ -80,6 +99,7 @@ class CarmodelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Carmodel::destroy($id);
+        return redirect() -> route('admin.carmodel.index');
     }
 }
