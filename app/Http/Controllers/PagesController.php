@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listing;
+use App\Models\Vehicle;
+use App\Models\Vehicle_photo;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -15,13 +17,14 @@ Public function index (){
 }
 
 Public function category (){
-
-    return view ('pages.category');
+    $arr['vehicles'] = Vehicle::all();
+    $arr['vehiclephoto'] = Vehicle_photo::where('vehicle_id','id')->get();
+    return view ('pages.category')->with($arr);
     
 }
 
-Public function single (Listing $listing){
-    $arr['listing'] = $listing;
+Public function single (Vehicle $vehicle){
+    $arr['vehicle'] = $vehicle;
     return view ('pages.single')->with($arr);
     
 }

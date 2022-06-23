@@ -18,7 +18,7 @@
 	<h4 class="widget-header">All Category</h4>
 	<ul class="category-list">
 		<li><a href="category.html">Houses <span>600</span></a></li>
-		<li><a href="category.html">Vehicles <span>233</span></a></li>
+		<li><a href="category.html">Vehicles <span>{{ $vehicles->count()}}</span></a></li>
 		<li><a href="category.html">Bnb  <span>183</span></a></li>
 		<li><a href="category.html">Lands <span>257</span></a></li>
 		<li><a href="category.html">Commercials <span>343</span></a></li>
@@ -465,6 +465,52 @@
 													</div>
 													</a>
 												</div>
+										@foreach ($vehicles as $vehicle)
+
+												<div class="col-sm-13 col-lg-4 col-md-6">
+													<!-- product card -->
+													<div class="product-item bg-light">
+														<div class="card">
+															<div class="thumb-content">
+																<div class="price">Silver Package</div>
+																<a href="{{ route('single', $vehicle->id)}}">
+																	<img class="card-img-top category-img-fluid" src="images/car3.jpg" alt=""style="max-height: 400px;">
+																</a>
+															</div>
+															<div class="card-body">
+																<h4 class="card-title"><a href="{{ route('single', $vehicle->id)}}">{{ $vehicle->title}}</a></h4>
+																<ul class="list-inline product-meta">
+																	<li class="list-inline-item">
+																		<a href="{{ route('single', $vehicle->id)}}"><i class="fa fa-folder-open-o"></i>Vehicles</a>
+																	</li>
+																	<li class="list-inline-item">
+																		<a href="#"><i class="fa fa-location-arrow"></i>Karen</a>
+																	</li>
+																</ul>
+																<a href="{{ route('single', $vehicle->id)}}">
+																   <ul class="list-horizontal">
+																	<li>Engine Size:<span class="car-li">4.0L</span></li>
+																	<li>Trans:<span class="car-li">Automatic</span></li>
+																	<li>Miles:<span class="car-li">19400Km</span></li>
+																	<li>Fuel Type:<span class="car-li">Petrol</span></li>
+																	<li>Year:<span class="car-li">2014</span></li>
+																	<li>Body:<span class="car-li">SUV</span></li>
+																	</ul>
+																	</div>
+																	<div class="property-price">
+																	<p class="badge-sale">For Sale</p>
+																	<p class="price">Ksh7.2M</p>
+																	</div>
+																	<div>
+																	
+																	
+																		</div>
+																	</div>
+																</div>
+																</a>
+															</div>
+	
+															@endforeach
 						<div class="col-sm-13 col-lg-4 col-md-6">
 
 						</div>

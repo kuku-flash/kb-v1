@@ -105,7 +105,10 @@
 											@foreach ($vehiclephotos as $vehiclephoto )
 											@if($vehiclephoto->vehicle_id == $vehicle->id)
 									
+								
 											<img width="80px" height="auto" src="/photos/{{ $vehiclephoto->photo }}" alt="image description">
+										
+										
 										</td>
 											@endif
 											@endforeach
@@ -127,12 +130,12 @@
 									<div class="">
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('single',$listing->id)}}">
+												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('user.show_listing', [$listing->id, $vehicle->id])}}">
 													<i class="fa fa-eye"></i>
 												</a>
 											</li>
 											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_listing',$listing->id)}}">
+												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_listing', [$listing->id, $vehicle->id])}}">
 													<i class="fa fa-pencil"></i>
 												</a>
 											</li>

@@ -41,7 +41,7 @@
           <h6>Select Car Model:</h6>
      
           <div> 
-              <select name="make" class="make">
+              <select name="make" class="make nice-select">
                 <option value="">Choose a Make</option>
     
                   @foreach($makes as $make)
@@ -50,7 +50,7 @@
              
               </select>
                               
-              <select name="model_id" class="model">
+              <select name="model_id" class="model nice-select">
                 <option value="0" disabled="true" selected="true">Chose a model</option>
 
               </select>
@@ -220,6 +220,8 @@ $(document).ready(function() {
     }
   });
   </script>
+
+  <!-- The script for Car Make -->
   <script>
   $(document).ready(function(){
 
@@ -230,7 +232,7 @@ $(document).on('change','.make',function(){
   // console.log(cat_id);
   var div=$(this).parent();
 
-  var op=" ";
+  var option=" ";
 
   $.ajax({
     type:'get',
@@ -239,11 +241,11 @@ $(document).on('change','.make',function(){
     success:function(data){
       
       for(var i=0;i<data.length;i++){
-      op+='<option value="'+data[i].id+'">'+data[i].model+'</option>';
+        option+='<option value="'+data[i].id+'">'+data[i].model+'</option>';
        }
 
        div.find('.model').html(" ");
-       div.find('.model').append(op);
+       div.find('.model').append(option);
     },
     
     error:function(){    }

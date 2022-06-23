@@ -8,36 +8,31 @@
 <section class="section bg-gray">
 	<!-- Container Start -->
 	<div class="container">
+		<a href="{{ route('user.edit_listing', [$listing->id, $vehicle->id])}}" class="btn btn-primary">Edit</a>
 		<div class="row">
 			<!-- Left sidebar -->
 			<div class="col-md-8">
 				<div class="product-details">
-					<h1 class="product-title">Subaru Impreza WRX STI 2013 {{ $vehicle->title}}</h1>
+					<h1 class="product-title"> {{ $vehicle->title}}  {{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}}</h1>
 					<div class="product-meta">
 						<ul class="list-inline">
-							<li class="list-inline-item"><i class="fa fa-money"></i> KSH 1800000</li>
-							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Category<a href="">Electronics</a></li>
-							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="">Dhaka Bangladesh</a></li>
+							<li class="list-inline-item"><i class="fa fa-money"></i> KSH {{ $vehicle->price}}</li>
+							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Category<a href="">{{ $listing->category->category_name}}</a></li>
+							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="">{{ $listing->city->city}}</a></li>
 						</ul>
 					</div>
 
 					<!-- product slider -->
 					<div class="product-slider">
-						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_fqh_evox_1_815.jpg">
-							<img class="img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_fqh_evox_1_815.jpg" alt="product-img">
+                        @foreach ($vehiclephotos as $vehiclephoto )
+							@if($vehicle->id == $vehiclephoto->vehicle_id)
+				
+						<div class="product-slider-item my-4" data-image="/photos/{{ $vehiclephoto->photo }}">
+							<img class="img-fluid w-100" src="/photos/{{ $vehiclephoto->photo }}" alt="product-img">
 						</div>
-						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_ajp_evox_1_815.jpg">
-							<img class="d-block img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_ajp_evox_1_815.jpg" alt="Second slide">
-						</div>
-						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_boc_evox_1_815.jpg">
-							<img class="d-block img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_boc_evox_1_815.jpg" alt="Third slide">
-						</div>
-						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_rqh_evox_1_815.jpg">
-							<img class="d-block img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_rqh_evox_1_815.jpg" alt="Third slide">
-						</div>
-						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_tlb_evox_1_815.jpg">
-							<img class="d-block img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_tlb_evox_1_815.jpg" alt="Third slide">
-						</div>
+                        @endif
+                        @endforeach
+					
 					</div>
 					<!-- product slider -->
 
@@ -58,25 +53,8 @@
 						</ul>
 						<div class="tab-content" id="pills-tabContent">
 							<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-								<h3 class="tab-title">Product Description</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laudantium beatae quod perspiciatis, neque
-									dolores eos rerum, ipsa iste cum culpa numquam amet provident eveniet pariatur, sunt repellendus quas
-									voluptate dolor cumque autem molestias. Ab quod quaerat molestias culpa eius, perferendis facere vitae commodi
-									maxime qui numquam ex voluptatem voluptate, fuga sequi, quasi! Accusantium eligendi vitae unde iure officia
-									amet molestiae velit assumenda, quidem beatae explicabo dolore laboriosam mollitia quod eos, eaque voluptas
-									enim fuga laborum, error provident labore nesciunt ad. Libero reiciendis necessitatibus voluptates ab
-									excepturi rem non, nostrum aut aperiam? Itaque, aut. Quas nulla perferendis neque eveniet ullam?</p>
-
-								<iframe width="100%" height="400" src="https://www.youtube.com/embed/LUH7njvhydE?rel=0&amp;controls=0&amp;showinfo=0"
-								 frameborder="0" allowfullscreen></iframe>
-								<p></p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam sed, officia reiciendis necessitatibus
-									obcaecati eum, quaerat unde illo suscipit placeat nihil voluptatibus ipsa omnis repudiandae, excepturi! Id
-									aperiam eius perferendis cupiditate exercitationem, mollitia numquam fuga, inventore quam eaque cumque fugiat,
-									neque repudiandae dolore qui itaque iste asperiores ullam ut eum illum aliquam dignissimos similique! Aperiam
-									aut temporibus optio nulla numquam molestias eum officia maiores aliquid laborum et officiis pariatur,
-									delectus sapiente molestiae sit accusantium a libero, eligendi vero eius laboriosam minus. Nemo quibusdam
-									nesciunt doloribus repellendus expedita necessitatibus velit vero?</p>
+								<h3 class="tab-title">Car Description</h3>
+								<p>{{ $vehicle->description}}</p>
 
 							</div>
 							<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -195,13 +173,13 @@
 				<div class="sidebar">
 					<div class="widget price text-center">
 						<h4>Price</h4>
-						<p>KSH 1,800,000</p>
+						<p>KSH {{ $vehicle->price}}</p>
 					</div>
 					<!-- User Profile widget -->
 					<div class="widget user text-center">
 						<img class="rounded-circle img-fluid mb-5 px-5" src="images/joshua.jpeg" alt="">
-						<h4><a href="">Warutere Jnr</a></h4>
-						<p class="member-time">Member Since Jun 27, 2017</p>
+						<h4><a href="">  {{ Auth::user()->name }} </a></h4>
+						<p class="member-time">Member Since {{ Auth::user()->created_at }} </p>
 						<a href="">See all ads</a>
 						<ul class="list-inline mt-20">
 							<li class="list-inline-item"><a href="" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
