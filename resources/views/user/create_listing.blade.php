@@ -16,9 +16,9 @@
                         <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
                         <select name="category" id="inputGroupSelect" class="w-100">
                             <option value="">Select category</option>
-                            @foreach ($categories as $category )
-                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                            @endforeach
+                 
+                            <option value="2">Cars</option>
+                   
                
                         </select>
                         <h6 class="font-weight-bold pt-4 pb-1">Select Your City</h6>
@@ -41,7 +41,7 @@
           <h6>Select Car Model:</h6>
      
           <div> 
-              <select name="make" class="make nice-select">
+              <select name="make" class="make ">
                 <option value="">Choose a Make</option>
     
                   @foreach($makes as $make)
@@ -50,7 +50,7 @@
              
               </select>
                               
-              <select name="model_id" class="model nice-select">
+              <select name="model_id" class="model ">
                 <option value="0" disabled="true" selected="true">Chose a model</option>
 
               </select>
@@ -146,6 +146,87 @@
           </div>
       </div>
   </div>
+</fieldset>
+
+<fieldset class="border border-gary p-4 mb-5">
+  <h4 style=" text-align: center;">Choose your boosting Plan</h4>
+  <section>
+  <div class="row">
+      <div class="col-lg-12">
+          <h3>Ad Boost Plan</h3>
+
+          <h6 class="font-weight-bold pt-4 pb-1">Boost your Listing</h6>
+          <select name="package_id" id="inputGroupSelect" class="w-100">
+              <option value="">Select the Plan</option>
+              @foreach ($packages as $package )
+              <option value="{{ $package->id }}">{{ $package->package_name }}</option>
+              @endforeach
+ 
+          </select>
+       
+       <input type="hidden" name="user_id" value="{{ Auth::user()->id}}" >
+      </div>
+  </div>
+  </section>
+</fieldset>
+<fieldset>
+  <section>
+    <div class="row">
+      <div class="col-lg-12">
+          <div class="heading text-center pb-5">
+              <h2 class="font-weight-bold">Best Price Guaranteed</h2>
+          </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+          <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
+              <div class="package-content-heading border-bottom">
+                  <i class="fa fa-paper-plane"></i>
+                  <h2>Basic Package</h2>
+                  <h4 class="py-3"> <span>$10.00</span> Per Month</h4>
+              </div>
+              <ul>
+                  <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
+                  <li class="my-4"> <i class="fa fa-check"></i>15 Features Ad Availability</li>
+                  <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
+                  <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
+              </ul>
+              <a href="#" class="btn btn-primary">Buy Now</a>
+          </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+          <div class="package-content bg-light border text-center my-2 my-lg-0 p-5">
+              <div class="package-content-heading border-bottom">
+                      <i class="fa fa-plane"></i>
+                  <h2>Standard Package</h2>
+                  <h4 class="py-3"> <span>$30.00</span> Per Month</h4>
+              </div>
+              <ul>
+                  <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
+                  <li class="my-4"> <i class="fa fa-check"></i>15 Features Ad Availability</li>
+                  <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
+                  <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
+              </ul>
+              <a href="#" class="btn btn-primary">Buy Now</a>
+          </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mx-sm-auto">
+          <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
+              <div class="package-content-heading border-bottom">
+                      <i class="fa fa-rocket"></i>
+                  <h2>Premium Package</h2>
+                  <h4 class="py-3"> <span>$50.00</span> Per Month</h4>
+              </div>
+              <ul>
+                  <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
+                  <li class="my-4"> <i class="fa fa-check"></i>15 Features Ad Availability</li>
+                  <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
+                  <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
+              </ul>
+              <a href="#" class="btn btn-primary">Buy Now</a>
+          </div>
+      </div>
+  </div>
+  </section>
 </fieldset>
 
 <button type="submit" class="btn btn-primary d-block mt-2">Post Your Listing</button>

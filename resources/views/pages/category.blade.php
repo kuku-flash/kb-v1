@@ -472,7 +472,7 @@
 													<div class="product-item bg-light">
 														<div class="card">
 															<div class="thumb-content">
-																<div class="price">Silver Package</div>
+																<div class="price">Silver Package {{ $vehicle->package_id}}</div>
 																<a href="{{ route('single', $vehicle->id)}}">
 																	<img class="card-img-top category-img-fluid" src="images/car3.jpg" alt=""style="max-height: 400px;">
 																</a>

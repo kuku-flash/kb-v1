@@ -23,7 +23,7 @@
 							<li class="list-inline-item">
 								<a href="{{ route('category') }}"><i class="fa fa-home"></i> Houses</a></li>
 							<li class="list-inline-item">
-								<a href="{{ route('vehicles') }}"><i class="fa fa-car"></i> Vehicles</a>
+								<a href="{{ route('vehicles_grid') }}"><i class="fa fa-car"></i> Vehicles</a>
 							</li>
 							<li class="list-inline-item">
 								<a href="{{ route('category') }}"><i class="fa fa-bed"></i> BnB</a>

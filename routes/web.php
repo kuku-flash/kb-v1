@@ -39,7 +39,9 @@ Route :: get ('contact_us',  [PagesController::class, 'contact_us'])->name('cont
 Route :: get ('user/login',  [PagesController::class, 'login'])->name('user.login');
 Route :: get ('package',  [PagesController::class, 'package'])->name('package');
 Route :: get ('register',  [PagesController::class, 'register'])->name('register');
-Route :: get ('vehicles',  [PagesController::class, 'vehicles'])->name('vehicles');
+Route :: get ('vehicles_grid',  [PagesController::class, 'vehicles_grid'])->name('vehicles_grid');
+Route :: get ('vehicles_list',  [PagesController::class, 'vehicles_list'])->name('vehicles_list');
+Route :: get ('vehicle/{listing}/{vehicle}',  [PagesController::class, 'vehicle'])->name('vehicle');
 Route :: get ('post_ad_form',  [PagesController::class, 'post_ad_form'])->name('post_ad_form');
 Route :: get ('single_blog',  [PagesController::class, 'single_blog'])->name('single_blog');
 Route :: get ('terms_condition',  [PagesController::class, 'terms_condition'])->name('terms_condition');
@@ -80,6 +82,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('vehicle_ad',  [ListingController::class, 'vehicle_ad'])->name('vehicle_ad');
     Route :: post ('store_vehicle_ad',  [ListingController::class, 'store_vehicle_ad'])->name('store_vehicle_ad');
     Route :: get ('model',  [ListingController::class, 'model'])->name('model');
+    Route :: get ('invoice/{listing}/{vehicle}',  [ListingController::class, 'invoice'])->name('invoice');
    
 
 

@@ -54,7 +54,7 @@
                 <option value="">Choose a Make</option>
                   @foreach($makes as $make)
                     <option value="{{ $make->id }}"
-                      @if ($make->id = $vehicle->carmodel->carmake->id)
+                      @if ($vehicle->carmodel->carmake->id == $make->id)
                       selected
                       @endif
                       >{{ $make->make }}</option>
@@ -69,7 +69,7 @@
 
                    @foreach($models as $model)
                     <option value="{{ $model->id }}"
-                      @if ($model->id = $vehicle->model_id)
+                      @if ($model->id == $vehicle->model_id)
                       selected
                       @endif
                       >{{ $model->model }}</option>
@@ -177,8 +177,28 @@
       </div>
   </div>
 </fieldset>
+<fieldset class="border border-gary p-4 mb-5">
+  <h4 style=" text-align: center;">Choose your boosting Plan</h4>
+  <section>
+  <div class="row">
+      <div class="col-lg-12">
+          <h3>Ad Boost Plan</h3>
 
-<button type="submit" class="btn btn-primary d-block mt-2">Post Your Listing</button>
+          <h6 class="font-weight-bold pt-4 pb-1">Boost your Listing</h6>
+          <select name="package_id" id="inputGroupSelect" class="w-100">
+            <option selected value="{{ $listing->package_id }}">{{ $listing->package->package_name }}</option>
+              @foreach ($packages as $package )
+              <option value="{{ $package->id }}">{{ $package->package_name }}</option>
+              @endforeach
+ 
+          </select>
+       <input type="hidden" name="user_id" value="{{ Auth::user()->id}}" >
+      </div>
+  </div>
+  </section>
+</fieldset>
+
+<button type="submit" class="btn btn-primary d-block mt-2">Update Your Listing</button>
 </form>
     
         </form>

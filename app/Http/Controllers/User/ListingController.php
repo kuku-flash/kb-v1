@@ -11,16 +11,19 @@ use App\Models\Carmodel;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Listing;
+use App\Models\Package;
 use App\Models\Vehicle;
 use App\Models\Vehicle_photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Expr\List_;
 
 class ListingController extends Controller
 {
     public function my_list() {
-        $arr['listings'] = Listing::all();
+        $arr['listings'] = Listing::where('user_id',Auth::id())->where('category_id',2)->get();
         $arr['vehicles'] = Vehicle::all();
-        $arr['vehiclephotos'] = Vehicle_photo::all();
+        $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
         return view('user.my_list')->with($arr);
   
 
@@ -31,7 +34,10 @@ class ListingController extends Controller
         
     }
     Public function pending_list(){
-        return view ('user.pending_list');
+        $listings = Listing::where('ads_status','pending')->where('user_id',Auth::id())->get();
+        $vehicles = Vehicle::all();
+        $vehiclephotos = Vehicle_photo::where('photo_postion',1)->get();
+        return view ('user.pending_list', compact('listings','vehicles','vehiclephotos'));
     }
     
     Public function favourite_list(){
@@ -46,6 +52,7 @@ class ListingController extends Controller
         $arr['cities'] = City::all();
         $arr['makes'] = Carmake::all();
         $arr['models'] = Carmodel::all();
+        $arr['packages'] = Package::all();
         return view('user.create_listing')->with($arr);
     } 
 
@@ -77,6 +84,9 @@ class ListingController extends Controller
 
       $listing->category_id = $request->category;
       $listing->city_id = $request->city;
+      $listing->package_id = $request->package_id;
+      $listing->user_id = $request->user_id;
+      $listing->ads_status = 'Pending';
       $listing->save();
 
       $currentId = $listing->id;
@@ -101,21 +111,22 @@ class ListingController extends Controller
       if ($request->hasFile('images')) 
       {
           $photos = $request->file('images');
+          $i = 1;
          foreach ($photos as $image) {
              $name = time().'-'.$image->getClientOriginalName();
              $name = str_replace('','-',$name);
              $image->move('photos', $name);
-
+           
             #$vehicle_photo->photo = $name;
             #$vehicle_photo->vehicle_id = $vehicle->id;
             #$vehicle_photo->save();
     
-            $vehicle->vehiclephotos()->create(['photo' => $name]);
+            $vehicle->vehiclephotos()->create(['photo' => $name, 'photo_postion' => $i++]);
  
           }     
         }
      
-    return redirect() -> route('user.my_list')->with('success','Added');
+    return redirect() -> route('user.invoice', [$listing->id, $vehicle->id])->with('success','Added'); 
      
     }
     public function show_listing(Listing $listing, Vehicle $vehicle){
@@ -136,6 +147,7 @@ class ListingController extends Controller
         $arr['makes'] = Carmake::all();
         $arr['models'] = Carmodel::all();
         $arr['listing'] = $listing;
+        $arr['packages'] = Package::all();
         $arr['vehicle'] = $vehicle;
         $arr['vehiclephotos'] = Vehicle_photo::all();
 
@@ -146,7 +158,8 @@ class ListingController extends Controller
            
 
       $listing->category_id = $request->category;
-      $listing->city_id = $request->city;
+      $listing->city_id = $request->city; 
+      $listing->package_id = $request->package_id; 
       $listing->update();
 
       $currentId = $listing->id;
@@ -171,6 +184,7 @@ class ListingController extends Controller
       if ($request->hasFile('images')) 
       {
           $photos = $request->file('images');
+          $i = 1;
          foreach ($photos as $image) {
              $name = time().'-'.$image->getClientOriginalName();
              $name = str_replace('','-',$name);
@@ -180,7 +194,7 @@ class ListingController extends Controller
             #$vehicle_photo->vehicle_id = $vehicle->id;
             #$vehicle_photo->save();
     
-            $vehicle->vehiclephotos()->update(['photo' => $name]);
+            $vehicle->vehiclephotos()->update(['photo' => $name,'photo_postion' => $i++]);
  
           }     
         }
@@ -196,7 +210,17 @@ class ListingController extends Controller
         return view ('user.vehicle_ad')->with($arr);
     } 
 
+    public function invoice (Listing $listing, Vehicle $vehicle){
+        $arr['categories'] = Category::all();
+        $arr['cities'] = City::all();
+        $arr['makes'] = Carmake::all();
+        $arr['models'] = Carmodel::all();
+        $arr['listing'] = $listing;
+        $arr['vehicle'] = $vehicle;
+        $arr['packages'] = Package::all();
 
+        return view('user.invoice')->with($arr);
+    }
     public function model(Request $request)
     {
        $data = Carmodel::select('model','id')->where('make_id',$request->id)->take(10)->get();
@@ -209,5 +233,9 @@ class ListingController extends Controller
     public function exportpackage()
     {
         return Excel::download(new PackagesExport, 'packages.xlsx');
+    }
+
+    public function destory($id){
+      
     }
 }
