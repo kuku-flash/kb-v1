@@ -7,14 +7,6 @@
         @csrf
             <!-- Post Your ad start -->
             <fieldset class="border border-gary p-4 mb-5">
-<<<<<<< HEAD:resources/views/user/edit_listing.blade.php
-                <h4 style=" text-align: center;">Edit your AD</h4>
-                <section>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h3>Post Your Listing</h3>
-
-=======
                 <h4 style=" text-align: center;">Post your AD</h4>
                 <div class="row">
   <!-- Modal -->
@@ -38,7 +30,6 @@
     </div>
   </div>
  
->>>>>>> 3c27ed0bbdc28ddd2f0bdb042ce6c5da5c54a6bf:resources/views/user/listing.blade.php
                         <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
                         <select name="category" id="inputGroupSelect" class="w-100">
                             <option value="">Select category</option>
@@ -54,12 +45,7 @@
                             <option value="{{ $city->id }}">{{ $city->city }}</option>
                             @endforeach
                         </select>
-<<<<<<< HEAD:resources/views/user/edit_listing.blade.php
-                     
-                    </div>
-=======
                       <button type="submit" class="btn btn-primary d-block mt-2">Next</button>
->>>>>>> 3c27ed0bbdc28ddd2f0bdb042ce6c5da5c54a6bf:resources/views/user/listing.blade.php
                 </div>
             </fieldset>
             

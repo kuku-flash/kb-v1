@@ -13,8 +13,8 @@
                     <div class="col-lg-12">
                         <h3>Post Your Listing</h3>
 
-                        <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
-                        <select name="category" id="inputGroupSelect" class="w-100">
+                        <h6 class="font-weight-bold pt-4 pb-1 ">Select Ad Category:</h6>
+                        <select name="category" id="inputGroupSelect " class="w-100 nice-select">
                             <option value="">Select category</option>
                             @foreach ($categories as $category )
                             <option value="{{ $category->id }}">{{ $category->category_name }}</option>
@@ -22,7 +22,7 @@
                
                         </select>
                         <h6 class="font-weight-bold pt-4 pb-1">Select Your City</h6>
-                        <select name="city" id="inputGroupSelect" class="w-100">
+                        <select name="city" id="inputGroupSelect" class="w-100 nice-select">
                             <option value="">Select City</option>
                             @foreach ($cities as $city )
                             <option value="{{ $city->id }}">{{ $city->city }}</option>
@@ -41,7 +41,7 @@
           <h6>Select Car Model:</h6>
      
           <div> 
-              <select name="make" class="make">
+              <select name="make" class="make nice-select">
                 <option value="">Choose a Make</option>
     
                   @foreach($makes as $make)
@@ -50,8 +50,8 @@
              
               </select>
                               
-              <select name="model_id" class="model">
-                <option value="0" disabled="true" selected="true">Chose a model</option>
+              <select name="model_id" class="model nice-select">
+                <option value="0" disabled="true" selected="true">Choose a model</option>
 
               </select>
                 @error('model')
@@ -72,7 +72,7 @@
               @enderror
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Condition</h6>
-          <select name="condition" id="inputGroupSelect" class="w-100">
+          <select name="condition" id="inputGroupSelect" class="w-100 nice-select">
               <option value="">Select Condition</option>     
               <option>Foreign Used</option>     
               <option>Local Used</option>    
@@ -87,13 +87,13 @@
           <input type="number" name="mileage" class="border w-100 p-2 bg-white text-capitalize" placeholder="Mileage go There">
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Transmission</h6>
-          <select name="transmission" id="inputGroupSelect" class="w-100">
+          <select name="transmission" id="inputGroupSelect" class="w-100 nice-select">
               <option value="">Select Transmission</option>     
               <option>Manual</option>     
               <option>Automatic </option>    
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Car Fuel Type</h6>
-          <select name="fuel_type" id="inputGroupSelect" class="w-100">
+          <select name="fuel_type" id="inputGroupSelect" class="w-100 nice-select">
               <option value="">Select Fuel type</option>     
               <option>Petrol</option>     
               <option>Diesel</option>    
@@ -105,7 +105,7 @@
           <input name="price" type="text" class="border w-100 p-2 bg-white text-capitalize" placeholder="Kes 00.00">
 
           <h6 class="font-weight-bold pt-4 pb-1">Car Body Type</h6>
-          <select name="body_type" id="inputGroupSelect" class="w-100">
+          <select name="body_type" id="inputGroupSelect" class="w-100 nice-select">
               <option value="">Select Body type</option>     
               <option>saloon</option>     
               <option>Suv</option>    
@@ -121,14 +121,14 @@
           <input name="color" type="text" class="border w-100 p-2 bg-white text-capitalize" placeholder="color of your car">
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Duty Type</h6>
-          <select name="duty_type" id="inputGroupSelect" class="w-100">
+          <select name="duty_type" id="inputGroupSelect" class="w-100 nice-select">
               <option value="">Select Duty type</option>     
               <option>Paid</option>     
               <option>unpaid</option>    
       
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Car Interior Type</h6>
-          <select name="interior_type" id="inputGroupSelect" class="w-100">
+          <select name="interior_type" id="inputGroupSelect" class="w-100 nice-select">
               <option value="">Select Body type</option>     
               <option>leather</option>     
               <option>cloth</option>     
@@ -222,16 +222,12 @@ $(document).ready(function() {
   </script>
   <script>
   $(document).ready(function(){
-
 $(document).on('change','.make',function(){
   // console.log("hmm its change");
-
   var make_id=$(this).val();
   // console.log(cat_id);
   var div=$(this).parent();
-
   var op=" ";
-
   $.ajax({
     type:'get',
     url:'{!!URL::to('user/model')!!}',
@@ -241,7 +237,6 @@ $(document).on('change','.make',function(){
       for(var i=0;i<data.length;i++){
       op+='<option value="'+data[i].id+'">'+data[i].model+'</option>';
        }
-
        div.find('.model').html(" ");
        div.find('.model').append(op);
     },
@@ -249,9 +244,6 @@ $(document).on('change','.make',function(){
     error:function(){    }
   });
 });
-
-
 });
-
   </script>
   @endsection

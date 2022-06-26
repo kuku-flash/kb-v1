@@ -13,6 +13,8 @@
 			<div class="col-md-8">
 				<div class="product-details">
 					<h1 class="product-title">Subaru Impreza WRX STI 2013 </h1>
+					<i class="fa fa-chevron-right arrow-right"></i>
+						<i class="fa fa-chevron-left arrow-left"></i>
 					<div class="product-meta">
 						<ul class="list-inline">
 							<li class="list-inline-item"><i class="fa fa-money"></i> KSH 1800000</li>
@@ -22,23 +24,23 @@
 					</div>
 
 					<!-- product slider -->
-					<div class="product-slider">
-						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_fqh_evox_1_815.jpg">
-							<img class="img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_fqh_evox_1_815.jpg" alt="product-img">
+					<div class="row">
+						<div class="product-slider">
+						 <img id=featured class="img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_fqh_evox_1_815.jpg">
+							 <div id="slide-wrapper">
+							 <div class="slide-one-item home-slider owl-carousel" >
+							 <div id="slider">
+								 <ul class="thumbs mt-3">	
+									 <img class="thumbnail thumb-img" src="images/2012_subaru_impreza_sedan_wrx-sti_ajp_evox_1_815.jpg">
+								
+									 
+								 </ul>
+							 </div>
+							 </div>
+							 </div>
+							 </div>
 						</div>
-						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_ajp_evox_1_815.jpg">
-							<img class="d-block img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_ajp_evox_1_815.jpg" alt="Second slide">
-						</div>
-						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_boc_evox_1_815.jpg">
-							<img class="d-block img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_boc_evox_1_815.jpg" alt="Third slide">
-						</div>
-						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_rqh_evox_1_815.jpg">
-							<img class="d-block img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_rqh_evox_1_815.jpg" alt="Third slide">
-						</div>
-						<div class="product-slider-item my-4" data-image="images/2012_subaru_impreza_sedan_wrx-sti_tlb_evox_1_815.jpg">
-							<img class="d-block img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_tlb_evox_1_815.jpg" alt="Third slide">
-						</div>
-					</div>
+					
 					<!-- product slider -->
 
 					<div class="content mt-5 pt-5">
@@ -251,5 +253,24 @@
 	</div>
 	<!-- Container End -->
 </section>
-
+<script type="text/javascript">
+    let thumbnails = document.getElementsByClassName('thumbnail')
+    
+    let activeImages = document.getElementsByClassName('active')
+    
+    for (var i=0; i < thumbnails.length; i++){
+    
+        thumbnails[i].addEventListener('click', function(){
+            console.log(activeImages)
+            
+            if (activeImages.length > 0){
+                activeImages[0].classList.remove('active')
+            }
+            
+    
+            this.classList.add('active')
+            document.getElementById('featured').src = this.src
+        })
+    }        
+    </script>
 @endsection

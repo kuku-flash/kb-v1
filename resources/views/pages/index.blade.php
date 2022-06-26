@@ -309,6 +309,45 @@
 <!--==========================================
 =           BNBs PACKAGE           =
 ===========================================-->
+<section>
+	<div class="swiper mySwiper">
+		<div class="swiper-wrapper">
+		  <div class="swiper-slide">Slide 1</div>
+		  <div class="swiper-slide">Slide 2</div>
+		  <div class="swiper-slide">Slide 3</div>
+		  <div class="swiper-slide">Slide 4</div>
+		  <div class="swiper-slide">Slide 5</div>
+		  <div class="swiper-slide">Slide 6</div>
+		  <div class="swiper-slide">Slide 7</div>
+		  <div class="swiper-slide">Slide 8</div>
+		  <div class="swiper-slide">Slide 9</div>
+		</div>
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-pagination"></div>
+	  </div>  
+	  <!-- Initialize Swiper -->
+	  <script>
+		var swiper = new Swiper(".mySwiper", {
+		  slidesPerView: 3,
+		  spaceBetween: 30,
+		  slidesPerGroup: 3,
+		  loop: true,
+		  loopFillGroupWithBlank: true,
+		  pagination: {
+			el: ".swiper-pagination",
+			clickable: true,
+		  },
+		  navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		  },
+		});
+	  </script>
+</section>
+
+
+
 <section  class="section-bnb section bg-gray">
 	<div class="container">
 		<div class="row">
@@ -639,7 +678,9 @@
 		</div>
 	</div>
 	<!-- Container End -->
+
 	<script type="text/javascript">
+
 		// List of sentences
 var _CONTENT = [ 
 "Buy, Sell and Consign", 

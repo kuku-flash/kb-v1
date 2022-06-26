@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap-slider.css')}}">
     <!-- Font Awesome -->
-
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css')}}">
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="{{ asset('plugins/slick-carousel/slick/slick.css')}}" >
     <link rel="stylesheet" href="{{ asset('plugins/slick-carousel/slick/slick-theme.css')}}" >
@@ -257,10 +258,12 @@
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('plugins/bootstrap/js/bootstrap-slider.js')}}"></script>
   <!-- tether js -->
+   <!-- Swiper JS -->
+   <script src="js/swiper-bundle.min.js"></script>
 <script src="{{ asset('plugins/tether/js/tether.min.js')}}"></script>
 <script src="{{ asset('plugins/raty/jquery.raty-fa.js')}}"></script>
 <script src="{{ asset('plugins/slick-carousel/slick/slick.min.js')}}"></script>
-<script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script> 
+ 
 <script src="{{ asset('plugins/fancybox/jquery.fancybox.pack.js')}}"></script>
 <script src="{{ asset('plugins/smoothscroll/SmoothScroll.min.js')}}"></script>
 
