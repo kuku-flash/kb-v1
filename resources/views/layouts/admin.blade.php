@@ -44,7 +44,7 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="index.html">
+                <a href="/">
                     <b class="logo-abbr" style="color: #fff; font-size: 22px;">K </b>
                     <span class="logo-compact" style="color: #fff;">K</span>
                     <span class="brand-title" style="color: #fff; font-size: 22px;">
@@ -294,13 +294,33 @@
                             
                         </ul>
                     </li>
+                  
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-note menu-icon"></i><span class="nav-text">Listing</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li>
+                                <a href="{{ route('admin.listing.index')}}" class="nav-text  
+                                    @if($segment=='listings')
+                                    active   
+                                    @endif "> <i class="icon-note menu-icon"></i>Listing</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.listing.vehicles')}}" class="nav-text  
+                                    @if($segment=='vechicles')
+                                    active   
+                                    @endif ">vechicle</a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li>
                         <a href="{{ route('admin.category.index')}}" class="nav-text  
                             @if($segment=='categories')
                             active   
                             @endif "> <i class="icon-note menu-icon"></i>Category</a>
-                </li>
+                    </li>
                     <li>
                         <a href="{{ route('admin.package.index')}}" class="nav-text  
                             @if($segment=='packages')

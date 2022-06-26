@@ -60,18 +60,13 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item dropdown dropdown-slide">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">List Dashboard<span><i class="fa fa-angle-down"></i></span>
-                  </a>
-  
-                  <!-- Dropdown list -->
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('user.my_list')}}"> My List</a>
-                    <a class="dropdown-item" href="{{route('user.favourite_list')}}"> Favourite List</a>
-                    <a class="dropdown-item" href="{{route('user.archived_list')}}"> Archived List</a>
-                    <a class="dropdown-item" href="{{route('user.pending_list')}}"> Pending List</a>
-                  </div>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('about_us')}}">About Us</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('contact_us')}}">Contact Us</a>
+                </li>
+             
                 <li class="nav-item dropdown dropdown-slide">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Pages <span><i class="fa fa-angle-down"></i></span>
@@ -92,12 +87,12 @@
                 </li>
                 <li class="nav-item dropdown dropdown-slide">
                   <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Listing <span><i class="fa fa-angle-down"></i></span>
+                    Car List <span><i class="fa fa-angle-down"></i></span>
                   </a>
                   <!-- Dropdown list -->
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ route('category')}}">Ad-Gird View</a>
-                    <a class="dropdown-item" href="{{ route('category')}}">Ad-List View</a>
+                    <a class="dropdown-item" href="{{ route('vehicles_grid')}}">listing-Gird View</a>
+                    <a class="dropdown-item" href="{{ route('vehicles_list')}}">listing-List View</a>
                   </div>
                 </li>
               </ul>
@@ -121,8 +116,11 @@
                       {{ Auth::user()->name }} <span></i></span>
                     </a>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Chat</a> 
-                    <a class="dropdown-item" href="#">Settings</a> 
+                    <a class="dropdown-item" href="{{route('user.my_list')}}"> My List</a>
+                    <a class="dropdown-item" href="{{route('user.pending_list')}}"> Pending List</a>                    
+                    <a class="dropdown-item" href="{{route('user.archived_list')}}"> Archived List</a>                  
+                    <a class="dropdown-item" href="#">Chat</a> 
+                    <a class="dropdown-item" href="{{ route('user_profile')}}">User Profile</a> 
                     <a class="dropdown-item" href="{{ route('logout') }}"
                      onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">
@@ -263,10 +261,15 @@
 <script src="{{ asset('plugins/tether/js/tether.min.js')}}"></script>
 <script src="{{ asset('plugins/raty/jquery.raty-fa.js')}}"></script>
 <script src="{{ asset('plugins/slick-carousel/slick/slick.min.js')}}"></script>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 6693ad1042b3e5f01f803d6c692f51ae0becc81d
 <script src="{{ asset('plugins/fancybox/jquery.fancybox.pack.js')}}"></script>
 <script src="{{ asset('plugins/smoothscroll/SmoothScroll.min.js')}}"></script>
 
+  <!-- <script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.js')}}"></script> -->
 <script src="{{ asset('plugins/google-map/gmap.js')}}"></script>
 <script src="{{ asset('js/script.js')}}"></script>
 

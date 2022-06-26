@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Listing;
+use App\Models\Vehicle;
+use App\Models\Vehicle_photo;
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Intersection;
 
 class PagesController extends Controller
 {
@@ -15,13 +20,14 @@ Public function index (){
 }
 
 Public function category (){
-
-    return view ('pages.category');
+    $arr['vehicles'] = Vehicle::all();
+    $arr['listings'] = Listing::all();
+    return view ('pages.category')->with($arr);
     
 }
 
-Public function single (Listing $listing){
-    $arr['listing'] = $listing;
+Public function single (Vehicle $vehicle){
+    $arr['vehicle'] = $vehicle;
     return view ('pages.single')->with($arr);
     
 }
@@ -56,10 +62,29 @@ Public function contact_us(){
     
 }
 
-Public function vehicles(){
-
-    return view ('pages.vehicles');
+Public function vehicles_grid(){
+    $arr['cities'] = City::all();
+    $arr['vehicles'] = Vehicle::all();
+    $arr['listings'] = Listing::where('category_id',2)->take(10)->get(); //the 2 is the id of car category
+  
+    $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
+    return view ('pages.vehicles_grid')->with($arr);
     
+}
+Public function vehicles_list(){
+    $arr['cities'] = City::all();
+    $arr['vehicles'] = Vehicle::all();
+    $arr['listings'] = Listing::where('category_id',2)->take(10)->get(); //the 2 is the id of car category
+  
+    $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
+    return view ('pages.vehicles_list')->with($arr);
+    
+}
+public function vehicle(Listing $listing, Vehicle $vehicle){
+    $arr['listing'] = $listing;
+    $arr['vehicle'] = $vehicle;
+    $arr['vehiclephotos'] = Vehicle_photo::all();
+    return view ('pages.vehicle')->with($arr);
 }
 Public function post_ad_form(){
 
@@ -125,6 +150,10 @@ Public function user_profile(){
     
 }
 
+public function package (){
+    return view ('pages.package');
+    
+}
 
 
 

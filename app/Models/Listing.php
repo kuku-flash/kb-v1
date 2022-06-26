@@ -9,9 +9,9 @@ class Listing extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'ad_status', 
-        'ad_featured', 
-        'ad_duration', 
+        'ads_status', 
+        'ads_featured', 
+        'ads_duration', 
         'category_id',
         'city_id',
         'package_id',
@@ -30,6 +30,7 @@ class Listing extends Model
     public function user () {
         return $this->belongsTo(User::class, 'user_id');
     }
+
 
     
     

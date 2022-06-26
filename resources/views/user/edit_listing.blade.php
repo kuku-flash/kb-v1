@@ -3,10 +3,12 @@
 
 <section class="section-sm">
     <div class="container">
-      <form action="{{ route('user.store_listing')}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">     
+      <form action="{{ route('user.update_listing', [$listing->id, $vehicle->id])}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">     
         @csrf
+        @method('put')
             <!-- Post Your ad start -->
             <fieldset class="border border-gary p-4 mb-5">
+<<<<<<< HEAD
                 <h4 style=" text-align: center;">Post your AD</h4>
                 <div class="row">
   <!-- Modal -->
@@ -30,11 +32,23 @@
     </div>
   </div>
  
+=======
+                <h4 style=" text-align: center;">Edit your AD</h4>
+                <section>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Post Your Listing</h3>
+
+>>>>>>> 6693ad1042b3e5f01f803d6c692f51ae0becc81d
                         <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
                         <select name="category" id="inputGroupSelect" class="w-100">
                             <option value="">Select category</option>
                             @foreach ($categories as $category )
-                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                            <option value="{{ $category->id }}"
+                                @if ($category->id == $listing->category_id)
+                                selected
+                                @endif
+                              >{{ $category->category_name }}</option>
                             @endforeach
                
                         </select>
@@ -42,10 +56,19 @@
                         <select name="city" id="inputGroupSelect" class="w-100">
                             <option value="">Select City</option>
                             @foreach ($cities as $city )
-                            <option value="{{ $city->id }}">{{ $city->city }}</option>
+                            <option value="{{ $city->id }}"
+                              @if ($city->id == $listing->city_id)
+                              selected
+                              @endif
+                              >{{ $city->city }}</option>
                             @endforeach
                         </select>
+<<<<<<< HEAD
                       <button type="submit" class="btn btn-primary d-block mt-2">Next</button>
+=======
+                     
+                    </div>
+>>>>>>> 6693ad1042b3e5f01f803d6c692f51ae0becc81d
                 </div>
             </fieldset>
             
@@ -57,24 +80,30 @@
           <h6 class="font-weight-bold pt-4 pb-1">Select Car Model:</h6>
      
           <div class="form-group  mt-2 mb-2 col-md-6"> 
-              <select name="make" class="form-control make  @error('make') is-invalid  @enderror">
+              <select name="make" class=" make  @error('make') is-invalid  @enderror">
                 <option value="">Choose a Make</option>
-    
                   @foreach($makes as $make)
-                    <option value="{{ $make->id }}">{{ $make->make }}</option>
+                    <option value="{{ $make->id }}"
+                      @if ($vehicle->carmodel->carmake->id == $make->id)
+                      selected
+                      @endif
+                      >{{ $make->make }}</option>
                   @endforeach
              
               </select>
                               
-              <select name="model_id" class="form-control model  @error('model') is-invalid  @enderror">
+              <select name="model_id" class="model  @error('model') is-invalid  @enderror">
 
                 <option value="0" disabled="true" selected="true">Choose a model</option>
                
 
                    @foreach($models as $model)
-                   @if ($make->id = $model->make_id)
-                    <option value="{{ $model->id }}">{{ $model->model }}</option>
-                    @endif
+                    <option value="{{ $model->id }}"
+                      @if ($model->id == $vehicle->model_id)
+                      selected
+                      @endif
+                      >{{ $model->model }}</option>
+                  
                   @endforeach
 
                   
@@ -85,6 +114,8 @@
                 </span>
                 @enderror
           </div>
+
+        
           <h6 class="font-weight-bold pt-4 pb-1">Title</h6>
           <input name="title" type="text" class="border w-100 p-2 bg-white text-capitalize" value="{{$vehicle->title}}" >
 
@@ -99,34 +130,34 @@
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Condition</h6>
           <select name="condition" id="inputGroupSelect" class="w-100">
-              <option value="">Select Condition</option>     
+              <option selected>{{$vehicle->condition}}</option>     
               <option>Foreign Used</option>     
               <option>Local Used</option>    
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Mileage:</h6>
-          <input type="number" name="mileage" class="border w-100 p-2 bg-white text-capitalize" placeholder="Mileage go There">
+          <input type="number" name="mileage" class="border w-100 p-2 bg-white text-capitalize" value="{{$vehicle->mileage}}">
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Transmission</h6>
           <select name="transmission" id="inputGroupSelect" class="w-100">
-              <option value="">Select Transmission</option>     
+            <option selected>{{$vehicle->transmission}}</option>       
               <option>Manual</option>     
               <option>Automatic </option>    
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Car Fuel Type</h6>
           <select name="fuel_type" id="inputGroupSelect" class="w-100">
-              <option value="">Select Fuel type</option>     
+            <option selected>{{$vehicle->fuel_type}}</option>     
               <option>Petrol</option>     
               <option>Diesel</option>    
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Exchange</h6>
-          <input name="exchange" type="text" class="border w-100 p-2 bg-white text-capitalize">
+          <input name="exchange" type="text" class="border w-100 p-2 bg-white text-capitalize" value="{{$vehicle->exchange}}">
 
           <h6 class="font-weight-bold pt-4 pb-1">Price</h6>
-          <input name="price" type="text" class="border w-100 p-2 bg-white text-capitalize" placeholder="Kes 00.00">
+          <input name="price" type="text" class="border w-100 p-2 bg-white text-capitalize"  value="{{$vehicle->price}}">
 
           <h6 class="font-weight-bold pt-4 pb-1">Car Body Type</h6>
           <select name="body_type" id="inputGroupSelect" class="w-100">
-              <option value="">Select Body type</option>     
+            <option selected>{{$vehicle->body_type}}</option>       
               <option>saloon</option>     
               <option>Suv</option>    
               <option>convertible</option>    
@@ -138,37 +169,66 @@
           </select>
 
           <h6 class="font-weight-bold pt-4 pb-1">Color</h6>
-          <input name="color" type="text" class="border w-100 p-2 bg-white text-capitalize" placeholder="color of your car">
+          <input name="color" type="text" class="border w-100 p-2 bg-white text-capitalize"  value="{{$vehicle->color}}">
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Duty Type</h6>
           <select name="duty_type" id="inputGroupSelect" class="w-100">
-              <option value="">Select Duty type</option>     
+            <option selected>{{$vehicle->duty_type}}</option>        
               <option>Paid</option>     
               <option>unpaid</option>    
       
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Car Interior Type</h6>
           <select name="interior_type" id="inputGroupSelect" class="w-100">
-              <option value="">Select Body type</option>     
+            <option selected>{{$vehicle->interior_type}}</option>      
               <option>leather</option>     
               <option>cloth</option>     
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Engine size</h6>
-          <input name="engine_size" type="text" class="border w-100 p-2 bg-white text-capitalize" placeholder="Your Engine size">
+          <input name="engine_size" type="text" class="border w-100 p-2 bg-white text-capitalize"  value="{{$vehicle->engine_size}}">
           
           <h6 class="font-weight-bold pt-4 pb-1">Description:</h6>
-          <textarea name="description" id="" class="border p-3 w-100" rows="7" placeholder="Write details about your product"></textarea>
-
-
+          <textarea name="description" id="" class="border p-3 w-100" rows="7" placeholder="Write details about your product" >
+            {{$vehicle->description}}
+          </textarea>
+    
           <div class="field" align="left">
             <h3>Upload your images</h3>
             <input type="file" id="files" name="images[]" multiple />
           </div>
+   
+@foreach ($vehiclephotos as $vehiclephoto)
+    @if($vehiclephoto->vehicle->listing_id == $listing->id)
+      <img width="80px" height="auto" src="/photos/{{ $vehiclephoto->photo }}" alt="image description">
+    @endif  
+          
+@endforeach
+     
       </div>
   </div>
 </fieldset>
+<fieldset class="border border-gary p-4 mb-5">
+  <h4 style=" text-align: center;">Choose your boosting Plan</h4>
+  <section>
+  <div class="row">
+      <div class="col-lg-12">
+          <h3>Ad Boost Plan</h3>
 
-<button type="submit" class="btn btn-primary d-block mt-2">Post Your Listing</button>
+          <h6 class="font-weight-bold pt-4 pb-1">Boost your Listing</h6>
+          <select name="package_id" id="inputGroupSelect" class="w-100">
+            <option selected value="{{ $listing->package_id }}">{{ $listing->package->package_name }}</option>
+              @foreach ($packages as $package )
+              <option value="{{ $package->id }}">{{ $package->package_name }}</option>
+              @endforeach
+ 
+          </select>
+       <input type="hidden" name="user_id" value="{{ Auth::user()->id}}" >
+      </div>
+  </div>
+  </section>
+</fieldset>
+
+<button type="submit" class="btn btn-primary d-block mt-2">Update Your Listing</button>
 </form>
     
         </form>
@@ -240,4 +300,39 @@ $(document).ready(function() {
     }
   });
   </script>
+    <!-- The script for Car Make -->
+    <script>
+      $(document).ready(function(){
+    
+    $(document).on('change','.make',function(){
+      // console.log("hmm its change");
+    
+      var make_id=$(this).val();
+      // console.log(cat_id);
+      var div=$(this).parent();
+    
+      var option=" ";
+    
+      $.ajax({
+        type:'get',
+        url:'{!!URL::to('user/model')!!}',
+        data:{'id':make_id},
+        success:function(data){
+          
+          for(var i=0;i<data.length;i++){
+            option+='<option value="'+data[i].id+'">'+data[i].model+'</option>';
+           }
+    
+           div.find('.model').html(" ");
+           div.find('.model').append(option);
+        },
+        
+        error:function(){    }
+      });
+    });
+    
+    
+    });
+    
+      </script>
   @endsection

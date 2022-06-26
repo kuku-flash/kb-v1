@@ -10,7 +10,7 @@ class Vehicle_photo extends Model
     use HasFactory;
     protected $fillable = [
         'photo',
-        'photo_position',
+        'photo_postion',
         'vehicle_id',
      
     ];

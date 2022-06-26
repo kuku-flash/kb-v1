@@ -4,7 +4,12 @@
 <!--==================================
 =            User Profile            =
 ===================================-->
-<section class=" section-sm">
+@if(session('success'))
+<div class="mt-3 alert alert-success">
+ <span> {{ session('success') }} </span>
+</div>
+@endif
+<section class="section-sm">
 	<!-- Container Start -->
 	<div class="container">
 		<!-- Row Start -->
@@ -25,15 +30,17 @@
 					<!-- Dashboard Links -->
 					<div class="widget user-dashboard-menu">
 						<ul>
-							<li><a href="dashboard-my-ads.html"><i class="fa fa-user"></i> My list</a></li>
+							<li >
+								<a href="{{ route('user.my_list')}}"><i class="fa fa-user"></i> My List</a></li>
 							<li>
-								<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite List <span>5</span></a>
-							</li>
-							<li>
-								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archeved List <span>12</span></a>
-							</li>
 							<li class="active">
-								<a href="dashboard-pending-ads.html"><i class="fa fa-bolt"></i> Pending Approval<span>23</span></a>
+								<a href="{{ route('user.pending_list')}}"><i class="fa fa-bolt"></i> Pending Approval<span>{{$listings->count()}}</span></a>
+							</li>
+							<li>
+								<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite List</a>
+							</li>
+							<li>
+								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archeved List</a>
 							</li>
 							<li>
 								<a href=""><i class="fa fa-cog"></i> Logout</a>
@@ -77,34 +84,58 @@
 			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
 				<!-- Recently Favorited -->
 				<div class="widget dashboard-container my-adslist">
-					<h3 class="widget-header">My Ads</h3>
+					<h3 class="widget-header">My List</h3>
 					<table class="table table-responsive product-dashboard-table">
 						<thead>
 							<tr>
-								<th>Image</th>
-								<th>Product Title</th>
+						
+								<th>Listing Title</th>
+								<th>User</th>
 								<th class="text-center">Category</th>
 								<th class="text-center">Action</th>
 							</tr>
 						</thead>
 						<tbody>
+						
+						
+							@foreach($listings as $listing)
 							<tr>
-
-								<td class="product-thumb">
-									<img width="80px" height="auto" src="images/products/products-1.jpg" alt="image description"></td>
-								<td class="product-details">
-									<h3 class="title">Macbook Pro 15inch</h3>
-									<span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
-									<span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
-									<span class="status active"><strong>Status</strong>Active</span>
-									<span class="location"><strong>Location</strong>Dhaka,Bangladesh</span>
+								@foreach ($vehicles as $vehicle)
+										@if($listing->id == $vehicle->listing_id)
+										<td class="product-thumb">
+											
+											@foreach ($vehiclephotos as $vehiclephoto)
+											@if ($vehicle->id == $vehiclephoto->vehicle_id)
+										<!--	<img class="card-img-top category-img-fluid" src="/photos/{{ $vehiclephoto->photo }}" alt=""style="max-height: 400px;"> -->
+											<img width="80px" height="auto" src="/photos/{{ $vehiclephoto->photo }}" alt="image description">
+											@endif
+											@endforeach
+										</td>
+										<td class="product-details">
+											<h3 class="title">  {{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}}</h3>
+											<span class="add-id"><strong>Listing ID:</strong> {{ $listing->id }}</span>
+											<span><strong>Posted on: </strong><time> {{ $vehicle->created_at->diffForHumans() }}</time> </span>
+											<span class="status"><strong>Status: </strong>{{ $listing->ads_status }}</span>
+											<span class="location"><strong>Location: </strong>{{ $listing->city->city }}</span>
+										</td>
+									
+								<td class="product-details"><span class="categories">{{ $listing->user->name }}</span>
+									<span class="categories"><a href="{{ route('user.invoice', [$listing->id, $vehicle->id])}}">check invoice</a></span>
 								</td>
-								<td class="product-category"><span class="categories">Laptops</span></td>
+
+								
+								
+								<td class="product-category"><span class="categories">{{ $listing->category->category_name }}</span></td>
 								<td class="action" data-title="Action">
 									<div class="">
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
+												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('user.show_listing', [$listing->id, $vehicle->id])}}">
+													<i class="fa fa-eye"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
+												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_listing', [$listing->id, $vehicle->id])}}">
 													<i class="fa fa-pencil"></i>
 												</a>
 											</li>
@@ -117,127 +148,15 @@
 									</div>
 								</td>
 							</tr>
-							<tr>
+							@endif
+							@endforeach
+							@endforeach
 
-								<td class="product-thumb">
-									<img width="80px" height="auto" src="images/products/products-2.jpg" alt="image description"></td>
-								<td class="product-details">
-									<h3 class="title">Study Table Combo</h3>
-									<span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
-									<span><strong>Posted on: </strong><time>Feb 12, 2017</time> </span>
-									<span class="status active"><strong>Status</strong>Active</span>
-									<span class="location"><strong>Location</strong>USA</span>
-								</td>
-								<td class="product-category"><span class="categories">Laptops</span></td>
-								<td class="action" data-title="Action">
-									<div class="">
-										<ul class="list-inline justify-content-center">
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Delete" class="delete" href="">
-													<i class="fa fa-trash"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-							<tr>
-
-								<td class="product-thumb">
-									<img width="80px" height="auto" src="images/products/products-3.jpg" alt="image description"></td>
-								<td class="product-details">
-									<h3 class="title">Macbook Pro 15inch</h3>
-									<span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
-									<span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
-									<span class="status active"><strong>Status</strong>Active</span>
-									<span class="location"><strong>Location</strong>Dhaka,Bangladesh</span>
-								</td>
-								<td class="product-category"><span class="categories">Laptops</span></td>
-								<td class="action" data-title="Action">
-									<div class="">
-										<ul class="list-inline justify-content-center">
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Delete" class="delete" href="">
-													<i class="fa fa-trash"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-							<tr>
-
-								<td class="product-thumb">
-									<img width="80px" height="auto" src="images/products/products-4.jpg" alt="image description"></td>
-								<td class="product-details">
-									<h3 class="title">Macbook Pro 15inch</h3>
-									<span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
-									<span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
-									<span class="status active"><strong>Status</strong>Active</span>
-									<span class="location"><strong>Location</strong>Dhaka,Bangladesh</span>
-								</td>
-								<td class="product-category"><span class="categories">Laptops</span></td>
-								<td class="action" data-title="Action">
-									<div class="">
-										<ul class="list-inline justify-content-center">
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Delete" class="delete" href="">
-													<i class="fa fa-trash"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-							<tr>
-
-								<td class="product-thumb">
-									<img width="80px" height="auto" src="images/products/products-1.jpg" alt="image description"></td>
-								<td class="product-details">
-									<h3 class="title">Macbook Pro 15inch</h3>
-									<span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
-									<span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
-									<span class="status active"><strong>Status</strong>Active</span>
-									<span class="location"><strong>Location</strong>Dhaka,Bangladesh</span>
-								</td>
-								<td class="product-category"><span class="categories">Laptops</span></td>
-								<td class="action" data-title="Action">
-									<div class="">
-										<ul class="list-inline justify-content-center">
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="">
-													<i class="fa fa-pencil"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Delete" class="delete" href="">
-													<i class="fa fa-trash"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
 						</tbody>
 					</table>
 
 				</div>
-				
+
 				<!-- pagination -->
 				<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">
