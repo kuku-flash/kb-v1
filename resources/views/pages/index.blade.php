@@ -89,14 +89,16 @@
 =            Popular deals section            =
 ============================================-->
 
-<section class="popular-deals section bg-gray">
+<section class="product">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12 .col-lg-4">
 				<div class="section-title">
 					<h2>Trending Ads</h2>
 				</div>
 			</div>
+		<button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+        <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
 		</div>
 		<div class="row">
 			<!-- offer 01 -->
@@ -309,46 +311,7 @@
 <!--==========================================
 =           BNBs PACKAGE           =
 ===========================================-->
-<section>
-	<div class="swiper mySwiper">
-		<div class="swiper-wrapper">
-		  <div class="swiper-slide">Slide 1</div>
-		  <div class="swiper-slide">Slide 2</div>
-		  <div class="swiper-slide">Slide 3</div>
-		  <div class="swiper-slide">Slide 4</div>
-		  <div class="swiper-slide">Slide 5</div>
-		  <div class="swiper-slide">Slide 6</div>
-		  <div class="swiper-slide">Slide 7</div>
-		  <div class="swiper-slide">Slide 8</div>
-		  <div class="swiper-slide">Slide 9</div>
-		</div>
-		<div class="swiper-button-next"></div>
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-pagination"></div>
-	  </div>  
-	  <!-- Initialize Swiper -->
-	  <script>
-		var swiper = new Swiper(".mySwiper", {
-		  slidesPerView: 3,
-		  spaceBetween: 30,
-		  slidesPerGroup: 3,
-		  loop: true,
-		  loopFillGroupWithBlank: true,
-		  pagination: {
-			el: ".swiper-pagination",
-			clickable: true,
-		  },
-		  navigation: {
-			nextEl: ".swiper-button-next",
-			prevEl: ".swiper-button-prev",
-		  },
-		});
-	  </script>
-</section>
-
-
-
-<section  class="section-bnb section bg-gray">
+<section  class="product">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -357,6 +320,8 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
 				</div>
 			</div>
+			<button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+        <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
 		</div>
 		<div class="row">
 			<!-- offer 01 -->

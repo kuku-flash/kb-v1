@@ -12,13 +12,9 @@
 			<!-- Left sidebar -->
 			<div class="col-md-8">
 				<div class="product-details">
-<<<<<<< HEAD
-					<h1 class="product-title">Subaru Impreza WRX STI 2013 </h1>
+			<h1 class="product-title">Subaru Impreza WRX STI 2013 {{ $vehicle->title}}</h1>
 					<i class="fa fa-chevron-right arrow-right"></i>
 						<i class="fa fa-chevron-left arrow-left"></i>
-=======
-					<h1 class="product-title">Subaru Impreza WRX STI 2013 {{ $vehicle->title}}</h1>
->>>>>>> 6693ad1042b3e5f01f803d6c692f51ae0becc81d
 					<div class="product-meta">
 						<ul class="list-inline">
 							<li class="list-inline-item"><i class="fa fa-money"></i> KSH 1800000</li>

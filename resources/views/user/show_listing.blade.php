@@ -189,7 +189,7 @@
 					<div class="widget user text-center">
 						<img class="rounded-circle img-fluid mb-5 px-5" src="images/joshua.jpeg" alt="">
 						<h4><a href="">  {{ Auth::user()->name }} </a></h4>
-						<p class="member-time">Member Since {{ Auth::user()->created_at }} </p>
+						<p class="member-time">Member Since {{ Auth::user()->created_at->diffForHumans() }} </p>
 						<a href="">See all ads</a>
 						<ul class="list-inline mt-20">
 							<li class="list-inline-item"><a href="" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
