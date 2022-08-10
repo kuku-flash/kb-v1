@@ -27,11 +27,15 @@
 					<div class="row">
 						<div class="product-slider">
 						 <img id=featured class="img-fluid w-100" src="images/2012_subaru_impreza_sedan_wrx-sti_fqh_evox_1_815.jpg">
+						 
 							 <div id="slide-wrapper">
 							 <div class="slide-one-item home-slider owl-carousel" >
 							 <div id="slider">
 								 <ul class="thumbs mt-3">	
+									<img class="thumbnail thumb-img" src="images/2012_subaru_impreza_sedan_wrx-sti_fqh_evox_1_815.jpg">
+						 
 									 <img class="thumbnail thumb-img" src="images/2012_subaru_impreza_sedan_wrx-sti_ajp_evox_1_815.jpg">
+									 
 								
 									 
 								 </ul>

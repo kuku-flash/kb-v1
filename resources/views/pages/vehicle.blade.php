@@ -12,27 +12,39 @@
 			<!-- Left sidebar -->
 			<div class="col-md-8">
 				<div class="product-details">
-					<h1 class="product-title"> {{ $vehicle->title}}  {{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}}</h1>
+					<h1 class="product-title"> {{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}}</h1>
 					<div class="product-meta">
 						<ul class="list-inline">
-							<li class="list-inline-item"><i class="fa fa-money"></i> KSH {{ $vehicle->price}}</li>
+							<li class="list-inline-item price"><i class="fa fa-money"></i> KSH {{ $vehicle->price}}</li>
 							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Category<a href="">{{ $listing->category->category_name}}</a></li>
 							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="">{{ $listing->city->city}}</a></li>
 						</ul>
 					</div>
+<section>
+	<div class="w3-container">
+	  </div>
+	  @foreach ($vehiclephotos as $vehiclephoto )
+		@if($vehicle->id == $vehiclephoto->vehicle_id)
+	  <div class="w3-content" style="max-width:1200px">
+		<img class="mySlides" src="/photos/{{ $vehiclephoto->photo }}" style="width:100%;display:none">
+		<img class="mySlides" src="img_snow_wide.jpg" style="width:100%">
+		<img class="mySlides" src="img_mountains_wide.jpg" style="width:100%;display:none">
+		<div class="w3-row-padding w3-section">
+		  <div class="w3-col s4">
+			<img class="demo w3-opacity w3-hover-opacity-off" src="/photos/{{ $vehiclephoto->photo }}" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
+		  </div>
+		  <div class="w3-col s4">
+			<img class="demo w3-opacity w3-hover-opacity-off" src="/photos/{{ $vehiclephoto->photo }}" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
+		  </div>
+		  <div class="w3-col s4">
+			<img class="demo w3-opacity w3-hover-opacity-off" src="img_mountains_wide.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
+		  </div>
+		</div>
+		@endif
+	@endforeach
+	  </div>
+</section>
 
-					<!-- product slider -->
-					<div class="product-slider">
-                        @foreach ($vehiclephotos as $vehiclephoto )
-							@if($vehicle->id == $vehiclephoto->vehicle_id)
-				
-						<div class="product-slider-item my-4" data-image="/photos/{{ $vehiclephoto->photo }}">
-							<img class="img-fluid w-100" src="/photos/{{ $vehiclephoto->photo }}" alt="product-img">
-						</div>
-                        @endif
-                        @endforeach
-					
-					</div>
 					<!-- product slider -->
 
 					<div class="content mt-5 pt-5">
@@ -180,9 +192,10 @@
 			</div>
 			<div class="col-md-4">
 				<div class="sidebar">
-					<div class="widget price text-center">
+					<div class="widget price  text-center">
 						<h4>Price</h4>
 						<p>KSH {{ $vehicle->price}}</p>
+						
 					</div>
 					<!-- User Profile widget -->
 					<div class="widget user text-center">
@@ -238,5 +251,25 @@
 	</div>
 	<!-- Container End -->
 </section>
-
+<script>
+	function currentDiv(n) {
+	  showDivs(slideIndex = n);
+	}
+	
+	function showDivs(n) {
+	  var i;
+	  var x = document.getElementsByClassName("mySlides");
+	  var dots = document.getElementsByClassName("demo");
+	  if (n > x.length) {slideIndex = 1}
+	  if (n < 1) {slideIndex = x.length}
+	  for (i = 0; i < x.length; i++) {
+		x[i].style.display = "none";
+	  }
+	  for (i = 0; i < dots.length; i++) {
+		dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+	  }
+	  x[slideIndex-1].style.display = "block";
+	  dots[slideIndex-1].className += " w3-opacity-off";
+	}
+	</script>
 @endsection

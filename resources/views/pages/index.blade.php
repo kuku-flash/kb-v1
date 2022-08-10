@@ -97,8 +97,6 @@
 					<h2>Trending Ads</h2>
 				</div>
 			</div>
-		<button class="pre-btn"><img src="images/arrow.png" alt=""></button>
-        <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
 		</div>
 		<div class="row">
 			<!-- offer 01 -->
@@ -170,14 +168,13 @@
 				</ul>  
 				<div class="property-price">
 					<p class="badge-sale">For Sale</p>
-					<p class="price">Ksh9.4M</p></a>
+					<div class="price ">Ksh9000000M</div></a>
+					
 					</div>
 		    </div>
 		</div>
 	</div>
 </div>
-
-
 
 					</div>
 					<div class="col-sm-12 col-lg-4">
@@ -320,8 +317,6 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
 				</div>
 			</div>
-			<button class="pre-btn"><img src="images/arrow.png" alt=""></button>
-        <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
 		</div>
 		<div class="row">
 			<!-- offer 01 -->
@@ -434,7 +429,7 @@
 				</ul>  
 				<div class="property-price">
 					<p class="badge-sale">For Rent</p>
-					<p class="price">Ksh 150,000</p></a>
+					<div class="price">Ksh 150,000</div></a>
 					</div>
 		    </div>
 		</div>
@@ -645,7 +640,26 @@
 	<!-- Container End -->
 
 	<script type="text/javascript">
+    let thumbnails = document.getElementsByClassName('thumbnail')
+    
+    let activeImages = document.getElementsByClassName('active')
+    
+    for (var i=0; i < thumbnails.length; i++){
+    
+        thumbnails[i].addEventListener('click', function(){
+            console.log(activeImages)
+            
+            if (activeImages.length > 1){
+                activeImages[0].classList.remove('active')
+            }
+            
+    
+            this.classList.add('active')
+            document.getElementById('featured').src = this.src
+        })
+    }        
 
+	
 		// List of sentences
 var _CONTENT = [ 
 "Buy, Sell and Consign", 

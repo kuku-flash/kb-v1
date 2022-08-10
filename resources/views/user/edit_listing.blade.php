@@ -8,7 +8,6 @@
         @method('put')
             <!-- Post Your ad start -->
             <fieldset class="border border-gary p-4 mb-5">
-<<<<<<< HEAD
                 <h4 style=" text-align: center;">Post your AD</h4>
                 <div class="row">
   <!-- Modal -->
@@ -32,14 +31,12 @@
     </div>
   </div>
  
-=======
                 <h4 style=" text-align: center;">Edit your AD</h4>
                 <section>
                 <div class="row">
                     <div class="col-lg-12">
                         <h3>Post Your Listing</h3>
 
->>>>>>> 6693ad1042b3e5f01f803d6c692f51ae0becc81d
                         <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
                         <select name="category" id="inputGroupSelect" class="w-100">
                             <option value="">Select category</option>

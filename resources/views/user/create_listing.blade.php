@@ -102,7 +102,7 @@
           <input name="exchange" type="text" class="border w-100 p-2 bg-white text-capitalize">
 
           <h6 class="font-weight-bold pt-4 pb-1">Price</h6>
-          <input name="price" type="text" class="border w-100 p-2 bg-white text-capitalize" placeholder="Kes 00.00">
+          <input name="price number" type="text" class="number border w-100 p-2 bg-white text-capitalize" placeholder="Kes 00.00">
 
           <h6 class="font-weight-bold pt-4 pb-1">Car Body Type</h6>
           <select name="body_type" id="inputGroupSelect" class="w-100">
@@ -134,8 +134,49 @@
               <option>cloth</option>     
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Engine size</h6>
-          <input name="engine_size" type="text" class="border w-100 p-2 bg-white text-capitalize" placeholder="Your Engine size">
-          
+          <select name="engine_size" id="inputGroupSelect" class="w-100">
+            <option value="">Select Engine Size</option>     
+            <option>1.0L</option>     
+            <option>1.2L</option> 
+            <option>1.4L</option> 
+            <option>1.5L</option> 
+            <option>1.6L</option> 
+            <option>1.7L</option> 
+            <option>1.8L</option> 
+            <option>2L</option> 
+            <option>2.2L</option>
+            <option>2.3L</option> 
+            <option>2.5L</option>  
+            <option>2.6L</option> 
+            <option>2.8L</option> 
+            <option>3L</option> 
+            <option>3.2L</option>
+            <option>3.3L</option>  
+            <option>3.5L</option> 
+            <option>3.7L</option>
+            <option>3.8L</option> 
+            <option>3.9L</option> 
+            <option>4L</option>  
+            <option>4.2L</option> 
+            <option>4.3L</option> 
+            <option>4.4L</option> 
+            <option>4.8L</option> 
+            <option>4.9l</option> 
+            <option>5L</option> 
+            <option>5.2L</option> 
+            <option>5.7L</option> 
+            <option>5.8L</option> 
+            <option>5.9L</option> 
+            <option>6L</option> 
+            <option>6.2L</option> 
+            <option>6.6L</option> 
+            <option>6.9L</option> 
+            <option>7L</option> 
+            <option>7.9L</option> 
+
+
+
+          </select>
           <h6 class="font-weight-bold pt-4 pb-1">Description:</h6>
           <textarea name="description" id="" class="border p-3 w-100" rows="7" placeholder="Write details about your product"></textarea>
 
@@ -304,6 +345,19 @@ $(document).ready(function() {
 
   <!-- The script for Car Make -->
   <script>
+    $('input.number').keyup(function(event) {
+
+// skip for arrow keys
+if(event.which >= 37 && event.which <= 40) return;
+
+// format number
+$(this).val(function(index, value) {
+  return value
+  .replace(/\D/g, "")
+  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  ;
+});
+});
   $(document).ready(function(){
 $(document).on('change','.make',function(){
   // console.log("hmm its change");

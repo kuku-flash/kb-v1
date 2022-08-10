@@ -13,6 +13,7 @@
     <!-- PLUGINS CSS STYLE -->
     <!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
     <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap-slider.css')}}">
     <!-- Font Awesome -->
@@ -261,18 +262,35 @@
 <script src="{{ asset('plugins/tether/js/tether.min.js')}}"></script>
 <script src="{{ asset('plugins/raty/jquery.raty-fa.js')}}"></script>
 <script src="{{ asset('plugins/slick-carousel/slick/slick.min.js')}}"></script>
-<<<<<<< HEAD
  
-=======
 
->>>>>>> 6693ad1042b3e5f01f803d6c692f51ae0becc81d
 <script src="{{ asset('plugins/fancybox/jquery.fancybox.pack.js')}}"></script>
 <script src="{{ asset('plugins/smoothscroll/SmoothScroll.min.js')}}"></script>
 
   <!-- <script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.js')}}"></script> -->
 <script src="{{ asset('plugins/google-map/gmap.js')}}"></script>
 <script src="{{ asset('js/script.js')}}"></script>
-
+<script src="/path/to/flickity.pkgd.min.js"></script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.numberformatter.js"></script>
+<script>
+function addCommas(nStr)
+{
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+$(".price").each(function() {
+   var self = $(this), text = self.text();
+   self.html("<div>" + addCommas(text) + "</div>");
+});
+</script>
 
 </body>
 
