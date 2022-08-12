@@ -147,14 +147,10 @@
 						@if ($listing->id == $vehicle->listing_id)
 						
 						
-<<<<<<< HEAD
-						<div class="col-sm">
-=======
-						<div class="col-lg-4 col-md-6">
->>>>>>> 1fa109a04be4c0b24cf8a81f6b447ee5f6406277
+						<div class="col-sm col-md-4">
 							<!-- product card -->
 							<div class="product-item bg-light">
-								<div class="card ">
+								<div class="card">
 									<div class="thumb-content">
 										<div class="price"> {{ $listing->package->package_name}}</div>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
