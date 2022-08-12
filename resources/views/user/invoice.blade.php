@@ -1,14 +1,16 @@
 @extends('layouts.kingsbridge')
 @section('content')
-<section class="section-sm">
-<div class="container">
-    <a href="{{ route('user.my_list')}}"  class="btn btn-success"><i class="fa fa-arrow-left"></i> </a>
+<section class="section-invoice">
+<a href="{{ route('user.my_list')}}"  class="btn btn-success"><i class="fa fa-arrow-left"></i> </a>
+<div class="invoice-container"> 
 <div class="invoice p-3 mb-3">
     <!-- title row -->
     <div class="row">
       <div class="col-12">
         <h4>
-          <i class="fa fa-globe"></i> Kingsbridge Limit Company
+            <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
+            style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " >
+            <span style="color:#d4af37">Kings</span><span style="color:#aaa9ad">bridge</span></a>
           <small class="float-right">Date: {{ $listing->created_at}}</small>
         </h4>
       </div>
@@ -117,21 +119,23 @@
             </p>
           </div>
     </div>
-
-    <!-- this row will not appear when printing -->
-    <div class="row no-print">
-      <div class="col-12">
-        <a href="#" target="_blank" class="btn btn-dark"><i class="fa fa-print"></i> Print</a>
-        <a href="#"  class="btn btn-dark float-right"><i class="fa fa-cog"></i> My List</a>
-        <button type="button" class="btn btn-success float-right"><i class="fa fa-credit-card"></i> Submit
-          Payment
-        </button>
-        <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-          <i class="fa fa-download"></i> Generate PDF
-        </button>
-      </div>
-    </div>
+  </div>
+</div>
+ <!-- this row will not appear when printing -->
+ <div class="row no-print">
+  <div class="col-12">
+    <a href="#" target="_blank" class="btn btn-dark"><i class="fa fa-print"></i> Print</a>
+    <a href="#"  class="btn btn-dark float-right"><i class="fa fa-cog"></i> My List</a>
+    <button type="button" class="btn btn-success float-right"><i class="fa fa-credit-card"></i> Submit
+      Payment
+    </button>
+    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+      <i class="fa fa-download"></i> Generate PDF
+    </button>
   </div>
 </div>
 </section>
+
+  
+  
   @endsection

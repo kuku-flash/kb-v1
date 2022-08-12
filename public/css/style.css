@@ -314,7 +314,10 @@ button {
   box-shadow: 0 16px 24px rgba(0, 0, 0, 0.08);
   padding: 20px;
 }
-
+.section-invoice{
+  padding: 95px 0;
+  
+}
 .section {
   padding: 95px 0;
 
@@ -533,27 +536,17 @@ button {
 
 /* Start kingsbridge */
 /*slider */
-.gallery {
-  background: #EEE;
+.section-invoice{
+  background-color:whitesmoke ;
+}
+.invoice-container{
+background: white;
+max-width: 634px;
+margin: 0 auto;
+display: block;
+border-radius: 25px;
 }
 
-.gallery-cell {
-  width: 66%;
-  height: 200px;
-  margin-right: 10px;
-  background: #8C8;
-  counter-increment: gallery-cell;
-}
-
-/* cell number */
-.gallery-cell:before {
-  display: block;
-  text-align: center;
-  content: counter(gallery-cell);
-  line-height: 200px;
-  font-size: 80px;
-  color: white;
-}
 
 
 /* PRODUCTS */
@@ -4029,7 +4022,7 @@ a.ssolink {
   line-height: 30px;
 }
 
-.package-content {
+/*.package-content {
   transition: all linear 0.3s;
 }
 
@@ -4050,6 +4043,33 @@ a.ssolink {
 .package-content:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
+*/
+
+
+/*choose package */
+
+
+.pcard {
+  padding: 20px;
+  -webkit-box-flex: 1;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+padding: 0.25rem;
+
+}
+
+.pfeatures ul li span{
+    padding: 0;
+    margin: 20px 0 50px 0;
+    list-style-type: none;
+      margin: 10px 0;
+      font-size: 14px;
+        border-bottom: 2px dotted gold;
+  }
+
+ 
+  
+/*end of choosing package */
 
 .about-content p {
   line-height: 30px;

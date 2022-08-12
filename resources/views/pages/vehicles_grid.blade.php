@@ -147,10 +147,10 @@
 						@if ($listing->id == $vehicle->listing_id)
 						
 						
-						<div class="col-sm-13 col-lg-4 col-md-6">
+						<div class="col-sm">
 							<!-- product card -->
 							<div class="product-item bg-light">
-								<div class="card">
+								<div class="card ">
 									<div class="thumb-content">
 										<div class="price"> {{ $listing->package->package_name}}</div>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
@@ -173,7 +173,7 @@
 										</ul>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											<ul class="list-horizontal">
-												<li>Engine Size:<span class="car-li">{{ $vehicle->engine_size}}L</span></li>
+												<li>Engine Size:<span class="car-li">{{ $vehicle->engine_size}}</span></li>
 												<li>Trans:<span class="car-li">{{ $vehicle->transmission}}</span></li>
 												<li>Miles:<span class="car-li">{{ $vehicle->mileage}}Km</span></li>
 												<li>Fuel Type:<span class="car-li">{{ $vehicle->fuel_type}}</span></li>

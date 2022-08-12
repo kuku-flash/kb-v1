@@ -102,7 +102,7 @@
           <input name="exchange" type="text" class="border w-100 p-2 bg-white text-capitalize">
 
           <h6 class="font-weight-bold pt-4 pb-1">Price</h6>
-          <input name="price number" type="text" class="number border w-100 p-2 bg-white text-capitalize" placeholder="Kes 00.00">
+          <input name="price" type="text" class="number border w-100 p-2 bg-white text-capitalize" placeholder="Kes 00.00">
 
           <h6 class="font-weight-bold pt-4 pb-1">Car Body Type</h6>
           <select name="body_type" id="inputGroupSelect" class="w-100">
@@ -178,7 +178,7 @@
 
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Description:</h6>
-          <textarea name="description" id="" class="border p-3 w-100" rows="7" placeholder="Write details about your product"></textarea>
+          <textarea name="description" class="description ckeditor form-control" name="wysiwyg-editor"></textarea>
 
 
           <div class="field" align="left">
@@ -197,78 +197,80 @@
           <h3>Ad Boost Plan</h3>
 
           <h6 class="font-weight-bold pt-4 pb-1">Boost your Listing</h6>
-          <select name="package_id" id="inputGroupSelect" class="w-100">
-              <option value="">Select the Plan</option>
-              @foreach ($packages as $package )
-              <option value="{{ $package->id }}">{{ $package->package_name }}</option>
-              @endforeach
- 
-          </select>
+       
        
        <input type="hidden" name="user_id" value="{{ Auth::user()->id}}" >
       </div>
   </div>
+
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-sm">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Gold</h5>
+                <div class="pfeatures">
+                  <ul>
+                    <li><span>5</span> Edits</li>
+                    <li><span>1GB</span> Storage</li>
+                    <li><span>3</span> Pages</li>
+                    <li><span>1</span> Hour free support</li>
+                  </ul>
+                  @foreach ($packages as $package )
+                  <input type="radio"  id="inputGroupSelect" name="package_id" value="{{ $package->id }}">{{ $package->package_name }}"
+                  @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="col-sm">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Bronze</h5>
+                    <div class="pfeatures">
+                      <ul>
+                        <li><span>5</span> Edits</li>
+                        <li><span>1GB</span> Storage</li>
+                        <li><span>3</span> Pages</li>
+                        <li><span>1</span> Hour free support</li>
+                      </ul>
+                    </div>
+                    @foreach ($packages as $package )
+                    <input type="radio" id="inputGroupSelect"  name="package_id" value="{{ $package->id }}">{{ $package->package_name }}"
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+          <div class="card h-100">
+              <div class="card-body">
+                  <h5 class="card-title fw-bold">Silver</h5>
+                  <div class="pfeatures">
+                    <ul>
+                      <li><span>5</span> Edits</li>
+                      <li><span>1GB</span> Storage</li>
+                      <li><span>3</span> Pages</li>
+                      <li><span>1</span> Hour free support</li>
+                    </ul>
+                  </div>
+                  @foreach ($packages as $package )
+                  <input type="radio" id="inputGroupSelect"  name="package_id" value="{{ $package->id }}">{{ $package->package_name }}"
+                  @endforeach
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
   </section>
 </fieldset>
-<fieldset>
-  <section>
-    <div class="row">
-      <div class="col-lg-12">
-          <div class="heading text-center pb-5">
-              <h2 class="font-weight-bold">Best Price Guaranteed</h2>
-          </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-          <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
-              <div class="package-content-heading border-bottom">
-                  <i class="fa fa-paper-plane"></i>
-                  <h2>Basic Package</h2>
-                  <h4 class="py-3"> <span>$10.00</span> Per Month</h4>
-              </div>
-              <ul>
-                  <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
-                  <li class="my-4"> <i class="fa fa-check"></i>15 Features Ad Availability</li>
-                  <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
-                  <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
-              </ul>
-              <a href="#" class="btn btn-primary">Buy Now</a>
-          </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-          <div class="package-content bg-light border text-center my-2 my-lg-0 p-5">
-              <div class="package-content-heading border-bottom">
-                      <i class="fa fa-plane"></i>
-                  <h2>Standard Package</h2>
-                  <h4 class="py-3"> <span>$30.00</span> Per Month</h4>
-              </div>
-              <ul>
-                  <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
-                  <li class="my-4"> <i class="fa fa-check"></i>15 Features Ad Availability</li>
-                  <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
-                  <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
-              </ul>
-              <a href="#" class="btn btn-primary">Buy Now</a>
-          </div>
-      </div>
-      <div class="col-lg-4 col-md-6 mx-sm-auto">
-          <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
-              <div class="package-content-heading border-bottom">
-                      <i class="fa fa-rocket"></i>
-                  <h2>Premium Package</h2>
-                  <h4 class="py-3"> <span>$50.00</span> Per Month</h4>
-              </div>
-              <ul>
-                  <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
-                  <li class="my-4"> <i class="fa fa-check"></i>15 Features Ad Availability</li>
-                  <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
-                  <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
-              </ul>
-              <a href="#" class="btn btn-primary">Buy Now</a>
-          </div>
-      </div>
-  </div>
-  </section>
-</fieldset>
+
 
 <button type="submit" class="btn btn-primary d-block mt-2">Post Your Listing</button>
 </form>
@@ -277,9 +279,16 @@
     </div>
 </section>
 
+<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+      $('.ckeditor').ckeditor();
+  });
+</script>
 
 <style>
+  
 input[type="file"] {
   display: block;
 }

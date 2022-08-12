@@ -20,31 +20,37 @@
 							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="">{{ $listing->city->city}}</a></li>
 						</ul>
 					</div>
-<section>
-	<div class="w3-container">
-	  </div>
-	  @foreach ($vehiclephotos as $vehiclephoto )
-		@if($vehicle->id == $vehiclephoto->vehicle_id)
-	  <div class="w3-content" style="max-width:1200px">
-		<img class="mySlides" src="/photos/{{ $vehiclephoto->photo }}" style="width:100%;display:none">
-		<img class="mySlides" src="img_snow_wide.jpg" style="width:100%">
-		<img class="mySlides" src="img_mountains_wide.jpg" style="width:100%;display:none">
-		<div class="w3-row-padding w3-section">
-		  <div class="w3-col s4">
-			<img class="demo w3-opacity w3-hover-opacity-off" src="/photos/{{ $vehiclephoto->photo }}" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
-		  </div>
-		  <div class="w3-col s4">
-			<img class="demo w3-opacity w3-hover-opacity-off" src="/photos/{{ $vehiclephoto->photo }}" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
-		  </div>
-		  <div class="w3-col s4">
-			<img class="demo w3-opacity w3-hover-opacity-off" src="img_mountains_wide.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
-		  </div>
-		</div>
-		@endif
-	@endforeach
-	  </div>
-</section>
 
+	<section>
+		<div class="col-lx-9 col-lg-9 col-sm-12 mb-4 bg-white rounded" style="padding: 1px;"> 
+			<?php 
+			$img = [];
+			$img = explode(",", $vehicle->photos);
+			?>
+<!-- Next and previous buttons -->
+<img id="featured" class="main" src="/storage/{{ $img[0] }}">
+		<div id="slide-wrapper">
+			<div class="slide-one-item home-slider owl-carousel" >
+			<div id="slider">
+				<ul class="thumbs mt-3">
+					@foreach ($img as $i)
+					<a href="/storage/{{ $i}}" class="image-popup">
+					<img class="thumbnail thumb-img" src="/storage/{{ $i}}">
+					</a>
+					@endforeach
+				</ul>
+
+			</div>
+			</div>
+			</div> 
+	
+	</section>
+	  
+
+
+		  
+
+	  
 					<!-- product slider -->
 
 					<div class="content mt-5 pt-5">
@@ -251,25 +257,24 @@
 	</div>
 	<!-- Container End -->
 </section>
-<script>
-	function currentDiv(n) {
-	  showDivs(slideIndex = n);
-	}
+<script type="text/javascript">
+	let thumbnails = document.getElementsByClassName('thumbnail')
 	
-	function showDivs(n) {
-	  var i;
-	  var x = document.getElementsByClassName("mySlides");
-	  var dots = document.getElementsByClassName("demo");
-	  if (n > x.length) {slideIndex = 1}
-	  if (n < 1) {slideIndex = x.length}
-	  for (i = 0; i < x.length; i++) {
-		x[i].style.display = "none";
-	  }
-	  for (i = 0; i < dots.length; i++) {
-		dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-	  }
-	  x[slideIndex-1].style.display = "block";
-	  dots[slideIndex-1].className += " w3-opacity-off";
-	}
-	</script>
+	let activeImages = document.getElementsByClassName('active')
+	
+	for (var i=0; i < thumbnails.length; i++){
+	
+	  thumbnails[i].addEventListener('click', function(){
+		  console.log(activeImages)
+		  
+		  if (activeImages.length > 0){
+			  activeImages[0].classList.remove('active')
+		  }
+		  
+	
+		  this.classList.add('active')
+		  document.getElementById('featured').src = this.src
+	  })
+	}        
+	</script> 
 @endsection
