@@ -27,8 +27,8 @@
                         @foreach ($vehiclephotos as $vehiclephoto )
 							@if($vehicle->id == $vehiclephoto->vehicle_id)
 				
-						<div class="product-slider-item my-4" data-image="/photos/{{ $vehiclephoto->photo }}">
-							<img class="img-fluid w-100" src="/photos/{{ $vehiclephoto->photo }}" alt="product-img">
+						<div class="product-slider-item my-4" data-image="/storage/photos/{{ $vehiclephoto->photo }}">
+							<img class="img-fluid w-100" src="/storage/photos/{{ $vehiclephoto->photo }}" alt="product-img">
 						</div>
                         @endif
                         @endforeach

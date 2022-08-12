@@ -102,7 +102,7 @@
           <input name="exchange" type="text" class="border w-100 p-2 bg-white text-capitalize">
 
           <h6 class="font-weight-bold pt-4 pb-1">Price</h6>
-          <input name="price number" type="text" class="number border w-100 p-2 bg-white text-capitalize" placeholder="Kes 00.00">
+          <input name="price" type="text" class="number border w-100 p-2 bg-white text-capitalize" placeholder="Kes 00.00">
 
           <h6 class="font-weight-bold pt-4 pb-1">Car Body Type</h6>
           <select name="body_type" id="inputGroupSelect" class="w-100">

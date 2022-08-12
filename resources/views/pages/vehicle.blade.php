@@ -26,15 +26,15 @@
 	  @foreach ($vehiclephotos as $vehiclephoto )
 		@if($vehicle->id == $vehiclephoto->vehicle_id)
 	  <div class="w3-content" style="max-width:1200px">
-		<img class="mySlides" src="/photos/{{ $vehiclephoto->photo }}" style="width:100%;display:none">
+		<img class="mySlides" src="/storage/photos/{{ $vehiclephoto->photo }}" style="width:100%;display:none">
 		<img class="mySlides" src="img_snow_wide.jpg" style="width:100%">
 		<img class="mySlides" src="img_mountains_wide.jpg" style="width:100%;display:none">
 		<div class="w3-row-padding w3-section">
 		  <div class="w3-col s4">
-			<img class="demo w3-opacity w3-hover-opacity-off" src="/photos/{{ $vehiclephoto->photo }}" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
+			<img class="demo w3-opacity w3-hover-opacity-off" src="/storage/photos/{{ $vehiclephoto->photo }}" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
 		  </div>
 		  <div class="w3-col s4">
-			<img class="demo w3-opacity w3-hover-opacity-off" src="/photos/{{ $vehiclephoto->photo }}" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
+			<img class="demo w3-opacity w3-hover-opacity-off" src="/storage/photos/{{ $vehiclephoto->photo }}" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
 		  </div>
 		  <div class="w3-col s4">
 			<img class="demo w3-opacity w3-hover-opacity-off" src="img_mountains_wide.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
@@ -203,6 +203,7 @@
 						<h4><a href="">  {{ $listing->user->name }} </a></h4>
 						<p class="member-time">Member Since {{ $listing->user->created_at->diffForHumans() }} </p>
 						<a href="">See all ads</a>
+						<p>{{ $listing->user->phone_number }} </p>
 						<ul class="list-inline mt-20">
 							<li class="list-inline-item"><a href="" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
 							<li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an

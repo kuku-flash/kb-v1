@@ -81,6 +81,7 @@
 
 				</div>
 			</div>
+			@if ( count($listings) > 0)
 			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
 				<!-- Recently Favorited -->
 				<div class="widget dashboard-container my-adslist">
@@ -108,7 +109,7 @@
 											@foreach ($vehiclephotos as $vehiclephoto)
 											@if ($vehicle->id == $vehiclephoto->vehicle_id)
 										<!--	<img class="card-img-top category-img-fluid" src="/photos/{{ $vehiclephoto->photo }}" alt=""style="max-height: 400px;"> -->
-											<img width="80px" height="auto" src="/photos/{{ $vehiclephoto->photo }}" alt="image description">
+											<img width="80px" height="auto" src="/storage/photos/{{ $vehiclephoto->photo }}" alt="image description">
 											@endif
 											@endforeach
 										</td>
@@ -143,9 +144,14 @@
 												</a>
 											</li>
 											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Delete" class="delete" href="">
+										
+												<a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" data-toggle="tooltip" data-placement="top" title="Delete" class="delete">
 													<i class="fa fa-trash"></i>
 												</a>
+												<form action="{{ route('user.delete_listing', [$listing->id, $vehicle->id])}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
+												  @method('DELETE')
+												  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+												</form>
 											</li>
 										</ul>
 									</div>
@@ -185,6 +191,11 @@
 				<!-- pagination -->
 
 			</div>
+			@else
+			<p> No List Founds...Please Add your first Listing 
+				<a class="nav-link text-white add-button" href="{{ route('user.create_listing')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
+			</p>
+			@endif
 		</div>
 		<!-- Row End -->
 	</div>

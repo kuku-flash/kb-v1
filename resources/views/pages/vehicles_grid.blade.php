@@ -147,7 +147,7 @@
 						@if ($listing->id == $vehicle->listing_id)
 						
 						
-						<div class="col-sm-13 col-lg-4 col-md-6">
+						<div class="col-lg-4 col-md-6">
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card">
@@ -156,7 +156,7 @@
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											@foreach ($vehiclephotos as $vehiclephoto)
 											@if ($vehicle->id == $vehiclephoto->vehicle_id)
-											<img class="card-img-top category-img-fluid" src="/photos/{{ $vehiclephoto->photo }}" alt=""style="max-height: 400px;">
+											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehiclephoto->photo }}" alt=""style="max-height: 400px;">
 											@endif
 											@endforeach
 										</a>
@@ -173,7 +173,7 @@
 										</ul>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											<ul class="list-horizontal">
-												<li>Engine Size:<span class="car-li">{{ $vehicle->engine_size}}L</span></li>
+												<li>Engine Size:<span class="car-li">{{ $vehicle->engine_size}}</span></li>
 												<li>Trans:<span class="car-li">{{ $vehicle->transmission}}</span></li>
 												<li>Miles:<span class="car-li">{{ $vehicle->mileage}}Km</span></li>
 												<li>Fuel Type:<span class="car-li">{{ $vehicle->fuel_type}}</span></li>
@@ -204,9 +204,12 @@
 				
 					</div>
 				</div>
+				
 				<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
+
+							
 							<li class="page-item">
 								<a class="page-link" href="#" aria-label="Previous">
 									<span aria-hidden="true">&laquo;</span>
