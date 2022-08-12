@@ -84,14 +84,26 @@
           @enderror
 
           <h6 class="font-weight-bold pt-4 pb-1">Mileage:</h6>
-          <input type="number" name="mileage" class="border w-100 p-2 bg-white text-capitalize" placeholder="Mileage go There">
-          
+          <input type="number" name="mileage" class="border w-100 p-2 bg-white text-capitalize" 
+            value="{{ old('mileage')}}" placeholder="Mileage go There">
+          @error('mileage')
+          <span class="invalid" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+
           <h6 class="font-weight-bold pt-4 pb-1">Car Transmission</h6>
-          <select name="transmission" id="inputGroupSelect" class="w-100">
+          <select name="transmission"  id="inputGroupSelect" class="w-100">
               <option value="">Select Transmission</option>     
               <option>Manual</option>     
               <option>Automatic </option>    
           </select>
+          @error('transmission')
+          <span class="invalid" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+
           <h6 class="font-weight-bold pt-4 pb-1">Car Fuel Type</h6>
           <select name="fuel_type" id="inputGroupSelect" class="w-100">
               <option value="">Select Fuel type</option>     

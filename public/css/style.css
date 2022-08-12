@@ -638,8 +638,7 @@ border-radius: 25px;
 }
 .col-lg-4 {
   -ms-flex: 0 0 33.333333%;
-  flex: 1 0 28.333333%;
-  max-width: 31.333333%;
+
 }
 
 .badge-sale{

@@ -159,7 +159,7 @@
                 <div class="col-lg-6 col-md-10">
                     <div class="ad-listing-content">
                         <div>
-                            <a href="#" class="font-weight-bold">{{ $vehicle->title}} - {{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}}</a>
+                            <a href="#" class="font-weight-bold">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->year_of_build}}</a>
                         </div>
                         <ul class="list-inline mt-2 mb-3">
                             <li class="list-inline-item"><a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}"> <i class="fa fa-folder-open-o"></i> {{ $listing->category->category_name}}</a></li>
@@ -171,8 +171,7 @@
                                 <li>Trans: <span class="car-li">{{ $vehicle->transmission}}</span></li>
                                 <li>Miles: <span class="car-li">{{ $vehicle->mileage}}Km</span></li>
                                 <li>Fuel Type: <span class="car-li">{{ $vehicle->fuel_type}}</span></li>
-                                <li>Year: <span class="car-li">{{ $vehicle->year_of_build}}</span></li>
-                                <li>Body: <span class="car-li">{{ $vehicle->body_type}}</span></li>
+                            
                             </ul>
                         </p>
                     </div>

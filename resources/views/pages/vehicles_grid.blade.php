@@ -146,12 +146,11 @@
 						@foreach ($vehicles as $vehicle)
 						@if ($listing->id == $vehicle->listing_id)
 						
+					
+						<div class="col-sm col-md-4 col-lg-4">
+
 						
-<<<<<<< HEAD
-						<div class="col-sm">
-=======
-						<div class="col-lg-4 col-md-6">
->>>>>>> 1fa109a04be4c0b24cf8a81f6b447ee5f6406277
+
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card ">
@@ -166,7 +165,7 @@
 										</a>
 									</div>
 									<div class="card-body">
-										<h4 class="card-title"><a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">{{ $vehicle->title}} - {{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}}</a></h4>
+										<h4 class="card-title"><a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->year_of_build}}</a></h4>
 										<ul class="list-inline product-meta">
 											<li class="list-inline-item">
 												<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}"><i class="fa fa-folder-open-o"></i>{{ $listing->category->category_name}}</a>
@@ -181,8 +180,7 @@
 												<li>Trans:<span class="car-li">{{ $vehicle->transmission}}</span></li>
 												<li>Miles:<span class="car-li">{{ $vehicle->mileage}}Km</span></li>
 												<li>Fuel Type:<span class="car-li">{{ $vehicle->fuel_type}}</span></li>
-												<li>Year:<span class="car-li">{{ $vehicle->year_of_build}}</span></li>
-												<li>Body:<span class="car-li">{{ $vehicle->body_type}}</span></li>
+				
 											</ul>
 											</div>
 											<div class="property-price">
