@@ -147,7 +147,11 @@
 						@if ($listing->id == $vehicle->listing_id)
 						
 						
+<<<<<<< HEAD
 						<div class="col-sm">
+=======
+						<div class="col-lg-4 col-md-6">
+>>>>>>> 1fa109a04be4c0b24cf8a81f6b447ee5f6406277
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card ">
@@ -156,7 +160,7 @@
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											@foreach ($vehiclephotos as $vehiclephoto)
 											@if ($vehicle->id == $vehiclephoto->vehicle_id)
-											<img class="card-img-top category-img-fluid" src="/photos/{{ $vehiclephoto->photo }}" alt=""style="max-height: 400px;">
+											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehiclephoto->photo }}" alt=""style="max-height: 400px;">
 											@endif
 											@endforeach
 										</a>
@@ -204,9 +208,12 @@
 				
 					</div>
 				</div>
+				
 				<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
+
+							
 							<li class="page-item">
 								<a class="page-link" href="#" aria-label="Previous">
 									<span aria-hidden="true">&laquo;</span>

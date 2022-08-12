@@ -196,7 +196,7 @@
    
 @foreach ($vehiclephotos as $vehiclephoto)
     @if($vehiclephoto->vehicle->listing_id == $listing->id)
-      <img width="80px" height="auto" src="/photos/{{ $vehiclephoto->photo }}" alt="image description">
+      <img width="80px" height="auto" src="/storage/photos/{{ $vehiclephoto->photo }}" alt="image description">
     @endif  
           
 @endforeach

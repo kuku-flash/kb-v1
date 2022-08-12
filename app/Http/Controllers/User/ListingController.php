@@ -16,6 +16,7 @@ use App\Models\Vehicle;
 use App\Models\Vehicle_photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Expr\List_;
 
 class ListingController extends Controller
@@ -115,7 +116,7 @@ class ListingController extends Controller
          foreach ($photos as $image) {
              $name = time().'-'.$image->getClientOriginalName();
              $name = str_replace('','-',$name);
-             $image->move('photos', $name);
+             $image->storeAs('public/photos', $name);
            
             #$vehicle_photo->photo = $name;
             #$vehicle_photo->vehicle_id = $vehicle->id;
@@ -188,7 +189,7 @@ class ListingController extends Controller
          foreach ($photos as $image) {
              $name = time().'-'.$image->getClientOriginalName();
              $name = str_replace('','-',$name);
-             $image->move('photos', $name);
+             $image->storeAs('public/photos', $name);
 
             #$vehicle_photo->photo = $name;
             #$vehicle_photo->vehicle_id = $vehicle->id;
@@ -201,6 +202,20 @@ class ListingController extends Controller
      
     return redirect() -> route('user.my_list')->with('success','Added');
      
+    }
+    public function delete_listing($listing, $vehicle){
+      
+        $vehicle = Vehicle::find($vehicle);
+        $listing = Listing::find($listing);
+        $vehicle_photos = Vehicle_photo::where('vehicle_id', $vehicle->id)->get();
+        foreach ($vehicle_photos as $vehicle_photo){       
+                Storage::delete('public/photos/'.$vehicle_photo->photo);
+                $vehicle_photo->delete();
+        }
+    
+        $vehicle->delete();
+        $listing->delete();
+        return redirect()->route('user.my_list')->with('success','removed successfully');
     }
    
 

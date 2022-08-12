@@ -78,6 +78,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('edit_listing/{listing}/{vehicle}',  [ListingController::class, 'edit_listing'])->name('edit_listing');
     Route :: put ('update_listing/{listing}/{vehicle}',  [ListingController::class, 'update_listing'])->name('update_listing');
     Route :: get ('show_listing/{listing}/{vehicle}',  [ListingController::class, 'show_listing'])->name('show_listing');
+    Route :: delete ('delete_listing/{listing}/{vehicle}',  [ListingController::class, 'delete_listing'])->name('delete_listing');
     Route :: get ('category',  [ListingController::class, 'category'])->name('category');
     Route :: get ('vehicle_ad',  [ListingController::class, 'vehicle_ad'])->name('vehicle_ad');
     Route :: post ('store_vehicle_ad',  [ListingController::class, 'store_vehicle_ad'])->name('store_vehicle_ad');

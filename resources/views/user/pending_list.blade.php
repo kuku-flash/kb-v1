@@ -107,7 +107,7 @@
 											@foreach ($vehiclephotos as $vehiclephoto)
 											@if ($vehicle->id == $vehiclephoto->vehicle_id)
 										<!--	<img class="card-img-top category-img-fluid" src="/photos/{{ $vehiclephoto->photo }}" alt=""style="max-height: 400px;"> -->
-											<img width="80px" height="auto" src="/photos/{{ $vehiclephoto->photo }}" alt="image description">
+											<img width="80px" height="auto" src="/storage/photos/{{ $vehiclephoto->photo }}" alt="image description">
 											@endif
 											@endforeach
 										</td>
