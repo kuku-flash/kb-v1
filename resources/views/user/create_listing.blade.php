@@ -14,7 +14,7 @@
                         <h3>Post Your Listing</h3>
 
                         <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
-                        <select name="category" id="inputGroupSelect" class="w-100">
+                        <select name="category" id="inputGroupSelect" class="form-control">
                             <option value="">Select category</option>
                  
                             <option value="2">Cars</option>
@@ -22,7 +22,7 @@
                
                         </select>
                         <h6 class="font-weight-bold pt-4 pb-1">Select Your City</h6>
-                        <select name="city" id="inputGroupSelect" class="w-100">
+                        <select name="city" id="inputGroupSelect" class="form-control">
                             <option value="">Select City</option>
                             @foreach ($cities as $city )
                             <option value="{{ $city->id }}">{{ $city->city }}</option>
@@ -38,10 +38,10 @@
   <div class="row">
       <div class="col-lg-12">
           <h3>Post Your Vehicle <!--  $currentId --></h3>
-          <h6>Select Car Model:</h6>
+          <h6 class="font-weight-bold pt-4 pb-1">Select Make</h6>
      
           <div> 
-              <select name="make" class="make ">
+              <select name="make" class="make form-control">
                 <option value="">Choose a Make</option>
     
                   @foreach($makes as $make)
@@ -49,8 +49,8 @@
                   @endforeach
              
               </select>
-                              
-              <select name="model_id" class="model ">
+              <h6 class="font-weight-bold pt-4 pb-1">Select Model</h6>           
+              <select name="model_id" class="model form-control">
                 <option value="0" disabled="true" selected="true">Chose a model</option>
 
               </select>
@@ -72,7 +72,7 @@
               @enderror
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Condition</h6>
-          <select name="condition" id="inputGroupSelect" class="w-100">
+          <select name="condition" id="inputGroupSelect" class="form-control">
               <option value="">Select Condition</option>     
               <option>Foreign Used</option>     
               <option>Local Used</option>    
@@ -84,16 +84,28 @@
           @enderror
 
           <h6 class="font-weight-bold pt-4 pb-1">Mileage:</h6>
-          <input type="number" name="mileage" class="border w-100 p-2 bg-white text-capitalize" placeholder="Mileage go There">
-          
+          <input type="number" name="mileage" class="border w-100 p-2 bg-white text-capitalize" 
+            value="{{ old('mileage')}}" placeholder="Mileage go There">
+          @error('mileage')
+          <span class="invalid" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+
           <h6 class="font-weight-bold pt-4 pb-1">Car Transmission</h6>
-          <select name="transmission" id="inputGroupSelect" class="w-100">
+          <select name="transmission"  id="inputGroupSelect" class="form-control">
               <option value="">Select Transmission</option>     
               <option>Manual</option>     
               <option>Automatic </option>    
           </select>
+          @error('transmission')
+          <span class="invalid" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+
           <h6 class="font-weight-bold pt-4 pb-1">Car Fuel Type</h6>
-          <select name="fuel_type" id="inputGroupSelect" class="w-100">
+          <select name="fuel_type" id="inputGroupSelect" class="form-control">
               <option value="">Select Fuel type</option>     
               <option>Petrol</option>     
               <option>Diesel</option>    
@@ -105,7 +117,7 @@
           <input name="price" type="text" class="number border w-100 p-2 bg-white text-capitalize" placeholder="Kes 00.00">
 
           <h6 class="font-weight-bold pt-4 pb-1">Car Body Type</h6>
-          <select name="body_type" id="inputGroupSelect" class="w-100">
+          <select name="body_type" id="inputGroupSelect" class="form-control">
               <option value="">Select Body type</option>     
               <option>saloon</option>     
               <option>Suv</option>    
@@ -121,20 +133,20 @@
           <input name="color" type="text" class="border w-100 p-2 bg-white text-capitalize" placeholder="color of your car">
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Duty Type</h6>
-          <select name="duty_type" id="inputGroupSelect" class="w-100">
+          <select name="duty_type" id="inputGroupSelect" class="form-control">
               <option value="">Select Duty type</option>     
               <option>Paid</option>     
               <option>unpaid</option>    
       
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Car Interior Type</h6>
-          <select name="interior_type" id="inputGroupSelect" class="w-100">
+          <select name="interior_type" id="inputGroupSelect" class="form-control">
               <option value="">Select Body type</option>     
               <option>leather</option>     
               <option>cloth</option>     
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Engine size</h6>
-          <select name="engine_size" id="inputGroupSelect" class="w-100">
+          <select name="engine_size" id="inputGroupSelect" class="form-control">
             <option value="">Select Engine Size</option>     
             <option>1.0L</option>     
             <option>1.2L</option> 
@@ -355,10 +367,8 @@ $(document).ready(function() {
   <!-- The script for Car Make -->
   <script>
     $('input.number').keyup(function(event) {
-
 // skip for arrow keys
 if(event.which >= 37 && event.which <= 40) return;
-
 // format number
 $(this).val(function(index, value) {
   return value

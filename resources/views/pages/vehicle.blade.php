@@ -20,8 +20,6 @@
 							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="">{{ $listing->city->city}}</a></li>
 						</ul>
 					</div>
-<<<<<<< HEAD
-=======
 <section>
 	<div class="w3-container">
 	  </div>
@@ -46,7 +44,6 @@
 	@endforeach
 	  </div>
 </section>
->>>>>>> 1fa109a04be4c0b24cf8a81f6b447ee5f6406277
 
 	<section>
 		<div class="col-lx-9 col-lg-9 col-sm-12 mb-4 bg-white rounded" style="padding: 1px;"> 

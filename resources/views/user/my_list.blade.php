@@ -192,9 +192,9 @@
 
 			</div>
 			@else
-			<p> No List Founds...Please Add your first Listing 
-				<a class="nav-link text-white add-button" href="{{ route('user.create_listing')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
-			</p>
+			<h1> No List Founds...Please Add your first Listing 
+			
+			</h1>
 			@endif
 		</div>
 		<!-- Row End -->

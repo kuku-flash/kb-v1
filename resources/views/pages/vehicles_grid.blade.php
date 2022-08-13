@@ -7,7 +7,7 @@
 			<div class="col-md-12">
 				<div class="search-result bg-gray">
 					<h2>Results For "Vehicles"</h2>
-					<p>123 Results on 12 December, 2021</p>
+					<p>123 Results on  {{ now()->format('d F Y') }}</p>
 				</div>
 			</div>
 		</div>
@@ -15,39 +15,48 @@
 			<div class="col-md-3">
 				<div class="category-sidebar">
 					<div class="widget category-list">
-	<h4 class="widget-header">All Category</h4>
-	<ul class="category-list">
-		<li><a href="category.html">Cars <span>600</span></a></li>
-		<li><a href="category.html">Buses <span>233</span></a></li>
-		<li><a href="category.html">Heavy Equipments<span>183</span></a></li>
-		<li><a href="category.html">Trucks <span>257</span></a></li>
-		<li><a href="category.html">Motorbikes <span>343</span></a></li>
-		<li><a href="category.html">Watercrafts <span>570</span></a></li>
-	</ul>
-</div>
-
-<div class="widget category-list">
-	<h4 class="widget-header">Location</h4>
-	<ul class="category-list">
-		<li><a href="category.html">Nairobi <span>93</span></a></li>
-		<li><a href="category.html">Kisumu <span>233</span></a></li>
-		<li><a href="category.html">Machakos  <span>183</span></a></li>
-		<li><a href="category.html">Meru <span>120</span></a></li>
-		<li><a href="category.html">Nyeri <span>40</span></a></li>
-		<li><a href="category.html">Uasin Githu <span>81</span></a></li>
-	</ul>
-</div>
-
-<div class="widget filter">
-	<h4 class="widget-header">Show Produts</h4>
-	<select>
-		<option>Popularity</option>
-		<option value="1">Top rated</option>
-		<option value="2">Lowest Price</option>
-		<option value="4">Highest Price</option>
+	<h4 class="widget-header">Select Category</h4>
+	<select class="w-100 form-control mt-lg-1 mt-md-2 category-list">
+		<option><li><a href="category.html">Cars <span>(600)</span></a></li></option>
+			<option><li><a href="category.html">Buses <span>(233)</span></a></li></option>
+				<option><li><a href="category.html">Heavy Equipments<span>(183)</span></a></li></option>
+					<option><li><a href="category.html">Trucks <span>(257)</span></a></li></option>
+						<option><li><a href="category.html">Motorbikes <span>(343)</span></a></li></option>
+							<option><li><a href="category.html">Watercrafts <span>(570)</span></a></li></option>
 	</select>
 </div>
 
+<div class="widget category-list">
+	<h4 class="widget-header">Select Location</h4>
+	<select class="w-100 form-control mt-lg-1 mt-md-2 category-list">
+		<option><li><a href="category.html">Nairobi <span>(93)</span></a></li></option>
+			<option><li><a href="category.html">Kisumu <span>233</span></a></li></option>
+				<option><li><a href="category.html">Machakos  <span>183</span></a></li></option>
+					<option><li><a href="category.html">Meru <span>120</span></a></li></option>
+						<option><li><a href="category.html">Nyeri <span>40</span></a></li></option>
+							<option><li><a href="category.html">Uasin Githu <span>81</span></a></li></option>
+	</select>
+</div>
+
+<div class="widget category-list">
+	<h4 class="widget-header">Select Make</h4>
+	<select class="w-100 form-control mt-lg-1 mt-md-2 category-list">
+		<option><li><a href="category.html">BMW <span>(93)</span></a></li></option>
+	</select>
+	
+	<select class="w-100 form-control mt-lg-1 mt-md-2 category-list">
+		<option><li><a href="category.html">M4 <span>(2)</span></a></li></option>
+	</select>
+	
+</div>
+
+
+<div class="widget category-list">
+	<h4 class="widget-header">Select Model</h4>
+	<select class="w-100 form-control mt-lg-1 mt-md-2 category-list">
+		<option><li><a href="category.html">M4 <span>(93)</span></a></li></option>
+	</select>
+</div>
 <div class="widget price-range w-100">
 	<h4 class="widget-header">Price Range</h4>
 	<div class="block">
@@ -58,60 +67,14 @@
 				</div>
 	</div>
 </div>
-
-<div class="widget verticale-scroll">
-	<h4 class="widget-header">Make</h4>
-	<div class="form-check">
-	  <label class="form-check-label">
-	    <input class="form-check-input" type="checkbox" value="">
-	    Mercedes Benz
-	  </label>
-    </div>
-    
-	<div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="">
-          Toyota
-        </label>
-      </div>
-
-
-      <div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="">
-          Subaru
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="">
-          Audi
-        </label>
-      </div>
-
-
-	<div class="form-check">
-	  <label class="form-check-label">
-	    <input class="form-check-input" type="checkbox" value="">
-	    Almost New
-	  </label>
-	</div>
-	<div class="form-check">
-	  <label class="form-check-label">
-	    <input class="form-check-input" type="checkbox" value="">
-	    Gently New
-	  </label>
-	</div>
-	<div class="form-check">
-	  <label class="form-check-label">
-	    <input class="form-check-input" type="checkbox" value="">
-	    Havely New
-	  </label>
-	</div>
-</div>
-
 				</div>
 			</div>
+
+
+
+
+
+
 			<div class="col-md-9">
 				<div class="category-search-filter">
 					<div class="row">
@@ -146,8 +109,10 @@
 						@foreach ($vehicles as $vehicle)
 						@if ($listing->id == $vehicle->listing_id)
 						
+					
+						<div class="col-sm col-md-4 col-lg-4">
+
 						
-						<div class="col-sm col-md-4">
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card">
@@ -162,7 +127,7 @@
 										</a>
 									</div>
 									<div class="card-body">
-										<h4 class="card-title"><a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">{{ $vehicle->title}} - {{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}}</a></h4>
+										<h4 class="card-title"><a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->year_of_build}}</a></h4>
 										<ul class="list-inline product-meta">
 											<li class="list-inline-item">
 												<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}"><i class="fa fa-folder-open-o"></i>{{ $listing->category->category_name}}</a>
@@ -177,8 +142,7 @@
 												<li>Trans:<span class="car-li">{{ $vehicle->transmission}}</span></li>
 												<li>Miles:<span class="car-li">{{ $vehicle->mileage}}Km</span></li>
 												<li>Fuel Type:<span class="car-li">{{ $vehicle->fuel_type}}</span></li>
-												<li>Year:<span class="car-li">{{ $vehicle->year_of_build}}</span></li>
-												<li>Body:<span class="car-li">{{ $vehicle->body_type}}</span></li>
+				
 											</ul>
 											</div>
 											<div class="property-price">
