@@ -46,7 +46,7 @@
 </section>
 
 	<section>
-		<div class="col-lx-9 col-lg-9 col-sm-12 mb-4 bg-white rounded" style="padding: 1px;"> 
+		<div class="w3-content" style="max-width:1200px">
 			<?php 
 			$img = [];
 			$img = explode(",", $vehicle->photos);

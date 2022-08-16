@@ -38,7 +38,7 @@
                         <h3>Post Your Listing</h3>
 
                         <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
-                        <select name="category" id="inputGroupSelect" class="w-100">
+                        <select name="category" id="inputGroupSelect" class="form-control">
                             <option value="">Select category</option>
                             @foreach ($categories as $category )
                             <option value="{{ $category->id }}"
@@ -50,7 +50,7 @@
                
                         </select>
                         <h6 class="font-weight-bold pt-4 pb-1">Select Your City</h6>
-                        <select name="city" id="inputGroupSelect" class="w-100">
+                        <select name="city" id="inputGroupSelect" class="form-control">
                             <option value="">Select City</option>
                             @foreach ($cities as $city )
                             <option value="{{ $city->id }}"
@@ -60,12 +60,8 @@
                               >{{ $city->city }}</option>
                             @endforeach
                         </select>
-<<<<<<< HEAD
-                      <button type="submit" class="btn btn-primary d-block mt-2">Next</button>
-=======
                      
                     </div>
->>>>>>> 6693ad1042b3e5f01f803d6c692f51ae0becc81d
                 </div>
             </fieldset>
             
@@ -77,7 +73,7 @@
           <h6 class="font-weight-bold pt-4 pb-1">Select Car Model:</h6>
      
           <div class="form-group  mt-2 mb-2 col-md-6"> 
-              <select name="make" class=" make  @error('make') is-invalid  @enderror">
+              <select name="make" class=" make form-control @error('make') is-invalid  @enderror">
                 <option value="">Choose a Make</option>
                   @foreach($makes as $make)
                     <option value="{{ $make->id }}"
@@ -88,8 +84,8 @@
                   @endforeach
              
               </select>
-                              
-              <select name="model_id" class="model  @error('model') is-invalid  @enderror">
+              <h6 class="font-weight-bold pt-4 pb-1">Select Model</h6>  
+              <select name="model_id" class="model form-control  @error('model') is-invalid  @enderror">
 
                 <option value="0" disabled="true" selected="true">Choose a model</option>
                
@@ -126,7 +122,7 @@
               @enderror
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Condition</h6>
-          <select name="condition" id="inputGroupSelect" class="w-100">
+          <select name="condition" id="inputGroupSelect" class="form-control">
               <option selected>{{$vehicle->condition}}</option>     
               <option>Foreign Used</option>     
               <option>Local Used</option>    
@@ -135,13 +131,13 @@
           <input type="number" name="mileage" class="border w-100 p-2 bg-white text-capitalize" value="{{$vehicle->mileage}}">
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Transmission</h6>
-          <select name="transmission" id="inputGroupSelect" class="w-100">
+          <select name="transmission" id="inputGroupSelect" class="form-control">
             <option selected>{{$vehicle->transmission}}</option>       
               <option>Manual</option>     
               <option>Automatic </option>    
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Car Fuel Type</h6>
-          <select name="fuel_type" id="inputGroupSelect" class="w-100">
+          <select name="fuel_type" id="inputGroupSelect" class="form-control">
             <option selected>{{$vehicle->fuel_type}}</option>     
               <option>Petrol</option>     
               <option>Diesel</option>    
@@ -153,7 +149,7 @@
           <input name="price" type="text" class="border w-100 p-2 bg-white text-capitalize"  value="{{$vehicle->price}}">
 
           <h6 class="font-weight-bold pt-4 pb-1">Car Body Type</h6>
-          <select name="body_type" id="inputGroupSelect" class="w-100">
+          <select name="body_type" id="inputGroupSelect" class="form-control">
             <option selected>{{$vehicle->body_type}}</option>       
               <option>saloon</option>     
               <option>Suv</option>    
@@ -169,14 +165,14 @@
           <input name="color" type="text" class="border w-100 p-2 bg-white text-capitalize"  value="{{$vehicle->color}}">
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Duty Type</h6>
-          <select name="duty_type" id="inputGroupSelect" class="w-100">
+          <select name="duty_type" id="inputGroupSelect" class="form-control">
             <option selected>{{$vehicle->duty_type}}</option>        
               <option>Paid</option>     
               <option>unpaid</option>    
       
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Car Interior Type</h6>
-          <select name="interior_type" id="inputGroupSelect" class="w-100">
+          <select name="interior_type" id="inputGroupSelect" class="form-control">
             <option selected>{{$vehicle->interior_type}}</option>      
               <option>leather</option>     
               <option>cloth</option>     

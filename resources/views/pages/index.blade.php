@@ -92,7 +92,7 @@
 <section class="product">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12 .col-lg-4">
+			<div class="col-md-12">
 				<div class="section-title">
 					<h2>Trending Ads</h2>
 				</div>
@@ -101,10 +101,10 @@
 		<div class="row">
 			<!-- offer 01 -->
 			<div class="col-lg-12">
-				<div class="trending-ads-slide">
+				<div class="trending-ads-slide owl-drag">
 					<div class="col-sm-12 col-lg-4">
 						<!-- product card -->
-<div class="product-item bg-light">
+<div class="product-item bg-light owl-drag">
 	<div class="card">
 		<div class="thumb-content">
 			<div class="price">Gold Package</div>
@@ -527,6 +527,10 @@
 		
 	
 </section>
+
+
+
+
 <!--==========================================
 =            All Category Section            =
 ===========================================-->
@@ -731,6 +735,11 @@ setTimeout(function() {
 
 // Start the typing effect on load
 _INTERVAL_VAL = setInterval(Type, 100);
+
+
+
+
+
 
 	</script>
 </section>

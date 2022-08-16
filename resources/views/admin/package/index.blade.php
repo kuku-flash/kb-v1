@@ -41,8 +41,8 @@
                                     <td>{{$package->package_amount}}</td>
                                     <td>{{$package->package_duration}}</td>
                                     <td>{{$package->package_featured}}</td>
-                                    <td>{{$package->created_at->diffForHumans()}}</td>
-                                    <td>{{$package->updated_at->diffForHumans()}}</td>
+                                    
+                                   
                                     <td>
                                         <a href="{{ route('admin.package.edit',$package->id)}}" ><i class="fa fa-pencil color-muted m-r-5"></i> </a>
                                         <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-app"><i class="fa fa-close color-danger"></i></a>

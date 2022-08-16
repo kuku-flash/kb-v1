@@ -164,8 +164,13 @@
         <div class="block about">
           <!-- footer logo -->
           <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
-          style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " >KingsBridge<p>Kingsbridge Properties</p></a>
+          style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; "><span style="color:#d4af37">Kings</span><span style="color:#aaa9ad">bridge</span></a><p>Kingsbridge Properties</p></a>
           <p>The leading online platform that sells both Vehicles and Houses.</p>
+          <ul class="ftco-footer-social  float-md-left float-lft mt-5">
+            <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+          </ul>
         </div>
       </div>
       <!-- Link list -->
@@ -198,6 +203,22 @@
           </ul>
         </div>
       </div>
+
+
+
+      <div class="col-lg-3 col-md-3 offset-md-1 offset-lg-0">
+          <div class="block block-23 mb-3">
+            <h4>Have a question?</h4>
+          <ul>
+            <li><span class="icon fa fa-map-marker"></span><span class="text">Nandi Road, Karen, Nairobi, Kenya,at Nandi Road, Karen.</span></li>
+	                <li><span class="icon fa fa-phone"></span><span class="text">+254 725122126</span></li>
+	                <li><span class="icon fa fa-envelope-o"></span><span class="text">info@KingShip.com</span></li>
+
+
+
+          </ul>
+        </div>
+      </div>
       <!-- Promotion -->
       <div class="col-lg-4 col-md-7">
         <!-- App promotion -->
@@ -224,7 +245,7 @@
   <!-- Container Start -->
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 col-12">
+      <div class="col-md-12">
         <!-- Copyright -->
         <div class="copyright">
           <p>Copyright © <script>
@@ -232,15 +253,6 @@
               document.write(CurrentYear)
             </script>. Kingsbridge</p>
         </div>
-      </div>
-      <div class="col-sm-6 col-12">
-        <!-- Social Icons -->
-        <ul class="social-media-icons text-right">
-          <li><a class="fa fa-facebook" href="#" target="_blank"></a></li>
-          <li><a class="fa fa-twitter" href="#" target="_blank"></a></li>
-          <li><a class="fa fa-pinterest-p" href="#" target="_blank"></a></li>
-          <li><a class="fa fa-vimeo" href=""></a></li>
-        </ul>
       </div>
     </div>
   </div>

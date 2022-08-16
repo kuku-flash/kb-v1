@@ -332,8 +332,9 @@ button {
 
 .section-title {
   position: relative;
-  margin-bottom: 75px;
+  margin-bottom: 0.5rem;
   text-align: center;
+
 }
 
 .section-title h2 {
@@ -535,6 +536,10 @@ button {
 
 
 /* Start kingsbridge */
+
+
+
+
 /*slider */
 .section-invoice{
   background-color:whitesmoke ;
@@ -547,7 +552,22 @@ display: block;
 border-radius: 25px;
 }
 
-
+.block-23 ul {
+  padding: 0; }
+  .block-23 ul li, .block-23 ul li > a {
+    display: table;
+    line-height: 1.5;
+    margin-bottom: 15px; }
+  .block-23 ul li span {
+    color: rgba(255, 255, 255, 0.7); }
+  .block-23 ul li .icon, .block-23 ul li .text {
+    display: table-cell;
+    vertical-align: top; }
+  .block-23 ul li .icon {
+    width: 40px;
+    font-size: 18px;
+    padding-top: 2px;
+    color: white; }
 
 /* PRODUCTS */
 .product {
@@ -666,7 +686,7 @@ border-radius: 25px;
         max-width: 65%;
         width: 65%;
         text-align: center;
-        background-color: #eef2f5;
+        background-color:#aaa9ad;
         font-size: 14px;
         font-weight: 600;
         padding: 15px 0;
@@ -941,11 +961,31 @@ display: flex;
   color: rgba(0, 0, 0, 0.4);
   display: block; }
 
-/*listings */
+
+.ftco-footer-social li {
+  list-style: none;
+  margin: 0 10px 0 0;
+  display: inline-block; }
+  .ftco-footer-social li a {
+    height: 50px;
+    width: 50px;
+    display: block;
+    float: left;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    position: relative; }
+    .ftco-footer-social li a span {
+      position: absolute;
+      font-size: 26px;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }
+    .ftco-footer-social li a:hover {
+      color: #fff; }
 
 
-
-/*End of listing */
 
 div.scroll {
   background-color: #fed9ff;
@@ -981,6 +1021,7 @@ textarea.form-control {
 .index-img-fluid{
   max-width: 100%;
   height: 250px;
+  
 }
 
 .category-img-fluid{
@@ -2634,7 +2675,7 @@ ul.pagination .active a {
 
 
 .trending-ads-slide{
-  display: inline-flex;
+  display: -webkit-box;
   width: auto;
 padding: 20px;
 overflow-x: auto;
@@ -4210,6 +4251,7 @@ form textarea {
 .footer-bottom .copyright p {
   color: #c7c7c7;
   margin-bottom: 0;
+  text-align: center;
 }
 
 .social-media-icons {

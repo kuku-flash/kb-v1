@@ -79,7 +79,7 @@
 				<div class="category-search-filter">
 					<div class="row">
 						<div class="col-md-6">
-							<strong>Short</strong>
+							<strong>Sort</strong>
 							<select>
 								<option>Most Recent</option>
 								<option value="1">Most Popular</option>
