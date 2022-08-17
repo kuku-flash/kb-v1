@@ -125,7 +125,6 @@
 		    <div class="product-ratings">
 		    	<ul class="trending-horizontal">
 					<li>Mileage:<span class="car-li">19400Km</span></li>
-					<li>Year:<span class="car-li">2014</span></li>
 					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">
@@ -163,7 +162,6 @@
 		    <div class="product-ratings">
 		    	<ul class="trending-horizontal">
 					<li>Mileage:<span class="car-li">19400Km</span></li>
-					<li>Year:<span class="car-li">2014</span></li>
 					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">
@@ -203,7 +201,6 @@
 		    	<ul class="trending-horizontal">
 				<li><span class="car-li">Bedrooms:</span>5</li>
 				<li><span class="car-li">Bathrooms:</span>4</li>
-				<li><span class="car-li">Parking:</span>6</li>
 				<li><span class="car-li">Funished:</span>No</li>
 				</ul>  
 				<div class="property-price">
@@ -244,7 +241,6 @@
 		    <div class="product-ratings">
 		    	<ul class="trending-horizontal">
 					<li>Mileage:<span class="car-li">19400Km</span></li>
-					<li>Year:<span class="car-li">2014</span></li>
 					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">
@@ -284,7 +280,6 @@
 		    <div class="product-ratings">
 		    	<ul class="trending-horizontal">
 					<li>Acres:<span class="car-li">30</span></li>
-					<li>Year:<span class="car-li">2014</span></li>
 					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">
@@ -465,7 +460,6 @@
 		    <div class="product-ratings">
 		    	<ul class="trending-horizontal">
 					<li>Mileage:<span class="car-li">19400Km</span></li>
-					<li>Year:<span class="car-li">2014</span></li>
 					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">

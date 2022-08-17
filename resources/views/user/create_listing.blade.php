@@ -200,6 +200,81 @@
       </div>
   </div>
 </fieldset>
+<fieldset class="border border-gary p-4 mb-5">
+  <h4 style=" text-align: center;">Upload your cars image</h4>
+  <h6 class="font-weight-bold pt-4 pb-1">Kindly follow the below processes</h6>
+  <div class="row">
+    <div class="space column">
+      <div class="card">
+        <h3>Front-image</h3>
+        <input type="file" id="files" name="images[]" multiple />
+      </div>
+    </div>
+  
+    <div class="space column">
+      <div class="card">
+        <h3>Back-image</h3>
+        <input type="file" id="back" name="images[]" multiple />
+      </div>
+    </div>
+    
+    <div class="space column">
+      <div class="card">
+        <h3>Right side-image</h3>
+        <input type="file" id="right" name="images[]" multiple />
+      </div>
+    </div>
+    
+    <div class="space column">
+      <div class="card">
+        <h3>Left side-image</h3>
+        <input type="file" id="files" name="images[]" multiple />
+      </div>
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Interior front</h3>
+        <input type="file" id="files" name="images[]" multiple />
+      </div>
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Interior back</h3>
+        <input type="file" id="files" name="images[]" multiple />
+      </div>
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Engine-image</h3>
+        <input type="file" id="files" name="images[]" multiple />
+      </div>
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Interior front</h3>
+        <input type="file" id="files" name="images[]" multiple />
+      </div>
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Optional 1</h3>
+        <input type="file" id="files" name="images[]" multiple />
+      </div>
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Optional 2</h3>
+        <input type="file" id="files" name="images[]" multiple />
+      </div>
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Optional 3</h3>
+        <input type="file" id="files" name="images[]" multiple />
+      </div>
+    </div>
+  </div>
+</fieldset>
 
 <fieldset class="border border-gary p-4 mb-5">
   <h4 style=" text-align: center;">Choose your boosting Plan</h4>
@@ -329,9 +404,14 @@ input[type="file"] {
 </style>
 
 <script>
+function preview() {
+    frame.src=URL.createObjectURL(event.target.files[0]);
+}
+
+
 $(document).ready(function() {
     if (window.File && window.FileList && window.FileReader) {
-      $("#files").on("change", function(e) {
+      $("#right").on("change", function(e) {
         var files = e.target.files,
           filesLength = files.length;
         for (var i = 0; i < filesLength; i++) {
@@ -342,7 +422,44 @@ $(document).ready(function() {
             $("<span class=\"pip\">" +
               "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
               "<br/><span class=\"remove\">Remove image</span>" +
-              "</span>").insertAfter("#files");
+              "</span>").insertAfter("#right");
+            $(".remove").click(function(){
+              $(this).parent(".pip").remove();
+            });
+            
+            // Old code here
+            /*$("<img></img>", {
+              class: "imageThumb",
+              src: e.target.result,
+              title: file.name + " | Click to remove"
+            }).insertAfter("#files").click(function(){$(this).remove();});*/
+            
+          });
+          fileReader.readAsDataURL(f);
+        }
+      });
+    } else {
+      alert("Your browser doesn't support to File API")
+    }
+  });
+
+
+
+
+$(document).ready(function() {
+    if (window.File && window.FileList && window.FileReader) {
+      $("#back").on("change", function(e) {
+        var files = e.target.files,
+          filesLength = files.length;
+        for (var i = 0; i < filesLength; i++) {
+          var f = files[i]
+          var fileReader = new FileReader();
+          fileReader.onload = (function(e) {
+            var file = e.target;
+            $("<span class=\"pip\">" +
+              "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+              "<br/><span class=\"remove\">Remove image</span>" +
+              "</span>").insertAfter("#back");
             $(".remove").click(function(){
               $(this).parent(".pip").remove();
             });
