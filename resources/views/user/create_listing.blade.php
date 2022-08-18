@@ -16,19 +16,29 @@
                         <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
                         <select name="category" id="inputGroupSelect" class="form-control">
                             <option value="">Select category</option>
-                 
-                            <option value="2">Cars</option>
-                   
-               
+                            <option value="2" {{(old('category'))? 'selected':''}}>Cars</option>
                         </select>
+                        @error('category')
+                        <span class="invalid"  role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                       @enderror
                         <h6 class="font-weight-bold pt-4 pb-1">Select Your City</h6>
                         <select name="city" id="inputGroupSelect" class="form-control">
                             <option value="">Select City</option>
+                            
+                            
                             @foreach ($cities as $city )
-                            <option value="{{ $city->id }}">{{ $city->city }}</option>
+                             <option value="{{ $city->id }}" {{(old('city')==$city->id)? 'selected':''}}>
+                              {{ $city->city }}</option> 
+                        
                             @endforeach
                         </select>
-                     
+                        @error('city')
+                          <span class="invalid"  role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                         @enderror
                     </div>
                 </div>
                 </section>
@@ -45,36 +55,41 @@
                 <option value="">Choose a Make</option>
     
                   @foreach($makes as $make)
-                    <option value="{{ $make->id }}">{{ $make->make }}</option>
+                    <option value="{{ $make->id }}" {{(old('make'))? 'selected':''}}>{{ $make->make }}</option>
                   @endforeach
-             
               </select>
+                @error('make_id')
+                  <span class="invalid"  role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
+
               <h6 class="font-weight-bold pt-4 pb-1">Select Model</h6>           
               <select name="model_id" class="model form-control">
-                <option value="0" disabled="true" selected="true">Chose a model</option>
+                <option value="0"  disabled="true" selected="true">Choose a model</option>
 
               </select>
-                @error('model')
-                <span role="alert">
+                @error('model_id')
+                <span class="invalid"  role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
           </div>
           <h6 class="font-weight-bold pt-4 pb-1">Title</h6>
-          <input name="title" type="text" class="border w-100 p-2 bg-white text-capitalize" >
+          <input name="title" value="{{ old('title')}}" type="text" class="border w-100 p-2 bg-white text-capitalize" >
 
           <h6 class="font-weight-bold pt-4 pb-1">Year of Build:</h6>
-          <input type="number" name="year_of_build" class="border w-100 p-2 bg-white text-capitalize @error('year_of_build') is-invalid @enderror" placeholder="1964">
+          <input type="number" value="{{ old('year_of_build')}}" name="year_of_build" class="border w-100 p-2 bg-white text-capitalize @error('year_of_build') is-invalid @enderror" placeholder="1964">
               @error('year_of_build')
                   <span class="invalid"  role="alert">
                       <strong>{{ $message }}</strong>
                   </span>
               @enderror
           
-          <h6 class="font-weight-bold pt-4 pb-1">Car Condition</h6>
+          <h6 class="font-weight-bold pt-4 pb-1">Select Condition</h6>
           <select name="condition" id="inputGroupSelect" class="form-control">
-              <option value="">Select Condition</option>     
-              <option>Foreign Used</option>     
+              <option value="{{ old('condition')}}" {{(old('condition'))? 'selected':''}}> {{ old('condition')}} </option>     
+              <option >Foreign Used</option>     
               <option>Local Used</option>    
           </select>
           @error('condition')
@@ -92,9 +107,9 @@
           </span>
           @enderror
 
-          <h6 class="font-weight-bold pt-4 pb-1">Car Transmission</h6>
+          <h6 class="font-weight-bold pt-4 pb-1">Select Transmission</h6>
           <select name="transmission"  id="inputGroupSelect" class="form-control">
-              <option value="">Select Transmission</option>     
+            <option value="{{ old('transmission')}}" {{(old('transmission'))? 'selected':''}}> {{ old('transmission')}} </option>   
               <option>Manual</option>     
               <option>Automatic </option>    
           </select>
@@ -104,21 +119,38 @@
           </span>
           @enderror
 
-          <h6 class="font-weight-bold pt-4 pb-1">Car Fuel Type</h6>
+          <h6 class="font-weight-bold pt-4 pb-1">Select Fuel Type</h6>
           <select name="fuel_type" id="inputGroupSelect" class="form-control">
-              <option value="">Select Fuel type</option>     
+            <option value="{{ old('fuel_type')}}" {{(old('fuel_type'))? 'selected':''}}> {{ old('fuel_type')}} </option> 
               <option>Petrol</option>     
               <option>Diesel</option>    
           </select>
-          <h6 class="font-weight-bold pt-4 pb-1">Exchange</h6>
-          <input name="exchange" type="text" class="border w-100 p-2 bg-white text-capitalize">
-
+          @error('fuel_type')
+                <span class="invalid"  role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+          @enderror
+          <h6 class="font-weight-bold pt-4 pb-1">Select Exchange</h6>
+          <select name="exchange" id="inputGroupSelect" class="form-control">
+          <option value="{{ old('exchange')}}" {{(old('exchange'))? 'selected':''}}> {{ old('exchange')}} </option> 
+            <option>Yes</option>     
+            <option>No</option>    
+        </select>
+          @error('exchange')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+          @enderror
           <h6 class="font-weight-bold pt-4 pb-1">Price</h6>
-          <input name="price" type="text" class="number border w-100 p-2 bg-white text-capitalize" placeholder="Kes 00.00">
-
-          <h6 class="font-weight-bold pt-4 pb-1">Car Body Type</h6>
+          <input name="price" value="{{ old('price')}}" type="text" class="number border w-100 p-2 bg-white text-capitalize" placeholder="Kes 00.00">
+          @error('price')
+              <span class="invalid"  role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
+          <h6 class="font-weight-bold pt-4 pb-1">Select Body Type</h6>
           <select name="body_type" id="inputGroupSelect" class="form-control">
-              <option value="">Select Body type</option>     
+            <option value="{{ old('body_type')}}" {{(old('body_type'))? 'selected':''}}> {{ old('body_type')}} </option>  
               <option>saloon</option>     
               <option>Suv</option>    
               <option>convertible</option>    
@@ -128,26 +160,52 @@
               <option>stationwagon</option> 
               <option>minivan</option> 
           </select>
-
+          @error('body_type')
+              <span class="invalid"  role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
           <h6 class="font-weight-bold pt-4 pb-1">Color</h6>
-          <input name="color" type="text" class="border w-100 p-2 bg-white text-capitalize" placeholder="color of your car">
-          
-          <h6 class="font-weight-bold pt-4 pb-1">Car Duty Type</h6>
+          <select name="color" id="inputGroupSelect" class="form-control">
+            <option value="{{ old('color')}}" {{(old('color'))? 'selected':''}}> {{ old('color')}} </option>     
+            <option>Black</option>     
+            <option>Grey</option>    
+            <option>Red</option>    
+            <option>Silver</option>  
+          </select>
+          @error('color')
+              <span class="invalid"  role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
+
+          <h6 class="font-weight-bold pt-4 pb-1">Select Duty Type</h6>
           <select name="duty_type" id="inputGroupSelect" class="form-control">
-              <option value="">Select Duty type</option>     
+            <option value="{{ old('duty_type')}}" {{(old('duty_type'))? 'selected':''}}> {{ old('duty_type')}} </option>        
               <option>Paid</option>     
               <option>unpaid</option>    
-      
           </select>
-          <h6 class="font-weight-bold pt-4 pb-1">Car Interior Type</h6>
+          @error('duty_type')
+              <span class="invalid"  role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
+
+          <h6 class="font-weight-bold pt-4 pb-1">Select Interior Type</h6>
           <select name="interior_type" id="inputGroupSelect" class="form-control">
-              <option value="">Select Body type</option>     
+            <option value="{{ old('interior_type')}}" {{(old('interior_type'))? 'selected':''}}> {{ old('interior_type')}} </option>          
               <option>leather</option>     
               <option>cloth</option>     
           </select>
+          @error('interior_type')
+              <span class="invalid"  role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
+
           <h6 class="font-weight-bold pt-4 pb-1">Engine size</h6>
           <select name="engine_size" id="inputGroupSelect" class="form-control">
-            <option value="">Select Engine Size</option>     
+            <option value="{{ old('engine_size')}}" {{(old('engine_size'))? 'selected':''}}> {{ old('engine_size')}} </option>    
             <option>1.0L</option>     
             <option>1.2L</option> 
             <option>1.4L</option> 
@@ -186,12 +244,23 @@
             <option>7L</option> 
             <option>7.9L</option> 
 
-
-
           </select>
-          <h6 class="font-weight-bold pt-4 pb-1">Description:</h6>
-          <textarea name="description" class="description ckeditor form-control" name="wysiwyg-editor"></textarea>
+          @error('engine_size')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+          @enderror
 
+          <h6 class="font-weight-bold pt-4 pb-1">Description:</h6>
+          <textarea name="description"  class="description ckeditor form-control" name="wysiwyg-editor">
+            {{ old('description')}}
+          </textarea>
+
+          @error('description')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+          @enderror
 
           <div class="field" align="left">
             <h3>Upload your images</h3>
@@ -291,68 +360,28 @@
   </div>
 
   <div class="container">
-    <div class="row gy-4">
-      <div class="col-sm">
-        <div class="card h-100">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Gold</h5>
-                <div class="pfeatures">
-                  <ul>
-                    <li><span>5</span> Edits</li>
-                    <li><span>1GB</span> Storage</li>
-                    <li><span>3</span> Pages</li>
-                    <li><span>1</span> Hour free support</li>
-                  </ul>
-                  @foreach ($packages as $package )
-                  <input type="radio"  id="inputGroupSelect" name="package_id" value="{{ $package->id }}">{{ $package->package_name }}"
-                  @endforeach
-                </div>
+    <div class="row">
+      @foreach ($packages as $package )
+      <div class="col-lg-4 col-md-6">
+        <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
+            <div class="package-content-heading border-bottom">
+                <i class="fa fa-paper-plane"></i>
+                <h2>{{ $package->package_name }}</h2>
+                <h4 class="py-3"> <span>{{ $package->package_duration }}</span> Per Month</h4>
             </div>
+            <ul>
+                <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
+                <li class="my-4"> <i class="fa fa-check"></i>15 Features Ad Availability</li>
+                <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
+                <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
+            </ul>
+            <input type="radio"  id="inputGroupSelect" name="package_id" value="{{ $package->id }}" {{(old('package_id')==$package->id)? 'checked':''}}>
+                  {{ $package->package_name }}"
         </div>
     </div>
-        <div class="col-sm">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">Bronze</h5>
-                    <div class="pfeatures">
-                      <ul>
-                        <li><span>5</span> Edits</li>
-                        <li><span>1GB</span> Storage</li>
-                        <li><span>3</span> Pages</li>
-                        <li><span>1</span> Hour free support</li>
-                      </ul>
-                    </div>
-                    @foreach ($packages as $package )
-                    <input type="radio" id="inputGroupSelect"  name="package_id" value="{{ $package->id }}">{{ $package->package_name }}"
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-          <div class="card h-100">
-              <div class="card-body">
-                  <h5 class="card-title fw-bold">Silver</h5>
-                  <div class="pfeatures">
-                    <ul>
-                      <li><span>5</span> Edits</li>
-                      <li><span>1GB</span> Storage</li>
-                      <li><span>3</span> Pages</li>
-                      <li><span>1</span> Hour free support</li>
-                    </ul>
-                  </div>
-                  @foreach ($packages as $package )
-                  <input type="radio" id="inputGroupSelect"  name="package_id" value="{{ $package->id }}">{{ $package->package_name }}"
-                  @endforeach
-              </div>
-          </div>
-      </div>
+    @endforeach
     </div>
 </div>
-
-
-
-
-
 
 
   </section>
@@ -509,7 +538,7 @@ $(document).on('change','.make',function(){
     success:function(data){
       
       for(var i=0;i<data.length;i++){
-        option+='<option value="'+data[i].id+'">'+data[i].model+'</option>';
+        option+='<option value="'+data[i].id+'" >'+data[i].model+'</option>';
        }
        div.find('.model').html(" ");
        div.find('.model').append(option);
