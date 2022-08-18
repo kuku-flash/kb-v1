@@ -536,6 +536,71 @@ button {
 
 
 /* Start kingsbridge */
+
+/*Vehicle specifications icons */
+
+  .hvgDcX {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 8px;
+    padding-bottom: 12px;
+    }
+.iQQtEg {
+  display: flex;
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 33%;
+  min-height: 40px;
+  padding-top: 8px;
+  padding-right: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-top-width: initial;
+  border-right-width: initial;
+  border-bottom-width: initial;
+  border-left-width: initial;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  line-height: 1;
+  word-break: break-word;
+  }
+
+  .icon-svg {
+    position: relative;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    width: 25px;
+    height: 25px;
+    margin-top: 0px;
+    margin-right: 8px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    }
+/* End of icons*/
+
+
+
+
+
 /*start add photo cards */
 /* Float four columns side by side */
 .column {
