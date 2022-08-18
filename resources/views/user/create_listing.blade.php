@@ -12,7 +12,6 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h3>Post Your Listing</h3>
-
                         <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
                         <select name="category" id="inputGroupSelect" class="form-control">
                             <option value="">Select category</option>

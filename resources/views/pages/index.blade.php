@@ -461,6 +461,7 @@
 		    	<ul class="trending-horizontal">
 					<li>Mileage:<span class="car-li">19400Km</span></li>
 					<li>Trans:<span class="car-li">Automatic</span></li>
+
 				</ul>  
 				<div class="property-price">
 					<p class="badge-sale">For Sale</p>
