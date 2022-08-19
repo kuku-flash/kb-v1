@@ -75,8 +75,20 @@ class ListingController extends Controller
             'duty_type' => 'required',
             'interior_type' => 'required',
             'engine_size' => 'required',
-            'images' => 'required',
-            'images.*' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg'
+            'package_id' => 'required',
+            'vehicle_type' => 'required',
+            'color' => 'required',
+            'front_img' => ' required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+            'back_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+            'right_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+            'left_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+            'interiorf_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+            'interiorb_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+            'engine_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+            'opt_img1' => '|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+            'opt_img2' => ' image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+            'opt_img3' => ' image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+    
   
   
             ]);
@@ -90,26 +102,125 @@ class ListingController extends Controller
       $listing->ads_status = 'Pending';
       $listing->save();
 
-      $currentId = $listing->id;
+        $currentId = $listing->id;
 
-      $vehicle->listing_id = $currentId;
-      $vehicle->model_id = $request->model_id;
-      $vehicle->year_of_build = $request->year_of_build;
-      $vehicle->title = $request->title;
-      $vehicle->condition = $request->condition;
-      $vehicle->mileage = $request->mileage;
-      $vehicle->transmission = $request->transmission;
-      $vehicle->fuel_type = $request->fuel_type;
-      $vehicle->exchange = $request->exchange;
-      $vehicle->price = $request->price;
-      $vehicle->description = $request->description;
-      $vehicle->body_type = $request->body_type;
-      $vehicle->duty_type = $request->duty_type;
-      $vehicle->interior_type = $request->interior_type;
-      $vehicle->engine_size = $request->engine_size;
-      $vehicle->save();
 
-      if ($request->hasFile('images')) 
+ //Handle File Upload
+    if($request->hasFile('front_img')){
+        $imagenamewithExt = $request->file('front_img')->getClientOriginalName();
+        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+        $extension = $request->file('front_img')->getClientOriginalExtension();
+        $front_imgStore = $imagename.'_'.time().'.'.$extension;
+        $path = $request->file('front_img')->storeAs('public/photos', $front_imgStore);
+    } 
+
+    if($request->hasFile('back_img')){
+        $imagenamewithExt = $request->file('back_img')->getClientOriginalName();
+        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+        $extension = $request->file('back_img')->getClientOriginalExtension();
+        $back_imgStore = $imagename.'_'.time().'.'.$extension;
+        $path = $request->file('back_img')->storeAs('public/photos', $back_imgStore);
+    } 
+
+    if($request->hasFile('right_img')){
+        $imagenamewithExt = $request->file('right_img')->getClientOriginalName();
+        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+        $extension = $request->file('right_img')->getClientOriginalExtension();
+        $right_imgStore = $imagename.'_'.time().'.'.$extension;
+        $path = $request->file('right_img')->storeAs('public/photos', $right_imgStore);
+    } 
+
+    if($request->hasFile('left_img')){
+        $imagenamewithExt = $request->file('left_img')->getClientOriginalName();
+        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+        $extension = $request->file('left_img')->getClientOriginalExtension();
+        $left_imgStore = $imagename.'_'.time().'.'.$extension;
+        $path = $request->file('left_img')->storeAs('public/photos', $left_imgStore);
+    } 
+
+    if($request->hasFile('interiorf_img')){
+        $imagenamewithExt = $request->file('interiorf_img')->getClientOriginalName();
+        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+        $extension = $request->file('interiorf_img')->getClientOriginalExtension();
+        $interiorf_imgStore = $imagename.'_'.time().'.'.$extension;
+        $path = $request->file('interiorf_img')->storeAs('public/photos', $interiorf_imgStore);
+    } 
+    //interior back image upload code
+    if($request->hasFile('interiorb_img')){
+        $imagenamewithExt = $request->file('interiorb_img')->getClientOriginalName();
+        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+        $extension = $request->file('interiorb_img')->getClientOriginalExtension();
+        $interiorb_imgStore = $imagename.'_'.time().'.'.$extension;
+        $path = $request->file('interiorb_img')->storeAs('public/photos', $interiorb_imgStore);
+    } 
+
+    if($request->hasFile('engine_img')){
+        $imagenamewithExt = $request->file('engine_img')->getClientOriginalName();
+        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+        $extension = $request->file('engine_img')->getClientOriginalExtension();
+        $engine_imgStore = $imagename.'_'.time().'.'.$extension;
+        $path = $request->file('engine_img')->storeAs('public/photos', $engine_imgStore);
+    } 
+
+    if($request->hasFile('opt_img1')){
+        $imagenamewithExt = $request->file('opt_img1')->getClientOriginalName();
+        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+        $extension = $request->file('opt_img1')->getClientOriginalExtension();
+        $opt_img1Store = $imagename.'_'.time().'.'.$extension;
+        $path = $request->file('opt_img1')->storeAs('public/photos', $opt_img1Store);
+    } else { $opt_img1Store = ''; }
+
+    if($request->hasFile('opt_img2')){
+        $imagenamewithExt = $request->file('opt_img2')->getClientOriginalName();
+        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+        $extension = $request->file('opt_img2')->getClientOriginalExtension();
+        $opt_img2Store = $imagename.'_'.time().'.'.$extension;
+        $path = $request->file('opt_img2')->storeAs('public/photos', $opt_img2Store);
+    } else { $opt_img2Store = ''; }
+
+    if($request->hasFile('opt_img3')){
+        $imagenamewithExt = $request->file('opt_img3')->getClientOriginalName();
+        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+        $extension = $request->file('opt_img3')->getClientOriginalExtension();
+        $opt_img3Store = $imagename.'_'.time().'.'.$extension;
+        $path = $request->file('opt_img3')->storeAs('public/photos', $opt_img3Store);
+    } else { $opt_img3Store = ''; }     
+
+        $vehicle->listing_id = $currentId;
+        $vehicle->model_id = $request->model_id;
+        $vehicle->year_of_build = $request->year_of_build;
+        $vehicle->title = $request->title;
+        $vehicle->condition = $request->condition;
+        $vehicle->mileage = $request->mileage;
+        $vehicle->transmission = $request->transmission;
+        $vehicle->fuel_type = $request->fuel_type;
+        $vehicle->exchange = $request->exchange;
+        $vehicle->price = $request->price;
+        $vehicle->description = $request->description;
+        $vehicle->body_type = $request->body_type;
+        $vehicle->duty_type = $request->duty_type;
+        $vehicle->interior_type = $request->interior_type;
+        $vehicle->engine_size = $request->engine_size;
+        $vehicle->vehicle_type = $request->vehicle_type;
+        $vehicle->color = $request->color;
+
+        if($request->hasFile('front_img')) { $vehicle->front_img = $front_imgStore; }
+        if($request->hasFile('back_img')) { $vehicle->back_img = $back_imgStore; }
+        if($request->hasFile('right_img')) { $vehicle->right_img = $right_imgStore; }
+        if($request->hasFile('left_img')) { $vehicle->left_img = $left_imgStore; }
+        if($request->hasFile('interiorf_img')) { $vehicle->interiorf_img = $interiorf_imgStore; }
+        if($request->hasFile('interiorb_img')) { $vehicle->interiorb_img = $interiorb_imgStore; }
+        if($request->hasFile('engine_img')) { $vehicle->engine_img = $engine_imgStore; }
+        if($request->hasFile('opt_img1')) { $vehicle->opt_img1 = $opt_img1Store; }
+        if($request->hasFile('opt_img2')) { $vehicle->opt_img2 = $opt_img2Store; }
+        if($request->hasFile('opt_img3')) { $vehicle->opt_img3 = $opt_img3Store;   } 
+
+        $vehicle->save();
+
+       
+
+
+   /*   if ($request->hasFile('images')) 
       {
           $photos = $request->file('images');
           $i = 1;
@@ -125,8 +236,8 @@ class ListingController extends Controller
             $vehicle->vehiclephotos()->create(['photo' => $name, 'photo_postion' => $i++]);
  
           }     
-        }
-     
+        } */
+  
     return redirect() -> route('user.invoice', [$listing->id, $vehicle->id])->with('success','Added'); 
      
     }
@@ -165,24 +276,119 @@ class ListingController extends Controller
 
       $currentId = $listing->id;
 
-      $vehicle->listing_id = $currentId;
-      $vehicle->model_id = $request->model_id;
-      $vehicle->year_of_build = $request->year_of_build;
-      $vehicle->title = $request->title;
-      $vehicle->condition = $request->condition;
-      $vehicle->mileage = $request->mileage;
-      $vehicle->transmission = $request->transmission;
-      $vehicle->fuel_type = $request->fuel_type;
-      $vehicle->exchange = $request->exchange;
-      $vehicle->price = $request->price;
-      $vehicle->description = $request->description;
-      $vehicle->body_type = $request->body_type;
-      $vehicle->duty_type = $request->duty_type;
-      $vehicle->interior_type = $request->interior_type;
-      $vehicle->engine_size = $request->engine_size;
+//Handle File Upload
+if($request->hasFile('front_img')){
+    $imagenamewithExt = $request->file('front_img')->getClientOriginalName();
+    $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+    $extension = $request->file('front_img')->getClientOriginalExtension();
+    $front_imgStore = $imagename.'_'.time().'.'.$extension;
+    $path = $request->file('front_img')->storeAs('public/photos', $front_imgStore);
+} 
+
+if($request->hasFile('back_img')){
+    $imagenamewithExt = $request->file('back_img')->getClientOriginalName();
+    $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+    $extension = $request->file('back_img')->getClientOriginalExtension();
+    $back_imgStore = $imagename.'_'.time().'.'.$extension;
+    $path = $request->file('back_img')->storeAs('public/photos', $back_imgStore);
+} 
+
+if($request->hasFile('right_img')){
+    $imagenamewithExt = $request->file('right_img')->getClientOriginalName();
+    $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+    $extension = $request->file('right_img')->getClientOriginalExtension();
+    $right_imgStore = $imagename.'_'.time().'.'.$extension;
+    $path = $request->file('right_img')->storeAs('public/photos', $right_imgStore);
+} 
+
+if($request->hasFile('left_img')){
+    $imagenamewithExt = $request->file('left_img')->getClientOriginalName();
+    $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+    $extension = $request->file('left_img')->getClientOriginalExtension();
+    $left_imgStore = $imagename.'_'.time().'.'.$extension;
+    $path = $request->file('left_img')->storeAs('public/photos', $left_imgStore);
+} 
+
+if($request->hasFile('interiorf_img')){
+    $imagenamewithExt = $request->file('interiorf_img')->getClientOriginalName();
+    $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+    $extension = $request->file('interiorf_img')->getClientOriginalExtension();
+    $interiorf_imgStore = $imagename.'_'.time().'.'.$extension;
+    $path = $request->file('interiorf_img')->storeAs('public/photos', $interiorf_imgStore);
+} 
+//interior back image upload code
+if($request->hasFile('interiorb_img')){
+    $imagenamewithExt = $request->file('interiorb_img')->getClientOriginalName();
+    $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+    $extension = $request->file('interiorb_img')->getClientOriginalExtension();
+    $interiorb_imgStore = $imagename.'_'.time().'.'.$extension;
+    $path = $request->file('interiorb_img')->storeAs('public/photos', $interiorb_imgStore);
+} 
+
+if($request->hasFile('engine_img')){
+    $imagenamewithExt = $request->file('engine_img')->getClientOriginalName();
+    $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+    $extension = $request->file('engine_img')->getClientOriginalExtension();
+    $engine_imgStore = $imagename.'_'.time().'.'.$extension;
+    $path = $request->file('engine_img')->storeAs('public/photos', $engine_imgStore);
+} 
+
+if($request->hasFile('opt_img1')){
+    $imagenamewithExt = $request->file('opt_img1')->getClientOriginalName();
+    $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+    $extension = $request->file('opt_img1')->getClientOriginalExtension();
+    $opt_img1Store = $imagename.'_'.time().'.'.$extension;
+    $path = $request->file('opt_img1')->storeAs('public/photos', $opt_img1Store);
+} else { $opt_img1Store = ''; }
+
+if($request->hasFile('opt_img2')){
+    $imagenamewithExt = $request->file('opt_img2')->getClientOriginalName();
+    $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+    $extension = $request->file('opt_img2')->getClientOriginalExtension();
+    $opt_img2Store = $imagename.'_'.time().'.'.$extension;
+    $path = $request->file('opt_img2')->storeAs('public/photos', $opt_img2Store);
+} else { $opt_img2Store = ''; }
+
+if($request->hasFile('opt_img3')){
+    $imagenamewithExt = $request->file('opt_img3')->getClientOriginalName();
+    $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
+    $extension = $request->file('opt_img3')->getClientOriginalExtension();
+    $opt_img3Store = $imagename.'_'.time().'.'.$extension;
+    $path = $request->file('opt_img3')->storeAs('public/photos', $opt_img3Store);
+} else { $opt_img3Store = ''; }     
+
+    $vehicle->listing_id = $currentId;
+    $vehicle->model_id = $request->model_id;
+    $vehicle->year_of_build = $request->year_of_build;
+    $vehicle->title = $request->title;
+    $vehicle->condition = $request->condition;
+    $vehicle->mileage = $request->mileage;
+    $vehicle->transmission = $request->transmission;
+    $vehicle->fuel_type = $request->fuel_type;
+    $vehicle->exchange = $request->exchange;
+    $vehicle->price = $request->price;
+    $vehicle->description = $request->description;
+    $vehicle->body_type = $request->body_type;
+    $vehicle->duty_type = $request->duty_type;
+    $vehicle->interior_type = $request->interior_type;
+    $vehicle->engine_size = $request->engine_size;
+    $vehicle->vehicle_type = $request->vehicle_type;
+    $vehicle->color = $request->color;
+
+    if($request->hasFile('front_img')) { $vehicle->front_img = $front_imgStore; }
+    if($request->hasFile('back_img')) { $vehicle->back_img = $back_imgStore; }
+    if($request->hasFile('right_img')) { $vehicle->right_img = $right_imgStore; }
+    if($request->hasFile('left_img')) { $vehicle->left_img = $left_imgStore; }
+    if($request->hasFile('interiorf_img')) { $vehicle->interiorf_img = $interiorf_imgStore; }
+    if($request->hasFile('interiorb_img')) { $vehicle->interiorb_img = $interiorb_imgStore; }
+    if($request->hasFile('engine_img')) { $vehicle->engine_img = $engine_imgStore; }
+    if($request->hasFile('opt_img1')) { $vehicle->opt_img1 = $opt_img1Store; }
+    if($request->hasFile('opt_img2')) { $vehicle->opt_img2 = $opt_img2Store; }
+    if($request->hasFile('opt_img3')) { $vehicle->opt_img3 = $opt_img3Store;   } 
+
       $vehicle->update();
 
-      if ($request->hasFile('images')) 
+     /* if ($request->hasFile('images')) 
       {
           $photos = $request->file('images');
           $i = 1;
@@ -190,28 +396,39 @@ class ListingController extends Controller
              $name = time().'-'.$image->getClientOriginalName();
              $name = str_replace('','-',$name);
              $image->storeAs('public/photos', $name);
-
             #$vehicle_photo->photo = $name;
             #$vehicle_photo->vehicle_id = $vehicle->id;
-            #$vehicle_photo->save();
-    
+            #$vehicle_photo->save(); 
             $vehicle->vehiclephotos()->update(['photo' => $name,'photo_postion' => $i++]);
- 
           }     
-        }
+        }  */
      
-    return redirect() -> route('user.my_list')->with('success','Added');
+    return redirect() -> route('user.edit_listing', [$listing->id, $vehicle->id])->with('success','Updated');
      
     }
     public function delete_listing($listing, $vehicle){
       
         $vehicle = Vehicle::find($vehicle);
         $listing = Listing::find($listing);
-        $vehicle_photos = Vehicle_photo::where('vehicle_id', $vehicle->id)->get();
+
+        Storage::delete(
+        'public/photos/'.$vehicle->front_img, 
+        'public/photos/'.$vehicle->back_img,
+        'public/photos/'.$vehicle->right_img,
+        'public/photos/'.$vehicle->left_img,
+        'public/photos/'.$vehicle->interiorf_img,
+        'public/photos/'.$vehicle->interiorb_img,
+        'public/photos/'.$vehicle->engine_img,
+        'public/photos/'.$vehicle->opt_img1,
+        'public/photos/'.$vehicle->opt_img2,
+        'public/photos/'.$vehicle->opt_img3,
+        );
+
+       /* $vehicle_photos = Vehicle_photo::where('vehicle_id', $vehicle->id)->get();
         foreach ($vehicle_photos as $vehicle_photo){       
                 Storage::delete('public/photos/'.$vehicle_photo->photo);
                 $vehicle_photo->delete();
-        }
+        } */
     
         $vehicle->delete();
         $listing->delete();

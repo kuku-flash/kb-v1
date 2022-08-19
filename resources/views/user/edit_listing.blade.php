@@ -116,11 +116,15 @@
               <option>Petrol</option>     
               <option>Diesel</option>    
           </select>
-          <h6 class="font-weight-bold pt-4 pb-1">Exchange</h6>
-          <input name="exchange" type="text" class="border w-100 p-2 bg-white text-capitalize" value="{{$vehicle->exchange}}">
+          <h6 class="font-weight-bold pt-4 pb-1">Select Exchange</h6>
+          <select name="exchange" id="inputGroupSelect" class="form-control">
+            <option selected>{{$vehicle->exchange}}</option>
+            <option>Yes</option>     
+            <option>No</option>    
+        </select>
 
           <h6 class="font-weight-bold pt-4 pb-1">Price</h6>
-          <input name="price" type="text" class="border w-100 p-2 bg-white text-capitalize"  value="{{$vehicle->price}}">
+          <input name="price" type="text" class="number border w-100 p-2 bg-white text-capitalize"  value="{{$vehicle->price}}">
 
           <h6 class="font-weight-bold pt-4 pb-1">Car Body Type</h6>
           <select name="body_type" id="inputGroupSelect" class="form-control">
@@ -136,7 +140,21 @@
           </select>
 
           <h6 class="font-weight-bold pt-4 pb-1">Color</h6>
-          <input name="color" type="text" class="border w-100 p-2 bg-white text-capitalize"  value="{{$vehicle->color}}">
+          <select name="color" id="inputGroupSelect" class="form-control">
+            <option selected>{{$vehicle->color}}</option>     
+            <option>Black</option>     
+            <option>white</option>    
+            <option>Silver</option>    
+            <option>Brown</option>
+            <option>Blue</option>
+            <option>Red</option>  
+            <option>Yellow</option> 
+            <option>Purple</option>   
+            <option>Green</option>
+            <option>Gray</option>  
+            <option>Orange</option> 
+            <option>Beige</option> 
+          </select>
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Duty Type</h6>
           <select name="duty_type" id="inputGroupSelect" class="form-control">
@@ -152,26 +170,188 @@
               <option>cloth</option>     
           </select>
           <h6 class="font-weight-bold pt-4 pb-1">Engine size</h6>
-          <input name="engine_size" type="text" class="border w-100 p-2 bg-white text-capitalize"  value="{{$vehicle->engine_size}}">
-          
+          <select name="engine_size" id="inputGroupSelect" class="form-control">
+            <option selected>{{$vehicle->engine_size}}</option>      
+            <option>1.0L</option>     
+            <option>1.2L</option> 
+            <option>1.4L</option> 
+            <option>1.5L</option> 
+            <option>1.6L</option> 
+            <option>1.7L</option> 
+            <option>1.8L</option> 
+            <option>2L</option> 
+            <option>2.2L</option>
+            <option>2.3L</option> 
+            <option>2.5L</option>  
+            <option>2.6L</option> 
+            <option>2.8L</option> 
+            <option>3L</option> 
+            <option>3.2L</option>
+            <option>3.3L</option>  
+            <option>3.5L</option> 
+            <option>3.7L</option>
+            <option>3.8L</option> 
+            <option>3.9L</option> 
+            <option>4L</option>  
+            <option>4.2L</option> 
+            <option>4.3L</option> 
+            <option>4.4L</option> 
+            <option>4.8L</option> 
+            <option>4.9l</option> 
+            <option>5L</option> 
+            <option>5.2L</option> 
+            <option>5.7L</option> 
+            <option>5.8L</option> 
+            <option>5.9L</option> 
+            <option>6L</option> 
+            <option>6.2L</option> 
+            <option>6.6L</option> 
+            <option>6.9L</option> 
+            <option>7L</option> 
+            <option>7.9L</option> 
+          </select>
+
           <h6 class="font-weight-bold pt-4 pb-1">Description:</h6>
-          <textarea name="description" id="" class="border p-3 w-100" rows="7" placeholder="Write details about your product" >
+          <textarea name="description" id="" class="description ckeditor form-control" name="wysiwyg-editor">
             {{$vehicle->description}}
           </textarea>
-    
-          <div class="field" align="left">
-            <h3>Upload your images</h3>
-            <input type="file" id="files" name="images[]" multiple />
-          </div>
-   
-@foreach ($vehiclephotos as $vehiclephoto)
-    @if($vehiclephoto->vehicle->listing_id == $listing->id)
-      <img width="80px" height="auto" src="/storage/photos/{{ $vehiclephoto->photo }}" alt="image description">
-    @endif  
-          
-@endforeach
+  
      
       </div>
+  </div>
+</fieldset>
+<fieldset class="border border-gary p-4 mb-5">
+  <h4 style=" text-align: center;">Upload your cars image</h4>
+  <h6 class="font-weight-bold pt-4 pb-1">Kindly follow the below processes</h6>
+  <div class="row">
+    <div class="space column">
+      <div class="card">
+        <h3>Front-image</h3>
+        @if($vehicle->front_img)
+           <img class="mt-2 mb-2" src="/storage/photos/{{ $vehicle->front_img}}" style="width: auto; height:120px;" > 
+        @endif
+        <input type="file" id="files"  name="front_img"/>
+      </div>
+      @error('front_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
+    </div>
+  
+    <div class="space column">
+      <div class="card">
+        <h3>Back-image</h3>
+        @if($vehicle->back_img)
+           <img class="mt-2 mb-2" src="/storage/photos/{{ $vehicle->back_img}}" style="width: auto; height:120px;" > 
+        @endif
+        <input type="file" id="back" name="back_img" />
+      </div>
+      @error('back_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
+    </div>
+    
+    <div class="space column">
+      <div class="card">
+        <h3>Right side-image</h3>
+        @if($vehicle->right_img)
+           <img class="mt-2 mb-2" src="/storage/photos/{{ $vehicle->right_img}}" style="width: auto; height:120px;" > 
+        @endif
+        <input type="file" id="right" name="right_img"/>
+      </div>
+      @error('right_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
+    </div>
+    
+    <div class="space column">
+      <div class="card">
+        <h3>Left side-image</h3>
+        @if($vehicle->left_img)
+           <img class="mt-2 mb-2" src="/storage/photos/{{ $vehicle->left_img}}" style="width: auto; height:120px;" > 
+        @endif
+        <input type="file" id="files" name="left_img" />
+      </div>
+      @error('left_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Interior front</h3>
+        @if($vehicle->interiorf_img)
+           <img class="mt-2 mb-2" src="/storage/photos/{{ $vehicle->interiorf_img}}" style="width: auto; height:120px;" > 
+        @endif
+        <input type="file" id="files" name="interiorf_img"  />
+      </div>
+      @error('interiorf_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Interior back</h3>
+        @if($vehicle->interiorb_img)
+           <img class="mt-2 mb-2" src="/storage/photos/{{ $vehicle->interiorb_img}}" style="width: auto; height:120px;" > 
+        @endif
+        <input type="file" id="files" name="interiorb_img"  />
+      </div>
+      @error('interiorb_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Engine-image</h3>
+        @if($vehicle->engine_img)
+           <img class="mt-2 mb-2" src="/storage/photos/{{ $vehicle->engine_img}}" style="width: auto; height:120px;" > 
+        @endif
+        <input type="file" id="files" name="engine_img" />
+      </div>
+      @error('engine_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Optional 1</h3>
+        @if($vehicle->opt_img1)
+           <img class="mt-2 mb-2" src="/storage/photos/{{ $vehicle->opt_img1}}" style="width: auto; height:120px;" > 
+        @endif
+        <input type="file" id="files" name="opt_img1" />
+      </div>
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Optional 2</h3>
+        @if($vehicle->opt_img2)
+           <img class="mt-2 mb-2" src="/storage/photos/{{ $vehicle->opt_img2}}" style="width: auto; height:120px;" > 
+        @endif
+        <input type="file" id="files" name="opt_img2" />
+      </div>
+    </div>
+    <div class="space column">
+      <div class="card">
+        <h3>Optional 3</h3>
+        @if($vehicle->opt_img3)
+           <img class="mt-2 mb-2" src="/storage/photos/{{ $vehicle->opt_img3}}" style="width: auto; height:120px;" > 
+        @endif
+        <input type="file" id="files" name="opt_img3" />
+      </div>
+    </div>
   </div>
 </fieldset>
 <fieldset class="border border-gary p-4 mb-5">
@@ -195,6 +375,58 @@
   </section>
 </fieldset>
 
+
+<fieldset class="border border-gary p-4 mb-5">
+  <h4 style=" text-align: center;">Choose your boosting Plan</h4>
+  <section>
+  <div class="row">
+      <div class="col-lg-12">
+          <h3>Ad Boost Plan</h3>
+
+          <h6 class="font-weight-bold pt-4 pb-1">Boost your Listing</h6>
+       
+       
+       <input type="hidden" name="user_id" value="{{ Auth::user()->id}}" >
+      </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      @foreach ($packages as $package )
+      <div class="col-lg-4 col-md-6">
+        <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
+            <div class="package-content-heading border-bottom">
+                <i class="fa fa-paper-plane"></i>
+                <h2>{{ $package->package_name }}</h2>
+                <h4 class="py-3"> <span>{{ $package->package_duration }}</span> Per Days</h4>
+            </div>
+            <ul>
+                <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
+                <li class="my-4"> <i class="fa fa-check"></i>15 Features Ad Availability</li>
+                <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
+                <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
+            </ul>
+                @if ($listing->package_id)
+                <input type="radio"  id="inputGroupSelect" class="form-control" name="package_id" value="{{ $package->id }}" >
+                @endif
+            
+        
+                  @error('package_id')
+                  <span class="invalid" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
+        </div>
+        
+    </div>
+    @endforeach
+    </div>
+</div>
+
+
+  </section>
+</fieldset>
+
 <button type="submit" class="btn btn-primary d-block mt-2">Update Your Listing</button>
 </form>
     
@@ -202,7 +434,15 @@
     </div>
 </section>
 
+
+<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+      $('.ckeditor').ckeditor();
+  });
+</script>
+
 
 <style>
 input[type="file"] {
@@ -268,7 +508,18 @@ $(document).ready(function() {
   });
   </script>
     <!-- The script for Car Make -->
-    <script>
+<script>
+  $('input.number').keyup(function(event) {
+  // skip for arrow keys
+    if(event.which >= 37 && event.which <= 40) return;
+      // format number
+      $(this).val(function(index, value) {
+      return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+    });
+  });
       $(document).ready(function(){
     
     $(document).on('change','.make',function(){

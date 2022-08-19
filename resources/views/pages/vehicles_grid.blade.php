@@ -119,11 +119,9 @@
 									<div class="thumb-content">
 										<div class="price"> {{ $listing->package->package_name}}</div>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
-											@foreach ($vehiclephotos as $vehiclephoto)
-											@if ($vehicle->id == $vehiclephoto->vehicle_id)
-											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehiclephoto->photo }}" alt=""style="max-height: 400px;">
-											@endif
-											@endforeach
+											
+											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
+											
 										</a>
 									</div>
 									<div class="card-body">

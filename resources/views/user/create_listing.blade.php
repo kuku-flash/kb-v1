@@ -84,7 +84,19 @@
                       <strong>{{ $message }}</strong>
                   </span>
               @enderror
-          
+          <h6 class="font-weight-bold pt-4 pb-1">Select Vehicle Type</h6>
+          <select name="vehicle_type" id="inputGroupSelect" class="form-control">
+              <option value="{{ old('vehicle_type')}}" {{(old('vehicle_type'))? 'selected':''}}> {{ old('vehicle_type')}} </option>     
+              <option>Car</option>     
+              <option>Bus</option> 
+              <option>Motorcycle</option>   
+              <option>Van</option>    
+          </select>
+          @error('vehicle_type')
+            <span class="invalid" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+          @enderror
           <h6 class="font-weight-bold pt-4 pb-1">Select Condition</h6>
           <select name="condition" id="inputGroupSelect" class="form-control">
               <option value="{{ old('condition')}}" {{(old('condition'))? 'selected':''}}> {{ old('condition')}} </option>     
@@ -168,9 +180,17 @@
           <select name="color" id="inputGroupSelect" class="form-control">
             <option value="{{ old('color')}}" {{(old('color'))? 'selected':''}}> {{ old('color')}} </option>     
             <option>Black</option>     
-            <option>Grey</option>    
-            <option>Red</option>    
-            <option>Silver</option>  
+            <option>white</option>    
+            <option>Silver</option>    
+            <option>Brown</option>
+            <option>Blue</option>
+            <option>Red</option>  
+            <option>Yellow</option> 
+            <option>Purple</option>   
+            <option>Green</option>
+            <option>Gray</option>  
+            <option>Orange</option> 
+            <option>Beige</option> 
           </select>
           @error('color')
               <span class="invalid"  role="alert">
@@ -261,10 +281,7 @@
             </span>
           @enderror
 
-          <div class="field" align="left">
-            <h3>Upload your images</h3>
-            <input type="file" id="files" name="images[]" multiple />
-          </div>
+      
       </div>
   </div>
 </fieldset>
@@ -275,70 +292,99 @@
     <div class="space column">
       <div class="card">
         <h3>Front-image</h3>
-        <input type="file" id="files" name="images[]" multiple />
+        <input type="file" id="files"  name="front_img"/>
       </div>
+      @error('front_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
     </div>
   
     <div class="space column">
       <div class="card">
         <h3>Back-image</h3>
-        <input type="file" id="back" name="images[]" multiple />
+        <input type="file" id="back" name="back_img" />
       </div>
+      @error('back_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
     </div>
     
     <div class="space column">
       <div class="card">
         <h3>Right side-image</h3>
-        <input type="file" id="right" name="images[]" multiple />
+        <input type="file" id="right" name="right_img"/>
       </div>
+      @error('right_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
     </div>
     
     <div class="space column">
       <div class="card">
         <h3>Left side-image</h3>
-        <input type="file" id="files" name="images[]" multiple />
+        <input type="file" id="files" name="left_img" />
       </div>
+      @error('left_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
     </div>
     <div class="space column">
       <div class="card">
         <h3>Interior front</h3>
-        <input type="file" id="files" name="images[]" multiple />
+        <input type="file" id="files" name="interiorf_img"  />
       </div>
+      @error('interiorf_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
     </div>
     <div class="space column">
       <div class="card">
         <h3>Interior back</h3>
-        <input type="file" id="files" name="images[]" multiple />
+        <input type="file" id="files" name="interiorb_img"  />
       </div>
+      @error('interiorb_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
     </div>
     <div class="space column">
       <div class="card">
         <h3>Engine-image</h3>
-        <input type="file" id="files" name="images[]" multiple />
+        <input type="file" id="files" name="engine_img" />
       </div>
-    </div>
-    <div class="space column">
-      <div class="card">
-        <h3>Interior front</h3>
-        <input type="file" id="files" name="images[]" multiple />
-      </div>
+      @error('engine_img')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+      @enderror
     </div>
     <div class="space column">
       <div class="card">
         <h3>Optional 1</h3>
-        <input type="file" id="files" name="images[]" multiple />
+        <input type="file" id="files" name="opt_img1" />
       </div>
     </div>
     <div class="space column">
       <div class="card">
         <h3>Optional 2</h3>
-        <input type="file" id="files" name="images[]" multiple />
+        <input type="file" id="files" name="opt_img2" />
       </div>
     </div>
     <div class="space column">
       <div class="card">
         <h3>Optional 3</h3>
-        <input type="file" id="files" name="images[]" multiple />
+        <input type="file" id="files" name="opt_img3" />
       </div>
     </div>
   </div>
@@ -366,7 +412,7 @@
             <div class="package-content-heading border-bottom">
                 <i class="fa fa-paper-plane"></i>
                 <h2>{{ $package->package_name }}</h2>
-                <h4 class="py-3"> <span>{{ $package->package_duration }}</span> Per Month</h4>
+                <h4 class="py-3"> <span>{{ $package->package_duration }}</span> Per Days</h4>
             </div>
             <ul>
                 <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
@@ -374,9 +420,15 @@
                 <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
                 <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
             </ul>
-            <input type="radio"  id="inputGroupSelect" name="package_id" value="{{ $package->id }}" {{(old('package_id')==$package->id)? 'checked':''}}>
-                  {{ $package->package_name }}"
+            <input type="radio"  id="inputGroupSelect" class="form-control" name="package_id" value="{{ $package->id }}" {{(old('package_id')==$package->id)? 'checked':''}}>
+        
+                  @error('package_id')
+                  <span class="invalid" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
         </div>
+        
     </div>
     @endforeach
     </div>
@@ -440,7 +492,7 @@ function preview() {
 
 $(document).ready(function() {
     if (window.File && window.FileList && window.FileReader) {
-      $("#right").on("change", function(e) {
+      $("#files").on("change", function(e) {
         var files = e.target.files,
           filesLength = files.length;
         for (var i = 0; i < filesLength; i++) {
@@ -451,7 +503,7 @@ $(document).ready(function() {
             $("<span class=\"pip\">" +
               "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
               "<br/><span class=\"remove\">Remove image</span>" +
-              "</span>").insertAfter("#right");
+              "</span>").insertAfter("#files");
             $(".remove").click(function(){
               $(this).parent(".pip").remove();
             });
