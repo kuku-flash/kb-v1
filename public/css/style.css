@@ -630,7 +630,77 @@ button {
   }
 }
 
-/* Style the counter cards */
+/* Style the counter cards 
+@media screen and (max-width: 767px) { xxxxxx }
+.ecard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #f1f1f1;
+  text-align: left;
+  padding: 8px;
+  flex-grow: 1;
+max-width: 100%;
+}
+
+.imglist{
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+.list-img-fluid{ 
+max-width: 150%;
+height: 150px; 
+}
+.list-card-body{
+  padding: 20px;
+  -webkit-box-flex: 1;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+padding: 2.25rem; 
+}
+.change-icons{
+  display: inline-block;
+}
+
+@media screen and (max-width: 267px) { 
+  .ecard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #f1f1f1;
+  text-align: left;
+  padding: 8px;
+  flex-grow: 1;
+max-width: 100%;
+
+}
+
+.imglist{
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+.list-img-fluid{ 
+max-width: 150%;
+height: 150px; 
+}
+.list-card-body{
+  padding: 20px;
+  -webkit-box-flex: 1;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+padding: 0.25rem; 
+}
+.change-icons{
+  display: inline-block;
+}
+ }
+
+
+
+*/
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
@@ -666,6 +736,16 @@ border-radius: 25px;
     font-size: 18px;
     padding-top: 2px;
     color: white; }
+
+    /* jiji design */
+    
+
+
+
+
+
+
+
 
 /* PRODUCTS */
 .product {
@@ -772,7 +852,12 @@ border-radius: 25px;
       padding: 15px 0;
       border-radius: 0 0 0 5px;
 }
-
+.bi-heart{
+  position: absolute;
+top: -15px;
+right: -10px;
+z-index: 1;
+}
 .property-price .price {
         color: #2a303b;
         margin-bottom: 0;
