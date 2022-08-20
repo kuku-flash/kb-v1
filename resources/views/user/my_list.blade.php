@@ -105,13 +105,7 @@
 										@if($listing->id == $vehicle->listing_id)
 										
 										<td class="product-thumb">
-											
-											@foreach ($vehiclephotos as $vehiclephoto)
-											@if ($vehicle->id == $vehiclephoto->vehicle_id)
-										<!--	<img class="card-img-top category-img-fluid" src="/photos/{{ $vehiclephoto->photo }}" alt=""style="max-height: 400px;"> -->
-											<img width="100px" height="auto" src="/storage/photos/{{ $vehiclephoto->photo }}" alt="image description">
-											@endif
-											@endforeach
+											<img width="100px" height="auto" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
 										</td>
 										
 
@@ -163,12 +157,12 @@
 
 						</tbody>
 					</table>
-<!-- jiji design
+<!-- jiji design-->
 <div class="row no-gutters">
-<div class="ecard mb-3">
+<div class="ecard m-4">
 	<div class="row g-0">
-	  <div class="imglist">
-		<img class="list-img-fluid" src="/storage/photos/{{ $vehiclephoto->photo }}" alt="">
+	  <div class="imglist ">
+		<img class="list-img-fluid col-sm-5" src="/storage/photos/{{ $vehicle->front_img }}" alt="">
 	  </div>
 	  <div class="col-md-8">
 		<div class="list-card-body">
@@ -222,6 +216,20 @@
 	</div>
   </div>
 </div>
+
+
+
+<div class="recent-work">
+	<div class="pic">
+	  <img src="https://picsum.photos/536/354">
+	</div>
+	<div class="desc">
+	  <h1>Modern website conecept</h1>
+	  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi reiciendis suscipit repudiandae, exercitationem perferendis eligendi. Saepe, nesciunt explicabo! Maxime deserunt necessitatibus perferendis nesciunt ratione est nihil voluptatum doloremque
+		fugit ipsam.</p>
+	</div>
+  </div>
+
 
 
 <!-- jiji design-->
