@@ -262,7 +262,7 @@
     <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
   </div>
 </footer>
-
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>	
 <!-- JAVASCRIPTS -->
 <script src="{{ asset('plugins/jQuery/jquery.min.js')}}"></script>
 <script src="{{ asset('plugins/bootstrap/js/popper.min.js')}}"></script>

@@ -2,6 +2,8 @@
 @section('content')
 
 
+<link rel="stylesheet" href="{{ asset('plugins/slick-carousel/slick/slick.css')}}" >
+<link rel="stylesheet" href="{{ asset('plugins/slick-carousel/slick/slick-theme.css')}}" >
 <!--===================================
 =            Store Section            =
 ====================================-->
@@ -21,32 +23,87 @@
 						</ul>
 					</div>
 
-
-	<section class="w3-content" style="max-width:1000px>	
-<div class="w3-content" style="max-width:1200px">
-			<?php 
-			$img = [];
-			$img = explode(",", $vehicle->photos);
-			?>
-<!-- Next and previous buttons -->
-<img id="featured" class="main" src="/storage/{{ $img[0] }}">
-		<div id="slide-wrapper">
-			<div class="slide-one-item home-slider owl-carousel" >
-			<div id="slider">
-				<ul class="thumbs mt-3">
-					@foreach ($img as $i)
-					<a href="/storage/{{ $i}}" class="image-popup">
-					<img class="thumbnail thumb-img" src="/storage/{{ $i}}">
-					</a>
-					@endforeach
-				</ul>
-
+	
+	<section>
+		<div class=" main single-item slider">
+		<div class="main" > 
+			@if ($vehicle->front_img)
+			<img   src="/storage/photos/{{ $vehicle->front_img }}">
+			@endif
+		</div>
+		<div  class="main">
+		  <img  src="/storage/photos/{{ $vehicle->back_img }}">
+		</div>
+		<div class="main">
+		  <img   src="/storage/photos/{{ $vehicle->right_img }}">
+		</div>
+		<div class="main" >
+			<img  src="/storage/photos/{{ $vehicle->left_img }}">
+		  </div>
+		  <div class="main" >
+			<img  src="/storage/photos/{{ $vehicle->interiorf_img }}">
+		  </div>
+		  <div class="main">
+			<img   src="/storage/photos/{{ $vehicle->interiorb_img }}">
+		  </div>
+		 
+			@if ($vehicle->engine_img)
+			<div class="main">
+			<img   src="/storage/photos/{{ $vehicle->engine_img }}">
 			</div>
-			</div>
-			</div> 
+			@endif
 		
+		  <div class="main">
+			<img  src="/storage/photos/{{ $vehicle->opt_img1 }}">
+		  </div>
+		  <div class="main" >
+			<img  src="/storage/photos/{{ $vehicle->opt_img2 }}">
+		  </div>
+		  <div class="main">
+			<img   src="/storage/photos/{{ $vehicle->opt_img3 }}">
+		  </div>
+	</div>
 
-	</section>
+	<!--		  <ul class="thumbs mt-3 slider-nav">
+					<li>
+						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->front_img }}">
+					</li>
+					<li>
+						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->back_img }}">
+					</li>
+					<li>
+						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->right_img }}">
+					</li>
+					<li>
+						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->left_img }}">
+					</li>
+					<li>
+						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorf_img }}">
+					</li>
+					<li>
+						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorb_img }}">
+					</li>
+					
+						@if ($vehicle->engine_img)
+						<li>
+						<img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->engine_img }}">
+						</li>
+						@endif
+						
+					
+					<li>
+						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img1 }}">
+					</li>
+					<li>
+						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img2 }}">
+					</li>
+					<li>
+						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img3 }}">
+					</li>
+				
+			</ul> -->
+	  </section>
+	  
 
 	  <section class="vehicle specifications">
 		<ul aria-label="Key Specifications" data-gui="key-specs-section" class="sc-jYKCQm isection"><li class="sc-jfkLlK ialighment atc-type-fiesta atc-type--regular">
@@ -305,6 +362,9 @@
 	</div>
 	<!-- Container End -->
 </section>
+
+
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>	
 <script type="text/javascript">
 	let thumbnails = document.getElementsByClassName('thumbnail')
 	
@@ -325,4 +385,26 @@
 	  })
 	}        
 	</script> 
+ <script type="text/javascript">
+    $(document).ready(function(){
+		
+	  $('.slider-for').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: false,
+			fade: true,
+			asNavFor: '.slider-nav'
+		});
+		$('.slider-nav').slick({
+			slidesToShow: 3,
+			slidesToScroll: 1,
+			asNavFor: '.slider-for',
+			dots: true,
+			centerMode: true,
+			focusOnSelect: true
+		});
+		$('.single-item').slick();
+    });
+  </script>
+
 @endsection

@@ -105,13 +105,10 @@
 										@if($listing->id == $vehicle->listing_id)
 										
 										<td class="product-thumb">
-											
-											@foreach ($vehiclephotos as $vehiclephoto)
-											@if ($vehicle->id == $vehiclephoto->vehicle_id)
-										<!--	<img class="card-img-top category-img-fluid" src="/photos/{{ $vehiclephoto->photo }}" alt=""style="max-height: 400px;"> -->
-											<img width="100px" height="auto" src="/storage/photos/{{ $vehiclephoto->photo }}" alt="image description">
-											@endif
-											@endforeach
+										
+										<!--	<img class="card-img-top category-img-fluid" src="/photos/#" alt=""style="max-height: 400px;"> -->
+											<img width="100px" height="auto" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
+										
 										</td>
 										
 
@@ -168,7 +165,7 @@
 <div class="ecard mb-3">
 	<div class="row g-0">
 	  <div class="imglist">
-		<img class="list-img-fluid" src="/storage/photos/{{ $vehiclephoto->photo }}" alt="">
+		<img class="list-img-fluid" src="/storage/photos/" alt="">
 	  </div>
 	  <div class="col-md-8">
 		<div class="list-card-body">
@@ -223,8 +220,7 @@
   </div>
 </div>
 
-
-<!-- jiji design-->
+-->
 				</div>
 
 				<!-- pagination -->
