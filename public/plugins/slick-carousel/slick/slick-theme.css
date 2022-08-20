@@ -2,7 +2,7 @@
 /* Slider */
 .slick-loading .slick-list
 {
-    background: #fff url('./ajax-loader.gif') center center no-repeat;
+    background: #d4af37; url('./ajax-loader.gif') center center no-repeat;
 }
 
 /* Icons */
@@ -27,9 +27,9 @@
 
     display: block;
 
-    width: 20px;
-    height: 20px;
-    padding: 0;
+    width: 30px;
+    height: 30px;
+    padding: 6;
     -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);
@@ -67,11 +67,11 @@
 .slick-next:before
 {
     font-family: 'slick';
-    font-size: 20px;
+    font-size: 30px;
     line-height: 1;
 
     opacity: .75;
-    color: white;
+    color: #d4af37;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

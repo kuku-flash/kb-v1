@@ -2863,14 +2863,16 @@ scroll-behavior: smooth;
 .main{
   padding: 21px 0;
   display: inline-block;
+  margin: auto;
   
 }
-@media (max-width: 767.98px) {
+@media (max-width: 390px) {
   .main{
     display: inline-block;
     width: 100%;
     height: 100%;
     padding-left: 0;
+    margin: auto;
   }
 }
 
@@ -2881,8 +2883,18 @@ scroll-behavior: smooth;
 object-fit: cover;
 min-height: 500px;
 max-height: 500px;
-
+margin: auto;
   
+}
+@media (max-width: 390.98px) {
+  .main img{
+    object-fit: cover;
+    min-height: 250px;
+    max-height: 250px;
+    margin: auto;
+    
+      
+    }
 }
 
 .thumbs{

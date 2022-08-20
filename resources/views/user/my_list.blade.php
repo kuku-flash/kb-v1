@@ -105,7 +105,14 @@
 										@if($listing->id == $vehicle->listing_id)
 										
 										<td class="product-thumb">
+<<<<<<< HEAD
 											<img width="100px" height="auto" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
+=======
+										
+										<!--	<img class="card-img-top category-img-fluid" src="/photos/#" alt=""style="max-height: 400px;"> -->
+											<img width="100px" height="auto" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
+										
+>>>>>>> b563e935ba5579df92033e43a0729f4dd8f06660
 										</td>
 										
 
@@ -161,8 +168,13 @@
 <div class="row no-gutters">
 <div class="ecard m-4">
 	<div class="row g-0">
+<<<<<<< HEAD
 	  <div class="imglist ">
 		<img class="list-img-fluid col-sm-5" src="/storage/photos/{{ $vehicle->front_img }}" alt="">
+=======
+	  <div class="imglist">
+		<img class="list-img-fluid" src="/storage/photos/" alt="">
+>>>>>>> b563e935ba5579df92033e43a0729f4dd8f06660
 	  </div>
 	  <div class="col-md-8">
 		<div class="list-card-body">
@@ -217,6 +229,7 @@
   </div>
 </div>
 
+<<<<<<< HEAD
 
 
 <div class="recent-work">
@@ -233,6 +246,9 @@
 
 
 <!-- jiji design-->
+=======
+-->
+>>>>>>> b563e935ba5579df92033e43a0729f4dd8f06660
 				</div>
 
 				<!-- pagination -->
