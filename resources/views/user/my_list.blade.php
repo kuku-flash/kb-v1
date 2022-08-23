@@ -86,8 +86,7 @@
 				<!-- Recently Favorited -->
 				<div class="widget dashboard-container my-adslist">
 					<h3 class="widget-header">My List</h3>
-					<table class="table table-responsive product-dashboard-table">
-						<tbody>
+				
 						
 						
 							@foreach($listings as $listing)
@@ -95,82 +94,29 @@
 								@foreach ($vehicles as $vehicle)
 										@if($listing->id == $vehicle->listing_id)
 										
-										<td class="product-thumb">
-										
-										<!--	<img class="card-img-top category-img-fluid" src="/photos/#" alt=""style="max-height: 400px;"> -->
-											<img width="100px" height="auto" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
-										
-										</td>
-										
-
-										<td class="product-details">
-											<h3 class="title">  {{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}}</h3>
-											<span class="add-id"><strong>Listing ID:</strong> {{ $listing->id }}</span>
-											<span><strong>Posted on: </strong><time> {{ $vehicle->created_at->diffForHumans() }}</time> </span>
-											<span class="status"><strong>Status: </strong>{{ $listing->ads_status }}</span>
-											<span class="location"><strong>Location: </strong>{{ $listing->city->city }}</span>
-										</td>
-									
-								<td class="product-details"><span class="categories">{{ $listing->user->name }}</span>
-									<span class="categories"><a href="{{ route('user.invoice', [$listing->id, $vehicle->id])}}">check invoice</a></span>
-								</td>
-
-								
-								
-								<td class="product-category"><span class="categories">{{ $listing->category->category_name }}</span></td>
-								<td class="action" data-title="Action">
-									<div class="">
-										<ul class="list-inline justify-content-center">
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('user.show_listing', [$listing->id, $vehicle->id])}}">
-													<i class="fa fa-eye"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_listing', [$listing->id, $vehicle->id])}}">
-													<i class="fa fa-pencil"></i>
-												</a>
-											</li>
-											<li class="list-inline-item">
-										
-												<a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" data-toggle="tooltip" data-placement="top" title="Delete" class="delete">
-													<i class="fa fa-trash"></i>
-												</a>
-												<form action="{{ route('user.delete_listing', [$listing->id, $vehicle->id])}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
-												  @method('DELETE')
-												  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-												</form>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-							@endif
-							@endforeach
-							@endforeach
-
-						</tbody>
-					</table>
+	
 <div class="container-fluid">
     <div class="row">
-        <div class="col-15 mt-3">
+        <div class="col-lg-12 mt-3">
             <div class="list-card">
                 <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <img width="100px" height="auto" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
+                    <div >
+						<div class="d-none d-lg-block"> <!-- hide on screens smaller than lg -->
+                        	<img class="img-square-wrapper" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
+						</div>
                     </div>
                     <div class="card-body">
-                        <h6 class="card-title">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}}</h6>
+                        <h6 class="card-title h4">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}} - <small>{{ $listing->package->package_name }}</small></h6> 
                         <p class="card-text">
 							<ul class="list-horizontal">
-								<li class="li-size">Listing ID:<span class="car-li">{{ $listing->id }}</span></li>
-								<li class="li-size">Price: <span class="car-li"> {{ $vehicle->price}}</span></li>
-								<li class="li-size">Status: <span class="car-li">{{ $listing->ads_status }}</span></li>
-								<li class="li-size">Category: <span class="car-li">{{ $listing->category->category_name }}</span></li>
-								<li class="li-size">Invoice:<span class="car-li"><a href="{{ route('user.invoice', [$listing->id, $vehicle->id])}}">Click Here </a></span></li>
-								<li class="li-size">New users<span class="car-li fa fa-users "></span>:50</li>
-								<li class="li-size">Viewed Contact<span class="car-li fa fa-phone "></span>:50</li>
-								<li class="li-size">Chats<span class="car-li fa fa-comments "></span>:50</li>
+								<li class="li-size"><b>Listing ID: </b><span class="car-li">{{ $listing->id }}</span></li>
+								<li class="li-size"><b>Price: </b><span class="car-li"> {{ $vehicle->price}}</span></li>
+								<li class="li-size"><b>Status: </b><span class="car-li">{{ $listing->ads_status }}</span></li>
+								<li class="li-size"><b>Category: </b><span class="car-li">{{ $vehicle->vehicle_type }}</span></li>
+								<li class="li-size"><b>Invoice: </b><span class="car-li"><a href="{{ route('user.invoice', [$listing->id, $vehicle->id])}}"> Click Here </a></span></li>
+								<li class="li-size"><b>Visitors </b><span class="car-li fa fa-users "></span>: 5000</li>
+								<li class="li-size"><b>Duration <span class="car-li fa fa-count "></span>: 30 left</li> 
+								<li class="li-size"><b>Chats <span class="car-li fa fa-comments "></span>: 50</li>
 							</ul>
 						</p>
                     </div>
@@ -212,6 +158,10 @@
         </div>
     </div>
 </div>
+@endif
+@endforeach
+@endforeach
+
 				</div>
 
 				<!-- pagination -->

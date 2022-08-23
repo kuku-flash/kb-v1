@@ -23,7 +23,9 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered zero-configuration">
                             <thead>
+                                
                                 <tr>
+                                    <th>package ID</th> 
                                     <th>package Name</th> 
                                     <th>package Amount</th> 
                                     <th>package Duration</th> 
@@ -37,6 +39,7 @@
                             <tbody>
                               @foreach ($packages as $package)
                                 <tr>
+                                    <td>{{$package->id}}</td>
                                     <td>{{$package->package_name}}</td>
                                     <td>{{$package->package_amount}}</td>
                                     <td>{{$package->package_duration}}</td>

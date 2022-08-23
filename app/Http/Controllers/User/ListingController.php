@@ -53,7 +53,7 @@ class ListingController extends Controller
         $arr['cities'] = City::all();
         $arr['makes'] = Carmake::all();
         $arr['models'] = Carmodel::all();
-        $arr['packages'] = Package::all();
+        $arr['packages'] = Package::where('package_featured',null)->orderBy('id','desc')->get();
         return view('user.create_listing')->with($arr);
     } 
 
