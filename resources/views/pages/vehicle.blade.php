@@ -102,8 +102,12 @@
 					</li>
 				
 			</ul> -->
+			<div class="favourist-list">
+				<span id = heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
+				</div>
+		  
 	  </section>
-	  
+	 
 
 	  <section class="vehicle specifications">
 		<ul aria-label="Key Specifications" data-gui="key-specs-section" class="sc-jYKCQm isection"><li class="sc-jfkLlK ialighment atc-type-fiesta atc-type--regular">
@@ -404,7 +408,20 @@
 			focusOnSelect: true
 		});
 		$('.single-item').slick();
-    });
+	});
+	
+
+$(document).ready(function(){
+  $("#heart").click(function(){
+    if($("#heart").hasClass("liked")){
+      $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+      $("#heart").removeClass("liked");
+    }else{
+      $("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
+      $("#heart").addClass("liked");
+    }
+  });
+});
   </script>
 
 @endsection

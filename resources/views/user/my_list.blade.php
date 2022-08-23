@@ -87,15 +87,6 @@
 				<div class="widget dashboard-container my-adslist">
 					<h3 class="widget-header">My List</h3>
 					<table class="table table-responsive product-dashboard-table">
-						<thead>
-							<tr>
-								<th>Image</th>
-								<th>Listing Title</th>
-								<th>User</th>
-								<th class="text-center">Category</th>
-								<th class="text-center">Action</th>
-							</tr>
-						</thead>
 						<tbody>
 						
 						
@@ -105,14 +96,10 @@
 										@if($listing->id == $vehicle->listing_id)
 										
 										<td class="product-thumb">
-<<<<<<< HEAD
-											<img width="100px" height="auto" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
-=======
 										
 										<!--	<img class="card-img-top category-img-fluid" src="/photos/#" alt=""style="max-height: 400px;"> -->
 											<img width="100px" height="auto" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
 										
->>>>>>> b563e935ba5579df92033e43a0729f4dd8f06660
 										</td>
 										
 
@@ -164,91 +151,67 @@
 
 						</tbody>
 					</table>
-<!-- jiji design-->
-<div class="row no-gutters">
-<div class="ecard m-4">
-	<div class="row g-0">
-<<<<<<< HEAD
-	  <div class="imglist ">
-		<img class="list-img-fluid col-sm-5" src="/storage/photos/{{ $vehicle->front_img }}" alt="">
-=======
-	  <div class="imglist">
-		<img class="list-img-fluid" src="/storage/photos/" alt="">
->>>>>>> b563e935ba5579df92033e43a0729f4dd8f06660
-	  </div>
-	  <div class="col-md-8">
-		<div class="list-card-body">
-		  <h5 class="card-title">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}}</h5>
-		  <p class="card-text">
-			<ul class="list-horizontal">
-				<li>Listing ID:<span class="car-li">{{ $listing->id }}</span></li>
-				<li>Price: <span class="car-li"> {{ $vehicle->price}}</span></li>
-				<li>Status: <span class="car-li">{{ $listing->ads_status }}</span></li>
-				<li>Invoice:<span class="car-li"><a href="{{ route('user.invoice', [$listing->id, $vehicle->id])}}">Click Here </a></span></li>
-				<li><span class="car-li fa fa-users "></span>:50</li>
-				<li><span class="car-li fa fa-phone "></span>:50</li>
-				<li><span class="car-li fa fa-comments "></span>:50</li>
-			</ul>
-		  </p>
-
-		  <div class="change-icons">
-			<td class="action" data-title="Action">
-				<div class="change-icons">
-					<ul class="list-inline justify-content-center">
-						<li class="list-inline-item">
-							<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('user.show_listing', [$listing->id, $vehicle->id])}}">
-								<i class="fa fa-eye"></i>
-							</a>
-						</li>
-						<li class="list-inline-item">
-							<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_listing', [$listing->id, $vehicle->id])}}">
-								<i class="fa fa-pencil"></i>
-							</a>
-						</li>
-						<li class="list-inline-item">
-					
-							<a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" data-toggle="tooltip" data-placement="top" title="Delete" class="delete">
-								<i class="fa fa-trash"></i>
-							</a>
-							<form action="{{ route('user.delete_listing', [$listing->id, $vehicle->id])}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
-							  @method('DELETE')
-							  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-							</form>
-						</li>
-					</ul>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-15 mt-3">
+            <div class="list-card">
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <img width="100px" height="auto" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-title">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}}</h6>
+                        <p class="card-text">
+							<ul class="list-horizontal">
+								<li class="li-size">Listing ID:<span class="car-li">{{ $listing->id }}</span></li>
+								<li class="li-size">Price: <span class="car-li"> {{ $vehicle->price}}</span></li>
+								<li class="li-size">Status: <span class="car-li">{{ $listing->ads_status }}</span></li>
+								<li class="li-size">Category: <span class="car-li">{{ $listing->category->category_name }}</span></li>
+								<li class="li-size">Invoice:<span class="car-li"><a href="{{ route('user.invoice', [$listing->id, $vehicle->id])}}">Click Here </a></span></li>
+								<li class="li-size">New users<span class="car-li fa fa-users "></span>:50</li>
+								<li class="li-size">Viewed Contact<span class="car-li fa fa-phone "></span>:50</li>
+								<li class="li-size">Chats<span class="car-li fa fa-comments "></span>:50</li>
+							</ul>
+						</p>
+                    </div>
 				</div>
-			</td>
-			</div>
-			
-		  <p class="card-text">
-			<small class="text-muted">Last updated 3 mins ago</small>
-		  </p>
-		</div>
-	  </div>
-	</div>
-  </div>
+				
+                <div class="card-footer">
+                    <small class="text-muted">  
+						<div class="change-icons">
+						<td class="action" data-title="Action">
+							<div class="change-icons">
+								<ul class="list-inline justify-content-center">
+									<li class="list-inline-item">
+										<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('user.show_listing', [$listing->id, $vehicle->id])}}">
+											<i class="fa fa-eye"></i>
+										</a>
+									</li>
+									<li class="list-inline-item">
+										<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_listing', [$listing->id, $vehicle->id])}}">
+											<i class="fa fa-pencil"></i>
+										</a>
+									</li>
+									<li class="list-inline-item">
+								
+										<a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" data-toggle="tooltip" data-placement="top" title="Delete" class="delete">
+											<i class="fa fa-trash"></i>
+										</a>
+										<form action="{{ route('user.delete_listing', [$listing->id, $vehicle->id])}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
+										  @method('DELETE')
+										  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+										</form>
+									</li>
+								</ul>
+							</div>
+						</td>
+						</div>
+						</small>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-<<<<<<< HEAD
-
-
-<div class="recent-work">
-	<div class="pic">
-	  <img src="https://picsum.photos/536/354">
-	</div>
-	<div class="desc">
-	  <h1>Modern website conecept</h1>
-	  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi reiciendis suscipit repudiandae, exercitationem perferendis eligendi. Saepe, nesciunt explicabo! Maxime deserunt necessitatibus perferendis nesciunt ratione est nihil voluptatum doloremque
-		fugit ipsam.</p>
-	</div>
-  </div>
-
-
-
-<!-- jiji design-->
-=======
--->
->>>>>>> b563e935ba5579df92033e43a0729f4dd8f06660
 				</div>
 
 				<!-- pagination -->

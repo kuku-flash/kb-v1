@@ -543,7 +543,7 @@ button {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-top: 8px;
+    padding-top: 20px;
     padding-bottom: 12px;
     }
 .ialighment {
@@ -631,7 +631,6 @@ button {
 }
 
 /* Style the counter cards */
-@media screen and (max-width: 767px) { xxxxxx }
 .ecard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: #f1f1f1;
@@ -865,6 +864,52 @@ top: -15px;
 right: -10px;
 z-index: 1;
 }
+
+.favourist-list{
+  position: absolute;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 34%;
+  min-height: 40px;
+  padding-top: -2px;
+  padding-left: 89%;
+  border-top-width: initial;
+  border-right-width: initial;
+  border-bottom-width: initial;
+  border-left-width: initial;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  line-height: 1;
+  word-break: break-word;
+}
+.fa-heart-o {
+  color: red;
+  cursor: pointer;
+}
+
+.fa-heart {
+  color: red;
+  cursor: pointer;
+  top: -15px;
+right: -10px;
+}
+
+
+
 .property-price .price {
         color: #2a303b;
         margin-bottom: 0;
@@ -2847,11 +2892,26 @@ ul.pagination .active a {
 
 
 .trending-ads-slide{
-  display: -webkit-box;
-  width: auto;
+display: -webkit-box;
+width: auto;
 padding: 20px;
 overflow-x: auto;
-scroll-behavior: smooth;
+}
+.list-card{
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+padding: 16px;
+background-color: #f1f1f1;
+}
+.card-footer{
+  text-align: center;
+}
+.li-size{
+  font-size: 7px;
+}
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
 }
 
 *{
@@ -4496,5 +4556,3 @@ form textarea {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
-
-

@@ -101,7 +101,7 @@
 		<div class="row">
 			<!-- offer 01 -->
 			<div class="col-lg-12">
-				<div class="trending-ads-slide owl-drag">
+				<div class="slider owl-drag">
 					<div class="col-sm-12 col-lg-4">
 						<!-- product card -->
 <div class="product-item bg-light owl-drag">
@@ -141,7 +141,7 @@
 					</div>
 					<div class="col-sm-12 col-lg-4">
 						<!-- product card -->
-<div class="product-item bg-light">
+<div class="slide product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
 			<div class="price">Gold Package</div>
@@ -179,7 +179,7 @@
 
 
 												<!-- product card -->
-<div class="product-item bg-light">
+<div class="slide product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
 			<div class="price">Gold Package</div>
@@ -220,7 +220,7 @@
 						<!-- product card -->
 						
 						<!-- product card -->
-<div class="product-item bg-light">
+<div class="slide product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
 			<div class="price">Gold Package</div>
@@ -258,7 +258,7 @@
 					<div class="col-sm-12 col-lg-4">
 
 						<!-- product card -->
-<div class="product-item bg-light">
+<div class="slide product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
 			<div class="price">Gold Package</div>
@@ -732,6 +732,21 @@ setTimeout(function() {
 _INTERVAL_VAL = setInterval(Type, 100);
 
 
+
+window.onload=function(){
+  $('.slider').slick({
+  autoplay:true,
+  autoplaySpeed:1500,
+  arrows:true,
+  prevArrow:'<button type="button" class="slick-prev"></button>',
+  nextArrow:'<button type="button" class="slick-next"></button>',
+  centerMode:true,
+  slidesToShow:3,
+  slidesToScroll:2
+  
+  });
+  
+};
 
 
 
