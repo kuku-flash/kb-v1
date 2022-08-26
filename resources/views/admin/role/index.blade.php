@@ -2,7 +2,7 @@
 @section('content')
 
 @if(session('success'))
-<div class="mt-3 alert alert-success">
+    <div class="mt-3 alert alert-success">
     <span> {{ session('success') }} </span>
    </div>
    @endif
@@ -63,6 +63,7 @@
                                            </td>
                                        <td>
                                            <a href="{{ route('admin.role.edit',$role->id)}}" ><i class="fa fa-pencil color-muted m-r-5"></i> </a>
+                                    
                                            <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-app"><i class="fa fa-close color-danger"></i></a>
                                            <form action="{{ route('admin.role.destroy',$role->id)}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
                                              @method('DELETE')

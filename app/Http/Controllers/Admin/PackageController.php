@@ -99,8 +99,11 @@ class PackageController extends Controller
      * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Package $package)
+    public function destroy($id)
     {
-        //
+      
+            Package::destroy($id);
+            return redirect() -> route('admin.package.index');
+   
     }
 }

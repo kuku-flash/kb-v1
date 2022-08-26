@@ -40,9 +40,9 @@
                                     <td>
                                         <a href="{{ route('admin.carmodel.edit',$carmodel->id)}}" ><i class="fa fa-pencil color-muted m-r-5"></i> </a>
                                         <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-app"><i class="fa fa-close color-danger"></i></a>
-                                        <form action="{{ route('admin.carmodel.destroy',$carmodel->id)}}" method="post">
-                                          @method('DELETE')
-                                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <form action="{{ route('admin.carmodel.destroy',$carmodel->id)}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
+                                            @method('DELETE')
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         </form>
                                     </td>
                                 </tr>

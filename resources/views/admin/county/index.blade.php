@@ -12,7 +12,6 @@
            <a href="{{route('admin.county.create')}}"> <button type="button" class="btn mb-3 btn-rounded btn-primary">Create</button> </a>
         
         </div>
-  
     
     <div class="row">
         <div class="col-12">
@@ -37,11 +36,12 @@
                                     <td>{{$county->country}}</td>
                                     <td>
                                         <a href="{{ route('admin.county.edit',$county->id)}}" ><i class="fa fa-pencil color-muted m-r-5"></i> </a>
-                                        <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-app"><i class="fa fa-close color-danger"></i></a>
-                                        <form action="{{ route('admin.county.destroy',$county->id)}}" method="post">
-                                          @method('DELETE')
-                                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-app"><i class="fa fa-close color-danger sweet-wrong"></i></a>
+                                        <form action="{{ route('admin.county.destroy',$county->id)}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
+                                            @method('DELETE')
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         </form>
+                                      
                                     </td>
                                 </tr>
                                 @endforeach

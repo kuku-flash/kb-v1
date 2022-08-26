@@ -29,9 +29,7 @@
                                     <th>package Name</th> 
                                     <th>package Amount</th> 
                                     <th>package Duration</th> 
-                                    <th>package Featuring</th>
-                                    <th>created_at</th>  
-                                    <th>updated_at</th>            
+                                    <th>package Featuring</th>        
                                     <th>Actions</th>
                                     
                                 </tr>
@@ -49,10 +47,10 @@
                                     <td>
                                         <a href="{{ route('admin.package.edit',$package->id)}}" ><i class="fa fa-pencil color-muted m-r-5"></i> </a>
                                         <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-app"><i class="fa fa-close color-danger"></i></a>
-                                        <form action="{{ route('admin.package.destroy',$package->id)}}" method="post">
-                                          @method('DELETE')
-                                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        </form>
+                                        <form action="{{ route('admin.package.destroy',$package->id)}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
+                                            @method('DELETE')
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                          </form>
                                     </td>
                                 </tr>
                                 @endforeach

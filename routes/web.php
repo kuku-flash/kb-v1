@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\CarmodelController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountyController;
 use App\Http\Controllers\Admin\PermissionController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\Allusercontroller;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminListingController;
 use App\Http\Controllers\User\ListingController;
@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('carmodel', CarmodelController::class);
     Route::resource('city', CityController::class);
     Route::resource('county', CountyController::class);
-    Route::resource('user', UserController::class);
+    Route::resource('user', Allusercontroller::class);
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
     Route::get ('listing',  [AdminListingController::class, 'index'])->name('listing.index');

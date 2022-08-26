@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container-fluid">
+    <div class="rounded-button">
+        <a href="{{ route('admin.permission.index')}}" class="btn mb-1 btn-rounded btn-primary">Back</a>
+    </div>
 <div class="row">
 <div class="col-lg-12">
     <div class="card">

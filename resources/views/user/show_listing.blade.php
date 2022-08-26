@@ -22,20 +22,90 @@
 						</ul>
 					</div>
 
-					<!-- product slider -->
-					<div class="product-slider">
-                        @foreach ($vehiclephotos as $vehiclephoto )
-							@if($vehicle->id == $vehiclephoto->vehicle_id)
-				
-						<div class="product-slider-item my-4" data-image="/storage/photos/{{ $vehiclephoto->photo }}">
-							<img class="img-fluid w-100" src="/storage/photos/{{ $vehiclephoto->photo }}" alt="product-img">
-						</div>
-                        @endif
-                        @endforeach
-					
-					</div>
-					<!-- product slider -->
+<section>
+	<div class=" main single-item slider">
+	<div class="main" > 
+		@if ($vehicle->front_img)
+		<img   src="/storage/photos/{{ $vehicle->front_img }}">
+		@endif
+	</div>
+	<div  class="main">
+		<img  src="/storage/photos/{{ $vehicle->back_img }}">
+	</div>
+	<div class="main">
+		<img   src="/storage/photos/{{ $vehicle->right_img }}">
+	</div>
+	<div class="main" >
+		<img  src="/storage/photos/{{ $vehicle->left_img }}">
+		</div>
+		<div class="main" >
+		<img  src="/storage/photos/{{ $vehicle->interiorf_img }}">
+		</div>
+		<div class="main">
+		<img   src="/storage/photos/{{ $vehicle->interiorb_img }}">
+		</div>
+		
+		@if ($vehicle->engine_img)
+		<div class="main">
+		<img   src="/storage/photos/{{ $vehicle->engine_img }}">
+		</div>
+		@endif
+	
+		<div class="main">
+		<img  src="/storage/photos/{{ $vehicle->opt_img1 }}">
+		</div>
+		<div class="main" >
+		<img  src="/storage/photos/{{ $vehicle->opt_img2 }}">
+		</div>
+		<div class="main">
+		<img   src="/storage/photos/{{ $vehicle->opt_img3 }}">
+		</div>
+</div>
 
+<!--		  <ul class="thumbs mt-3 slider-nav">
+				<li>
+					<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->front_img }}">
+				</li>
+				<li>
+					<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->back_img }}">
+				</li>
+				<li>
+					<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->right_img }}">
+				</li>
+				<li>
+					<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->left_img }}">
+				</li>
+				<li>
+					<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorf_img }}">
+				</li>
+				<li>
+					<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorb_img }}">
+				</li>
+				
+					@if ($vehicle->engine_img)
+					<li>
+					<img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->engine_img }}">
+					</li>
+					@endif
+					
+				
+				<li>
+					<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img1 }}">
+				</li>
+				<li>
+					<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img2 }}">
+				</li>
+				<li>
+					<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img3 }}">
+				</li>
+			
+		</ul> -->
+		<div class="favourist-list">
+			<span id = heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
+			</div>
+		
+	</section>
+					 
 					<div class="content mt-5 pt-5">
 						<ul class="nav nav-pills  justify-content-center" id="pills-tab" role="tablist">
 							<li class="nav-item">
@@ -239,5 +309,60 @@
 	</div>
 	<!-- Container End -->
 </section>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>	
+<script type="text/javascript">
+	let thumbnails = document.getElementsByClassName('thumbnail')
+	
+	let activeImages = document.getElementsByClassName('active')
+	
+	for (var i=0; i < thumbnails.length; i++){
+	
+	  thumbnails[i].addEventListener('click', function(){
+		  console.log(activeImages)
+		  
+		  if (activeImages.length > 0){
+			  activeImages[0].classList.remove('active')
+		  }
+		  
+	
+		  this.classList.add('active')
+		  document.getElementById('featured').src = this.src
+	  })
+	}        
+	</script> 
+ <script type="text/javascript">
+    $(document).ready(function(){
+		
+	  $('.slider-for').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: false,
+			fade: true,
+			asNavFor: '.slider-nav'
+		});
+		$('.slider-nav').slick({
+			slidesToShow: 3,
+			slidesToScroll: 1,
+			asNavFor: '.slider-for',
+			dots: true,
+			centerMode: true,
+			focusOnSelect: true
+		});
+		$('.single-item').slick();
+	});
+	
+
+$(document).ready(function(){
+  $("#heart").click(function(){
+    if($("#heart").hasClass("liked")){
+      $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+      $("#heart").removeClass("liked");
+    }else{
+      $("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
+      $("#heart").addClass("liked");
+    }
+  });
+});
+  </script>
 
 @endsection

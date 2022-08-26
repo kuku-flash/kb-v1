@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
     <!-- Custom Stylesheet -->
     <link href="{{ asset('admin/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin/plugins/sweetalert/css/sweetalert.css')}}" rel="stylesheet">
 
 </head>
 
@@ -433,6 +434,8 @@
     <script src="{{ asset('admin/plugins/chartist/js/chartist.min.js')}}"></script>
     <script src="{{ asset('admin/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
 
+    <script src="{{ asset('admin/plugins/sweetalert/js/sweetalert.min.js')}}"></script>
+    <script src="{{ asset('admin/plugins/sweetalert/js/sweetalert.init.js')}}"></script>
 
 
     <script src="{{ asset('admin/js/dashboard/dashboard-1.js')}}"></script>
@@ -442,6 +445,8 @@
 
     <script src="{{ asset('admin/plugins/summernote/dist/summernote.min.js')}}"></script>
     <script src="{{ asset('admin/plugins/summernote/dist/summernote-init.js')}}"></script>
+
+    
 </body>
 
 </html>
