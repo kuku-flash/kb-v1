@@ -179,7 +179,7 @@
 						<div class="tab-content" id="pills-tabContent">
 							<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 								<h3 class="tab-title">Car Description</h3>
-								<p>{{ $vehicle->description}}</p>
+								<p>{!! $vehicle->description !!}</p>
 
 							</div>
 							<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -306,14 +306,14 @@
 			</div>
 			<div class="col-md-4">
 				<div class="sidebar">
-					<div class="widget price  text-center">
+					<div class="widget price mt-4 text-center">
 						<h4>Price</h4>
 						<p>KSH {{ $vehicle->price}}</p>
 						
 					</div>
 					<!-- User Profile widget -->
 					<div class="widget user text-center">
-						<img class="rounded-circle img-fluid mb-5 px-5" src="images/joshua.jpeg" alt="">
+						<img class="rounded-circle img-fluid mb-5 px-5" src="/storage/photos/{{ $listing->user->avatar }}" alt="">
 						<h4><a href="">  {{ $listing->user->name }} </a></h4>
 						<p class="member-time">Member Since {{ $listing->user->created_at->diffForHumans() }} </p>
 						<a href="">See all ads</a>

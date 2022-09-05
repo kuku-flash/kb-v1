@@ -14,10 +14,10 @@
 					<div class="widget user">
 						<!-- User Image -->
 						<div class="image d-flex justify-content-center">
-							<img src="images/user/user-thumb.jpg" alt="" class="">
+							<img src="/storage/photos/{{ $user->avatar}}" alt="" class="">
 						</div>
 						<!-- User Name -->
-						<h5 class="text-center">Samanta Doe</h5>
+						<h5 class="text-center">{{ $user->name}}</h5>
 					</div>
 					<!-- Dashboard Links -->
 					<div class="widget dashboard-links">
@@ -41,28 +41,39 @@
 					<div class="col-lg-6 col-md-6">
 						<div class="widget personal-info">
 							<h3 class="widget-header user">Edit Personal Information</h3>
-							<form action="#">
+							<form action="{{ route('user.update_user', $user->id)}}" method="POST"  enctype="multipart/form-data">
+								@csrf
+                    			@method('put')
 								<!-- First Name -->
 								<div class="form-group">
-									<label for="first-name">First Name</label>
-									<input type="text" class="form-control" id="first-name">
+									<label for="name">Full Name</label>
+									<input type="text" name="name" class="form-control" value="{{ $user->name}}" >
 								</div>
-								<!-- Last Name -->
 								<div class="form-group">
-									<label for="last-name">Last Name</label>
-									<input type="text" class="form-control" id="last-name">
+									<label for="Email">Email</label>
+									<input type="text" class="form-control" value="{{ $user->email}}"  disabled>
+								</div>
+								
+								<div class="form-group">
+									<label for="phone_number">Phone Number</label>
+									<input type="text" name="phone_number" class="form-control" value="{{ $user->phone_number}}" >
 								</div>
 								<!-- File chooser -->
+								<div class="form-group">
+									@if($user->avatar)
+									<img class="mt-2 mb-2 " src="/storage/photos/{{ $user->avatar}}" style="width: 80px; height:80px;" > 
+									@endif
+								</div>
 								<div class="form-group choose-file d-inline-flex">
 									<i class="fa fa-user text-center px-3"></i>
-									<input type="file" class="form-control-file mt-2 pt-1" id="input-file">
+									<input type="file" class="form-control-file mt-2 pt-1  @error('avatar') is-invalid @enderror" name="avatar"  id="input-file">
 								 </div>
-								<!-- Comunity Name -->
-								<div class="form-group">
-									<label for="comunity-name">Comunity Name</label>
-									<input type="text" class="form-control" id="comunity-name">
-								</div>
-								<!-- Checkbox -->
+								 @error('avatar')
+									<span class="invalid"  role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							<!-- Checkbox -->
 								<div class="form-check">
 								  <label class="form-check-label" for="hide-profile">
 									<input class="form-check-input mt-1" type="checkbox" value="" id="hide-profile">
@@ -75,7 +86,7 @@
 									<input type="text" class="form-control" id="zip-code">
 								</div>
 								<!-- Submit button -->
-								<button class="btn btn-transparent">Save My Changes</button>
+								<button  type="submit" class="btn btn-transparent" >Save My Changes</button>
 							</form>
 						</div>
 					</div>
@@ -83,7 +94,7 @@
 						<!-- Change Password -->
 					<div class="widget change-password">
 						<h3 class="widget-header user">Edit Password</h3>
-						<form action="#">
+					
 							<!-- Current Password -->
 							<div class="form-group">
 								<label for="current-password">Current Password</label>
@@ -101,14 +112,14 @@
 							</div>
 							<!-- Submit Button -->
 							<button class="btn btn-transparent">Change Password</button>
-						</form>
+				
 					</div>
 					</div>
 					<div class="col-lg-6 col-md-6">
 						<!-- Change Email Address -->
 					<div class="widget change-email mb-0">
 						<h3 class="widget-header user">Edit Email Address</h3>
-						<form action="#">
+				
 							<!-- Current Password -->
 							<div class="form-group">
 								<label for="current-email">Current Email</label>
@@ -121,7 +132,7 @@
 							</div>
 							<!-- Submit Button -->
 							<button class="btn btn-transparent">Change email</button>
-						</form>
+						
 					</div>
 					</div>
 				</div>

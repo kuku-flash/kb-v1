@@ -17,15 +17,15 @@
 			<div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
 				<div class="sidebar">
 					<!-- User Widget -->
-					<div class="widget user-dashboard-profile">
+					<div class="widget user-dashboard-profile user">
 						<!-- User Image -->
-						<div class="profile-thumb">
-							<img src="{{ asset('images/user/user-thumb.jpg')}}" alt="" class="rounded-circle">
+						<div class="image d-flex justify-content-center">
+							<img src="/storage/photos/{{ auth()->user()->avatar}}" alt="" class="">
 						</div>
 						<!-- User Name -->
 						<h5 class="text-center">{{ auth()->user()->name }}</h5>
 						<p>Joined {{ auth()->user()->created_at->diffForHumans() }}</p>
-						<a href="user-profile.html" class="btn btn-main-sm">Edit Profile</a>
+						<a href="{{ route('user.user_profile', Auth::user()->id )}}" class="btn btn-main-sm">Edit Profile</a>
 					</div>
 					<!-- Dashboard Links -->
 					<div class="widget user-dashboard-menu">
