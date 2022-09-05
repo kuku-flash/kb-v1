@@ -76,7 +76,6 @@
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('about_us')}}">About Us</a>
                     <a class="dropdown-item" href="{{ route('contact_us')}}">Contact Us</a>
-                    <a class="dropdown-item" href="{{ route('user_profile')}}">User Profile</a>
                     <a class="dropdown-item" href="#">404 Page</a>
                     <a class="dropdown-item" href="#">Package</a>
                     <a class="dropdown-item" href="{{ route('single')}}">Single Page</a>
@@ -127,7 +126,7 @@
                     <a class="dropdown-item" href="{{route('user.pending_list')}}"> Pending List</a>                    
                     <a class="dropdown-item" href="{{route('user.archived_list')}}"> Archived List</a>                  
                     <a class="dropdown-item" href="#">Chat</a> 
-                    <a class="dropdown-item" href="{{ route('user_profile')}}">User Profile</a> 
+                    <a class="dropdown-item" href="{{ route('user.user_profile', Auth::user()->id )}}">User Profile</a> 
                     <a class="dropdown-item" href="{{ route('logout') }}"
                      onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">

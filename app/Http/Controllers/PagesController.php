@@ -149,11 +149,6 @@ Public function terms_condition(){
     
 }
 
-Public function user_profile(){
-
-    return view ('pages.user_profile');
-    
-}
 
 public function package (){
     return view ('pages.package');

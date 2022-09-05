@@ -10,7 +10,7 @@
         <div class="card-body">
             <h4 class="card-title">Listing Update</h4>
             <div class="basic-form">
-                <form method="POST" action="{{ route('admin.listing.update',$listing->id) }}">
+                <form method="POST" action="{{ route('admin.listing.update',$listing->id) }}" >
                     @csrf
                     @method('put')
                     <div class="form-group">

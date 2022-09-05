@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\Allusercontroller;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminListingController;
 use App\Http\Controllers\User\ListingController;
-
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -46,7 +46,7 @@ Route :: get ('vehicle/{listing}/{vehicle}',  [PagesController::class, 'vehicle'
 Route :: get ('post_ad_form',  [PagesController::class, 'post_ad_form'])->name('post_ad_form');
 Route :: get ('single_blog',  [PagesController::class, 'single_blog'])->name('single_blog');
 Route :: get ('terms_condition',  [PagesController::class, 'terms_condition'])->name('terms_condition');
-Route :: get ('user_profile',  [PagesController::class, 'user_profile'])->name('user_profile');
+
 
 Auth::routes();
 
@@ -88,6 +88,10 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
    
 
 
+});
+Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.'], function () {
+    Route :: get ('user_profile/{user}',  [UserController::class, 'user_profile'])->name('user_profile');
+    Route :: put ('update_user/{user}',  [UserController::class, 'update_user'])->name('update_user');
 
 });
 
