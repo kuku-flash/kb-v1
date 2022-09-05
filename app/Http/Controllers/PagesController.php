@@ -118,6 +118,11 @@ Public function dashboard(){
     
 }
 
+Public function signup(){
+
+    return view ('pages.signup');
+    
+}
 
 Public function login(){
 

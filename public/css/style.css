@@ -536,6 +536,11 @@ button {
 
 
 /* Start kingsbridge */
+/* sign up page */
+
+
+
+
 
 /*Vehicle specifications icons */
 
@@ -704,7 +709,10 @@ padding: 2.25rem;
   }
 }
 
-
+.gallery{
+  width: 100%;
+  height: auto;
+}
 
 
 .card {
@@ -713,6 +721,10 @@ padding: 2.25rem;
   text-align: center;
   background-color: #f1f1f1;
 }
+
+
+
+
 
 /*end of add photo cards */
 .section-invoice{
@@ -1268,6 +1280,10 @@ textarea.form-control {
   height: 200px;
   
 }
+.partner-img-fluid{
+  max-width: 100px;
+  height: 50px;
+}
 
 .category-img-fluid{
   max-width: 100%;
@@ -1559,6 +1575,9 @@ textarea.form-control {
 .nav-bg {
   background-color: #000;
 }
+
+
+
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4129,10 +4148,48 @@ article.single-post p {
     margin: 0px auto;
     width: 100%;
     max-width: 448px;
-    background: white;
+    background-color: transparent;
     border-radius: 4px;
     box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+   
 }
+.userselect {
+  float: left;
+}
+
+.slick-slider .element{
+  height:100px;
+  background-color:#000;
+  border-radius:5px;
+  display:inline-block;
+  margin:0px 10px;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-pack:center;
+      -ms-flex-pack:center;
+          justify-content:center;
+  -webkit-box-align:center;
+      -ms-flex-align:center;
+          align-items:center;
+  font-size:20px;
+}
+
+.slick-slider .element img{
+    width:100%;
+    -o-object-fit:contain;
+       object-fit:contain;
+}
+
+
+
+
+
+
+
+
+
+
 
 label {
     margin-bottom: 10px;

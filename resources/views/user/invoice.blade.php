@@ -11,7 +11,41 @@
 		<div class="row">
 			<div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
 				<div class="sidebar">
-					<!-- User Widget -->
+          <!-- User Widget -->
+          	<!-- Dashboard Links -->
+					<div class="widget user-dashboard-menu">
+						<ul>
+							<li class="active">
+								<a href="{{ route('user.my_list')}}"><i class="fa fa-money"></i> Choose payment method <span></span></a>
+							</li>
+							<li>
+                <a href="#" target="_blank" class="btn btn-light"><i class="fa fa-print"></i> Mpesa</a>
+                
+              </li>
+              <li>
+                <a href="#" target="_blank" class="btn btn-light"><i class="fa fa-print"></i> Visa</a>
+                
+							</li>
+              <div class="field padding-bottom--24">
+                <label for="phone">Enter Phone number(Required)</label>
+                <input type="phone"   name="phone" value="" 
+                placeholder="+254 ">
+              </div>
+              <div class="field padding-bottom--24">
+                <label for="email">Email</label>
+                <input type="email"   name="email" value="" 
+                placeholder="Email" >
+                      
+                          <span class="invalid-feedback" role="alert">
+          
+                          </span>
+                     
+              </div>
+                <a href="#" target="_blank" class="btn btn-light"><i class="fa fa-right"></i> Continue</a>
+							</li>
+						
+						</ul>
+					</div>
 					<!-- Dashboard Links -->
 					<div class="widget user-dashboard-menu">
 						<ul>

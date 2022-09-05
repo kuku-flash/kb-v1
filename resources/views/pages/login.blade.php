@@ -45,9 +45,11 @@
             <div class="formbg-outer">
               <div class="formbg">
                 <div class="formbg-inner padding-horizontal--48">
-                  <div class="welcome-text">
-                    <p>Login to kingsbridge <p>
-                  </div>
+                   <div class="wizard-header">
+                    <h3>
+                      <p style="font-weight: 450; font-size:20px; text-align: center;"> <b>KINGSBRIDGE</b><br>SIGN UP<br> </p>
+                    </h3>
+                </div>
                   <form  method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="field padding-bottom--24">

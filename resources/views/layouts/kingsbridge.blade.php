@@ -99,7 +99,13 @@
               </ul>
               <ul class="navbar-nav ml-auto mt-10">
                 @guest
-                  
+                
+                @if ((Route::has('signup')))
+                <li class="nav-item">
+                  <a class="nav-link login-button " href="{{ route('signup')}}">Sign Up</a>
+                </li>
+            @endif
+
                 @if ((Route::has('user.login')))
                     <li class="nav-item">
                       <a class="nav-link login-button " href="{{ route('user.login')}}">Login</a>

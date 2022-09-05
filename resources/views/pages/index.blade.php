@@ -86,10 +86,27 @@
 </section>
 
 <!--===================================
-=            Client Slider            =
+=           Our Partners           =
 ====================================-->
-
-
+<!--
+<section class="product">
+	<p style="font-weight: 450; font-size:20px; text-align: center;"> <b>Our Partners</b></p>
+	<div class="slider">
+		<div> <img src="../images/KINGSBRIDGE.png" alt="" style='width: 40px; height: 50px;'>
+		</div>
+		<div><img src="../images/GarageGallery Logo.jpg" alt="" style='width: 40px; height: 50px;'>
+		</div>
+		<div><img src="../images/sti.png" alt="" style='width: 40px; height: 50px;'>
+		</div>
+		<div><img src="../images/KINGSBRIDGE.png" alt="" style='width: 40px; height: 50px;'>
+		</div>
+		<div><img src="../images/KINGSBRIDGE.png" alt="" style='width: 40px; height: 50px;'>
+		</div>
+		<div><img src="../images/KINGSBRIDGE.png" alt="" style='width: 40px; height: 50px;'>
+		</div>
+	  </div>
+</section>
+!-->
 <!--===========================================
 --===========================================
 =            Popular deals section            =
@@ -750,9 +767,8 @@ window.onload=function(){
 };
 
 
-
-
 	</script>
+	
 </section>
 
  @endsection
