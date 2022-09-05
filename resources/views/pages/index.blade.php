@@ -21,22 +21,28 @@
 						<h2>Popular Category</h2>
 						<ul class="list-inline">
 							<li class="list-inline-item">
-								<a href="{{ route('category') }}"><i class="fa fa-home"></i> Houses</a></li>
-							<li class="list-inline-item">
 								<a href="{{ route('vehicles_grid') }}"><i class="fa fa-car"></i> Vehicles</a>
 							</li>
 							<li class="list-inline-item">
+								<a href="{{ route('category') }}"><i class="fa fa-taxi"></i> Car Hire</a>
+							</li>
+
+							<li class="list-inline-item">
+								<a href="{{ route('category') }}"><i class="fa fa-wrench"></i> Vehicle Parts</a>
+							</li>
+							<!--
+								<li class="list-inline-item">
 								<a href="{{ route('category') }}"><i class="fa fa-bed"></i> BnB</a>
 							</li>
-							<li class="list-inline-item">
-								<a href="{{ route('category') }}"><i class="fa fa-leaf"></i> Lands</a>
-							</li>
-							<li class="list-inline-item">
+								<li class="list-inline-item">
+								<a href="{{ route('category') }}"><i class="fa fa-home"></i> Houses</a>
+							</li> 
+								<li class="list-inline-item">
 								<a href="{{ route('category') }}"><i class="fa fa-building"></i> Commercials</a>
 							</li>
 							<li class="list-inline-item">
 								<a href="{{ route('category') }}"><i class="fa fa-taxi"></i> Car hire</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 					
@@ -301,72 +307,34 @@
 	</div>
 </section>
 <!--==========================================
-=           BNBs PACKAGE           =
+=           CAR HIRE PACKAGE           =
 ===========================================-->
 <section  class="product">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="section-title">
-					<h2>Bed and Breakfast pakages(BnB) </h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
+					<h2>Car Hire Services</h2>
+					<p>Find the best rental prices on luxury, economy, and family rental cars </p>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<!-- offer 01 -->
 			<div class="col-lg-12">
-				<div class="trending-ads-slide">
+				<div class="slider owl-drag">
 					<div class="col-sm-12 col-lg-4">
 						<!-- product card -->
-<div class="product-item bg-light">
+<div class="product-item bg-light owl-drag">
 	<div class="card">
 		<div class="thumb-content">
 			<div class="price">Gold Package</div>
 			<a href="{{ route('single') }}">
-				<img class="index-img-fluid" src="images/BNB1.jpg" alt="">
+				<img class="index-img-fluid" src="images/amg1.jpg" alt="">
 			</a>
 		</div>
 		<div class="card-body">
-		   <h4 class="card-title"><a href="{{ route('single') }}">Apartemnt located in Kilimani</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Kilimani</a>
-		    	</li>
-		    </ul>
-		    <div class="product-ratings">
-		    	<ul class="trending-horizontal">
-					<li>Rooms:<span class="car-li">3</span></li>
-					<li>.....:<span class="car-li">...</span></li>
-					<li>...:<span class="car-li">...</span></li>
-				</ul>  
-				<div class="property-price">
-					<p class="badge-sale">Per day</p>
-					<p class="price">Ksh 14k</p></a>
-					</div>
-		    </div>
-		</div>
-	</div>
-</div>
-
-
-
-					</div>
-					<div class="col-sm-12 col-lg-4">
-						<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<div class="price">Gold Package</div>
-			<a href="{{ route('single') }}">
-				<img class="index-img-fluid" src="images/BNB2.jpg" alt="">
-			</a>
-		</div>
-		<div class="card-body">
-		   <h4 class="card-title"><a href="{{ route('single') }}">Apartment located in Kitusuru</a></h4>
+		   <h4 class="card-title"><a href="{{ route('single') }}">2013 Mercedes Benz E-Class AMG</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
 		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
@@ -377,13 +345,12 @@
 		    </ul>
 		    <div class="product-ratings">
 		    	<ul class="trending-horizontal">
-					<li>Rooms:<span class="car-li">1</span></li>
-					<li>...:<span class="car-li">...</span></li>
-					<li>...:<span class="car-li">...</span></li>
+					<li>Mileage:<span class="car-li">19400Km</span></li>
+					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">
-					<p class="badge-sale">Per day</p>
-					<p class="price">Ksh 10k</p></a>
+					<p class="badge-sale">For Sale</p>
+					<p class="price">Ksh9.4M</p></a>
 					</div>
 		    </div>
 		</div>
@@ -394,10 +361,46 @@
 
 					</div>
 					<div class="col-sm-12 col-lg-4">
+						<!-- product card -->
+<div class="slide product-item bg-light">
+	<div class="card">
+		<div class="thumb-content">
+			<div class="price">Gold Package</div>
+			<a href="{{ route('single') }}">
+				<img class="index-img-fluid" src="images/wrxsti.jpg" alt="">
+			</a>
+		</div>
+		<div class="card-body">
+		   <h4 class="card-title"><a href="{{ route('single') }}">2012 Subaru WRX STI</a></h4>
+		    <ul class="list-inline product-meta">
+		    	<li class="list-inline-item">
+		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
+		    	</li>
+		    	<li class="list-inline-item">
+		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
+		    	</li>
+		    </ul>
+		    <div class="product-ratings">
+		    	<ul class="trending-horizontal">
+					<li>Mileage:<span class="car-li">19400Km</span></li>
+					<li>Trans:<span class="car-li">Automatic</span></li>
+				</ul>  
+				<div class="property-price">
+					<p class="badge-sale">For Sale</p>
+					<div class="price ">Ksh9000000M</div></a>
+					
+					</div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+					</div>
+					<div class="col-sm-12 col-lg-4">
 
 
 												<!-- product card -->
-<div class="product-item bg-light">
+<div class="slide product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
 			<div class="price">Gold Package</div>
@@ -419,12 +422,11 @@
 		    	<ul class="trending-horizontal">
 				<li><span class="car-li">Bedrooms:</span>5</li>
 				<li><span class="car-li">Bathrooms:</span>4</li>
-				<li><span class="car-li">Parking:</span>6</li>
 				<li><span class="car-li">Funished:</span>No</li>
 				</ul>  
 				<div class="property-price">
 					<p class="badge-sale">For Rent</p>
-					<div class="price">Ksh 150,000</div></a>
+					<p class="price">Ksh 150,000</p></a>
 					</div>
 		    </div>
 		</div>
@@ -439,7 +441,7 @@
 						<!-- product card -->
 						
 						<!-- product card -->
-<div class="product-item bg-light">
+<div class="slide product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
 			<div class="price">Gold Package</div>
@@ -461,7 +463,6 @@
 		    	<ul class="trending-horizontal">
 					<li>Mileage:<span class="car-li">19400Km</span></li>
 					<li>Trans:<span class="car-li">Automatic</span></li>
-
 				</ul>  
 				<div class="property-price">
 					<p class="badge-sale">For Sale</p>
@@ -478,7 +479,7 @@
 					<div class="col-sm-12 col-lg-4">
 
 						<!-- product card -->
-<div class="product-item bg-light">
+<div class="slide product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
 			<div class="price">Gold Package</div>
@@ -500,7 +501,6 @@
 		    <div class="product-ratings">
 		    	<ul class="trending-horizontal">
 					<li>Acres:<span class="car-li">30</span></li>
-					<li>Year:<span class="car-li">2014</span></li>
 					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">
@@ -516,6 +516,7 @@
 					</div>
 				</div>
 			</div>
+			
 			
 		</div>
 	</div>
@@ -661,10 +662,10 @@
 	
 		// List of sentences
 var _CONTENT = [ 
-"Buy, Sell and Consign", 
+"Buy, Sell and Car Rental", 
 "Advertising a Purpose, a Car at a Time,", 
 "With KingsBridge you get your money’s worth!!!.", 
-"Buy, Sell, Consign,"
+"Find the best rental prices on luxury, economy, and family rental cars."
 ];
 
 // Current sentence being processed
