@@ -163,7 +163,7 @@
 @endforeach
 				</div>
 								<!--new card style for mobile and desktop my listing -->
-								
+							
 <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal">
 	<div class="mdl-card__media">
 		<img class="img-square-wrapper" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
@@ -187,7 +187,7 @@
 			</ul>
 		</p>
 	  </div>
-
+<div class="card-footer">
 		<small class="text-muted">  
 			<div class="change-icons">
 			<td class="action" data-title="Action">
@@ -219,7 +219,7 @@
 			</div>
 			</small>
 	
-	
+</div>
   </div>
 								
 				<!-- pagination 
