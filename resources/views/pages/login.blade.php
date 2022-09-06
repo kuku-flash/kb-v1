@@ -47,7 +47,7 @@
                 <div class="formbg-inner padding-horizontal--48">
                    <div class="wizard-header">
                     <h3>
-                      <p style="font-weight: 450; font-size:20px; text-align: center;"> <b>KINGSBRIDGE</b><br>SIGN UP<br> </p>
+                      <p style="font-weight: 450; font-size:20px; text-align: center;"> <b>KINGSBRIDGE</b><br>LOGIN<br> </p>
                     </h3>
                 </div>
                   <form  method="POST" action="{{ route('login') }}">

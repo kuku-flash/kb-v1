@@ -161,10 +161,68 @@
 @endif
 @endforeach
 @endforeach
-
 				</div>
+								<!--new card style for mobile and desktop my listing -->
+								
+<div class="mdl-card mdl-shadow--2dp mdl-card--horizontal">
+	<div class="mdl-card__media">
+		<img class="img-square-wrapper" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
+	</div>
+	  <div class="mdl-card__title">
+		<h2 style="font-weight: 450; font-size:20px;" 
+		class="mdl-card__title-text">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}} 
+			- <small>{{ $listing->package->package_name }}</h2>
+	  </div>
+	  <div class="mdl-card__supporting-text">
+		<p class="card-text">
+			<ul class="list-horizontal">
+				<li class="li-size"><b>Listing ID: </b><span class="car-li">{{ $listing->id }}</span></li>
+				<li class="li-size"><b>Price: </b><span class="car-li"> {{ $vehicle->price}}</span></li>
+				<li class="li-size"><b>Status: </b><span class="car-li">{{ $listing->ads_status }}</span></li>
+				<li class="li-size"><b>Category: </b><span class="car-li">{{ $vehicle->vehicle_type }}</span></li>
+				<li class="li-size"><b>Invoice: </b><span class="car-li"><a href="{{ route('user.invoice', [$listing->id, $vehicle->id])}}"> Click Here </a></span></li>
+				<li class="li-size"><b>Visitors </b><span class="car-li fa fa-users "></span>: 5000</li>
+				<li class="li-size"><b>Duration <span class="car-li fa fa-count "></span>: 30 left</li> 
+				<li class="li-size"><b>Chats <span class="car-li fa fa-comments "></span>: 50</li>
+			</ul>
+		</p>
+	  </div>
 
-				<!-- pagination -->
+		<small class="text-muted">  
+			<div class="change-icons">
+			<td class="action" data-title="Action">
+				<div class="change-icons">
+					<ul class="list-inline justify-content-center">
+						<li class="list-inline-item">
+							<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('user.show_listing', [$listing->id, $vehicle->id])}}">
+								<i class="fa fa-eye"></i>
+							</a>
+						</li>
+						<li class="list-inline-item">
+							<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_listing', [$listing->id, $vehicle->id])}}">
+								<i class="fa fa-pencil"></i>
+							</a>
+						</li>
+						<li class="list-inline-item">
+					
+							<a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" data-toggle="tooltip" data-placement="top" title="Delete" class="delete">
+								<i class="fa fa-trash"></i>
+							</a>
+							<form action="{{ route('user.delete_listing', [$listing->id, $vehicle->id])}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
+							  @method('DELETE')
+							  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+							</form>
+						</li>
+					</ul>
+				</div>
+			</td>
+			</div>
+			</small>
+	
+	
+  </div>
+								
+				<!-- pagination 
 				<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
@@ -186,7 +244,7 @@
 						</ul>
 					</nav>
 				</div>
-				<!-- pagination -->
+				pagination -->
 
 			</div>
 			@else

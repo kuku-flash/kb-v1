@@ -755,28 +755,6 @@ border-radius: 25px;
     padding-top: 2px;
     color: white; }
 
-    /* jiji design */
-    
-
-    /* my list table style */
-
-    .img-square-wrapper{
-      background-size: cover;
-      margin: auto;
-      padding: 10px;
-      max-width: 100%;
-      height: 200px;
-      max-height: 100%;
-      object-fit: cover;
-
-    }
-
-
-
-
-
-
-
 /* PRODUCTS */
 .product {
   position: relative;
@@ -1535,6 +1513,41 @@ textarea.form-control {
   background-color: #fff;
 }
 /* kingsbridge */
+.img-square-wrapper{
+  background-size: cover;
+  margin: auto;
+  padding: 10px;
+  max-width: 100%;
+  height: 200px;
+  max-height: 100%;
+  object-fit: cover;
+
+}
+
+.mdl-card--horizontal {
+  flex-direction: column;
+  height: 1vh; /* 1 */
+  padding-left: 150px;
+  width: 100%;
+  
+}
+  
+  .mdl-card__media {
+    left: 0;
+    position: absolute;
+    width: 150px;
+  }
+  
+  .mdl-card__supporting-text {
+    flex: 1 1 auto;
+    width: auto;
+    
+  }
+
+
+
+
+
 /* auto typing*/
 #autotext {
   
@@ -4180,15 +4193,6 @@ article.single-post p {
     -o-object-fit:contain;
        object-fit:contain;
 }
-
-
-
-
-
-
-
-
-
 
 
 label {
