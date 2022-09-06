@@ -539,7 +539,18 @@ button {
 /* sign up page */
 
 
-
+/* My List table */
+.my-list{
+  background: #fff;
+  box-shadow:  1px 1px 12px -1px rgb(0 0 0 / 21%);
+  margin-bottom: 30px;
+  border-radius: 2px;
+}
+.my-list-footer{
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid rgba(0,0,0,.125);
+  text-align: center;
+}
 
 
 /*Vehicle specifications icons */
@@ -1530,6 +1541,7 @@ textarea.form-control {
   padding-left: 150px;
   width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
 }
   
   .mdl-card__media {
@@ -4348,9 +4360,11 @@ a.ssolink {
 
 /* End Post Ad Form */
 .border{
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23), 0 0 5px #aaa9ad  inset;
-  border-radius: 19px;
-  
+
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    border-radius: 0.25rem;
+    background: #f1f1f126;
+
 }
 
 
