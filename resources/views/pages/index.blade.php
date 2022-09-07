@@ -91,22 +91,22 @@
 <!--
 <section class="product">
 	<p style="font-weight: 450; font-size:20px; text-align: center;"> <b>Our Partners</b></p>
-	<div class="slider">
-		<div> <img src="../images/KINGSBRIDGE.png" alt="" style='width: 40px; height: 50px;'>
+	<div class="slider ">
+		<div> <img src="../images/king2.png" alt="" style='width: 50px; height: 50px;'>
 		</div>
-		<div><img src="../images/GarageGallery Logo.jpg" alt="" style='width: 40px; height: 50px;'>
+		<div><img src="../images/GarageGallery Logo.jpg" alt="" style='width: 50px; height: 50px;'>
 		</div>
-		<div><img src="../images/sti.png" alt="" style='width: 40px; height: 50px;'>
+		<div><img src="../images/sti.png" alt="" style='width: 50px; height:50px;'>
 		</div>
-		<div><img src="../images/KINGSBRIDGE.png" alt="" style='width: 40px; height: 50px;'>
+		<div><img src="../images/benz.jpg" alt="" style='width: 50px; height: 50px;'>
 		</div>
-		<div><img src="../images/KINGSBRIDGE.png" alt="" style='width: 40px; height: 50px;'>
+		<div><img src="../images/king2.png" alt="" style='width: 50px; height: 50px;'>
 		</div>
-		<div><img src="../images/KINGSBRIDGE.png" alt="" style='width: 40px; height: 50px;'>
+		<div><img src="../images/king2.png" alt="" style='width: 50px; height: 50px;'>
 		</div>
 	  </div>
 </section>
-!-->
+-->
 <!--===========================================
 --===========================================
 =            Popular deals section            =
@@ -130,7 +130,7 @@
 <div class="product-item bg-light owl-drag">
 	<div class="card">
 		<div class="thumb-content">
-			<div class="price">Gold Package</div>
+			<div class="price">Silver Package</div>
 			<a href="{{ route('single') }}">
 				<img class="index-img-fluid" src="images/amg1.jpg" alt="">
 			</a>
@@ -205,7 +205,7 @@
 <div class="slide product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<div class="price">Gold Package</div>
+			<div class="price">Silver Package</div>
 			<a href="{{ route('single') }}">
 				<img class="index-img-fluid" src="images/rundahs0.jpg" alt="">
 			</a>
@@ -366,7 +366,7 @@
 					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">
-					<p class="badge-sale">For Sale</p>
+					<p class="badge-sale">For Hire</p>
 					<p class="price">Ksh9.4M</p></a>
 					</div>
 		    </div>
@@ -403,7 +403,7 @@
 					<li>Trans:<span class="car-li">Automatic</span></li>
 				</ul>  
 				<div class="property-price">
-					<p class="badge-sale">For Sale</p>
+					<p class="badge-sale">For Hire</p>
 					<div class="price ">Ksh9000000M</div></a>
 					
 					</div>

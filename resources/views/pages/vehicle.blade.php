@@ -324,12 +324,6 @@
 									offer</a></li>
 						</ul>
 					</div>
-					<!-- Map Widget -->
-					<div class="widget map">
-						<div class="map">
-							<div id="map_canvas" data-latitude="51.507351" data-longitude="-0.127758"></div>
-						</div>
-					</div>
 					<!-- Rate Widget -->
 					<div class="widget rate">
 						<!-- Heading -->

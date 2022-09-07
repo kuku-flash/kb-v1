@@ -538,18 +538,47 @@ button {
 /* Start kingsbridge */
 /* sign up page */
 
-
-
+.payment{
+  background-color: #333;
+}
+.payment a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
+.rpayment a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
 
 
 /*Vehicle specifications icons */
+.img-count{
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: 25px;
+  height: 25px;
+  margin-top: -20px;
+  margin-right: 8px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
 
+}
   .isection{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-top: 20px;
-    padding-bottom: 12px;
+    padding-top: 10px;
+    
     }
 .ialighment {
   display: flex;
@@ -599,6 +628,56 @@ button {
     margin-left: 0px;
     overflow-x: hidden;
     overflow-y: hidden;
+    }
+
+    .bi-heart{
+      position: absolute;
+    top: -20px;
+    right: -10px;
+    z-index: 1;
+    }
+    
+    .favourist-list{
+      position: absolute;
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: auto;
+      -webkit-box-align: center;
+      align-items: center;
+      width: 34%;
+      min-height: 40px;
+      padding-top: -4px;
+      padding-left: 89%;
+      border-top-width: initial;
+      border-right-width: initial;
+      border-bottom-width: initial;
+      border-left-width: initial;
+      border-top-style: solid;
+      border-right-style: solid;
+      border-bottom-style: solid;
+      border-left-style: solid;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-image-source: initial;
+      border-image-slice: initial;
+      border-image-width: initial;
+      border-image-outset: initial;
+      border-image-repeat: initial;
+      line-height: 1;
+      word-break: break-word;
+    }
+    .fa-heart-o {
+      color: red;
+      cursor: pointer;
+    }
+    
+    .fa-heart {
+      color: red;
+      cursor: pointer;
+      top: -15px;
+    right: -10px;
     }
 /* End of icons*/
 
@@ -860,55 +939,7 @@ border-radius: 25px;
       padding: 15px 0;
       border-radius: 0 0 0 5px;
 }
-.bi-heart{
-  position: absolute;
-top: -15px;
-right: -10px;
-z-index: 1;
-}
 
-.favourist-list{
-  position: absolute;
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: auto;
-  -webkit-box-align: center;
-  align-items: center;
-  width: 34%;
-  min-height: 40px;
-  padding-top: -2px;
-  padding-left: 89%;
-  border-top-width: initial;
-  border-right-width: initial;
-  border-bottom-width: initial;
-  border-left-width: initial;
-  border-top-style: solid;
-  border-right-style: solid;
-  border-bottom-style: solid;
-  border-left-style: solid;
-  border-top-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-  border-image-source: initial;
-  border-image-slice: initial;
-  border-image-width: initial;
-  border-image-outset: initial;
-  border-image-repeat: initial;
-  line-height: 1;
-  word-break: break-word;
-}
-.fa-heart-o {
-  color: red;
-  cursor: pointer;
-}
-
-.fa-heart {
-  color: red;
-  cursor: pointer;
-  top: -15px;
-right: -10px;
-}
 
 
 
@@ -960,11 +991,33 @@ display: flex;
   
 }
 
-
+.package-tag{
+  position: absolute;
+  background: #d4af37;
+  color: #fff;
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 9px;
+}
 .list-horizontal li {
   width: 50%;
   float: left;
   margin-bottom: 5px;
+  
+}
+.list-horizontal-left {
+  width: 50%;
+  float: left;
+  margin-bottom: 5px;
+  margin-left: -22px;
+  
+}
+
+.list-horizontal-right{
+  width: 50%;
+  
+  margin-bottom: 5px;
+  margin-right: -10px;
   
 }
 
@@ -1263,12 +1316,24 @@ textarea.form-control {
   height: 50px;
 }
 
+
 .category-img-fluid{
   max-width: 100%;
   height: 200px;
-  max-height: 100%;
+  max-height: 100px;
   object-fit: cover;
+  
 }
+.card-img-top{
+  max-width: 100%;
+width: 100%;
+object-fit: cover;
+height: 150px;
+}
+
+
+
+
 
 .car-wrap {
   margin-bottom: 40px;
@@ -3032,7 +3097,7 @@ margin: auto;
     -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding: 0.25rem; 
+  padding: 0.15rem; 
   
 }
 
@@ -3061,13 +3126,13 @@ max-width: 100%;
 
 .product-item .thumb-content .price {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 0px;
+  left: 0px;
   background: #d4af37;
   color: #fff;
   display: inline-block;
   padding: 4px 8px;
-  font-size: 12px;
+  font-size: 9px;
 }
 
 .product-item .product-meta {
@@ -3462,7 +3527,7 @@ max-width: 100%;
   width: 157px;
   height: 157px;
   border-radius: 100%;
-  border: 7px solid #dedede;
+  border: 1px solid #dedede;
 }
 
 .widget.user h5 {

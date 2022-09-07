@@ -17,7 +17,7 @@
 					<div class="widget category-list">
 	<h4 class="widget-header">Select Category</h4>
 	<select class="w-100 form-control mt-lg-1 mt-md-2 category-list">
-		<option><li><a href="category.html">Cars <span>(600)</span></a></li></option>
+		<option><li><a href="category.html">Cars <span>({{$listings->count()}})</span></a></li></option>
 			<option><li><a href="category.html">Buses <span>(233)</span></a></li></option>
 				<option><li><a href="category.html">Heavy Equipments<span>(183)</span></a></li></option>
 					<option><li><a href="category.html">Trucks <span>(257)</span></a></li></option>
@@ -119,6 +119,16 @@
 											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
 											
 										</a>
+									<div class="img-count">
+										<svg style="color:#d4af37;" 
+										xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+										class="bi bi-camera-fill" viewBox="0 0 16 16"> 
+										<path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" fill="#ffd040">
+											</path>
+											 <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z" fill="#ffd040">
+												</path> </svg>
+										 <h2 class="text-white"> {{$listings->count()}}</h2>
+									</div>
 									</div>
 									<div class="card-body">
 										<h4 class="card-title"><a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->year_of_build}}</a></h4>
@@ -132,10 +142,10 @@
 										</ul>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											<ul class="list-horizontal">
-												<li>Engine Size:<span class="car-li">{{ $vehicle->engine_size}}</span></li>
-												<li>Trans:<span class="car-li">{{ $vehicle->transmission}}</span></li>
-												<li>Miles:<span class="car-li">{{ $vehicle->mileage}}Km</span></li>
-												<li>Fuel Type:<span class="car-li">{{ $vehicle->fuel_type}}</span></li>
+												<li class="li-size"><b>Engine Size:</b><span class="car-li">{{ $vehicle->engine_size}}</span></li>
+												<li class="li-size"><b>Trans:</b><span class="car-li">{{ $vehicle->transmission}}</span></li>
+												<li class="li-size"><b>Miles:</b><span class="car-li">{{ $vehicle->mileage}}Km</span></li>
+												<li class="li-size"><b>Fuel:</b><span class="car-li">{{ $vehicle->fuel_type}}</span></li>
 				
 											</ul>
 											</div>

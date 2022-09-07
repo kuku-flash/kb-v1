@@ -1,7 +1,5 @@
 @extends('layouts.kingsbridge')
 @section('content')
-
-
 <!--================================
 =            Page Title            =
 =================================-->
@@ -23,7 +21,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="about-img">
-                    <img src="images/about/about.jpg" class="img-fluid w-100 rounded" alt="">
+                    <img src="{{ asset('images/KINGSBRIDGE.png')}}"  class="img-fluid w-100 rounded" alt="">
                 </div>
             </div>
             <div class="col-lg-6 pt-5 pt-lg-0">

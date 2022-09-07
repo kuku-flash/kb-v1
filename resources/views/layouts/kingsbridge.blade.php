@@ -103,7 +103,7 @@
                 <li class="nav-item">
                   <a class="nav-link login-button " href="{{ route('signup')}}">Sign Up</a>
                 </li>
-            @endif
+              @endif
 
                 @if ((Route::has('user.login')))
                     <li class="nav-item">
