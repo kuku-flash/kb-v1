@@ -313,7 +313,9 @@
 					</div>
 					<!-- User Profile widget -->
 					<div class="widget user text-center">
-						<img class="rounded-circle img-fluid mb-5 px-5" src="/storage/photos/{{ $listing->user->avatar }}" alt="">
+						<div class="image d-flex justify-content-center">
+							<img src="/storage/photos/{{ $listing->user->avatar}}" alt="" class="">
+						</div>
 						<h4><a href="">  {{ $listing->user->name }} </a></h4>
 						<p class="member-time">Member Since {{ $listing->user->created_at->diffForHumans() }} </p>
 						<a href="">See all ads</a>
