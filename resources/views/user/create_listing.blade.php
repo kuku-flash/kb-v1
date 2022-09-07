@@ -445,7 +445,80 @@
         </form>
     </div>
 </section>
+<script src="{{ asset('js/gsdk-bootstrap-wizard.js')}}"></script>
+<script src="{{ asset('js/jquery-1.10.2.js')}}"></script>
+<script src="{{ asset('js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/jquery.bootstrap.wizard.js')}}"></script>
+<script src="{{ asset('js/wizard.js')}}"></script>  
 
+<script>
+
+  
+$(document).ready(function(){
+// Prepare the preview for profile picture
+    $("#wizard-picture").change(function(){
+        readURL(this);
+    });
+});
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
+  
+  $('.wizard-card').bootstrapWizard({
+        'tabClass': 'nav nav-pills',
+        'nextSelector': '.btn-next',
+        'previousSelector': '.btn-previous',
+
+         onInit : function(tab, navigation, index){
+
+           //check number of tabs and fill the entire row
+           var $total = navigation.find('li').length;
+           $width = 100/$total;
+
+           $display_width = $(document).width();
+
+           console.log($total);
+
+           if($display_width < 600 && $total > 3){
+               $width = 50;
+           }
+
+           navigation.find('li').css('width',$width + '%');
+
+        },
+        
+        onTabClick : function(tab, navigation, index){
+            // Disable the posibility to click on tabs
+            return false;
+        },
+        onTabShow: function(tab, navigation, index) {
+            var $total = navigation.find('li').length;
+            var $current = index+1;
+
+            var wizard = navigation.closest('.wizard-card');
+
+            // If it's the last tab then hide the last button and show the finish instead
+            if($current >= $total) {
+                $(wizard).find('.btn-next').hide();
+                $(wizard).find('.btn-finish').show();
+            } else {
+                $(wizard).find('.btn-next').show();
+                $(wizard).find('.btn-finish').hide();
+            }
+        }
+    });
+        
+         
+  </script>
 <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
