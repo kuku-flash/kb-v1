@@ -42,13 +42,13 @@
         </div>              
   <div class="container">
   <div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
+  <div class="col-sm-8 col-sm-offset-2 m-auto">
       <!--      Wizard container        -->
       <div class="wizard-container">
           <div class="card wizard-card" data-color="orange" id="wizardProfile">
-              <form action="" method="POST">
+              <form action="{{ route('storeuser')}}" method="POST">
           <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
-
+          @csrf
                 <div class="wizard-header">
                     <h3>
                        <b>KINGSBRIDGE</b><br>SIGN UP<br>
@@ -57,122 +57,186 @@
 
       <div class="wizard-navigation">
         <ul>
-                        <li><a href="#about" data-toggle="tab">About</a></li>
+                        
                         <li><a href="#account" data-toggle="tab">Account</a></li>
-                        <li><a href="#address" data-toggle="tab">Address</a></li>
+                        <li><a href="#information" data-toggle="tab">Information</a></li>
                     </ul>
 
       </div>
 
                   <div class="tab-content">
-                      <div class="tab-pane" id="about">
+                      
+                      <div class="tab-pane " id="account">
+                          <h4 class="info-text"> What type of User are you? (checkboxes) </h4>
+                         
+                          <div class="row">
+                            <div class="col-lg-4 col-md-4">
+                              <div class="package-content bg-light border text-center p-1 my-2 my-lg-0">
+                                  <div class="package-content-heading border-bottom">
+                                      <i class="fa fa-user"></i>
+                                      <h4>Buyer or Seeker</h4>
+              
+                                  </div>
+                                  
+                                  <input type="radio"  id="inputGroupSelect" class="form-control user-radios" name="role" value="3">
+                              
+                                      
+                              </div>
+                              
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                              <div class="package-content bg-light border text-center p-1 my-2 my-lg-0">
+                                  <div class="package-content-heading border-bottom">
+                                      <i class="fa fa-user"></i>
+                                      <h4>Individual seller</h4>             
+                                  </div>
+                               
+                                  <input type="radio"  id="inputGroupSelect" class="form-control user-radios" name="role" value="16">
+                              
+                                      
+                              </div>
+                              
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                              <div class="package-content bg-light border text-center p-1 my-2 my-lg-0">
+                                  <div class="package-content-heading border-bottom">
+                                      <i class="fa fa-user"></i>
+                                      <h4>Business </h4>
+              
+                                  </div>                    
+                                  <input type="radio"  id="inputGroupSelect" class="form-control user-radios" name="role" value="4">
+                              
+                                      
+                              </div>
+                              
+                            </div>
+                          </div>
+                      
+                      </div>
+                      <div class="tab-pane" id="information">
                         <div class="row">
                             <div class="col-sm-4 col-sm-offset-1">
                                <div class="picture-container">
                                     <div class="picture">
                                         <img src="../images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                        <input type="file" id="wizard-picture">
+                                        <input type="file" name="avatar" id="wizard-picture">
                                     </div>
                                     <h6>Choose Picture</h6>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                  <label>First Name <small>(required)</small></label>
-                                  <input name="firstname" type="text" class="form-control" placeholder="Andrew...">
+                                  <label>Full Name <small>(required)</small></label>
+                                  <input  type="text" name="name" class="form-control @error('name') is-invalid @enderror"  placeholder="Full Name">
+                                  @error('name')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                                   @enderror
                                 </div>
-                                <div class="form-group">
-                                  <label>Last Name <small>(required)</small></label>
-                                  <input name="lastname" type="text" class="form-control" placeholder="kb...">
+                                
+                            </div>
+                            <div class="col-sm-6 ">
+                              <div class="form-group">
+                                  <label>Phone <small>(required)</small></label>
+                                  <input name="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}"  placeholder="+25475694234">
+                                  @error('phone_number')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                                   @enderror
+                                </div>
+                          </div>
+                            <div class="col-sm-12 col-sm-offset-1">
+                                <div class="form-group">                   
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                                </div>
+                                <div class="form-group ">
+                                  <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+    
+                                  <div class="col-md-6">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                 </div>
+                                  @error('password')
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                      </span>
+                                  @enderror
+                              </div>
+                              <div class="form-group ">
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+    
+                                <div class="col-md-6">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
-                            <div class="col-sm-10 col-sm-offset-1">
-                                <div class="form-group">
-                                    <label>Email <small>(required)</small></label>
-                                    <input name="email" type="email" class="form-control" placeholder="andrew@kingsbridge.com">
-                                </div>
                             </div>
+                            <div class="col-sm-12 col-sm-offset-1">
+                              <div class="form-group individual">
+                                  <label>Identification Number <small>(required)</small></label>
+                                  <input name="identification_number" type="text" class="form-control @error('identification_number') is-invalid @enderror" placeholder="Identification Number">
+                                  @error('identification_number')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                                   @enderror
+                                </div>
+                              <div class="form-group business">
+                                <label>Business</label><br>
+                                 <select name="category" class="form-control">
+                                    <option value="1"> Care hiring agency </option>
+                                    <option value="2"> Dealership </option>
+                                    <option value="3"> Vehicles Parts and accessories </option>
+                                   
+                                </select>                             
+                             </div>
+                              <div class="form-group business">
+                                <label>Business Name <small>(required)</small></label>
+                                <input name="business_name" type="text" class="form-control" placeholder="Business Name">
+                                </div> 
+                                <div class="form-group business">
+                                  <label>Tax Identification Number <small>(required)</small></label>
+                                  <input name="kra_pin" type="text" class="form-control @error('kra_pin') is-invalid @enderror" placeholder="Tax Identification Number or KRA pin">
+                                  @error('kra_pin')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                  @enderror
+                                </div>  
+                       
+                              <div class="form-group business">
+                                 <label>City</label><br>
+                                  <select name="country" class="form-control">
+                                     <option value="Nairobi"> Nairobi </option>
+                                     <option value="Kisumu"> Kisumu </option>
+                                     <option value="Mombasa"> Mombasa </option>
+                                     <option value="...">...</option>
+                                 </select>                             
+                              </div>
+                              <div class="form-group business">
+                                <label>Address <small>(required)</small></label>
+                                <input name="address" type="text" class="form-control" placeholder="Business Address Location">
+                            </div>  
+
+                          </div>
                         </div>
                       </div>
-                      <div class="tab-pane " id="account">
-                          <h4 class="info-text"> What type of User are you? (checkboxes) </h4>
-                          <div class="row">
-
-                              <div class="col-sm-10 col-sm-offset-1">
-                                  <div class="userselect col-sm-4">
-                                      <div class="choice" data-toggle="wizard-checkbox">
-                                          <input type="checkbox" name="jobb" value="Design">
-                                          <div class="icon">
-                                              <i class="fa fa-pencil"></i>
-                                          </div>
-                                          <h6>Individual</h6>
-                                      </div>
-                                  </div>
-                                  <div class="userselect col-sm-4">
-                                      <div class="choice" data-toggle="wizard-checkbox">
-                                          <input type="checkbox" name="jobb" value="Code">
-                                          <div class="icon">
-                                              <i class="fa fa-terminal"></i>
-                                          </div>
-                                          <h6>Dealers</h6>
-                                      </div>
-
-                                  </div>
-                                  <div class="userselect col-sm-4">
-                                      <div class="choice" data-toggle="wizard-checkbox">
-                                          <input type="checkbox" name="jobb" value="Develop">
-                                          <div class="icon">
-                                              <i class="fa fa-laptop"></i>
-                                          </div>
-                                          <h6>Business</h6>
-                                      </div>
-
-                                  </div>
-                              </div>
-
-                          </div>
-                      </div>
-                      <div class="tab-pane" id="address">
-                          <div class="row">
-                              <div class="col-sm-12">
-                                  <h4 class="info-text"> Are you living in a nice area? </h4>
-                              </div>
-                              <div class="col-sm-7 col-sm-offset-1">
-                                   <div class="form-group">
-                                      <label>Street Name</label>
-                                      <input type="text" class="form-control" placeholder="5h Avenue">
-                                    </div>
-                              </div>
-                              <div class="col-sm-3">
-                                   <div class="form-group">
-                                      <label>Street Number</label>
-                                      <input type="text" class="form-control" placeholder="242">
-                                    </div>
-                              </div>
-                              <div class="col-sm-5 col-sm-offset-1">
-                                   <div class="form-group">
-                                      <label>City</label>
-                                      <input type="text" class="form-control" placeholder="New York...">
-                                    </div>
-                              </div>
-                              <div class="col-sm-5">
-                                   <div class="form-group">
-                                      <label>County</label><br>
-                                       <select name="country" class="form-control">
-                                          <option value="Nairobi"> Nairobi </option>
-                                          <option value="Kisumu"> Kisumu </option>
-                                          <option value="Mombasa"> Mombasa </option>
-                                          <option value="...">...</option>
-                                      </select>
-                                    </div>
-                              </div>
-                          </div>
-                      </div>
+                      
                   </div>
                   <div class="wizard-footer height-wizard">
                       <div class="pull-right">
                           <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
-                          <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Finish' />
+                          <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Finish' />
 
                       </div>
 
@@ -208,6 +272,16 @@ $(document).ready(function(){
     $("#wizard-picture").change(function(){
         readURL(this);
     });
+
+    new ConditionalField({
+          control: ' .user-radios',
+          visibility: {
+            '16': '.individual',
+            '4': '.business',
+            '3': '.seeker'
+          }
+        });
+
 });
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -265,6 +339,14 @@ function readURL(input) {
             }
         }
     });
+    $('[data-toggle="wizard-radio"]').click(function(){
+        wizard = $(this).closest('.wizard-card');
+        wizard.find('[data-toggle="wizard-radio"]').removeClass('active');
+        $(this).addClass('active');
+        $(wizard).find('[type="radio"]').removeAttr('checked');
+        $(this).find('[type="radio"]').attr('checked','true');
+    });
+
         
          
   </script>

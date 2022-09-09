@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\Listing;
+use App\Models\Package;
+use App\Models\User;
 use App\Models\Vehicle;
 use App\Models\Vehicle_photo;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -117,10 +119,31 @@ Public function dashboard(){
     return view ('pages.dashboard');
     
 }
-
 Public function signup(){
 
     return view ('pages.signup');
+    
+}
+
+Public function storeuser(Request $request, User $user){
+    $validatedData = $this->validate($request, [
+        'name' => 'required|max:255',
+        'email' => 'required|unique:users|email|max:255',
+        'password' => 'required|between:8,255|confirmed',
+        'password_confirmation' => 'required',
+        'phone_number' => 'required',
+        'identification_number' => '',
+        'kra_pin' => '',  
+        'role' => 'required',
+        
+    ]);
+   
+    $user = User::create($validatedData);
+    $user->roles()->sync($request->input('role',[]));
+
+
+  return redirect() -> route('user.my_list')->with('success','Succesfully Added');
+  
     
 }
 

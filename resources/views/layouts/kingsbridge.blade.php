@@ -283,6 +283,8 @@
 
 <script src="{{ asset('plugins/fancybox/jquery.fancybox.pack.js')}}"></script>
 <script src="{{ asset('plugins/smoothscroll/SmoothScroll.min.js')}}"></script>
+<script src="{{ asset('plugins/conditional-field/conditional-field.min.js')}}"></script>
+
 
   <!-- <script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.js')}}"></script> -->
 <script src="{{ asset('plugins/google-map/gmap.js')}}"></script>

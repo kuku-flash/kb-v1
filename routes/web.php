@@ -37,6 +37,7 @@ Route :: get ('ad_list_view',  [PagesController::class, 'ad_list_view'])->name('
 Route :: get ('blog',  [PagesController::class, 'blog'])->name('blog');
 Route :: get ('contact_us',  [PagesController::class, 'contact_us'])->name('contact_us');
 Route :: get ('signup',  [PagesController::class, 'signup'])->name('signup');
+Route :: post ('storeuser',  [PagesController::class, 'storeuser'])->name('storeuser');
 Route :: get ('user/login',  [PagesController::class, 'login'])->name('user.login');
 Route :: get ('package',  [PagesController::class, 'package'])->name('package');
 Route :: get ('register',  [PagesController::class, 'register'])->name('register');
