@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css')}}" >
     <link rel="stylesheet"  href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" >
 
+
   
   
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -292,6 +293,7 @@
 <script src="/path/to/flickity.pkgd.min.js"></script>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="jquery.numberformatter.js"></script>
+
 <script>
 function addCommas(nStr)
 {

@@ -2,6 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <link rel="stylesheet" href="{{ asset('css/gsdk-bootstrap-wizard.css')}}" >
+<link rel="stylesheet" href="{{ asset('phone/build/css/intlTelInput.css')}}">
 
 
 <section class="login py-5 border-top-1">
@@ -59,7 +60,8 @@
         <ul>
                         
                         <li><a href="#account" data-toggle="tab">Account</a></li>
-                        <li><a href="#information" data-toggle="tab">Information</a></li>
+                        <li><a href="#information" data-toggle="tab">Registration</a></li>
+                     <!--   <li><a href="#photo" data-toggle="tab">Profile Picture</a></li> -->
                     </ul>
 
       </div>
@@ -72,13 +74,13 @@
                           <div class="row">
                             <div class="col-lg-4 col-md-4">
                               <div class="package-content bg-light border text-center p-1 my-2 my-lg-0">
-                                  <div class="package-content-heading border-bottom">
-                                      <i class="fa fa-user"></i>
+                                  <div class="package-content-heading ">
+                                      <i class="fa fa-user" style="font-size: 50px"></i>
                                       <h4>Buyer or Seeker</h4>
               
                                   </div>
                                   
-                                  <input type="radio"  id="inputGroupSelect" class="form-control user-radios" name="role" value="3">
+                                  <input type="radio"  id="inputGroupSelect" class=" user-radios" name="role" value="3">
                               
                                       
                               </div>
@@ -86,12 +88,12 @@
                             </div>
                             <div class="col-lg-4 col-md-4">
                               <div class="package-content bg-light border text-center p-1 my-2 my-lg-0">
-                                  <div class="package-content-heading border-bottom">
-                                      <i class="fa fa-user"></i>
+                                  <div class="package-content-heading">
+                                      <i class="fa fa-user" style="font-size: 50px"></i>
                                       <h4>Individual seller</h4>             
                                   </div>
                                
-                                  <input type="radio"  id="inputGroupSelect" class="form-control user-radios" name="role" value="16">
+                                  <input type="radio"  id="inputGroupSelect" class="f user-radios" name="role" value="16">
                               
                                       
                               </div>
@@ -99,12 +101,12 @@
                             </div>
                             <div class="col-lg-4 col-md-4">
                               <div class="package-content bg-light border text-center p-1 my-2 my-lg-0">
-                                  <div class="package-content-heading border-bottom">
-                                      <i class="fa fa-user"></i>
+                                  <div class="package-content-heading">
+                                      <i class="fa fa-user" style="font-size: 50px"></i>
                                       <h4>Business </h4>
               
                                   </div>                    
-                                  <input type="radio"  id="inputGroupSelect" class="form-control user-radios" name="role" value="4">
+                                  <input type="radio"  id="inputGroupSelect" class=" user-radios" name="role" value="4">
                               
                                       
                               </div>
@@ -115,84 +117,79 @@
                       </div>
                       <div class="tab-pane" id="information">
                         <div class="row">
-                            <div class="col-sm-4 col-sm-offset-1">
-                               <div class="picture-container">
-                                    <div class="picture">
-                                        <img src="../images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                        <input type="file" name="avatar" id="wizard-picture">
-                                    </div>
-                                    <h6>Choose Picture</h6>
-                                </div>
-                            </div>
+                            
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                  <label>Full Name <small>(required)</small></label>
+                                  <label>Full Name<small> *</small></label>
                                   <input  type="text" name="name" class="form-control @error('name') is-invalid @enderror"  placeholder="Full Name">
                                   @error('name')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
+                                  <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>
                                    @enderror
                                 </div>
                                 
                             </div>
                             <div class="col-sm-6 ">
                               <div class="form-group">
-                                  <label>Phone <small>(required)</small></label>
-                                  <input name="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}"  placeholder="+25475694234">
+                                <label>Phone Number<small> *</small></label>
+                                  <input name="phone_number" type="tel" id="phone" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}" 
+                                  >
                                   @error('phone_number')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
+                                  <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>
                                    @enderror
                                 </div>
                           </div>
-                            <div class="col-sm-12 col-sm-offset-1">
-                                <div class="form-group">                   
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                            <div class="col-md-12">
+                              <div class="form-group">
+                       
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                 name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email">
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>
                                 @enderror
                             </div>
                                 </div>
-                                <div class="form-group ">
-                                  <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                               
     
                                   <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <div class="form-group ">
+                                      <label>Password<small> *</small></label>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                                     name="password" required autocomplete="new-password" placeholder="Password">
+                                    </div>
+
+                                  </div>
+                                    <div class="col-md-6">
+                                     <div class="form-group ">
+                                      <label>Confirm Password<small> *</small></label>
+                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" 
+                                    required autocomplete="new-password" placeholder="Password">
                                  </div>
                                   @error('password')
-                                      <span class="invalid-feedback" role="alert">
-                                          <strong>{{ $message }}</strong>
-                                      </span>
+                                      <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>
                                   @enderror
                               </div>
-                              <div class="form-group ">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                             
+                              
     
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <div class="col-md-12">
+                                  <div class="form-group ">
+                                    
+                                  </div>
                                 </div>
-                            </div>
-                            </div>
+                       
                             <div class="col-sm-12 col-sm-offset-1">
                               <div class="form-group individual">
-                                  <label>Identification Number <small>(required)</small></label>
+                                <label>Identification Number<small> *</small></label>
                                   <input name="identification_number" type="text" class="form-control @error('identification_number') is-invalid @enderror" placeholder="Identification Number">
                                   @error('identification_number')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
+                                  <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>
                                    @enderror
                                 </div>
+                            </div>
+                            <div class="col-sm-6">
                               <div class="form-group business">
-                                <label>Business</label><br>
+                                <label>Business Type<small> </small></label>
                                  <select name="category" class="form-control">
                                     <option value="1"> Care hiring agency </option>
                                     <option value="2"> Dealership </option>
@@ -200,22 +197,26 @@
                                    
                                 </select>                             
                              </div>
+                            </div>
+                            <div class="col-sm-6  col-sm-offset-1">
                               <div class="form-group business">
-                                <label>Business Name <small>(required)</small></label>
+                                <label>Business Name<small> </small></label>
                                 <input name="business_name" type="text" class="form-control" placeholder="Business Name">
                                 </div> 
+                            </div>
+
+                            <div class="col-md-12">
                                 <div class="form-group business">
                                   <label>Tax Identification Number <small>(required)</small></label>
                                   <input name="kra_pin" type="text" class="form-control @error('kra_pin') is-invalid @enderror" placeholder="Tax Identification Number or KRA pin">
                                   @error('kra_pin')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                       <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>
                                   @enderror
                                 </div>  
-                       
+                            </div>
+                            <div class="col-sm-6">
                               <div class="form-group business">
-                                 <label>City</label><br>
+                                 <label>City</label>
                                   <select name="country" class="form-control">
                                      <option value="Nairobi"> Nairobi </option>
                                      <option value="Kisumu"> Kisumu </option>
@@ -223,14 +224,30 @@
                                      <option value="...">...</option>
                                  </select>                             
                               </div>
+                            </div>
+
+                            <div class="col-sm-6  col-sm-offset-1">
                               <div class="form-group business">
-                                <label>Address <small>(required)</small></label>
+                                <label>Business Address</label>
                                 <input name="address" type="text" class="form-control" placeholder="Business Address Location">
                             </div>  
-
                           </div>
+
                         </div>
                       </div>
+              <!--        <div class="tab-pane" id="photo">
+                        <div class="row">
+                          <div class="col-sm-12 ">
+                            <div class="picture-container">
+                                <div class="picture">
+                                    <img src="../images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
+                                    <input type="file" name="avatar" id="wizard-picture">
+                                </div>
+                                <h6>Choose Picture</h6>
+                            </div>
+                            </div>
+                        </div>
+                      </div>  -->
                       
                   </div>
                   <div class="wizard-footer height-wizard">
@@ -264,6 +281,27 @@
 <script src="{{ asset('js/jquery.bootstrap.wizard.js')}}"></script>
 <script src="{{ asset('js/wizard.js')}}"></script>  
 
+<script src="{{ asset('phone/build/js/intlTelInput.min.js')}}"></script>
+
+<script>
+   var input = document.querySelector("#phone");
+   intlTelInput(input, {
+  initialCountry: "ke",
+  geoIpLookup: function(success, failure) {
+    $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      var countryCode = (resp && resp.country) ? resp.country : "ke";
+      success(countryCode);
+    });
+  },
+  utilsScript: "phone/build/js/utils.js?1638200991544"
+
+});
+var number = iti.getNumber(intlTelInputUtils.numberFormat.E164);
+var error = iti.getValidationError();
+  if (error === intlTelInputUtils.validationError.TOO_SHORT) {
+    // the number is too short
+}
+</script>
 <script>
 
   
@@ -350,6 +388,7 @@ function readURL(input) {
         
          
   </script>
+  
 <section>
 
 @endsection
