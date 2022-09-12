@@ -141,11 +141,11 @@
 											</li>
 										</ul>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
-											<ul class="list-horizontal">
-												<li class="li-size"><b>Engine Size:</b><span class="car-li">{{ $vehicle->engine_size}}</span></li>
-												<li class="li-size"><b>Trans:</b><span class="car-li">{{ $vehicle->transmission}}</span></li>
-												<li class="li-size"><b>Miles:</b><span class="car-li">{{ $vehicle->mileage}}Km</span></li>
-												<li class="li-size"><b>Fuel:</b><span class="car-li">{{ $vehicle->fuel_type}}</span></li>
+											<ul class="styled-list">
+												<li ><b>Engine Size:</b><span>{{ $vehicle->engine_size}}</span></li>
+												<li ><b>Trans:</b><span >{{ $vehicle->transmission}}</span></li>
+												<li ><b>Miles:</b><span>{{ $vehicle->mileage}}Km</span></li>
+												<li ><b>Fuel:</b><span>{{ $vehicle->fuel_type}}</span></li>
 				
 											</ul>
 											</div>
