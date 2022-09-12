@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css')}}" >
     <link rel="stylesheet"  href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" >
 
+
   
   
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -283,6 +284,8 @@
 
 <script src="{{ asset('plugins/fancybox/jquery.fancybox.pack.js')}}"></script>
 <script src="{{ asset('plugins/smoothscroll/SmoothScroll.min.js')}}"></script>
+<script src="{{ asset('plugins/conditional-field/conditional-field.min.js')}}"></script>
+
 
   <!-- <script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.js')}}"></script> -->
 <script src="{{ asset('plugins/google-map/gmap.js')}}"></script>
@@ -290,6 +293,7 @@
 <script src="/path/to/flickity.pkgd.min.js"></script>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="jquery.numberformatter.js"></script>
+
 <script>
 function addCommas(nStr)
 {

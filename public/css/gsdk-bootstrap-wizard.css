@@ -54,7 +54,7 @@ input[type="button"]:focus {
 }
 
 .wizard-container {
-  padding-top: 2px;
+  padding-top: 100px;
   z-index: 3;
 }
 
@@ -192,14 +192,10 @@ h1 .subtitle {
   padding: 10px 0 20px;
   width: 100%;
 }
-.col-sm-offset-2{
-  margin-left: 17.66666667%;
-}
-
 
 .wizard-card {
   min-height: 410px;
-  background-color:  rgba(255, 255, 255, 0);
+  background-color: transparent;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15), 0 0 1px 1px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 10px 0;
@@ -658,12 +654,12 @@ h1 .subtitle {
   border-color: #05AE0E;
 }
 .btn-fill.btn-warning {
-  background-color: #FF9500;
-  border-color: #FF9500;
+  background-color: #d4af37;
+  border-color: #d4af37;
 }
 .btn-fill.btn-warning:hover, .btn-fill.btn-warning:focus, .btn-fill.btn-warning:active, .btn-fill.btn-warning.active, .open .dropdown-toggle .btn-fill.btn-warning {
-  background-color: #ED8D00;
-  border-color: #ED8D00;
+  background-color: #d4af37;
+  border-color: #d4af37;
 }
 .btn-fill.btn-danger {
   background-color: #FF3B30;
