@@ -1020,10 +1020,34 @@ display: flex;
 .list-horizontal li:before {
   color:#999;
   color:rgba(0,0,0,0.5);
-  font-size:9px;
-  
-  
+  font-size:9px;  
 }
+
+.styled-list {
+  list-style: none;
+  max-width: 290px;
+  padding: 0;
+  margin: 0;
+}
+
+.styled-list li {
+  position: relative;
+  padding-left: 10px;
+  float: left;
+  font-size: 13px;
+}
+.styled-list li:nth-child(even) {
+  padding-right: 4px;
+  text-align: right;
+  padding-left: 0;
+  float: right;
+}
+.styled-list li:nth-child(even):before {
+  left: auto;
+  right: 0;
+}
+
+
 
 
 

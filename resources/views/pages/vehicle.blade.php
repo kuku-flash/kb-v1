@@ -301,15 +301,6 @@
 									offer</a></li>
 						</ul>
 					</div>
-					<!-- Rate Widget -->
-					<div class="widget rate">
-						<!-- Heading -->
-						<h5 class="widget-header text-center">What would you rate
-							<br>
-							this product</h5>
-						<!-- Rate -->
-						<div class="starrr"></div>
-					</div>
 					<!-- Safety tips widget -->
 					<div class="widget disclaimer">
 						<h5 class="widget-header">Safety Tips</h5>
@@ -327,7 +318,10 @@
 							your fellow users.
 						</p>
 						<!-- Submii button -->
+
 						<a href="" class="btn btn-transparent-white">Submit Listing</a>
+						
+					  
 					</div>
 
 				</div>
