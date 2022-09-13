@@ -212,7 +212,12 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="/storage/photos/{{ auth()->user()->avatar}}" height="40" width="40" alt="">
+                                @if (auth()->user()->avatar)
+                                    <img src="/storage/photos/{{ auth()->user()->avatar}}" height="40" width="40" alt="">
+                                @else
+                                    <img src="images/user/form-user.png" height="40" width="40" alt="">
+                                @endif
+                                
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">

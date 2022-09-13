@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carmake;
+use App\Models\Carmodel;
 use App\Models\City;
 use App\Models\Listing;
 use App\Models\Package;
@@ -16,9 +18,18 @@ class PagesController extends Controller
 {
     
 Public function index (){
-
-        return view ('pages.index');
+    $arr['cities'] = City::all();
+    $arr['vehicles'] = Vehicle::all();
+    $arr['makes'] = Carmake::all();
+    $arr['models'] = Carmodel::all();
+    $arr['listings'] = Listing::where('category_id',2)->take(20)->get(); 
+    
+    return view ('pages.index')->with($arr);
         
+}
+public function carmodel(Request $request) {
+    $data = Carmodel::select('model','id')->where('make_id',$request->id)->take(10)->get();
+    return response()->json($data);//then sent this data to aax success
 }
 
 Public function category (){
@@ -62,6 +73,40 @@ Public function contact_us(){
 
     return view ('pages.contact_us');
     
+}
+public function vehicle_search(Request $request){
+    $arr['cities'] = City::all();
+    $arr['listings'] = Listing::where([
+        ['city_id', '!=', Null],
+        [ function ($query) use ($request) {
+           
+            if (( $city = $request->city)){
+                $query->orWhere('city_id', 'LIKE', '%' .$city. '%')->get();
+            }
+        }]
+
+    ])
+    ->orderBy("id", "desc")->take(10)->get();
+
+    $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
+    $arr['vehicles'] = Vehicle::where([
+        ['model_id', '!=', Null],
+        [ function ($query) use ($request) {
+           
+            if (( $model_id = $request->model_id)){
+                $query->orWhere('model_id', 'LIKE', '%' .$model_id. '%')->get();
+            }
+        }]
+
+    ])
+    ->orderBy("id", "desc")->take(10)->get();
+    return view ('pages.vehicles_grid')->with($arr);
+}
+
+public function vehicle_filter(Request $request){
+    $arr['vehicles'] = Vehicle::where('vehicle_type', $request->vehicle_type)->take(20)->get();
+    $arr['listings'] = Listing::where('category_id',2)->take(20)->get(); 
+    return view ('pages.vehicles_grid')->with($arr);
 }
 
 Public function vehicles_grid(){

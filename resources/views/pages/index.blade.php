@@ -52,24 +52,48 @@
 						<div class="container">
 							<div class="row justify-content-center">
 								<div class="col-lg-12 col-md-12 align-content-center">
-										<form>
+										<form action="{{ route('vehicle_search') }}" method="get">
 											<div class="form-row">
-												<div class="form-group col-md-4">
-													<input type="text" class="form-control my-2 my-lg-1" id="inputtext4" placeholder="What are you looking for">
+												<div class="carmodel form-group col-md-3">
+													<select name="make" class="make form-control ">
+													<option value="">Choose a Make</option>
+										
+													@foreach($makes as $make)
+														<option value="{{ $make->id }}" {{(old('make'))? 'selected':''}}>{{ $make->make }}</option>
+													@endforeach
+												</select>
+													@error('make_id')
+													<span class="invalid"  role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+													@enderror
+												
+												<select name="model_id" class="model form-control ">
+													<option value="0"  disabled="true" selected="true">Choose a model</option>
+
+												</select>
+												
 												</div>
+												
 												<div class="form-group col-md-3">
-													<select class="w-100 form-control mt-lg-1 mt-md-2">
-														<option>Category</option>
-														<option value="1">Top rated</option>
-														<option value="2">Lowest Price</option>
-														<option value="4">Highest Price</option>
+													<select name="city" id="inputGroupSelect" class="form-control">
+														<option value="">Select City</option>
+														
+														
+														@foreach ($cities as $city )
+														 <option value="{{ $city->id }}" {{(old('city')==$city->id)? 'selected':''}}>
+														  {{ $city->city }}</option> 
+													
+														@endforeach
 													</select>
-												</div>
-												<div class="form-group col-md-3">
-													<input type="text" class="form-control my-2 my-lg-1" id="inputLocation4" placeholder="Location">
+													@error('city')
+													  <span class="invalid"  role="alert">
+														  <strong>{{ $message }}</strong>
+													  </span>
+													 @enderror
 												</div>
 												<div class="form-group col-md-2 align-self-center">
-													<button type="submit" class="btn btn-primary"><a href="{{ route('category') }}">Search Now</a></button>
+													<button type="submit" class="btn btn-primary">Search Now</button>
 													
 												</div>
 											</div>
@@ -655,7 +679,34 @@
 		</div>
 	</div>
 	<!-- Container End -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+$(document).on('change','.make',function(){
+// console.log("hmm its change");
+var make_id=$(this).val();
+// console.log(cat_id);
+var div=$(this).parent();
+var option=" ";
+$.ajax({
+	type:'get',
+	url:'{!!URL::to('carmodel')!!}',
+	data:{'id':make_id},
+	success:function(data){
 
+	for(var i=0;i<data.length;i++){
+		option+='<option value="'+data[i].id+'" >'+data[i].model+'</option>';
+		}
+		
+		div.find('.model').html(" ");
+		div.find('.model').append(option);
+	},
+	
+	error:function(){    }
+});
+});
+});
+</script>
 	<script type="text/javascript">
     let thumbnails = document.getElementsByClassName('thumbnail')
     
@@ -766,8 +817,8 @@ window.onload=function(){
   
 };
 
+</script>
 
-	</script>
 	
 </section>
 

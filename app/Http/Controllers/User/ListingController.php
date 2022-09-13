@@ -43,7 +43,7 @@ class ListingController extends Controller
     
     Public function favourite_list(){
     
-        return view ('user.favourite_list');
+        return view ('user.favourite_list'); 
         
     }
     
@@ -55,6 +55,14 @@ class ListingController extends Controller
         $arr['models'] = Carmodel::all();
         $arr['packages'] = Package::where('package_featured',null)->orderBy('id','desc')->get();
         return view('user.create_listing')->with($arr);
+    } 
+    public function create_listing2(){
+        $arr['categories'] = Category::all();
+        $arr['cities'] = City::all();
+        $arr['makes'] = Carmake::all();
+        $arr['models'] = Carmodel::all();
+        $arr['packages'] = Package::where('package_featured',null)->orderBy('id','desc')->get();
+        return view('user.create_listing2')->with($arr);
     } 
 
     public function store_listing(Request $request, Listing $listing, Vehicle $vehicle) {

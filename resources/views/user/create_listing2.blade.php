@@ -3,9 +3,23 @@
 
 <section class="section-sm">
     <div class="container">
+  <div class="wizard-container">
+    <div class="card wizard-card" data-color="orange" id="wizardProfile">
       <form action="{{ route('user.store_listing')}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">     
         @csrf
+
+        <div class="wizard-navigation">
+            <ul>  
+              <li><a href="#category" data-toggle="tab">Post your AD</a></li>
+              <li><a href="#vehicle" data-toggle="tab">vehicle</a></li>
+              <li><a href="#image" data-toggle="tab">image</a></li>
+              <li><a href="#package" data-toggle="tab">package</a></li>
+            <!--   <li><a href="#photo" data-toggle="tab">Profile Picture</a></li> -->
+          </ul>
+        </div>
             <!-- Post Your ad start -->
+<div class="tab-content">      
+  <div class="tab-pane " id="category">
             <fieldset class="border border-gary p-4 mb-5">
                 <h4 style=" text-align: center;">Post your AD</h4>
                 <section>
@@ -42,7 +56,13 @@
                 </div>
                 </section>
             </fieldset>
+  </div>
+
+
 <!-- Post Your ad start -->
+  
+  <div class="tab-pane" id="vehicle">
+
 <fieldset class="border border-gary p-4 mb-5">
   <div class="row">
       <div class="col-lg-12">
@@ -63,7 +83,7 @@
                   </span>
                 @enderror
 
-                      
+              <h6 class="font-weight-bold pt-4 pb-1">Select Model</h6>           
               <select name="model_id" class="model form-control">
                 <option value="0"  disabled="true" selected="true">Choose a model</option>
 
@@ -285,6 +305,11 @@
       </div>
   </div>
 </fieldset>
+
+  </div>
+   
+  <div class="tab-pane" id="image">
+
 <fieldset class="border border-gary p-4 mb-5">
   <h4 style=" text-align: center;">Upload your cars image</h4>
   <h6 class="font-weight-bold pt-4 pb-1">Kindly follow the below processes</h6>
@@ -389,6 +414,11 @@
     </div>
   </div>
 </fieldset>
+  </div>
+
+
+    
+  <div class="tab-pane" id="package">
 
 <fieldset class="border border-gary p-4 mb-5">
   <h4 style=" text-align: center;">Choose your boosting Plan</h4>
@@ -437,12 +467,26 @@
 
   </section>
 </fieldset>
+              </div>
+              </div>
+<div class="wizard-footer height-wizard">
+  <div class="pull-right">
+      <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
+      <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Finish' />
 
+  </div>
 
-<button type="submit" class="btn btn-primary d-block mt-2">Post Your Listing</button>
-</form>
-    
+  <div class="pull-left">
+      <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+  <!-- <button type="submit" class="btn btn-primary d-block mt-2">Post Your Listing</button> -->
         </form>
+  
+        </div>
+      </div>
     </div>
 </section>
 <script src="{{ asset('js/gsdk-bootstrap-wizard.js')}}"></script>
@@ -672,5 +716,119 @@ $(document).on('change','.make',function(){
   });
 });
 });
+  </script>
+
+<script src="{{ asset('js/gsdk-bootstrap-wizard.js')}}"></script>
+<script src="{{ asset('js/jquery-1.10.2.js')}}"></script>
+<script src="{{ asset('js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/jquery.bootstrap.wizard.js')}}"></script>
+<script src="{{ asset('js/wizard.js')}}"></script>  
+
+<script src="{{ asset('phone/build/js/intlTelInput.min.js')}}"></script>
+
+<script>
+   var input = document.querySelector("#phone");
+   intlTelInput(input, {
+  initialCountry: "ke",
+  geoIpLookup: function(success, failure) {
+    $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      var countryCode = (resp && resp.country) ? resp.country : "ke";
+      success(countryCode);
+    });
+  },
+  utilsScript: "phone/build/js/utils.js?1638200991544"
+
+});
+var number = iti.getNumber(intlTelInputUtils.numberFormat.E164);
+var error = iti.getValidationError();
+  if (error === intlTelInputUtils.validationError.TOO_SHORT) {
+    // the number is too short
+}
+</script>
+<script>
+
+  
+$(document).ready(function(){
+// Prepare the preview for profile picture
+    $("#wizard-picture").change(function(){
+        readURL(this);
+    });
+
+    new ConditionalField({
+          control: ' .user-radios',
+          visibility: {
+            '16': '.individual',
+            '4': '.business',
+            '3': '.seeker'
+          }
+        });
+
+});
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
+  
+  $('.wizard-card').bootstrapWizard({
+        'tabClass': 'nav nav-pills',
+        'nextSelector': '.btn-next',
+        'previousSelector': '.btn-previous',
+
+         onInit : function(tab, navigation, index){
+
+           //check number of tabs and fill the entire row
+           var $total = navigation.find('li').length;
+           $width = 100/$total;
+
+           $display_width = $(document).width();
+
+           console.log($total);
+
+           if($display_width < 600 && $total > 3){
+               $width = 50;
+           }
+
+           navigation.find('li').css('width',$width + '%');
+
+        },
+        
+        onTabClick : function(tab, navigation, index){
+            // Disable the posibility to click on tabs
+            return false;
+        },
+        onTabShow: function(tab, navigation, index) {
+            var $total = navigation.find('li').length;
+            var $current = index+1;
+
+            var wizard = navigation.closest('.wizard-card');
+
+            // If it's the last tab then hide the last button and show the finish instead
+            if($current >= $total) {
+                $(wizard).find('.btn-next').hide();
+                $(wizard).find('.btn-finish').show();
+            } else {
+                $(wizard).find('.btn-next').show();
+                $(wizard).find('.btn-finish').hide();
+            }
+        }
+    });
+    $('[data-toggle="wizard-radio"]').click(function(){
+        wizard = $(this).closest('.wizard-card');
+        wizard.find('[data-toggle="wizard-radio"]').removeClass('active');
+        $(this).addClass('active');
+        $(wizard).find('[type="radio"]').removeAttr('checked');
+        $(this).find('[type="radio"]').attr('checked','true');
+    });
+
+        
+         
   </script>
   @endsection

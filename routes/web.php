@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route :: get ('/',  [PagesController::class, 'index'])->name('index');
+Route :: get ('carmodel',  [PagesController::class, 'carmodel'])->name('carmodel');
 Route :: get ('category',  [PagesController::class, 'category'])->name('category');
 Route :: get ('single',  [PagesController::class, 'single'])->name('single');
 Route :: get ('about_us',  [PagesController::class, 'about_us'])->name('about_us');
@@ -41,6 +42,8 @@ Route :: post ('storeuser',  [PagesController::class, 'storeuser'])->name('store
 Route :: get ('user/login',  [PagesController::class, 'login'])->name('user.login');
 Route :: get ('package',  [PagesController::class, 'package'])->name('package');
 Route :: get ('register',  [PagesController::class, 'register'])->name('register');
+Route :: get ('vehicle_search',  [PagesController::class, 'vehicle_search'])->name('vehicle_search');
+Route :: get ('vehicle_filter/{vehicle}',  [PagesController::class, 'vehicle_filter'])->name('vehicle_filter');
 Route :: get ('vehicles_grid',  [PagesController::class, 'vehicles_grid'])->name('vehicles_grid');
 Route :: get ('vehicles_list',  [PagesController::class, 'vehicles_list'])->name('vehicles_list');
 Route :: get ('vehicle/{listing}/{vehicle}',  [PagesController::class, 'vehicle'])->name('vehicle');
@@ -76,6 +79,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('my_list',  [ListingController::class, 'my_list'])->name('my_list');
     Route :: get ('pending_list',  [ListingController::class, 'pending_list'])->name('pending_list');
     Route :: get ('create_listing',  [ListingController::class, 'create_listing'])->name('create_listing');
+    Route :: get ('create_listing2',  [ListingController::class, 'create_listing2'])->name('create_listing2');
     Route :: post ('store_listing',  [ListingController::class, 'store_listing'])->name('store_listing');
     Route :: get ('edit_listing/{listing}/{vehicle}',  [ListingController::class, 'edit_listing'])->name('edit_listing');
     Route :: put ('update_listing/{listing}/{vehicle}',  [ListingController::class, 'update_listing'])->name('update_listing');

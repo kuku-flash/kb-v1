@@ -26,42 +26,17 @@
 	
 	<section>
 		<div class=" main single-item slider">
-		<div class="main" > 
-			@if ($vehicle->front_img)
-			<img   src="/storage/photos/{{ $vehicle->front_img }}">
-			@endif
-		</div>
-		<div  class="main">
-		  <img  src="/storage/photos/{{ $vehicle->back_img }}">
-		</div>
-		<div class="main">
-		  <img   src="/storage/photos/{{ $vehicle->right_img }}">
-		</div>
-		<div class="main" >
-			<img  src="/storage/photos/{{ $vehicle->left_img }}">
-		  </div>
-		  <div class="main" >
-			<img  src="/storage/photos/{{ $vehicle->interiorf_img }}">
-		  </div>
-		  <div class="main">
-			<img   src="/storage/photos/{{ $vehicle->interiorb_img }}">
-		  </div>
 		 
-			@if ($vehicle->engine_img)
-			<div class="main">
-			<img   src="/storage/photos/{{ $vehicle->engine_img }}">
-			</div>
-			@endif
-		
-		  <div class="main">
-			<img  src="/storage/photos/{{ $vehicle->opt_img1 }}">
-		  </div>
-		  <div class="main" >
-			<img  src="/storage/photos/{{ $vehicle->opt_img2 }}">
-		  </div>
-		  <div class="main">
-			<img   src="/storage/photos/{{ $vehicle->opt_img3 }}">
-		  </div>
+@if ($vehicle->front_img) <div class="main" ><img   src="/storage/photos/{{ $vehicle->front_img }}"> </div> @endif
+@if ($vehicle->back_img) <div  class="main"><img  src="/storage/photos/{{ $vehicle->back_img }}"></div>  @endif
+@if ($vehicle->right_img) <div class="main"><img   src="/storage/photos/{{ $vehicle->right_img }}"></div> @endif
+@if ($vehicle->left_img) <div class="main" ><img  src="/storage/photos/{{ $vehicle->left_img }}"></div> @endif
+@if ($vehicle->interiorf_img) <div class="main" ><img  src="/storage/photos/{{ $vehicle->interiorf_img }}"></div> @endif
+@if ($vehicle->interiorb_img) <div class="main"><img   src="/storage/photos/{{ $vehicle->interiorb_img }}"></div> @endif		
+@if($vehicle->engine_img) <div class="main"> <img src="/storage/photos/{{ $vehicle->engine_img }}"> </div> @endif		
+@if ($vehicle->opt_img1) <div class="main"><img  src="/storage/photos/{{ $vehicle->opt_img1 }}"></div> @endif
+@if ($vehicle->opt_img2) <div class="main" ><img  src="/storage/photos/{{ $vehicle->opt_img2 }}"> </div> @endif
+@if ($vehicle->opt_img3) <div class="main"><img   src="/storage/photos/{{ $vehicle->opt_img3 }}"></div> @endif
 	</div>
 
 	<!--		  <ul class="thumbs mt-3 slider-nav">

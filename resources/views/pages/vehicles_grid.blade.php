@@ -15,15 +15,17 @@
 			<div class="col-md-3">
 				<div class="category-sidebar">
 					<div class="widget category-list">
-	<h4 class="widget-header">Select Category</h4>
+	<h4 class="widget-header">Select Vehicle Type</h4>
 	<select class="w-100 form-control mt-lg-1 mt-md-2 category-list">
-		<option><li><a href="category.html">Cars <span>({{$listings->count()}})</span></a></li></option>
-			<option><li><a href="category.html">Buses <span>(233)</span></a></li></option>
-				<option><li><a href="category.html">Heavy Equipments<span>(183)</span></a></li></option>
-					<option><li><a href="category.html">Trucks <span>(257)</span></a></li></option>
-						<option><li><a href="category.html">Motorbikes <span>(343)</span></a></li></option>
-							<option><li><a href="category.html">Watercrafts <span>(570)</span></a></li></option>
+
+		
+		
+		
 	</select>
+	@foreach ($vehicles as $vehicle)
+		<li><a href="{{ route('vehicle_filter', $vehicle->id)}}">Car <span>({{$vehicle->vehicle_type}})</span></li>
+	@endforeach
+		
 </div>
 
 <div class="widget category-list">
@@ -36,6 +38,18 @@
 						<option><li><a href="category.html">Nyeri <span>40</span></a></li></option>
 							<option><li><a href="category.html">Uasin Githu <span>81</span></a></li></option>
 	</select>
+	<ul class="category-list">
+		@foreach ($cities as $city)
+		<li><a href="{{ route('vehicle_filter', $vehicle->id)}}">{{$city->city}} <span>({{$city->$listings}})</span></li>
+		@endforeach
+		<li><a href="category.html">Nairobi <span>93</span></a></li>
+		<li><a href="category.html">Kisumu <span>233</span></a></li>
+		<li><a href="category.html">Machakos  <span>183</span></a></li>
+		<li><a href="category.html">Meru <span>120</span></a></li>
+		<li><a href="category.html">Nyeri <span>40</span></a></li>
+		<li><a href="category.html">Uasin Githu <span>81</span></a></li>
+	</ul>
+
 </div>
 
 <div class="widget category-list">
