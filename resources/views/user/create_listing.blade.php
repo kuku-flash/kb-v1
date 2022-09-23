@@ -23,7 +23,7 @@
                         </span>
                        @enderror
                         <h6 class="font-weight-bold pt-4 pb-1">Select Your City</h6>
-                        <select name="city" id="inputGroupSelect" class="form-control">
+                        <select name="city" data-label="Select City" id="inputGroupSelect" class="form-control">
                             <option value="">Select City</option>
                             
                             
@@ -63,7 +63,7 @@
                   </span>
                 @enderror
 
-                      
+              <h6 class="font-weight-bold pt-4 pb-1">Select Model</h6>        
               <select name="model_id" class="model form-control">
                 <option value="0"  disabled="true" selected="true">Choose a model</option>
 

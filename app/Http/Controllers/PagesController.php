@@ -76,6 +76,8 @@ Public function contact_us(){
 }
 public function vehicle_search(Request $request){
     $arr['cities'] = City::all();
+    $arr['makes'] = Carmake::all();
+    $arr['models'] = Carmodel::all();
     $arr['listings'] = Listing::where([
         ['city_id', '!=', Null],
         [ function ($query) use ($request) {
@@ -103,16 +105,32 @@ public function vehicle_search(Request $request){
     return view ('pages.vehicles_grid')->with($arr);
 }
 
+public function listing_filter(Request $request){
+    $arr['vehicles'] = Vehicle::all();
+    $arr['listings'] = Listing::where('category_id',2)->Where('city_id',$request->id)->take(20)->get(); 
+    $arr['cities'] = City::all();
+    $arr['makes'] = Carmake::all();
+    $arr['models'] = Carmodel::all();
+    return view ('pages.vehicles_grid')->with($arr);
+}
 public function vehicle_filter(Request $request){
-    $arr['vehicles'] = Vehicle::where('vehicle_type', $request->vehicle_type)->take(20)->get();
+    $arr['makes'] = Carmake::all();
+    $arr['models'] = Carmodel::all();
     $arr['listings'] = Listing::where('category_id',2)->take(20)->get(); 
+    $arr['vehicles'] = vehicle::Where('model_id',$request->id)->take(20)->get(); 
+    $arr['cities'] = City::all();
     return view ('pages.vehicles_grid')->with($arr);
 }
 
 Public function vehicles_grid(){
+    $arr['makes'] = Carmake::all();
+    $arr['models'] = Carmodel::all();
     $arr['cities'] = City::all();
     $arr['vehicles'] = Vehicle::all();
     $arr['listings'] = Listing::where('category_id',2)->take(20)->get(); //the 2 is the id of car category
+   // $arr['carcities'] = Listing::where('category_id',2)->where('city_id',$request->city_id)->take(20)->get();
+   $imagecount =! Null;
+   $arr['imgcount'] = Vehicle::where(['front_img' => Null,'back_img'=> Null, 'right_img'=> Null, 'left_img'=> Null])->count();
   
     $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
     return view ('pages.vehicles_grid')->with($arr);
@@ -131,6 +149,7 @@ public function vehicle(Listing $listing, Vehicle $vehicle){
     $arr['listing'] = $listing;
     $arr['vehicle'] = $vehicle;
     $arr['vehiclephotos'] = Vehicle_photo::all();
+
     return view ('pages.vehicle')->with($arr);
 }
 Public function post_ad_form(){

@@ -80,8 +80,10 @@
               
                                   </div>
                                   
-                                  <input type="radio"  id="inputGroupSelect" class=" user-radios" name="role" value="3">
-                              
+                                  <input type="radio"  id="inputGroupSelect" class=" user-radios" name="role" value="3" required>
+                                  @error('role')
+                                  <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>
+                                   @enderror
                                       
                               </div>
                               
@@ -93,8 +95,10 @@
                                       <h4>Individual seller</h4>             
                                   </div>
                                
-                                  <input type="radio"  id="inputGroupSelect" class="f user-radios" name="role" value="16">
-                              
+                                  <input type="radio"  id="inputGroupSelect" class="f user-radios" name="role" value="16" required>
+                                  @error('role')
+                                  <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>
+                                   @enderror
                                       
                               </div>
                               
@@ -106,8 +110,10 @@
                                       <h4>Business </h4>
               
                                   </div>                    
-                                  <input type="radio"  id="inputGroupSelect" class=" user-radios" name="role" value="4">
-                              
+                                  <input type="radio"  id="inputGroupSelect" class=" user-radios" name="role" value="4" required>
+                                  @error('role')
+                                  <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>
+                                   @enderror
                                       
                               </div>
                               

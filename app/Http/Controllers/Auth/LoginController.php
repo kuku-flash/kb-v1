@@ -60,6 +60,9 @@ class LoginController extends Controller
         if (auth()->user()->is_user) {
             return route('user.my_list');
         }
+        if (auth()->user()->is_business) {
+            return route('user.my_list');
+        }
 
         return abort(404);
     }

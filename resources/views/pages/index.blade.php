@@ -48,13 +48,13 @@
 					
 				</div>
 				<!-- Advance Search -->
-				<div class="advance-search">
+				<div class="advance-search" style="background: #f1f1f1;">
 						<div class="container">
 							<div class="row justify-content-center">
 								<div class="col-lg-12 col-md-12 align-content-center">
 										<form action="{{ route('vehicle_search') }}" method="get">
 											<div class="form-row">
-												<div class="carmodel form-group col-md-3">
+												<div class=" form-group col-md-3">
 													<select name="make" class="make form-control ">
 													<option value="">Choose a Make</option>
 										
@@ -67,14 +67,17 @@
 														<strong>{{ $message }}</strong>
 													</span>
 													@enderror
-												
+												</div>
+									
+												<div class="carmodel form-group col-md-3">
+													
 												<select name="model_id" class="model form-control ">
 													<option value="0"  disabled="true" selected="true">Choose a model</option>
 
 												</select>
 												
 												</div>
-												
+									
 												<div class="form-group col-md-3">
 													<select name="city" id="inputGroupSelect" class="form-control">
 														<option value="">Select City</option>
@@ -83,7 +86,6 @@
 														@foreach ($cities as $city )
 														 <option value="{{ $city->id }}" {{(old('city')==$city->id)? 'selected':''}}>
 														  {{ $city->city }}</option> 
-													
 														@endforeach
 													</select>
 													@error('city')
@@ -92,7 +94,7 @@
 													  </span>
 													 @enderror
 												</div>
-												<div class="form-group col-md-2 align-self-center">
+												<div class="form-group col-md-3 ">
 													<button type="submit" class="btn btn-primary">Search Now</button>
 													
 												</div>
@@ -661,7 +663,7 @@
 <!--====================================
 =            Call to Action            =
 =====================================-->
-
+ 
 <section class="call-to-action overly bg-3 section-sm">
 	<!-- Container Start -->
 	<div class="container">
@@ -686,20 +688,21 @@ $(document).on('change','.make',function(){
 // console.log("hmm its change");
 var make_id=$(this).val();
 // console.log(cat_id);
-var div=$(this).parent();
+var div=$("div.carmodel").parent();
 var option=" ";
 $.ajax({
 	type:'get',
 	url:'{!!URL::to('carmodel')!!}',
 	data:{'id':make_id},
-	success:function(data){
-
-	for(var i=0;i<data.length;i++){
-		option+='<option value="'+data[i].id+'" >'+data[i].model+'</option>';
+	success:function(data)
+	{
+		for(var i=0;i<data.length;i++)
+		{
+			option+='<option value="'+data[i].id+'">'+data[i].model+'</option>';
+			
 		}
-		
-		div.find('.model').html(" ");
-		div.find('.model').append(option);
+			div.find('.model').html(" ");
+			div.find('.model').append(option);
 	},
 	
 	error:function(){    }

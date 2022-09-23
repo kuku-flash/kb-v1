@@ -70,6 +70,10 @@ class User extends Authenticatable
     {
         return $this->roles()->where('id', 3)->exists();
     }
+    public function getIsBusinessAttribute()
+    {
+        return $this->roles()->where('id', 4)->exists();
+    }
     public function setPasswordAttribute($input)
     {
         if ($input) {

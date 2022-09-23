@@ -16,60 +16,58 @@
 				<div class="category-sidebar">
 					<div class="widget category-list">
 	<h4 class="widget-header">Select Vehicle Type</h4>
-	<select class="w-100 form-control mt-lg-1 mt-md-2 category-list">
 
-		
-		
-		
-	</select>
 	@foreach ($vehicles as $vehicle)
 		<li><a href="{{ route('vehicle_filter', $vehicle->id)}}">Car <span>({{$vehicle->vehicle_type}})</span></li>
 	@endforeach
-		
+	
 </div>
 
 <div class="widget category-list">
 	<h4 class="widget-header">Select Location</h4>
-	<select class="w-100 form-control mt-lg-1 mt-md-2 category-list">
-		<option><li><a href="category.html">Nairobi <span>(93)</span></a></li></option>
-			<option><li><a href="category.html">Kisumu <span>233</span></a></li></option>
-				<option><li><a href="category.html">Machakos  <span>183</span></a></li></option>
-					<option><li><a href="category.html">Meru <span>120</span></a></li></option>
-						<option><li><a href="category.html">Nyeri <span>40</span></a></li></option>
-							<option><li><a href="category.html">Uasin Githu <span>81</span></a></li></option>
-	</select>
 	<ul class="category-list">
-		@foreach ($cities as $city)
-		<li><a href="{{ route('vehicle_filter', $vehicle->id)}}">{{$city->city}} <span>({{$city->$listings}})</span></li>
+		@foreach ($cities as $city )
+				
+		<li><a href="{{ route('listing_filter', $city->id)}}">{{$city->city}} <span></span></li>
+
 		@endforeach
-		<li><a href="category.html">Nairobi <span>93</span></a></li>
-		<li><a href="category.html">Kisumu <span>233</span></a></li>
-		<li><a href="category.html">Machakos  <span>183</span></a></li>
-		<li><a href="category.html">Meru <span>120</span></a></li>
-		<li><a href="category.html">Nyeri <span>40</span></a></li>
-		<li><a href="category.html">Uasin Githu <span>81</span></a></li>
+		
 	</ul>
 
 </div>
 
 <div class="widget category-list">
 	<h4 class="widget-header">Select Make</h4>
-	<select class="w-100 form-control mt-lg-1 mt-md-2 category-list">
-		<option><li><a href="category.html">BMW <span>(93)</span></a></li></option>
-	</select>
-	
-	<select class="w-100 form-control mt-lg-1 mt-md-2 category-list">
-		<option><li><a href="category.html">M4 <span>(2)</span></a></li></option>
-	</select>
-	
+	@foreach ($makes as $make )
+	<ul class="category-list">			
+		<li><a
+			@foreach ($models as $model )
+			@if ($make->id == $model->make_id)
+			href="{{ route('vehicle_filter', $model->id)}}"
+			@endif
+			 @endforeach
+			 >{{$make->make}} <span></span></li>
+
+	@endforeach
+	</ul>
 </div>
 
 
 <div class="widget category-list">
 	<h4 class="widget-header">Select Model</h4>
-	<select class="w-100 form-control mt-lg-1 mt-md-2 category-list">
-		<option><li><a href="category.html">M4 <span>(93)</span></a></li></option>
-	</select>
+	<h4 class="widget-header">Select Make</h4>
+	@foreach ($models as $model )
+	<ul class="category-list">			
+		<li><a
+			@foreach ($vehicles as $vehicle )
+			@if ($vehicle->model_id == $model->id)
+			href="{{ route('vehicle_filter', $vehicle->model_id)}}"
+			@endif
+			 @endforeach
+			 >{{$model->model}} <span></span></li>
+
+	@endforeach
+	</ul>
 </div>
 <div class="widget price-range w-100">
 	<h4 class="widget-header">Price Range</h4>
@@ -151,7 +149,7 @@
 												<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}"><i class="fa fa-folder-open-o"></i>{{ $listing->category->category_name}}</a>
 											</li>
 											<li class="list-inline-item">
-												<a href="#"><i class="fa fa-location-arrow"></i>{{ $listing->city->city}}</a>
+												<a href="#"><i class="fa fa-location-arrow"></i>{{ $listing->city->city}} </a>
 											</li>
 										</ul>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
