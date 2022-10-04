@@ -102,6 +102,7 @@ public function vehicle_search(Request $request){
 
     ])
     ->orderBy("id", "desc")->take(10)->get();
+    
     return view ('pages.vehicles_grid')->with($arr);
 }
 
