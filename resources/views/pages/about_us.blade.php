@@ -49,40 +49,44 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="heading text-center text-capitalize font-weight-bold py-5">
-                    <h2>our team</h2>
+                    <h2>Meet Our Team</h2>
+                    <p>"Teamwork is the ability to work together toward a common vision.
+                        The ability to direct individual accomplishments toward organizational objectives. 
+                        It is the fuel that allows common people to attain uncommon results."
+                         – Andrew Carnegie</p>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="card my-3 my-lg-0">
-                    <img class="card-img-top" src="images/team/team1.jpg" class="img-fluid w-100" alt="Card image cap">
-                    <div class="card-body bg-gray text-center">
+                <div class="meetcard my-3 my-lg-0">
+                    <img class="meetcard-img-top" src="images/team/team1.jpg" class="img-fluid w-100" alt="Card image cap">
+                    <div class="card-body  text-center">
                         <h5 class="card-title">John Doe</h5>
                         <p class="card-text">Founder / CEO</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="card my-3 my-lg-0">
-                    <img class="card-img-top" src="images/team/team2.jpg" class="img-fluid w-100" alt="Card image cap">
-                    <div class="card-body bg-gray text-center">
+                <div class="meetcard my-3 my-lg-0">
+                    <img class="meetcard-img-top" src="images/team/team2.jpg" class="img-fluid w-100" alt="Card image cap">
+                    <div class="card-body text-center">
                         <h5 class="card-title">John Doe</h5>
                         <p class="card-text">Founder / CEO</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="card my-3 my-lg-0">
-                    <img class="card-img-top" src="images/team/team3.jpg" class="img-fluid w-100" alt="Card image cap">
-                    <div class="card-body bg-gray text-center">
+                <div class="meetcard my-3 my-lg-0">
+                    <img class="meetcard-img-top" src="images/team/team3.jpg" class="img-fluid w-100" alt="Card image cap">
+                    <div class="card-body  text-center">
                         <h5 class="card-title">John Doe</h5>
                         <p class="card-text">Founder / CEO</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="card my-3 my-lg-0">
-                    <img class="card-img-top" src="images/team/team4.jpg" class="img-fluid w-100" alt="Card image cap">
-                    <div class="card-body bg-gray text-center">
+                <div class="meetcard my-3 my-lg-0">
+                    <img class="meetcard-img-top" src="images/team/team4.jpg" class="img-fluid w-100" alt="Card image cap">
+                    <div class="card-body  text-center">
                         <h5 class="card-title">John Doe</h5>
                         <p class="card-text">Founder / CEO</p>
                     </div>
