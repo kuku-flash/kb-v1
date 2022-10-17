@@ -19,6 +19,11 @@
 					</div>
 					<div class="short-popular-category-list text-center">
 						<h2>Popular Category</h2>
+						<select class="select-field ">
+							<option value="sale"><i class="fa fa-car"></i> Vehicles</option>
+							<option value="hire"><i class="fa fa-taxi"></i> Car Hire</option>
+							<option value="parts"><i class="fa fa-wrench"></i> Vehicle Parts</option>
+						  </select>
 						<ul class="list-inline">
 							<li class="list-inline-item">
 								<a href="{{ route('vehicles_grid') }}"><i class="fa fa-car"></i> Vehicles</a>
@@ -50,11 +55,12 @@
 				<!-- Advance Search -->
 				<div class="advance-search">
 						<div class="container">
+
 							<div class="row justify-content-center">
-								<div class="col-lg-12 col-md-12 align-content-center">
+								<div class="col-lg-12 col-md-12 align-content-center  sale" >
 										<form action="{{ route('vehicle_search') }}" method="get">
 											<div class="form-row">
-												<div class=" form-group col-md-3">
+												<div class=" form-group col-md-2">
 													<select name="make" class="make form-control ">
 													<option value="">Choose a Make</option>
 										
@@ -69,6 +75,123 @@
 													@enderror
 												</div>
 									
+												<div class="carmodel form-group col-md-2">
+													
+												<select name="model_id" class="model form-control ">
+													<option value="0"  disabled="true" selected="true">Choose a model</option>
+
+												</select>
+												
+												</div>
+									
+												<div class="form-group col-md-2">
+													<select name="city" id="inputGroupSelect" class="form-control">
+														<option value="">Select City</option>
+														@foreach ($cities as $city )
+														 <option value="{{ $city->id }}" {{(old('city')==$city->id)? 'selected':''}}>
+														  {{ $city->city }}</option> 
+														@endforeach
+													</select>
+								
+												</div>
+												<div class="form-group col-md-2">
+													<select name="price" id="inputGroupSelect" class="form-control">
+														<option value="">Max Price</option>
+														<option value="10000000">100,000,000</option>
+														<option value="50000000">50,000,000</option>
+														<option value="10000000">10,000,000</option>
+														<option value="5000000">5,000,000</option>
+														<option value="1000000">1,000,000</option>
+													</select>
+								
+												</div>
+												<div class="form-group col-md-2">
+													<select name="price" id="inputGroupSelect" class="form-control">
+														<option value="">Min Price</option>
+														<option value="900000">900,000</option>
+														<option value="700000">700,000</option>
+														<option value="500000">500,000</option>
+														
+													</select>
+								
+												</div>
+
+												<div class="form-group col-md-2 ">
+													<button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
+													
+												</div>
+											</div>
+										</form>
+									</div>
+
+									<div class="col-lg-12 col-md-12 align-content-center hire">
+										<form action="{{ route('vehicle_search') }}" method="get">
+											<div class="form-row">
+												<div class=" form-group col-md-2">
+													<select name="make" class="make form-control ">
+													<option value="">Choose a Make</option>
+										
+													@foreach($makes as $make)
+														<option value="{{ $make->id }}" {{(old('make'))? 'selected':''}}>{{ $make->make }}</option>
+													@endforeach
+												</select>												
+												</div>
+									
+												<div class="carmodel form-group col-md-2">													
+												<select name="model_id" class="model form-control ">
+													<option value="0"  disabled="true" selected="true">Choose a model</option>
+
+												</select>
+												
+												</div>
+									
+												<div class="form-group col-md-2">
+													<select name="city" id="inputGroupSelect" class="form-control">
+														<option value="">Select City</option>
+														@foreach ($cities as $city )
+														 <option value="{{ $city->id }}" {{(old('city')==$city->id)? 'selected':''}}>
+														  {{ $city->city }}</option> 
+														@endforeach
+													</select>
+											
+												</div>
+												<div class="form-group col-md-2">
+													<label> Pickup Date</label>
+													<input class="form-control" type="date" name="pickup" >
+												</div>
+												<div class="form-group col-md-2">
+													<label> Return Date</label>
+													<input class="form-control" type="date" name="return" placeholder="ReturnDate" >
+												</div>
+
+												<div class="form-group col-md-2 ">
+													<button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
+													
+												</div>
+											</div>
+										</form>
+									</div>
+
+									<div class="col-lg-12 col-md-12 align-content-center parts">
+										<form action="{{ route('vehicle_search') }}" method="get">
+											<div class="form-row">
+												<div class=" form-group col-md-3">
+													<select name="make" class="make form-control ">
+														<option value="">Choose a Parts Type</option>
+														<option>Engine</option>
+														<option>wind screen</option>
+													</select>											
+												</div>
+												<div class=" form-group col-md-3">
+													<select name="make" class="make form-control ">
+													<option value="">Choose a Make</option>
+										
+													@foreach($makes as $make)
+														<option value="{{ $make->id }}" {{(old('make'))? 'selected':''}}>{{ $make->make }}</option>
+													@endforeach
+												</select>											
+												</div>
+									
 												<div class="carmodel form-group col-md-3">
 													
 												<select name="model_id" class="model form-control ">
@@ -78,24 +201,8 @@
 												
 												</div>
 									
-												<div class="form-group col-md-3">
-													<select name="city" id="inputGroupSelect" class="form-control">
-														<option value="">Select City</option>
-														
-														
-														@foreach ($cities as $city )
-														 <option value="{{ $city->id }}" {{(old('city')==$city->id)? 'selected':''}}>
-														  {{ $city->city }}</option> 
-														@endforeach
-													</select>
-													@error('city')
-													  <span class="invalid"  role="alert">
-														  <strong>{{ $message }}</strong>
-													  </span>
-													 @enderror
-												</div>
 												<div class="form-group col-md-3 ">
-													<button type="submit" class="btn btn-primary">Search Now</button>
+													<button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
 													
 												</div>
 											</div>
@@ -797,6 +904,17 @@ $.ajax({
 	error:function(){    }
 });
 });
+});
+$(document).ready(function(){
+    new ConditionalField({
+          control: ' .select-field',
+          visibility: {
+            'sale': '.sale',
+            'hire': '.hire',
+            'parts': '.parts'
+          }
+        });
+
 });
 </script>
 	<script type="text/javascript">

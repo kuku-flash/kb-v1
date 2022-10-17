@@ -25,16 +25,9 @@
                                <thead>
                                    <tr>
                                        <th>ID</th> 
-                                       <th>category</th> 
-                                       <th>Ad Status</th> 
-                                       <th>Ad Featured</th> 
-                                       <th>Ad Duration</th>
-                                       <th>Ad Package</th>
-                                       <th>User ID</th>
-                                       <th>created_at</th>  
-                                       <th>updated_at</th>            
-                                       <th>Actions</th>
-                                       
+                                       <th>Title</th> 
+                                       <th>Category</th> 
+                                    
                                    </tr>
                                </thead>
                                <tbody>

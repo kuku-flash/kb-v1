@@ -14,17 +14,23 @@ use App\Models\Listing;
 use App\Models\Package;
 use App\Models\Vehicle;
 use App\Models\Vehicle_photo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Expr\List_;
 
 class ListingController extends Controller
 {
     public function my_list() {
-        $arr['listings'] = Listing::where('user_id',Auth::id())->where('category_id',2)->get();
+        $arr['listings'] = Listing::where('user_id',Auth::id())->where('category_id',2)->where('created_at','<',Carbon::today())->get();
         $arr['vehicles'] = Vehicle::all();
         $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
+        $current = Carbon::now();
+       // $arr['exp_date'] = DB::table('listings')->whereRaw('DATEDIFF(created_at, current_date) > 60')->get();
+       
+
         return view('user.my_list')->with($arr);
   
 

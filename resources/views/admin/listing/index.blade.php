@@ -48,10 +48,10 @@
                                             {{$listing->ads_duration}}
                                         </td>
                                         <td>
-                                            {{$listing->package_id}}
+                                            {{$listing->package->package_name}}
                                         </td>
                                         <td>
-                                            {{$listing->user_id}}
+                                            {{$listing->user->name}}
                                         </td>
                                        <td>
                                            @if ($listing->created_at)
