@@ -24,6 +24,7 @@
                         <table class="table table-striped table-bordered zero-configuration">
                             <thead>
                                 <tr>
+                                    <th>ID</th> 
                                     <th>Category</th>          
                                     <th>Actions</th>
                                     
@@ -32,6 +33,7 @@
                             <tbody>
                               @foreach ($categories as $category)
                                 <tr>
+                                    <td>{{$category->id}}</td>
                                     <td>{{$category->category_name}}</td>
                                     <td>
                                         <a href="{{ route('admin.category.edit',$category->id)}}" ><i class="fa fa-pencil color-muted m-r-5"></i> </a>

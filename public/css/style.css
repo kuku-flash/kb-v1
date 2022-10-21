@@ -2329,6 +2329,11 @@ ul.pagination .active a {
   background: #5672f9;
 }
 
+.bg-carhire {
+  background: url("../images/home/hero.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .navigation {
   padding: 20px 0;
 }

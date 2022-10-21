@@ -63,6 +63,9 @@
                   <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="{{ route('carhire')}}">Car Hire</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="{{ route('about_us')}}">About Us</a>
                 </li>
                 <li class="nav-item">
@@ -124,6 +127,7 @@
                     </a>
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{route('user.my_list')}}"> My List</a>
+                    <a class="dropdown-item" href="{{route('user.index_carhire')}}">Carhire</a>
                     <a class="dropdown-item" href="{{route('user.pending_list')}}"> Pending List</a>                    
                     <a class="dropdown-item" href="{{route('user.archived_list')}}"> Archived List</a>                  
                     <a class="dropdown-item" href="#">Chat</a> 
@@ -225,23 +229,7 @@
           </ul>
         </div>
       </div>
-      <!-- Promotion -->
-      <div class="col-lg-4 col-md-7">
-        <!-- App promotion -->
-        <div class="block-2 app-promotion">
-          <div class="mobile d-flex">
-            <a href="">
-              <!-- Icon -->
-              <img src="{{ asset('images/footer/phone-icon.png')}}" alt="mobile-icon">
-            </a>
-            <p>Get the Dealsy Mobile App and Save more</p>
-          </div>
-          <div class="download-btn d-flex my-3">
-            <a href="#"><img src="{{ asset('images/apps/google-play-store.png')}}" class="img-fluid" alt=""></a>
-            <a href="#" class=" ml-3"><img src="{{ asset('images/apps/apple-app-store.png')}}" class="img-fluid" alt=""></a>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
   <!-- Container End -->

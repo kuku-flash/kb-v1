@@ -52,6 +52,10 @@ Route :: get ('post_ad_form',  [PagesController::class, 'post_ad_form'])->name('
 Route :: get ('single_blog',  [PagesController::class, 'single_blog'])->name('single_blog');
 Route :: get ('terms_condition',  [PagesController::class, 'terms_condition'])->name('terms_condition');
 
+Route :: get ('carhire',  [PagesController::class, 'carhire'])->name('carhire');
+Route :: get ('carhirelist',  [PagesController::class, 'carhirelist'])->name('carhirelist');
+Route :: get ('showcarhire/{listing}/{vehicle}',  [PagesController::class, 'showcarhire'])->name('showcarhire');
+
 
 Auth::routes();
 
@@ -91,6 +95,14 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: post ('store_vehicle_ad',  [ListingController::class, 'store_vehicle_ad'])->name('store_vehicle_ad');
     Route :: get ('model',  [ListingController::class, 'model'])->name('model');
     Route :: get ('invoice/{listing}/{vehicle}',  [ListingController::class, 'invoice'])->name('invoice');
+
+    Route :: get ('carhire',  [ListingController::class, 'index_carhire'])->name('index_carhire');
+    Route :: get ('create_carhire',  [ListingController::class, 'create_carhire'])->name('create_carhire');
+    Route :: post ('store_carhire',  [ListingController::class, 'store_carhire'])->name('store_carhire');
+    Route :: get ('edit_carhire/{listing}/{vehicle}',  [ListingController::class, 'edit_carhire'])->name('edit_carhire');
+    Route :: put ('update_carhire/{listing}/{vehicle}',  [ListingController::class, 'update_carhire'])->name('update_carhire');
+    Route :: get ('show_carhire/{listing}/{vehicle}',  [ListingController::class, 'show_carhire'])->name('show_carhire');
+    Route :: delete ('delete_carhire/{listing}/{vehicle}',  [ListingController::class, 'delete_carhire'])->name('delete_carhire');
    
 
 

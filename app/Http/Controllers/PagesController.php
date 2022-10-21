@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carmake;
 use App\Models\Carmodel;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Listing;
 use App\Models\Package;
@@ -153,6 +154,33 @@ public function vehicle(Listing $listing, Vehicle $vehicle){
 
     return view ('pages.vehicle')->with($arr);
 }
+Public function carhire(){
+    $arr['cities'] = City::all();
+    $arr['vehicles'] = Vehicle::all();
+    $arr['makes'] = Carmake::all();
+    $arr['models'] = Carmodel::all();
+    $arr['listings'] = Listing::where('category_id',4)->take(20)->get(); 
+    return view ('pages.carhire')->with($arr);
+}
+Public function carhirelist() {
+    $arr['cities'] = City::all();
+    $arr['vehicles'] = Vehicle::all();
+    $arr['makes'] = Carmake::all();
+    $arr['models'] = Carmodel::all();
+    $arr['listings'] = Listing::where('category_id',4)->take(20)->get(); 
+    return view ('pages.carhirelist')->with($arr);
+}
+Public function showcarhire(Listing $listing, Vehicle $vehicle) {
+    $arr['categories'] = Category::all();
+    $arr['cities'] = City::all();
+    $arr['makes'] = Carmake::all();
+    $arr['models'] = Carmodel::all();
+    $arr['listing'] = $listing;
+    $arr['vehicle'] = $vehicle;
+
+    return view('pages.showcarhire')->with($arr);
+}
+
 Public function post_ad_form(){
 
     return view ('pages.post_ad_form');
