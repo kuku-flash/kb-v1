@@ -24,6 +24,7 @@
 							<option value="hire"><i class="fa fa-taxi"></i> Car Hire</option>
 							<option value="parts"><i class="fa fa-wrench"></i> Vehicle Parts</option>
 						  </select>
+
 						<ul class="list-inline">
 							<li class="list-inline-item">
 								<a href="{{ route('vehicles_grid') }}"><i class="fa fa-car"></i> Vehicles</a>
