@@ -3,30 +3,29 @@
 
 <section class="section-sm">
     <div class="container">
-      <form action="{{ route('user.store_listing')}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">     
+      <form action="{{ route('user.store_carhire')}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">     
         @csrf
             <!-- Post Your ad start -->
             <fieldset class="border border-gary p-4 mb-5">
-                <h4 style=" text-align: center;">Post your AD</h4>
+                <h1 style=" text-align: center;">Post your Car for hiring</h1>
                 <section>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h3>Post Your Listing</h3>
-                        <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
-                        <select name="category" id="inputGroupSelect" class="form-control select-field">
-                            <option value="">Select category</option>
-                           
-                            @foreach ($categories as $category )
-                             <option value="{{ $category->id }}" {{(old('category')==$category->id)? 'selected':''}}>
-                              {{ $category->category_name }}</option> 
+                    
+                    <div class="col-lg-6">
                         
-                            @endforeach
+                        <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
+                        <select name="category" id="inputGroupSelect" class="form-control ">
+                            <option value="">Select category</option>
+                            <option value="4" selected>CarHire</option>
+                    
                         </select>
                         @error('category')
                         <span class="invalid"  role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                        @enderror
+                    </div>
+                    <div class="col-lg-6">
                         <h6 class="font-weight-bold pt-4 pb-1">Select Your City</h6>
                         <select name="city" data-label="Select City" id="inputGroupSelect" class="form-control">
                             <option value="">Select City</option>
@@ -43,6 +42,7 @@
                               <strong>{{ $message }}</strong>
                           </span>
                          @enderror
+                        
                     </div>
                 </div>
                 </section>
@@ -52,37 +52,48 @@
           <h4 style=" text-align: center;">Car Hiring Section</h4>
           <section>
           <div class="row">
-              <div class="col-lg-12">
-                <h6 class="font-weight-bold pt-4 pb-1">Price Per Date</h6>
-                <input name="price_per_day" value="{{ old('title')}}" type="number" class="border w-100 p-2 bg-white text-capitalize" >
-
+              
+               
+                <div class="col-lg-6"> 
                 <h6 class="font-weight-bold pt-4 pb-1">Pick Up Date</h6>
                 <input name="pickup_date" value="{{ old('pickup_date')}}" type="date" class="border w-100 p-2 bg-white text-capitalize" >
                 @error('pickup_date') 
                   <span class="invalid" role="alert"> <strong>{{ $message }}</strong> </span> 
                 @enderror
-
+            </div>
+            <div class="col-lg-6"> 
                 <h6 class="font-weight-bold pt-4 pb-1">Return  Date</h6>
                 <input name="return_date" value="{{ old('return_date')}}" type="date" class="border w-100 p-2 bg-white text-capitalize" >
                 @error('return_date') 
                   <span class="invalid" role="alert"> <strong>{{ $message }}</strong> </span> 
                 @enderror
-
+            </div>
+             <div class="col-lg-6">
                 <h6 class="font-weight-bold pt-4 pb-1">Hiring Days</h6>
                 <input name="rent_days" value="{{ old('rent_days')}}" type="number" class="border w-100 p-2 bg-white text-capitalize" >
+                @error('rent_days') 
+                 <span class="invalid" role="alert"> <strong>{{ $message }}</strong> </span> 
+                @enderror
+            </div>
+            <div class="col-lg-6"> 
+                <h6 class="font-weight-bold pt-4 pb-1">Price Per Date</h6>
+                <input name="price_per_day" value="{{ old('price_per_day')}}" type="number" class="border w-100 p-2 bg-white text-capitalize" >
+                @error('price_per_day') 
+                    <span class="invalid" role="alert"> <strong>{{ $message }}</strong> </span> 
+               @enderror
+            </div>
 
-              </div>
           </div>
           </section>
       </fieldset>
 <!-- Post Your ad start -->
 <fieldset class="border border-gary p-4 mb-5">
   <div class="row">
-      <div class="col-lg-12">
-          <h3>Post Your Vehicle <!--  $currentId --></h3>
+
+          <div class="col-lg-4"> 
           <h6 class="font-weight-bold pt-4 pb-1">Select Make</h6>
      
-          <div> 
+          
               <select name="make" class="make form-control">
                 <option value="">Choose a Make</option>
     
@@ -95,7 +106,8 @@
                       <strong>{{ $message }}</strong>
                   </span>
                 @enderror
-
+            </div>
+            <div class="col-lg-4 carmodel"> 
               <h6 class="font-weight-bold pt-4 pb-1">Select Model</h6>        
               <select name="model_id" class="model form-control">
                 <option value="0"  disabled="true" selected="true">Choose a model</option>
@@ -106,10 +118,8 @@
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-          </div>
-          <h6 class="font-weight-bold pt-4 pb-1">Title</h6>
-          <input name="title" value="{{ old('title')}}" type="text" class="border w-100 p-2 bg-white text-capitalize" >
-
+            </div>
+            <div class="col-lg-4"> 
           <h6 class="font-weight-bold pt-4 pb-1">Year of Build:</h6>
           <input type="number" value="{{ old('year_of_build')}}" name="year_of_build" class="border w-100 p-2 bg-white text-capitalize @error('year_of_build') is-invalid @enderror" placeholder="1964">
               @error('year_of_build')
@@ -117,6 +127,9 @@
                       <strong>{{ $message }}</strong>
                   </span>
               @enderror
+            </div>
+          
+          <div class="col-lg-6"> 
           <h6 class="font-weight-bold pt-4 pb-1">Select Vehicle Type</h6>
           <select name="vehicle_type" id="inputGroupSelect" class="form-control">
               <option value="{{ old('vehicle_type')}}" {{(old('vehicle_type'))? 'selected':''}}> {{ old('vehicle_type')}} </option>     
@@ -130,6 +143,8 @@
                 <strong>{{ $message }}</strong>
             </span>
           @enderror
+          </div>
+          <div class="col-lg-6">
           <h6 class="font-weight-bold pt-4 pb-1">Select Condition</h6>
           <select name="condition" id="inputGroupSelect" class="form-control">
               <option value="{{ old('condition')}}" {{(old('condition'))? 'selected':''}}> {{ old('condition')}} </option>     
@@ -141,7 +156,8 @@
                 <strong>{{ $message }}</strong>
             </span>
           @enderror
-
+          </div>
+          <div class="col-lg-6">
           <h6 class="font-weight-bold pt-4 pb-1">Mileage:</h6>
           <input type="number" name="mileage" class="border w-100 p-2 bg-white text-capitalize" 
             value="{{ old('mileage')}}" placeholder="Mileage go There">
@@ -150,7 +166,8 @@
               <strong>{{ $message }}</strong>
           </span>
           @enderror
-
+          </div>
+          <div class="col-lg-6">
           <h6 class="font-weight-bold pt-4 pb-1">Select Transmission</h6>
           <select name="transmission"  id="inputGroupSelect" class="form-control">
             <option value="{{ old('transmission')}}" {{(old('transmission'))? 'selected':''}}> {{ old('transmission')}} </option>   
@@ -162,7 +179,8 @@
               <strong>{{ $message }}</strong>
           </span>
           @enderror
-
+          </div>
+          <div class="col-lg-6">
           <h6 class="font-weight-bold pt-4 pb-1">Select Fuel Type</h6>
           <select name="fuel_type" id="inputGroupSelect" class="form-control">
             <option value="{{ old('fuel_type')}}" {{(old('fuel_type'))? 'selected':''}}> {{ old('fuel_type')}} </option> 
@@ -174,6 +192,8 @@
                     <strong>{{ $message }}</strong>
                 </span>
           @enderror
+          </div>
+          <div class="col-lg-6">
           <h6 class="font-weight-bold pt-4 pb-1">Select Exchange</h6>
           <select name="exchange" id="inputGroupSelect" class="form-control">
           <option value="{{ old('exchange')}}" {{(old('exchange'))? 'selected':''}}> {{ old('exchange')}} </option> 
@@ -185,13 +205,8 @@
                 <strong>{{ $message }}</strong>
             </span>
           @enderror
-          <h6 class="font-weight-bold pt-4 pb-1">Price</h6>
-          <input name="price" value="{{ old('price')}}" type="text" class="number border w-100 p-2 bg-white text-capitalize" placeholder="Kes 00.00">
-          @error('price')
-              <span class="invalid"  role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-          @enderror
+          </div>
+          <div class="col-lg-6">
           <h6 class="font-weight-bold pt-4 pb-1">Select Body Type</h6>
           <select name="body_type" id="inputGroupSelect" class="form-control">
             <option value="{{ old('body_type')}}" {{(old('body_type'))? 'selected':''}}> {{ old('body_type')}} </option>  
@@ -209,6 +224,8 @@
                   <strong>{{ $message }}</strong>
               </span>
           @enderror
+          </div>
+          <div class="col-lg-6">
           <h6 class="font-weight-bold pt-4 pb-1">Color</h6>
           <select name="color" id="inputGroupSelect" class="form-control">
             <option value="{{ old('color')}}" {{(old('color'))? 'selected':''}}> {{ old('color')}} </option>     
@@ -230,79 +247,8 @@
                   <strong>{{ $message }}</strong>
               </span>
           @enderror
-
-          <h6 class="font-weight-bold pt-4 pb-1">Select Duty Type</h6>
-          <select name="duty_type" id="inputGroupSelect" class="form-control">
-            <option value="{{ old('duty_type')}}" {{(old('duty_type'))? 'selected':''}}> {{ old('duty_type')}} </option>        
-              <option>Paid</option>     
-              <option>unpaid</option>    
-          </select>
-          @error('duty_type')
-              <span class="invalid"  role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-          @enderror
-
-          <h6 class="font-weight-bold pt-4 pb-1">Select Interior Type</h6>
-          <select name="interior_type" id="inputGroupSelect" class="form-control">
-            <option value="{{ old('interior_type')}}" {{(old('interior_type'))? 'selected':''}}> {{ old('interior_type')}} </option>          
-              <option>leather</option>     
-              <option>cloth</option>     
-          </select>
-          @error('interior_type')
-              <span class="invalid"  role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-          @enderror
-
-          <h6 class="font-weight-bold pt-4 pb-1">Engine size</h6>
-          <select name="engine_size" id="inputGroupSelect" class="form-control">
-            <option value="{{ old('engine_size')}}" {{(old('engine_size'))? 'selected':''}}> {{ old('engine_size')}} </option>    
-            <option>1.0L</option>     
-            <option>1.2L</option> 
-            <option>1.4L</option> 
-            <option>1.5L</option> 
-            <option>1.6L</option> 
-            <option>1.7L</option> 
-            <option>1.8L</option> 
-            <option>2L</option> 
-            <option>2.2L</option>
-            <option>2.3L</option> 
-            <option>2.5L</option>  
-            <option>2.6L</option> 
-            <option>2.8L</option> 
-            <option>3L</option> 
-            <option>3.2L</option>
-            <option>3.3L</option>  
-            <option>3.5L</option> 
-            <option>3.7L</option>
-            <option>3.8L</option> 
-            <option>3.9L</option> 
-            <option>4L</option>  
-            <option>4.2L</option> 
-            <option>4.3L</option> 
-            <option>4.4L</option> 
-            <option>4.8L</option> 
-            <option>4.9l</option> 
-            <option>5L</option> 
-            <option>5.2L</option> 
-            <option>5.7L</option> 
-            <option>5.8L</option> 
-            <option>5.9L</option> 
-            <option>6L</option> 
-            <option>6.2L</option> 
-            <option>6.6L</option> 
-            <option>6.9L</option> 
-            <option>7L</option> 
-            <option>7.9L</option> 
-
-          </select>
-          @error('engine_size')
-            <span class="invalid"  role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-          @enderror
-
+          </div>
+          <div class="col-lg-12">
           <h6 class="font-weight-bold pt-4 pb-1">Description:</h6>
           <textarea name="description"  class="description ckeditor form-control" name="wysiwyg-editor">
             {{ old('description')}}
@@ -314,8 +260,8 @@
             </span>
           @enderror
 
-      
-      </div>
+          </div>
+ 
   </div>
 </fieldset>
 <fieldset class="border border-gary p-4 mb-5">
@@ -386,17 +332,6 @@
         <input type="file" id="files" name="interiorb_img"  />
       </div>
       @error('interiorb_img')
-            <span class="invalid"  role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-      @enderror
-    </div>
-    <div class="space column">
-      <div class="card">
-        <h3>Engine-image</h3>
-        <input type="file" id="files" name="engine_img" />
-      </div>
-      @error('engine_img')
             <span class="invalid"  role="alert">
                 <strong>{{ $message }}</strong>
             </span>
@@ -696,7 +631,7 @@ $(document).on('change','.make',function(){
   // console.log("hmm its change");
   var make_id=$(this).val();
   // console.log(cat_id);
-  var div=$(this).parent();
+  var div=$("div.carmodel").parent();
   var option=" ";
   $.ajax({
     type:'get',

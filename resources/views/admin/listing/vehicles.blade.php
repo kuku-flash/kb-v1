@@ -27,6 +27,7 @@
                                        <th>ID</th> 
                                        <th>Title</th> 
                                        <th>Category</th> 
+                                       <th>Listing_id</th> 
                                     
                                    </tr>
                                </thead>
@@ -36,6 +37,7 @@
                                        <td>{{$vehicle->id}}</td>
                                        <td>{{$vehicle->title}}</td>
                                        <td>{{$vehicle->category_id}}</td>
+                                       <td>{{$vehicle->listing_id}}</td>
                                       
                                        <td>
                                            <a href="#" ><i class="fa fa-pencil color-muted m-r-5"></i> </a>

@@ -27,29 +27,7 @@
 						<p>Joined {{ auth()->user()->created_at->diffForHumans() }}</p>
 						<a href="{{ route('user.user_profile', Auth::user()->id )}}" class="btn btn-main-sm">Edit Profile</a>
 					</div>
-					<!-- Dashboard Links -->
-					<div class="widget user-dashboard-menu">
-						<ul>
-							<li class="active">
-								<a href="{{ route('user.my_list')}}"><i class="fa fa-user"></i> My List <span>{{$listings->count()}}</span></a>
-							</li>
-							<li>
-								<a href="{{ route('user.pending_list')}}"><i class="fa fa-bolt"></i> Pending Approval</a>
-							</li>
-							<li>
-								<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite List </a>
-							</li>
-							<li>
-								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archeved List </a>
-							</li>
-							<li>
-								<a href=""><i class="fa fa-cog"></i> Logout</a>
-							</li>
-							<li>
-								<a href="" data-toggle="modal" data-target="#deleteaccount"><i class="fa fa-power-off"></i>Delete Account</a>
-							</li>
-						</ul>
-					</div>
+		
 
 					<!-- delete-account modal -->
 											  <!-- delete account popup modal start-->
@@ -84,6 +62,7 @@
 			@if ( count($listings) > 0)
 			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
 				<!-- Recently Favorited -->
+                <a href="{{ route('user.create_carhire')}}" class="btn btn-primary mb-3">Add a Carhire Listing</a>
 				<div class=" dashboard-container my-list">
 				
 				
@@ -132,12 +111,12 @@
 								<div class="change-icons">
 									<ul class="list-inline justify-content-center">
 										<li class="list-inline-item">
-											<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('user.show_listing', [$listing->id, $vehicle->id])}}">
+											<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('user.show_carhire', [$listing->id, $vehicle->id])}}">
 												<i class="fa fa-eye"></i>
 											</a>
 										</li>
 										<li class="list-inline-item">
-											<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_listing', [$listing->id, $vehicle->id])}}">
+											<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_carhire', [$listing->id, $vehicle->id])}}">
 												<i class="fa fa-pencil"></i>
 											</a>
 										</li>
@@ -146,7 +125,7 @@
 											<a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" data-toggle="tooltip" data-placement="top" title="Delete" class="delete">
 												<i class="fa fa-trash"></i>
 											</a>
-											<form action="{{ route('user.delete_listing', [$listing->id, $vehicle->id])}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
+											<form action="{{ route('user.delete_carhire', [$listing->id, $vehicle->id])}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
 											  @method('DELETE')
 											  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 											</form>
