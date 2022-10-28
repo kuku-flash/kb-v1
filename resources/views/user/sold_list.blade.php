@@ -30,10 +30,10 @@
 					<!-- Dashboard Links -->
 					<div class="widget user-dashboard-menu">
 						<ul>
-							<li class="active">
+							<li>
 								<a href="{{ route('user.my_list')}}"><i class="fa fa-user"></i> My List <span>{{$listings->count()}}</span></a>
 							</li>
-							<li>
+							<li >
 								<a href="{{ route('user.pending_list')}}"><i class="fa fa-bolt"></i> Pending Approval</a>
 							</li>
 							<li>
@@ -41,6 +41,9 @@
 							</li>
 							<li>
 								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archeved List </a>
+                            </li>
+                            <li class="active">
+								<a href="{{ route('user.sold_list')}}"><i class="fa fa-file-archive-o"></i>Sold List </a>
 							</li>
 							<li>
 								<a href=""><i class="fa fa-cog"></i> Logout</a>

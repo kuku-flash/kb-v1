@@ -41,18 +41,34 @@ class ListingController extends Controller
 
     }
     
-    Public function archived_list(){
-
-        return view ('user.archived_list');
-        
-    }
+  
     Public function pending_list(){
         $listings = Listing::where('ads_status','pending')->where('user_id',Auth::id())->get();
         $vehicles = Vehicle::all();
         $vehiclephotos = Vehicle_photo::where('photo_postion',1)->get();
         return view ('user.pending_list', compact('listings','vehicles','vehiclephotos'));
     }
-    
+
+    Public function active_list(){
+        $listings = Listing::where('ads_status','Active')->where('user_id',Auth::id())->get();
+        $vehicles = Vehicle::all();
+        return view ('user.active_list', compact('listings','vehicles'));
+    }
+    Public function sold_list(){
+        $listings = Listing::where('ads_status','Sold')->where('user_id',Auth::id())->get();
+        $vehicles = Vehicle::all();
+        return view ('user.sold_list', compact('listings','vehicles'));
+    }
+    Public function expired_list(){
+        $listings = Listing::where('ads_status','Expired')->where('user_id',Auth::id())->get();
+        $vehicles = Vehicle::all();
+        return view ('user.expired_list', compact('listings','vehicles'));
+    }
+    Public function archived_list(){
+        $listings = Listing::where('ads_status','Archived')->where('user_id',Auth::id())->get();
+        $vehicles = Vehicle::all();
+        return view ('user.archived_list', compact('listings','vehicles'));
+    }
     Public function favourite_list(){
     
         return view ('user.favourite_list'); 

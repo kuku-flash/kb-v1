@@ -105,6 +105,14 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: put ('update_carhire/{listing}/{vehicle}',  [ListingController::class, 'update_carhire'])->name('update_carhire');
     Route :: get ('show_carhire/{listing}/{vehicle}',  [ListingController::class, 'show_carhire'])->name('show_carhire');
     Route :: delete ('delete_carhire/{listing}/{vehicle}',  [ListingController::class, 'delete_carhire'])->name('delete_carhire');
+
+    Route :: get ('active_list',  [ListingController::class, 'active_list'])->name('active_list');
+    Route :: get ('sold_list',  [ListingController::class, 'sold_list'])->name('sold_list');
+    Route :: get ('expired_list',  [ListingController::class, 'expired_list'])->name('expired_list');
+    Route :: get ('archived_list',  [ListingController::class, 'archived_list'])->name('archived_list');
+
+    Route :: get ('vehicleparts',  [ListingController::class, 'index_vehicleparts'])->name('index_vehicleparts');
+    
    
 
 

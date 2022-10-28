@@ -19,7 +19,10 @@
                             <option selected>{{$listing->ads_status}}</option>
                             <option>Pending</option>
                             <option>Approved</option>
-                            <option>Acrhived</option>
+                            <option>Active</option>
+                            <option>Sold</option>
+                            <option>Expired</option>
+                            <option>Archived</option>
                         </select>
                         
                             @error('ads_status')
