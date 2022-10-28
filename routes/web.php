@@ -83,19 +83,21 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('favourite_list',  [ListingController::class, 'favourite_list'])->name('favourite_list');
     Route :: get ('my_list',  [ListingController::class, 'my_list'])->name('my_list');
     Route :: get ('pending_list',  [ListingController::class, 'pending_list'])->name('pending_list');
-    Route :: get ('create_listing',  [ListingController::class, 'create_listing'])->name('create_listing');
-    Route :: get ('create_listing2',  [ListingController::class, 'create_listing2'])->name('create_listing2');
-    Route :: post ('store_listing',  [ListingController::class, 'store_listing'])->name('store_listing');
-    Route :: get ('edit_listing/{listing}/{vehicle}',  [ListingController::class, 'edit_listing'])->name('edit_listing');
-    Route :: put ('update_listing/{listing}/{vehicle}',  [ListingController::class, 'update_listing'])->name('update_listing');
-    Route :: get ('show_listing/{listing}/{vehicle}',  [ListingController::class, 'show_listing'])->name('show_listing');
-    Route :: delete ('delete_listing/{listing}/{vehicle}',  [ListingController::class, 'delete_listing'])->name('delete_listing');
+
+    Route :: get ('new_listing',  [ListingController::class, 'new_listing'])->name('new_listing');
+    Route :: get ('index_vehiclesale',  [ListingController::class, 'index_vehiclesale'])->name('index_vehiclesale');
+    Route :: get ('create_vehiclesale',  [ListingController::class, 'create_vehiclesale'])->name('create_vehiclesale');
+    Route :: post ('store_vehiclesale',  [ListingController::class, 'store_vehiclesale'])->name('store_vehiclesale');
+    Route :: get ('edit_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'edit_vehiclesale'])->name('edit_vehiclesale');
+    Route :: put ('update_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'update_vehiclesale'])->name('update_vehiclesale');
+    Route :: get ('show_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'show_vehiclesale'])->name('show_vehiclesale');
+    Route :: delete ('delete_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'delete_vehiclesale'])->name('delete_vehiclesale');
+
     Route :: get ('category',  [ListingController::class, 'category'])->name('category');
-    Route :: get ('vehicle_ad',  [ListingController::class, 'vehicle_ad'])->name('vehicle_ad');
-    Route :: post ('store_vehicle_ad',  [ListingController::class, 'store_vehicle_ad'])->name('store_vehicle_ad');
     Route :: get ('model',  [ListingController::class, 'model'])->name('model');
     Route :: get ('invoice/{listing}/{vehicle}',  [ListingController::class, 'invoice'])->name('invoice');
 
+    
     Route :: get ('carhire',  [ListingController::class, 'index_carhire'])->name('index_carhire');
     Route :: get ('create_carhire',  [ListingController::class, 'create_carhire'])->name('create_carhire');
     Route :: post ('store_carhire',  [ListingController::class, 'store_carhire'])->name('store_carhire');
