@@ -128,6 +128,7 @@
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{route('user.my_list')}}"> My List</a>
                     <a class="dropdown-item" href="{{route('user.index_carhire')}}">Carhire</a>
+                    <a class="dropdown-item" href="{{route('user.index_vehiclesale')}}">vehiclesale</a>
                     <a class="dropdown-item" href="{{route('user.pending_list')}}"> Pending List</a>                    
                     <a class="dropdown-item" href="{{route('user.archived_list')}}"> Archived List</a>                  
                     <a class="dropdown-item" href="#">Chat</a> 
@@ -144,7 +145,7 @@
                     </div>
                   </li> 
                   <li class="nav-item">
-                    <a class="nav-link text-white add-button" href="{{ route('user.create_listing')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
+                    <a class="nav-link text-white add-button" href="{{ route('user.new_listing')}}"><i class="fa fa-plus-circle"></i> Add Listing</a>
                   </li>
                 @endguest
               </ul>

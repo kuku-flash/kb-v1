@@ -3,97 +3,101 @@
 
 <section class="section-sm">
     <div class="container">
-      <form action="{{ route('user.update_listing', [$listing->id, $vehicle->id])}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">     
+
+      @if(session('success'))
+      <div class="mt-3 alert alert-success">
+       <span> {{ session('success') }} </span>
+      </div>
+      @endif     
+      <form action="{{ route('user.update_vehiclesale', [$listing->id, $vehicle->id])}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">     
         @csrf
         @method('put')
             <!-- Post Your ad start -->
+            <a href="{{ route('user.index_vehiclesale')}}" class="btn btn-primary  mb-2">Back</a>
             <fieldset class="border border-gary p-4 mb-5">
-                <h4 style=" text-align: center;">Edit your AD</h4>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h6 class="font-weight-bold pt-4 pb-1">Select Ad Category:</h6>
-                        <select name="category" id="inputGroupSelect" class="form-control">
-                            <option value="">Select category</option>
-                            @foreach ($categories as $category )
-                            <option value="{{ $category->id }}"
-                                @if ($category->id == $listing->category_id)
-                                selected
-                                @endif
-                              >{{ $category->category_name }}</option>
-                            @endforeach
-               
-                        </select>
-                        <h6 class="font-weight-bold pt-4 pb-1">Select Your City</h6>
-                        <select name="city" id="inputGroupSelect" class="form-control">
-                            <option value="">Select City</option>
-                            @foreach ($cities as $city )
-                            <option value="{{ $city->id }}"
-                              @if ($city->id == $listing->city_id)
-                              selected
-                              @endif
-                              >{{ $city->city }}</option>
-                            @endforeach
-                        </select>
-                     
-                    </div>
-                </div>
-            </fieldset>
+              <h3 style=" text-align: center;">Location Detials</h3>
+              <section>
+              <div class="row">
+                 
+                  <div class="col-lg-6">
+                      <h6 class="font-weight-bold pt-4 pb-1">Select Your City</h6>
+                      <select name="city" data-label="Select City" id="inputGroupSelect" class="form-control">
+                          <option value="">Select City</option>
+                          @foreach ($cities as $city )
+                          <option value="{{ $city->id }}"
+                            @if ($city->id == $listing->city_id)
+                            selected
+                            @endif
+                            >{{ $city->city }}</option>
+                          @endforeach
+                      </select>
+                      @error('city')
+                        <span class="invalid"  role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                       @enderror
+                      
+                  </div>
+              </div>
+              </section>
+          </fieldset>
             
 <!-- Post Your ad start -->
 <fieldset class="border border-gary p-4 mb-5">
+  <h3 style=" text-align: center;">Edit Your Vehicle <!--  $currentId --></h3>
   <div class="row">
-      <div class="col-lg-12">
-          <h3>Edit Your Vehicle <!--  $currentId --></h3>
-          <h6 class="font-weight-bold pt-4 pb-1">Select Car Model:</h6>
-     
-          <div class="form-group  mt-2 mb-2 col-md-12"> 
-              <select name="make" class=" make form-control @error('make') is-invalid  @enderror">
-                <option value="">Choose a Make</option>
-                  @foreach($makes as $make)
+
+    <div class="col-lg-4"> 
+      <h6 class="font-weight-bold pt-4 pb-1">Select Make</h6>
+ 
+      
+          <select name="make" class="make form-control">
+            <option value="">Choose a Make</option>
+                @foreach($makes as $make)
                     <option value="{{ $make->id }}"
-                      @if ($vehicle->carmodel->carmake->id == $make->id)
-                      selected
-                      @endif
-                      >{{ $make->make }}</option>
-                  @endforeach
-             
-              </select>
-              <h6 class="font-weight-bold pt-4 pb-1">Select Model</h6>  
-              <select name="model_id" class="model form-control  @error('model') is-invalid  @enderror">
+                    @if ($vehicle->carmodel->carmake->id == $make->id)
+                    selected
+                    @endif
+                    >{{ $make->make }}</option>
+                @endforeach
+          </select>
+            @error('make_id')
+              <span class="invalid"  role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+            @enderror
+        </div>
+        <div class="col-lg-4 carmodel"> 
+          <h6 class="font-weight-bold pt-4 pb-1">Select Model</h6>        
+          <select name="model_id" class="model form-control">
+            <option value="0"  disabled="true" selected="true">Choose a model</option>
+            @foreach($models as $model)
+                <option value="{{ $model->id }}"
+                  @if ($model->id == $vehicle->model_id)
+                  selected
+                  @endif
+                  >{{ $model->model }}</option>
+              
+              @endforeach
 
-                <option value="0" disabled="true" selected="true">Choose a model</option>
-               
-
-                   @foreach($models as $model)
-                    <option value="{{ $model->id }}"
-                      @if ($model->id == $vehicle->model_id)
-                      selected
-                      @endif
-                      >{{ $model->model }}</option>
-                  
-                  @endforeach
-
-                  
-              </select>
-                @error('model')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-          </div>
-
+          </select>
+            @error('model_id')
+            <span class="invalid"  role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <div class="col-lg-4"> 
+      <h6 class="font-weight-bold pt-4 pb-1">Year of Build:</h6>
+      <input type="number" name="year_of_build" value="{{$vehicle->year_of_build}}" class="border w-100 p-2 bg-white text-capitalize @error('year_of_build') is-invalid @enderror" >
+          @error('year_of_build')
+              <span class="invalid"  role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
+        </div>
+      <div class="col-lg-12">
         
-          <h6 class="font-weight-bold pt-4 pb-1">Title</h6>
-          <input name="title" type="text" class="border w-100 p-2 bg-white text-capitalize" value="{{$vehicle->title}}" >
-
-          <h6 class="font-weight-bold pt-4 pb-1">Year of Build:</h6>
-          <input type="number" name="year_of_build" class="border w-100 p-2 bg-white text-capitalize @error('year_of_build') is-invalid @enderror" 
-          placeholder="{{$vehicle->year_of_build}}" value="{{$vehicle->year_of_build}}" >
-              @error('year_of_build')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
           
           <h6 class="font-weight-bold pt-4 pb-1">Car Condition</h6>
           <select name="condition" id="inputGroupSelect" class="form-control">
@@ -354,78 +358,11 @@
     </div>
   </div>
 </fieldset>
-<fieldset class="border border-gary p-4 mb-5">
-  <h4 style=" text-align: center;">Choose your boosting Plan</h4>
-  <section>
-  <div class="row">
-      <div class="col-lg-12">
-          <h3>Ad Boost Plan</h3>
 
-          <h6 class="font-weight-bold pt-4 pb-1">Boost your Listing</h6>
-          <select name="package_id" id="inputGroupSelect" class="w-100">
-            <option selected value="{{ $listing->package_id }}">{{ $listing->package->package_name }}</option>
-              @foreach ($packages as $package )
-              <option value="{{ $package->id }}">{{ $package->package_name }}</option>
-              @endforeach
- 
-          </select>
-       <input type="hidden" name="user_id" value="{{ Auth::user()->id}}" >
-      </div>
-  </div>
-  </section>
-</fieldset>
+<input type="hidden" name="user_id" value="{{ Auth::user()->id}}" >
 
 
-<fieldset class="border border-gary p-4 mb-5">
-  <h4 style=" text-align: center;">Choose your boosting Plan</h4>
-  <section>
-  <div class="row">
-      <div class="col-lg-12">
-          <h3>Ad Boost Plan</h3>
 
-          <h6 class="font-weight-bold pt-4 pb-1">Boost your Listing</h6>
-       
-       
-       <input type="hidden" name="user_id" value="{{ Auth::user()->id}}" >
-      </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      @foreach ($packages as $package )
-      <div class="col-lg-4 col-md-6">
-        <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
-            <div class="package-content-heading border-bottom">
-                <i class="fa fa-paper-plane"></i>
-                <h2>{{ $package->package_name }}</h2>
-                <h4 class="py-3"> <span>{{ $package->package_duration }}</span> Per Days</h4>
-            </div>
-            <ul>
-                <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
-                <li class="my-4"> <i class="fa fa-check"></i>15 Features Ad Availability</li>
-                <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
-                <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
-            </ul>
-                @if ($listing->package_id)
-                <input type="radio"  id="inputGroupSelect" class="form-control" name="package_id" value="{{ $package->id }}" >
-                @endif
-            
-        
-                  @error('package_id')
-                  <span class="invalid" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-                @enderror
-        </div>
-        
-    </div>
-    @endforeach
-    </div>
-</div>
-
-
-  </section>
-</fieldset>
 
 <button type="submit" class="btn btn-primary d-block mt-2">Update Your Listing</button>
 </form>

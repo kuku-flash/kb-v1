@@ -3,12 +3,18 @@
 
 <section class="section-sm">
     <div class="container">
+@if(session('success'))
+<div class="mt-3 alert alert-success">
+ <span> {{ session('success') }} </span>
+</div>
+@endif
       <form action="{{ route('user.update_carhire', [$listing->id, $vehicle->id])}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">     
         @csrf
         @method('put')
             <!-- Post Your ad start -->
+            <a href="{{ route('user.index_carhire')}}" class="btn btn-primary  mb-2">Back</a>
             <fieldset class="border border-gary p-4 mb-5">
-                <h1 style=" text-align: center;">Post your Car for hiring</h1>
+                <h3 style=" text-align: center;">Location Detials</h3>
                 <section>
                 <div class="row">
                    

@@ -40,6 +40,7 @@ class ListingController extends Controller
   
 
     }
+    
     Public function archived_list(){
 
         return view ('user.archived_list');
@@ -57,15 +58,29 @@ class ListingController extends Controller
         return view ('user.favourite_list'); 
         
     }
+
     
 //Post the ad or the list page
-    public function create_listing(){
+    Public function new_listing(){
+        return view('user.new_listing');
+    }
+    public function index_vehiclesale() {
+        $arr['listings'] = Listing::where('user_id',Auth::id())->get();
+        $arr['vehicles'] = Vehicle::all();
+        $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
+        $current = Carbon::now();
+    // $arr['exp_date'] = DB::table('listings')->whereRaw('DATEDIFF(created_at, current_date) > 60')->get();
+    
+
+        return view('user.index_vehiclesale')->with($arr);
+    }
+    public function create_vehiclesale(){
         $arr['categories'] = Category::all();
         $arr['cities'] = City::all();
         $arr['makes'] = Carmake::all();
         $arr['models'] = Carmodel::all();
         $arr['packages'] = Package::where('package_featured',null)->orderBy('id','desc')->get();
-        return view('user.create_listing')->with($arr);
+        return view('user.create_vehiclesale')->with($arr);
     } 
     public function create_listing2(){
         $arr['categories'] = Category::all();
@@ -76,19 +91,18 @@ class ListingController extends Controller
         return view('user.create_listing2')->with($arr);
     } 
 
-    public function store_listing(Request $request, Listing $listing, Vehicle $vehicle) {
+    public function store_vehiclesale(Request $request, Listing $listing, Vehicle $vehicle) {
         $this->validate($request,[
             'category' => 'required',
             'city' => 'required',
             'model_id' => 'required', 
-            'title' => 'required', 
             'year_of_build' => 'required',
             'condition' => 'required',
             'mileage' => 'required',
             'transmission' => 'required',
             'fuel_type' => 'required',
             'exchange' => 'required',
-            'price' => 'exclude_if:category,false|required|integer',
+            'price' => 'required',
             'description' => 'required',
             'body_type' => 'required',
             'duty_type' => 'required',
@@ -108,11 +122,7 @@ class ListingController extends Controller
             'opt_img2' => ' image|max:2048|mimes:jpeg,png,jpg,gif,svg',
             'opt_img3' => ' image|max:2048|mimes:jpeg,png,jpg,gif,svg',
 
-            'pickup_date' => 'nullable|required|date',
-            'return_date' => 'nullable|required|date|after:pickup_date',
-    
-  
-  
+
             ]);
 
            
@@ -225,11 +235,7 @@ class ListingController extends Controller
         $vehicle->engine_size = $request->engine_size;
         $vehicle->vehicle_type = $request->vehicle_type;
         $vehicle->color = $request->color;
-        $vehicle->rent_days = $request->rent_days;
-        $vehicle->price_per_day = $request->price_per_day;
-        $vehicle->pickup_date = $request->pickup_date;
-        $vehicle->return_date = $request->return_date;
-        
+
 
         if($request->hasFile('front_img')) { $vehicle->front_img = $front_imgStore; }
         if($request->hasFile('back_img')) { $vehicle->back_img = $back_imgStore; }
@@ -268,7 +274,7 @@ class ListingController extends Controller
     return redirect() -> route('user.invoice', [$listing->id, $vehicle->id])->with('success','Added'); 
      
     }
-    public function show_listing(Listing $listing, Vehicle $vehicle){
+    public function show_vehiclesale(Listing $listing, Vehicle $vehicle){
         $arr['categories'] = Category::all();
         $arr['cities'] = City::all();
         $arr['makes'] = Carmake::all();
@@ -276,10 +282,10 @@ class ListingController extends Controller
         $arr['listing'] = $listing;
         $arr['vehicle'] = $vehicle;
 
-        return view('user.show_listing')->with($arr);
+        return view('user.show_vehiclesale')->with($arr);
     }
 
-    public function edit_listing(Listing $listing, Vehicle $vehicle){
+    public function edit_vehiclesale(Listing $listing, Vehicle $vehicle){
         $arr['categories'] = Category::all();
         $arr['cities'] = City::all();
         $arr['makes'] = Carmake::all();
@@ -289,15 +295,13 @@ class ListingController extends Controller
         $arr['vehicle'] = $vehicle;
         $arr['vehiclephotos'] = Vehicle_photo::all();
 
-        return view('user.edit_listing')->with($arr);
+        return view('user.edit_vehiclesale')->with($arr);
     }
-    public function update_listing(Request $request, Listing $listing, Vehicle $vehicle) {
+    public function update_vehiclesale(Request $request, Listing $listing, Vehicle $vehicle) {
      
            
 
-      $listing->category_id = $request->category;
       $listing->city_id = $request->city; 
-      $listing->package_id = $request->package_id; 
       $listing->update();
 
       $currentId = $listing->id;
@@ -386,7 +390,6 @@ if($request->hasFile('opt_img3')){
     $vehicle->listing_id = $currentId;
     $vehicle->model_id = $request->model_id;
     $vehicle->year_of_build = $request->year_of_build;
-    $vehicle->title = $request->title;
     $vehicle->condition = $request->condition;
     $vehicle->mileage = $request->mileage;
     $vehicle->transmission = $request->transmission;
@@ -429,10 +432,10 @@ if($request->hasFile('opt_img3')){
           }     
         }  */
      
-    return redirect() -> route('user.edit_listing', [$listing->id, $vehicle->id])->with('success','Updated');
+    return redirect() -> route('user.edit_vehiclesale', [$listing->id, $vehicle->id])->with('success','Updated');
      
     }
-    public function delete_listing($listing, $vehicle){
+    public function delete_vehiclesale($listing, $vehicle){
       
         $vehicle = Vehicle::find($vehicle);
         $listing = Listing::find($listing);
@@ -458,7 +461,7 @@ if($request->hasFile('opt_img3')){
     
         $vehicle->delete();
         $listing->delete();
-        return redirect()->route('user.my_list')->with('success','removed successfully');
+        return redirect()->route('user.index_vehiclesale')->with('success','Removed successfully');
     }
    
     /* This where Carehire Logic is handled */

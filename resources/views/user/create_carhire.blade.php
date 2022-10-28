@@ -7,7 +7,14 @@
         @csrf
             <!-- Post Your ad start -->
             <fieldset class="border border-gary p-4 mb-5">
-                <h1 style=" text-align: center;">Post your Car for hiring</h1>
+              <div class="row">
+                <div class="col-lg-12">
+                  <h1 style=" text-align: center;">Post your Car for Hire</h1>
+                </div>
+              </div>
+             </fieldset>
+            <fieldset class="border border-gary p-4 mb-5">
+              <h3 style=" text-align: center;">Location Details</h3>
                 <section>
                 <div class="row">
                     
