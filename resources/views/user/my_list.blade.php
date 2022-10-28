@@ -132,12 +132,12 @@
 								<div class="change-icons">
 									<ul class="list-inline justify-content-center">
 										<li class="list-inline-item">
-											<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('user.show_listing', [$listing->id, $vehicle->id])}}">
+											<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="#">
 												<i class="fa fa-eye"></i>
 											</a>
 										</li>
 										<li class="list-inline-item">
-											<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_listing', [$listing->id, $vehicle->id])}}">
+											<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="#">
 												<i class="fa fa-pencil"></i>
 											</a>
 										</li>
@@ -146,7 +146,7 @@
 											<a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" data-toggle="tooltip" data-placement="top" title="Delete" class="delete">
 												<i class="fa fa-trash"></i>
 											</a>
-											<form action="{{ route('user.delete_listing', [$listing->id, $vehicle->id])}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
+											<form action="#" method="post" onsubmit="return confirm('Are you sure want to delete?');">
 											  @method('DELETE')
 											  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 											</form>
