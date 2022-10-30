@@ -1077,6 +1077,9 @@ display: flex;
 .car-li{
   color: black;
 }
+.car-li-active{
+  color: #d4af37;
+}
 .trending-horizontal li {
   display: inline;
   
