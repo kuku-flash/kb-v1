@@ -114,7 +114,7 @@
 							<ul class="list-horizontal">
 								<li class="li-size"><b>Listing ID: </b><span class="car-li">{{ $listing->id }}</span></li>
 								<li class="li-size"><b>Price: </b><span class="car-li"> {{ $vehicle->price}}</span></li>
-								<li class="li-size"><b>Status: </b><span class="car-li">{{ $listing->ads_status }}</span></li>
+								<li class="li-size"><b>Status: </b><span class="car-li-active">{{ $listing->ads_status }}</span></li>
 								<li class="li-size"><b>Category: </b><span class="car-li">{{ $vehicle->vehicle_type }}</span></li>
 								<li class="li-size"><b>Invoice: </b><span class="car-li"><a href="{{ route('user.invoice', [$listing->id, $vehicle->id])}}"> Click Here </a></span></li>
 								<li class="li-size"><b>Visitors </b><span class="car-li fa fa-users "></span>: 5000</li>
