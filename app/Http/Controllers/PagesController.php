@@ -104,7 +104,7 @@ public function vehicle_search(Request $request){
     ])
     ->orderBy("id", "desc")->take(10)->get();
     
-    return view ('pages.vehicles_grid')->with($arr);
+    return view ('pages.vehicleslist')->with($arr);
 }
 
 public function listing_filter(Request $request){
@@ -113,7 +113,7 @@ public function listing_filter(Request $request){
     $arr['cities'] = City::all();
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
-    return view ('pages.vehicles_grid')->with($arr);
+    return view ('pages.vehicleslist')->with($arr);
 }
 public function vehicle_filter(Request $request){
     $arr['makes'] = Carmake::all();
@@ -121,10 +121,10 @@ public function vehicle_filter(Request $request){
     $arr['listings'] = Listing::where('category_id',2)->take(20)->get(); 
     $arr['vehicles'] = vehicle::Where('model_id',$request->id)->take(20)->get(); 
     $arr['cities'] = City::all();
-    return view ('pages.vehicles_grid')->with($arr);
+    return view ('pages.vehicleslist')->with($arr);
 }
 
-Public function vehicles_grid(){
+Public function vehicleslist(){
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
     $arr['cities'] = City::all();
@@ -135,7 +135,7 @@ Public function vehicles_grid(){
    $arr['imgcount'] = Vehicle::where(['front_img' => Null,'back_img'=> Null, 'right_img'=> Null, 'left_img'=> Null])->count();
   
     $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
-    return view ('pages.vehicles_grid')->with($arr);
+    return view ('pages.vehicleslist')->with($arr);
     
 }
 Public function vehicles_list(){

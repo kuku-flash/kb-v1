@@ -117,8 +117,9 @@
             <div class="col-lg-4 carmodel"> 
               <h6 class="font-weight-bold pt-4 pb-1">Select Model</h6>        
               <select name="model_id" class="model form-control">
-                <option value="0"  disabled="true" selected="true">Choose a model</option>
-
+                <option value="">Choose a Model</option>
+                <option value="{{ old('model_id')}}" {{(old('model_id'))? 'selected':''}}>{{ old('model_id')}}</option>
+               
               </select>
                 @error('model_id')
                 <span class="invalid"  role="alert">
@@ -640,6 +641,7 @@ $(document).on('change','.make',function(){
   // console.log(cat_id);
   var div=$("div.carmodel").parent();
   var option=" ";
+
   $.ajax({
     type:'get',
     url:'{!!URL::to('user/model')!!}',
@@ -649,8 +651,10 @@ $(document).on('change','.make',function(){
       for(var i=0;i<data.length;i++){
         option+='<option value="'+data[i].id+'" >'+data[i].model+'</option>';
        }
+       
        div.find('.model').html(" ");
        div.find('.model').append(option);
+       localStorage.setItem(div);
     },
     
     error:function(){    }

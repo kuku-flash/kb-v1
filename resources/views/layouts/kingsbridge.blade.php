@@ -66,39 +66,19 @@
                   <a class="nav-link" href="{{ route('carhire')}}">Car Hire</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('about_us')}}">About Us</a>
+                  <a class="nav-link" href="{{ route('vehicleslist')}}">Buy a Vehicle</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('contact_us')}}">Contact Us</a>
+                  <a class="nav-link" href="#">Vehicle Parts</a>
                 </li>
-             
-                <li class="nav-item dropdown dropdown-slide">
-                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Pages <span><i class="fa fa-angle-down"></i></span>
-                  </a>
-                  <!-- Dropdown list -->
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ route('about_us')}}">About Us</a>
-                    <a class="dropdown-item" href="{{ route('contact_us')}}">Contact Us</a>
-                    <a class="dropdown-item" href="#">404 Page</a>
-                    <a class="dropdown-item" href="#">Package</a>
-                    <a class="dropdown-item" href="{{ route('single')}}">Single Page</a>
-                    <a class="dropdown-item" href="#">Store Single</a>
-                    <a class="dropdown-item" href="#">Single Post</a>
-                    <a class="dropdown-item" href="#">Blog</a>
-  
-                  </div>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Car Events</a>
                 </li>
-                <li class="nav-item dropdown dropdown-slide">
-                  <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Car List <span><i class="fa fa-angle-down"></i></span>
-                  </a>
-                  <!-- Dropdown list -->
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ route('vehicles_grid')}}">listing-Gird View</a>
-                    <a class="dropdown-item" href="{{ route('vehicles_list')}}">listing-List View</a>
-                  </div>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('about_us')}}">About Us</a>
                 </li>
+              
+           
               </ul>
               <ul class="navbar-nav ml-auto mt-10">
                 @guest
