@@ -834,9 +834,102 @@ line-height: 30px;
   display:table-footer-group;
 }
 /*end why kingsbridge */
+/*FAQ */
+.hirecard {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px 0 rgba(35, 31, 32, 0.2),0 0 1px 0 rgba(35, 31, 32, 0.1);
+  color: #231F20;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  margin: 0 8px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 156px;
+  scroll-snap-align: start;
+  scroll-margin: 0 8px;
+  padding: 16px 16px 12px 16px;
+  }
 
+  .column{
+    display: block;
+  }
+.circular--square{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.hirecard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.hirecontainer {
+  padding: 2px 16px;
+}
+
+
+.text-secondary {
+  color: #3d5d6f;
+}
+
+.h4,
+h4 {
+  font-size: 1.2rem;
+}
+
+h2 {
+  color: #333;
+}
+
+.fa,
+.fas {
+  font-family: 'FontAwesome';
+  font-weight: 400;
+  font-size: 1.2rem;
+  font-style: normal;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+a.text-secondary:focus,
+a.text-secondary:hover {
+  text-decoration: none;
+  color: #22343e;
+}
+
+#accordion .fa-plus {
+  transition: -webkit-transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
+}
+
+#accordion a[aria-expanded=true] .fa-plus {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 /*join today */
-
+.faq{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .joinimg1{
   float: right;
   
@@ -1704,6 +1797,100 @@ height: 150px;
   background-color: #fff;
 }
 /* kingsbridge */
+
+.floathire-layout {
+  padding: 5px 5px;
+  float: left;
+  width: 100%;
+  height: 356px;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.float-layout {
+  padding: 5px 5px;
+  float: left;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.card-container {
+  overflow: hidden;
+}
+
+.hire-card {
+  background-color: #E1CFCF;
+  color: black;
+  min-height: 100%; /*replace this it in width: 100%*/
+  width: 50%;
+  float: right;
+}
+
+.hire-title {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.card-desc {
+  padding: 10px;
+  text-align: left;
+  font-size: 18px;
+}
+
+/*add this it*/
+.card-image {
+  display: flex;
+}
+/*-------------*/
+
+div.card-image img {
+  width: 50%;
+  height: auto;
+}
+
+/* Phone Devices Query */
+@media only screen and (max-width: 37.5em) {
+  div.card-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /*add this it*/
+  .card-image {
+     flex-direction: column;
+  }
+  /*----------------------*/
+
+  .hire-card{
+    width: 100%;
+    margin-top: -4px;
+  }
+}
+
+
+
+
+
+
+
+
+
+.video-background{
+  background-color: #E1CFCF;
+}
+.video-text{
+position: absolute;
+width: 686px;
+height: 337px;
+left: 514px;
+top: 115px;
+}
+
+
 .img-square-wrapper{
   background-size: cover;
   margin: auto;

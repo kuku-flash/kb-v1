@@ -40,7 +40,7 @@
 								<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite List </a>
 							</li>
 							<li>
-								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archeved List </a>
+								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archived List </a>
 							</li>
 							<li>
 								<a href=""><i class="fa fa-cog"></i> Logout</a>
