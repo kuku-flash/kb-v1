@@ -45,7 +45,7 @@ Route :: get ('register',  [PagesController::class, 'register'])->name('register
 Route :: get ('vehicle_search',  [PagesController::class, 'vehicle_search'])->name('vehicle_search');
 Route :: get ('vehicle_filter/{id}',  [PagesController::class, 'vehicle_filter'])->name('vehicle_filter');
 Route :: get ('listing_filter/{id}',  [PagesController::class, 'listing_filter'])->name('listing_filter');
-Route :: get ('vehicles_grid',  [PagesController::class, 'vehicles_grid'])->name('vehicles_grid');
+Route :: get ('vehicleslist',  [PagesController::class, 'vehicleslist'])->name('vehicleslist');
 Route :: get ('vehicles_list',  [PagesController::class, 'vehicles_list'])->name('vehicles_list');
 Route :: get ('vehicle/{listing}/{vehicle}',  [PagesController::class, 'vehicle'])->name('vehicle');
 Route :: get ('post_ad_form',  [PagesController::class, 'post_ad_form'])->name('post_ad_form');

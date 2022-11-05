@@ -128,7 +128,7 @@
 								<strong>Views</strong>
 								<ul class="list-inline view-switcher">
 									<li class="list-inline-item">
-										<a href="{{ route('vehicles_grid')}}" class="text-info"><i class="fa fa-th-large"></i></a>
+										<a href="{{ route('vehicleslist')}}" class="text-info"><i class="fa fa-th-large"></i></a>
 									</li>
 									<li class="list-inline-item">
 										<a href="{{ route('vehicles_list')}}"><i class="fa fa-reorder"></i></a>
