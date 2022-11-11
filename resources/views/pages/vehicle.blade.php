@@ -12,6 +12,66 @@
 	<div class="container">
 		<div class="row">
 			<!-- Left sidebar -->
+			<div class="col-lg-12">
+				<section>
+					<div class=" main single-item slider">
+					 
+			@if ($vehicle->front_img) <div class="main" ><img   src="/storage/photos/{{ $vehicle->front_img }}"> </div> @endif
+			@if ($vehicle->back_img) <div  class="main"><img  src="/storage/photos/{{ $vehicle->back_img }}"></div>  @endif
+			@if ($vehicle->right_img) <div class="main"><img   src="/storage/photos/{{ $vehicle->right_img }}"></div> @endif
+			@if ($vehicle->left_img) <div class="main" ><img  src="/storage/photos/{{ $vehicle->left_img }}"></div> @endif
+			@if ($vehicle->interiorf_img) <div class="main" ><img  src="/storage/photos/{{ $vehicle->interiorf_img }}"></div> @endif
+			@if ($vehicle->interiorb_img) <div class="main"><img   src="/storage/photos/{{ $vehicle->interiorb_img }}"></div> @endif		
+			@if($vehicle->engine_img) <div class="main"> <img src="/storage/photos/{{ $vehicle->engine_img }}"> </div> @endif		
+			@if ($vehicle->opt_img1) <div class="main"><img  src="/storage/photos/{{ $vehicle->opt_img1 }}"></div> @endif
+			@if ($vehicle->opt_img2) <div class="main" ><img  src="/storage/photos/{{ $vehicle->opt_img2 }}"> </div> @endif
+			@if ($vehicle->opt_img3) <div class="main"><img   src="/storage/photos/{{ $vehicle->opt_img3 }}"></div> @endif
+				</div>
+			
+				<!--		  <ul class="thumbs mt-3 slider-nav">
+								<li>
+									<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->front_img }}">
+								</li>
+								<li>
+									<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->back_img }}">
+								</li>
+								<li>
+									<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->right_img }}">
+								</li>
+								<li>
+									<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->left_img }}">
+								</li>
+								<li>
+									<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorf_img }}">
+								</li>
+								<li>
+									<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorb_img }}">
+								</li>
+								
+									@if ($vehicle->engine_img)
+									<li>
+									<img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->engine_img }}">
+									</li>
+									@endif
+									
+								
+								<li>
+									<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img1 }}">
+								</li>
+								<li>
+									<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img2 }}">
+								</li>
+								<li>
+									<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img3 }}">
+								</li>
+							
+						</ul> -->
+						
+					  
+				  </section>
+			</div>
+
+
 			<div class="col-md-8">
 				<div class="product-details">
 					<h1 class="product-title"> {{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}}</h1>
@@ -23,66 +83,7 @@
 						</ul>
 					</div>
 
-	
-	<section>
-		<div class=" main single-item slider">
-		 
-@if ($vehicle->front_img) <div class="main" ><img   src="/storage/photos/{{ $vehicle->front_img }}"> </div> @endif
-@if ($vehicle->back_img) <div  class="main"><img  src="/storage/photos/{{ $vehicle->back_img }}"></div>  @endif
-@if ($vehicle->right_img) <div class="main"><img   src="/storage/photos/{{ $vehicle->right_img }}"></div> @endif
-@if ($vehicle->left_img) <div class="main" ><img  src="/storage/photos/{{ $vehicle->left_img }}"></div> @endif
-@if ($vehicle->interiorf_img) <div class="main" ><img  src="/storage/photos/{{ $vehicle->interiorf_img }}"></div> @endif
-@if ($vehicle->interiorb_img) <div class="main"><img   src="/storage/photos/{{ $vehicle->interiorb_img }}"></div> @endif		
-@if($vehicle->engine_img) <div class="main"> <img src="/storage/photos/{{ $vehicle->engine_img }}"> </div> @endif		
-@if ($vehicle->opt_img1) <div class="main"><img  src="/storage/photos/{{ $vehicle->opt_img1 }}"></div> @endif
-@if ($vehicle->opt_img2) <div class="main" ><img  src="/storage/photos/{{ $vehicle->opt_img2 }}"> </div> @endif
-@if ($vehicle->opt_img3) <div class="main"><img   src="/storage/photos/{{ $vehicle->opt_img3 }}"></div> @endif
-	</div>
 
-	<!--		  <ul class="thumbs mt-3 slider-nav">
-					<li>
-						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->front_img }}">
-					</li>
-					<li>
-						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->back_img }}">
-					</li>
-					<li>
-						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->right_img }}">
-					</li>
-					<li>
-						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->left_img }}">
-					</li>
-					<li>
-						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorf_img }}">
-					</li>
-					<li>
-						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorb_img }}">
-					</li>
-					
-						@if ($vehicle->engine_img)
-						<li>
-						<img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->engine_img }}">
-						</li>
-						@endif
-						
-					
-					<li>
-						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img1 }}">
-					</li>
-					<li>
-						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img2 }}">
-					</li>
-					<li>
-						<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img3 }}">
-					</li>
-				
-			</ul> -->
-			<div class="favourist-list">
-				<span id = heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
-				</div>
-		  
-	  </section>
-	 
 
 	  <section class="vehicle specifications">
 		<ul aria-label="Key Specifications" data-gui="key-specs-section" class="sc-jYKCQm isection"><li class="sc-jfkLlK ialighment atc-type-fiesta atc-type--regular">
