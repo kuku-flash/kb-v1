@@ -1,7 +1,6 @@
 @extends('layouts.kingsbridge')
 @section('content')
 
-
 <!--===============================
 =            Hero Area            =
 ================================-->
@@ -14,8 +13,9 @@
 				<!-- Header Contetnt -->
 				<div class="content-block" >
 					<h1 style="color: #ffffff;">
-                       Looking For Car to Hire
-                    </h1>
+                       The Largest Car Hire marketplace in Kenya
+					</h1>
+					<p> Find the perfect vehicle for your need</p>
 				
 					<div class="short-popular-category-list text-center">
 						<h2>Featured Categories</h2>
@@ -128,9 +128,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="section-title">
-					<h2>Trending Ads</h2>
+					<h2>Explore the Wide variety of Vehicles ready</h2>
 				</div>
-                <p class="text-center">It focus is bringing car-hiring businesses in kenya to one place. It also provide services of listing your vehicles for sale, and listing your businesses for vehicles parts and accessories.
+                <p class="text-center">Our mission is to solve the 95% problem.
+					Cars are wastefully parked 95% of each day.
                 </p>
 			</div>
 		</div>
@@ -187,221 +188,149 @@
 	</div>
 </section>
 <!--==========================================
-=           CAR HIRE PACKAGE           =
+=           Find the perfect car           =
 ===========================================-->
-<section  class="product">
+<section class="product">
+	<div class="col-md-12">
+		<div class="section-title">
+			<h2>Find your drive</h2>
+		</div>
+	</div>
+<div class="card-container">
+	<div class="floathire-layout">
+	  <div class="card-image">
+		<img class="index-img-fluid" src="/images/sclass.jpg" alt="">
+		<div class="hire-card">
+		  <div class="hire-title">Find the perfect car to unwind for the weekend</div>
+		  <div class="card-desc">
+			From luxury drivers to spirited sports cars, ditch the grind with convenient nearby cars.
+			From daily drivers to spirited sports cars, ditch the grind with convenient nearby cars.
+			From daily drivers to spirited sports cars, ditch the grind with convenient nearby cars.
+			</div>
+			<button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+</section>
+
+
+
+<section class="product">
+	<div class="col-md-12">
+		<div class="section-title">
+			<h2>Become part of us</h2>
+		</div>
+	</div>
+<div class="card-container">
+	<div class="float-layout">
+	  <div class="card-image">
+		<div class="hire-title">Become a car sharing entreprenuer on KingsBridge.
+		</div>
+		<div class="hire-card">
+			<iframe width="660" height="237" 
+			src="https://www.youtube.com/embed/H60dXqYk_Xg" 
+			title="The Engine Songs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+			gyroscope; picture-in-picture" allowfullscreen>
+		</iframe>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<div class="card-desc">
+		From daily drivers to spirited sports cars, ditch the grind with convenient nearby cars.
+		From daily drivers to spirited sports cars, ditch the grind with convenient nearby cars.
+		From daily drivers to spirited sports cars, ditch the grind with convenient nearby cars.
+		From daily drivers to spirited sports cars, ditch the grind with convenient nearby cars.
+		From daily drivers to spirited sports cars, ditch the grind with convenient nearby cars.
+		From daily drivers to spirited sports cars, ditch the grind with convenient nearby cars.
+		</div>
+  </div>
+</section>
+
+<!--==========================================
+=        Find a vehile by location  =
+===========================================-->
+<section class="product">
+	<div class="col-md-12">
+		<div class="section-title">
+			<h2>Browse for your Vehicle by Destination.</h2>
+		</div>
+	</div>
+<div class="hirecard column">
+	<img class="circular--square" src="images/nairobi city.jpg" alt="Avatar" style="width:100%">
+	<div class="hirecontainer">
+	  <h4><b>Nairobi</b></h4> 
+	  <p>120</p> 
+	</div>
+  </div>
+
+  <div class="hirecard column">
+	<img class="circular--square" src="images/nakuru city.jpeg" alt="Avatar" style="width:100%">
+	<div class="hirecontainer">
+	  <h4><b>Nairobi</b></h4> 
+	  <p>120</p> 
+	</div>
+  </div>
+
+  <div class="hirecard column">
+	<img class="circular--square" src="images/mombasa city.jpeg" alt="Avatar" style="width:100%">
+	<div class="hirecontainer">
+	  <h4><b>Mombasa</b></h4> 
+	  <p>120</p> 
+	</div>
+  </div>
+
+  <div class="hirecard column">
+	<img class="circular--square" src="images/nakuru city.jpeg" alt="Avatar" style="width:100%">
+	<div class="hirecontainer">
+	  <h4><b>Nakuru</b></h4> 
+	  <p>120</p> 
+	</div>
+  </div>
+
+  <div class="hirecard column">
+	<img class="circular--square" src="images/kisumu city.jpeg" alt="Avatar" style="width:100%">
+	<div class="hirecontainer">
+	  <h4><b>Kisumu</b></h4> 
+	  <p>120</p> 
+	</div>
+  </div>
+
+  <div class="hirecard column">
+	<img class="circular--square" src="images/nairobi city.jpg" alt="Avatar" style="width:100%">
+	<div class="hirecontainer">
+	  <h4><b>Kiambu</b></h4> 
+	  <p>120</p> 
+	</div>
+  </div>
+</section>
+
+
+
+
+
+
+<!--==========================================
+=        Join the Largest car community  =
+===========================================-->
+<section class="section-join">
+	<!-- Container Start -->
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-				<div class="section-title">
-					<h2>Car Hire Services</h2>
-					<p>Find the best rental prices on luxury, economy, and family rental cars </p>
+			<div class="grid-flex">
+				<div class="block about">
+					<h2>Get the chance to try new vehicles at affordable prices!!!</h2>
+					<ul class="list-inline mt-30">
+						<li class="list-inline-item"><a class="btn btn-main" href="ad-listing.html">Join Today</a></li>
+					</ul>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<!-- offer 01 -->
-			<div class="col-lg-12">
-				<div class="slider owl-drag">
-					<div class="col-sm-12 col-lg-4">
-						<!-- product card -->
-<div class="product-item bg-light owl-drag">
-	<div class="card">
-		<div class="thumb-content">
-			<div class="price">Gold Package</div>
-			<a href="{{ route('single') }}">
-				<img class="index-img-fluid" src="images/amg1.jpg" alt="">
-			</a>
-		</div>
-		<div class="card-body">
-		   <h4 class="card-title"><a href="{{ route('single') }}">2013 Mercedes Benz E-Class AMG</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
-		    	</li>
-		    </ul>
-		    <div class="product-ratings">
-		    	<ul class="trending-horizontal">
-					<li>Mileage:<span class="car-li">19400Km</span></li>
-					<li>Trans:<span class="car-li">Automatic</span></li>
-				</ul>  
-				<div class="property-price">
-					<p class="badge-sale">For Hire</p>
-					<p class="price">Ksh9.4M</p></a>
-					</div>
-		    </div>
-		</div>
-	</div>
-</div>
-
-
-
-					</div>
-					<div class="col-sm-12 col-lg-4">
-						<!-- product card -->
-<div class="slide product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<div class="price">Gold Package</div>
-			<a href="{{ route('single') }}">
-				<img class="index-img-fluid" src="images/wrxsti.jpg" alt="">
-			</a>
-		</div>
-		<div class="card-body">
-		   <h4 class="card-title"><a href="{{ route('single') }}">2012 Subaru WRX STI</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
-		    	</li>
-		    </ul>
-		    <div class="product-ratings">
-		    	<ul class="trending-horizontal">
-					<li>Mileage:<span class="car-li">19400Km</span></li>
-					<li>Trans:<span class="car-li">Automatic</span></li>
-				</ul>  
-				<div class="property-price">
-					<p class="badge-sale">For Hire</p>
-					<div class="price ">Ksh9000000M</div></a>
-					
-					</div>
-		    </div>
-		</div>
-	</div>
-</div>
-
-					</div>
-					<div class="col-sm-12 col-lg-4">
-
-
-												<!-- product card -->
-<div class="slide product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<div class="price">Gold Package</div>
-			<a href="{{ route('single') }}">
-				<img class="index-img-fluid" src="images/rundahs0.jpg" alt="">
-			</a>
-		</div>
-		<div class="card-body">
-		   <h4 class="card-title"><a href="{{ route('single') }}">House located in Runda</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>House</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Runda</a>
-		    	</li>
-		    </ul>
-		    <div class="product-ratings">
-		    	<ul class="trending-horizontal">
-				<li><span class="car-li">Bedrooms:</span>5</li>
-				<li><span class="car-li">Bathrooms:</span>4</li>
-				<li><span class="car-li">Funished:</span>No</li>
-				</ul>  
-				<div class="property-price">
-					<p class="badge-sale">For Rent</p>
-					<p class="price">Ksh 150,000</p></a>
-					</div>
-		    </div>
-		</div>
-	</div>
-</div>
-
-
-
-					</div>
-					<div class="col-sm-12 col-lg-4">
-
-						<!-- product card -->
-						
-						<!-- product card -->
-<div class="slide product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<div class="price">Gold Package</div>
-			<a href="{{ route('single') }}">
-				<img class="index-img-fluid" src="images/sclass.jpg" alt="">
-			</a>
-		</div>
-		<div class="card-body">
-		   <h4 class="card-title"><a href="{{ route('single') }}">2015 Mercedes Benz S-class</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Cars</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
-		    	</li>
-		    </ul>
-		    <div class="product-ratings">
-		    	<ul class="trending-horizontal">
-					<li>Mileage:<span class="car-li">19400Km</span></li>
-					<li>Trans:<span class="car-li">Automatic</span></li>
-				</ul>  
-				<div class="property-price">
-					<p class="badge-sale">For Sale</p>
-					<p class="price">Ksh9.4M</p></a>
-					</div>
-		    </div>
-		</div>
-	</div>
-</div>
-
-
-
-					</div>
-					<div class="col-sm-12 col-lg-4">
-
-						<!-- product card -->
-<div class="slide product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<div class="price">Gold Package</div>
-			<a href="{{ route('single') }}">
-				<img class="index-img-fluid" src="images/land1.jpg" alt="">
-			</a>
-		</div>
-		<div class="card-body">
-		   <h4 class="card-title"><a href="{{ route('single') }}">Land located in karen 
-		   </a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
-		    	</li>
-		    </ul>
-		    <div class="product-ratings">
-		    	<ul class="trending-horizontal">
-					<li>Acres:<span class="car-li">30</span></li>
-					<li>Trans:<span class="car-li">Automatic</span></li>
-				</ul>  
-				<div class="property-price">
-					<p class="badge-sale">For Sale</p>
-					<p class="price">Ksh9.4M</p></a>
-					</div>
-		    </div>
-		</div>
-	</div>
-</div>
-
-
-					</div>
-				</div>
+			<div class="join ">
+				<img class="joinimg1" src="../images/call-to-action/Buying.svg" alt="Pineapple" width="230" height="170">
 			</div>
-			
-			
 		</div>
 	</div>
-		
-	
 </section>
 
 <!--==========================================
@@ -472,7 +401,129 @@
 		</div>
 </div>
 
+<!--==========================================
+			=      FAQ         =
+===========================================-->
+<section  class="product">
+	<div class="faq ">
+		<img class="faq" src="../images/call-to-action/faq.svg" alt="Pineapple" width="230" height="170">
+	</div>
+	<div class="text-center">
+		<h2 class="mt-5 mb-5">Frequently asked question</h2>
+	  </div>
+	  <section class="container my-5" id="maincontent">
+		<section id="accordion">
+		  <a class="py-3 d-block h-100 w-100 position-relative z-index-1 pr-1 text-secondary border-top" aria-controls="faq-17" aria-expanded="false" data-toggle="collapse" href="#faq-17" role="button">
+			<div class="position-relative">
+			  <h2 class="h4 m-0 pr-3">
+				Can I get my car delivered to me?
+			  </h2>
+			  <div class="position-absolute top-0 right-0 h-100 d-flex align-items-center">
+				<i class="fa fa-plus"></i>
+			  </div>
+			</div>
+		  </a>
+		  <div class="collapse" id="faq-17" style="">
+			<div class="card card-body border-0 p-0">
+			  <p>Custom gear can be ordered through our contact form. Additional fees may apply.</p>
+	
+			</div>
+		  </div>
+	
+		  <a class="py-3 d-block h-100 w-100 position-relative z-index-1 pr-1 text-secondary border-top" aria-controls="faq-18" aria-expanded="false" data-toggle="collapse" href="#faq-18" role="button">
+			<div class="position-relative">
+			  <h2 class="h4 m-0 pr-3">
+				Can refunds we done when a car owner doesnt show up?
+			  </h2>
+			  <div class="position-absolute top-0 right-0 h-100 d-flex align-items-center">
+				<i class="fa fa-plus"></i>
+			  </div>
+			</div>
+		  </a>
+		  <div class="collapse" id="faq-18" style="">
+			<div class="card card-body border-0 p-0">
+			  <p>Our official mission statement is lorem ipsum dolor sit.</p>
+			  <p>
+			  </p>
+			</div>
+		  </div>
+	
+		  <a class="py-3 d-block h-100 w-100 position-relative z-index-1 pr-1 text-secondary border-top" aria-controls="faq-19" aria-expanded="false" data-toggle="collapse" href="#faq-19" role="button">
+			<div class="position-relative">
+			  <h2 class="h4 m-0 pr-3">
+				What do i need inorder to book a car on KingsBridge?
+			  </h2>
+			  <div class="position-absolute top-0 right-0 h-100 d-flex align-items-center">
+				<i class="fa fa-plus"></i>
+			  </div>
+			</div>
+		  </a>
+		  <div class="collapse" id="faq-19" style="">
+			<div class="card card-body border-0 p-0">
+			  <p>The purpose of LunarXP is to give you the best Mars experience!</p>
+			  <p>
+			  </p>
+			</div>
+		  </div>
+	
+		  <a class="py-3 d-block h-100 w-100 position-relative z-index-1 pr-1 text-secondary  border-top" aria-controls="faq-20" aria-expanded="false" data-toggle="collapse" href="#faq-20" role="button">
+			<div class="position-relative">
+			  <h2 class="h4 m-0 pr-3">
+				What is the best email to reach you at?
+			  </h2>
+			  <div class="position-absolute top-0 right-0 h-100 d-flex align-items-center">
+				<i class="fa fa-plus"></i>
+			  </div>
+			</div>
+		  </a>
+		  <div class="collapse" id="faq-20">
+			<div class="card card-body border-0 p-0">
+			  <p>The best email for any inquiries is kingsbridge@gmail.com</p>
+			  <p>
+			  </p>
+			</div>
+		  </div>
+	
+		  <a class="py-3 d-block h-100 w-100 position-relative z-index-1 pr-1 text-secondary  border-top" aria-controls="faq-21" aria-expanded="false" data-toggle="collapse" href="#faq-21" role="button">
+			<div class="position-relative">
+			  <h2 class="h4 m-0 pr-3">
+				Where can I read more about this company?
+			  </h2>
+			  <div class="position-absolute top-0 right-0 h-100 d-flex align-items-center">
+				<i class="fa fa-plus"></i>
+			  </div>
+			</div>
+		  </a>
+		  <div class="collapse" id="faq-21">
+			<div class="card card-body border-0 p-0">
+			  <p>Lorem ipsum dolor sit!</p>
+			  <p>
+			  </p>
+			</div>
+		  </div>
+	
+		  <a class="py-3 d-block h-100 w-100 position-relative z-index-1 pr-1 text-secondary  border-top" aria-controls="faq-22" aria-expanded="false" data-toggle="collapse" href="#faq-22" role="button">
+			<div class="position-relative">
+			  <h2 class="h4 m-0 pr-3">
+				What is the best time to call?
+			  </h2>
+			  <div class="position-absolute top-0 right-0 h-100 d-flex align-items-center">
+				<i class="fa fa-plus"></i>
+			  </div>
+			</div>
+		  </a>
+		  <div class="collapse" id="faq-22">
+			<div class="card card-body border-0 p-0">
+			  <p>The best time to call is 24/7! We are always available to answer any questions.</p>
+			  <p>
+			  </p>
+			</div>
+		  </div>
+		</section>
+	  </section>
 
+
+</section>
 
 <!--==========================================
 =        Join the Largest car community  =
