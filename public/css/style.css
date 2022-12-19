@@ -536,7 +536,42 @@ button {
 
 
 /* Start kingsbridge */
+.Hdrive{
+  position: relative;
+  overflow: hidden;
+  padding: 35px;
+  
+}
+@media (max-width: 390px) {
+  .Hdrive{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding-left: 0;
+    margin: auto;
+  }
+}
 
+
+
+
+.Hdrive img{
+object-fit: cover;
+min-height: 200px;
+max-height: 200px;
+margin: auto;
+  
+}
+@media (max-width: 390.98px) {
+  .Hdrive img{
+    object-fit: cover;
+    min-height: 250px;
+    max-height: 250px;
+    margin: auto;
+    
+      
+    }
+}
 
 
 /* My List table */
@@ -789,7 +824,6 @@ padding: 2.25rem;
   height: auto;
 }
 
-
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
@@ -798,6 +832,116 @@ padding: 2.25rem;
 }
 /*end of add photo cards */
 
+/*find your drive */
+.image-left, .image-right
+{
+	margin: 1em 0;
+}
+
+@media (min-width: 20em)
+{
+	.image-left, .image-right
+	{
+		display: flex;
+    align-items: center;
+    
+	}
+
+	.image-left img
+	{
+		margin-right: 1em;
+    float: left; /* fallback */
+	}
+
+/* clearfix for fallback */
+.image-left::after,
+.image-right::after
+{
+  content: "";
+  display: block;
+  clear: both;
+}
+}
+
+@media (min-width: 30em)
+{
+.image-left img, .image-right img
+{
+  flex-shrink: 0;
+  max-width: 50%;
+  height: 390px;
+}
+}
+
+
+
+.cardive-image{
+  max-width: 50%;
+  height: 200px;
+}
+.floatdive-layout {
+  padding: 5px 5px;
+  float: left;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.cardive-container {
+  overflow: hidden;
+  align-content: center;
+}
+
+.cardive {
+  color: black;
+  min-height: 100%; /*replace this it in width: 100%*/
+  width: 50%;
+  float: right;
+}
+
+.cardive-title {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.cardive-desc {
+  padding: 10px;
+  text-align: left;
+  font-size: 18px;
+}
+
+/*add this it*/
+.cardive-image {
+  display: flex;
+}
+/*-------------*/
+
+div.cardive-image img {
+  width: 100%;
+  height: auto;
+}
+
+/* Phone Devices Query */
+@media only screen and (max-width: 37.5em) {
+  div.cardive-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /*add this it*/
+  .cardive-image {
+     flex-direction: column;
+  }
+  /*----------------------*/
+
+  .cardive {
+    width: 100%;
+    margin-top: -4px;
+  }
+}
 
 
 /*why kingsbridge */

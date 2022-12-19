@@ -44,12 +44,13 @@
     </div>
 </section>
 
+
 <section class="mb-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="heading text-center text-capitalize font-weight-bold py-5">
-                    <h2>Meet Our Teamm</h2>
+                    <h2>Meet Our Team</h2>
                     <p>"Teamwork is the ability to work together toward a common vision.
                         The ability to direct individual accomplishments toward organizational objectives. 
                         It is the fuel that allows common people to attain uncommon results."
