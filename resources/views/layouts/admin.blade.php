@@ -318,6 +318,12 @@
                                     active   
                                     @endif ">vechicle</a>
                             </li>
+                            <li>
+                                <a href="{{ route('admin.listing.carhirelist')}}" class="nav-text  
+                                    @if($segment=='carhirelists')
+                                    active   
+                                    @endif ">Carhire</a>
+                            </li>
                         </ul>
                     </li>
 

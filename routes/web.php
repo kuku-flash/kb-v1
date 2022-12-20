@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin', 'as' => 'admin.
     Route::put ('update_listing/{listing}',  [AdminListingController::class, 'update'])->name('listing.update');
     Route::get ('listing/{listing}',  [AdminListingController::class, 'delete'])->name('listing.delete');
     Route::get ('vehicle',  [AdminListingController::class, 'vehicles'])->name('listing.vehicles');
+    Route::get ('carhirelist',  [AdminListingController::class, 'carhirelist'])->name('listing.carhirelist');
 
 });
 

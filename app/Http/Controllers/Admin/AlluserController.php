@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class Allusercontroller extends Controller
 {
@@ -17,6 +20,7 @@ class Allusercontroller extends Controller
      */
     public function index()
     {
+        abort_if(Gate::denies('user-access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $arr['users'] = User::all();
         return view ('admin.user.index') ->with($arr);
     }
@@ -28,7 +32,7 @@ class Allusercontroller extends Controller
      */
     public function create(Request $request)
     {
-        
+        abort_if(Gate::denies('user-create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $roles = Role::all();
         return view('admin.user.create', compact('roles'));
     }
@@ -41,6 +45,7 @@ class Allusercontroller extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|unique:users|email|max:255',
@@ -78,6 +83,7 @@ class Allusercontroller extends Controller
      */
     public function edit(User $user)
     {
+        abort_if(Gate::denies('user-edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $roles = Role::all()->pluck('title', 'id');
         $user->load('roles');
         return view('admin.user.edit', compact('roles', 'user'));;

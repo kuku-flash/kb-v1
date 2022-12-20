@@ -32,10 +32,16 @@ class AdminListingController extends Controller
       return redirect() -> route('admin.listing.index')->with('success',' Listing updated');
     }
     public function vehicles(){
- 
+        
         $vehicles = DB::table('vehicles')
-        ->join('listings', 'listings.id', '=', 'vehicles.listing_id')
+        ->join('listings', 'listings.id', '=', 'vehicles.listing_id')->where('category_id',2)
         ->get();
         return view('admin.listing.vehicles', compact('vehicles'));
+    }
+
+    public function carhirelist(){
+        $arr['listings'] = Listing::where('category_id',4)->get();
+        $arr['vehicles'] = Vehicle::all();
+        return view('admin.listing.carhirelist')->with($arr);
     }
 }

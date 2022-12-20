@@ -7,12 +7,12 @@
 </div>
 @endif
 <div class="container-fluid">
-  
+    @can('user-access')
         <div class="rounded-button">
            <a href="{{route('admin.user.create')}}"> <button type="button" class="btn mb-3 btn-rounded btn-primary">Create</button> </a>
         
         </div>
-  
+    @endcan
     
     <div class="row">
         <div class="col-12">

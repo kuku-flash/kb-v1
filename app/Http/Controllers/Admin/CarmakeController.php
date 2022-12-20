@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Carmake;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 
 class CarmakeController extends Controller
@@ -14,6 +15,7 @@ class CarmakeController extends Controller
      */
     public function index()
     {
+        
         $arr['carmakes'] = Carmake::all();
         return view ('admin.carmake.index') ->with($arr);
     }

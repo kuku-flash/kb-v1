@@ -22,7 +22,11 @@
 						
 						<ul class="list-inline">
 							<li class="list-inline-item">
+<<<<<<< HEAD
 								<a href="{{ route('vehicleslist') }}"><i class="fa fa-car"></i> Vehicles</a>
+=======
+								<a href=""><i class="fa fa-car"></i> Vehicles</a>
+>>>>>>> dce11b006c94a3d9c1ab1293b8b493073020b606
 							</li>
 							<li class="list-inline-item">
 								<a href="{{ route('carhire') }}"><i class="fa fa-taxi"></i> Car Hire</a>
@@ -137,8 +141,6 @@
 		</div>
 		<div class="row">
 
-
-
 @foreach ($listings as $listing )		
 @foreach ($vehicles as $vehicle)
 @if ($listing->id == $vehicle->listing_id)
@@ -190,31 +192,91 @@
 <!--==========================================
 =           Find the perfect car           =
 ===========================================-->
-<section class="product">
+<div class="Hdrive text-center my-3">
 	<div class="col-md-12">
 		<div class="section-title">
 			<h2>Find your drive</h2>
 		</div>
 	</div>
-<div class="card-container">
-	<div class="floathire-layout">
-	  <div class="card-image">
-		<img class="index-img-fluid" src="/images/sclass.jpg" alt="">
-		<div class="hire-card">
-		  <div class="hire-title">Find the perfect car to unwind for the weekend</div>
-		  <div class="card-desc">
-			From luxury drivers to spirited sports cars, ditch the grind with convenient nearby cars.
-			From daily drivers to spirited sports cars, ditch the grind with convenient nearby cars.
-			From daily drivers to spirited sports cars, ditch the grind with convenient nearby cars.
-			</div>
-			<button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
-		  </div>
-		</div>
-	  </div>
-	</div>
-</section>
-
-
+    <div class="Hdrive">
+        <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+            <div class="carousel-inner w-100" role="listbox">
+                <div class="carousel-item active">
+					<div class="image-left Hdrive">
+						<img src="images/timo car.jpg" alt="Human Rights Logo"/>
+						<div>
+							<p>The Human Rights Logo has its origin in the international 
+								“Logo for Human Rights” initiative, which was started in 2010. 
+								Its goal was to create an internationally recognized logo to support the global human rights movement. 
+								The winning logo was created by Predrag Stakić from Serbia.</p>
+						</div>
+					</div>
+                </div>
+                <div class="carousel-item">
+					<div class="image-left Hdrive">
+						<img src="images/amg1.jpg" alt="Human Rights Logo"/>
+						<div>
+							<p>The Human Rights Logo has its origin in the international 
+								“Logo for Human Rights” initiative, which was started in 2010. 
+								Its goal was to create an internationally recognized logo to support the global human rights movement. 
+								The winning logo was created by Predrag Stakić from Serbia.</p>
+						</div>
+					</div>
+                </div>
+                <div class="carousel-item">
+					<div class="image-left">
+						<img src="images/amg1.jpg" alt="Human Rights Logo"/>
+						<div>
+							<p>The Human Rights Logo has its origin in the international 
+								“Logo for Human Rights” initiative, which was started in 2010. 
+								Its goal was to create an internationally recognized logo to support the global human rights movement. 
+								The winning logo was created by Predrag Stakić from Serbia.</p>
+						</div>
+					</div>
+                </div>
+                <div class="carousel-item">
+					<div class="image-left">
+						<img src="images/amg1.jpg" alt="Human Rights Logo"/>
+						<div>
+							<p>The Human Rights Logo has its origin in the international 
+								“Logo for Human Rights” initiative, which was started in 2010. 
+								Its goal was to create an internationally recognized logo to support the global human rights movement. 
+								The winning logo was created by Predrag Stakić from Serbia.</p>
+						</div>
+					</div>
+                </div>
+                <div class="carousel-item">
+					<div class="image-left">
+						<img src="images/amg1.jpg" alt="Human Rights Logo"/>
+						<div>
+							<p>The Human Rights Logo has its origin in the international
+								 “Logo for Human Rights” initiative, which was started in 2010. 
+								 Its goal was to create an internationally recognized logo to support the global human rights movement. 
+								 The winning logo was created by Predrag Stakić from Serbia.</p>
+						</div>
+					</div>
+                </div>
+                <div class="carousel-item">
+					<div class="image-left">
+						<img src="images/amg1.jpg" alt="Human Rights Logo"/>
+						<div>
+							<p>The Human Rights Logo has its origin in the international “Logo for Human Rights” initiative, 
+								which was started in 2010. 
+								Its goal was to create an internationally recognized logo to support the global human rights movement. 
+								The winning logo was created by Predrag Stakić from Serbia.</p>
+						</div>
+					</div>
+                </div>
+            </div>
+            <a class="slick-prev" href="#recipeCarousel" role="button" data-slide="prev">
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="slick-next" href="#recipeCarousel" role="button" data-slide="next">
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
 
 <section class="product">
 	<div class="col-md-12">
@@ -332,75 +394,6 @@
 		</div>
 	</div>
 </section>
-
-<!--==========================================
-=          Why KingsBridge            =
-===========================================-->
-<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="section-title section-why-title">
-						<h2>Why KingsBridge?</h2>
-						<p>we dont just sell cars we sell a lifestyle </p>
-					</div>
-				</div>
-				<div class="col-sm-6">
-				  <div class="whycard">
-					<div class="card-body">
-					  <h5 class="why-title">Special title treatment</h5>
-					  <p class="why-text">
-						  With supporting text below as a natural lead-in to additional content.
-						With supporting text below as a natural lead-in to additional content.
-						With supporting text below as a natural lead-in to additional content.
-					  </p>
-					  <li class="why-btn-alighn" "><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-					</div>
-				  </div>
-				</div>
-				<div class="col-sm-6">
-				  <div class="whycard">
-					<div class="card-body">
-					  <h5 class="why-title">Special title treatment</h5>
-					  <p class="why-text">
-						  With supporting text below as a natural lead-in to additional content.
-						With supporting text below as a natural lead-in to additional content.
-						With supporting text below as a natural lead-in to additional content.
-					  </p>
-					  <li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-					</div>
-				  </div>
-				</div>
-
-				<div class="col-sm-6">
-					<div class="whycard">
-					  <div class="card-body">
-						<h5 class="why-title">Special title treatment</h5>
-						<p class="why-text">
-							With supporting text below as a natural lead-in to additional content.
-							With supporting text below as a natural lead-in to additional content.
-							With supporting text below as a natural lead-in to additional content.
-						</p>
-						<li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-					  </div>
-					</div>
-				  </div>
-				  <div class="col-sm-6">
-					<div class="whycard">
-					  <div class="card-body">
-						<h5 class="why-title">Special title treatment</h5>
-						<p class="why-text">
-							With supporting text below as a natural lead-in to additional content.
-							With supporting text below as a natural lead-in to additional content.
-							With supporting text below as a natural lead-in to additional content.
-						</p>
-						<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-					  </div>
-					</div>
-				  </div>
-			  </div>
-		</div>
-</div>
-
 <!--==========================================
 			=      FAQ         =
 ===========================================-->
@@ -739,6 +732,29 @@ window.onload=function(){
   });
   
 };
+
+$('#recipeCarousel').carousel({
+  interval: 10000
+})
+
+$('.carousel .carousel-item').each(function(){
+    var minPerSlide = 3;
+    var next = $(this).next();
+    if (!next.length) {
+    next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+    
+    for (var i=0;i<minPerSlide;i++) {
+        next=next.next();
+        if (!next.length) {
+        	next = $(this).siblings(':first');
+      	}
+        
+        next.children(':first-child').clone().appendTo($(this));
+      }
+});
+
 
 </script>
 
