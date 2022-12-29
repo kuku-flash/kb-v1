@@ -22,11 +22,7 @@
 						
 						<ul class="list-inline">
 							<li class="list-inline-item">
-<<<<<<< HEAD
 								<a href="{{ route('vehicleslist') }}"><i class="fa fa-car"></i> Vehicles</a>
-=======
-								<a href=""><i class="fa fa-car"></i> Vehicles</a>
->>>>>>> dce11b006c94a3d9c1ab1293b8b493073020b606
 							</li>
 							<li class="list-inline-item">
 								<a href="{{ route('carhire') }}"><i class="fa fa-taxi"></i> Car Hire</a>

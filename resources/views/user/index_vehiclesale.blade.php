@@ -133,6 +133,11 @@
 								<div class="change-icons">
 									<ul class="list-inline justify-content-center">
 										<li class="list-inline-item">
+											<a data-toggle="tooltip" data-placement="top" title="Boost" class="edit" href="#">
+												<span class="btn btn-secondary">Boost your Listing</span>
+											</a>
+										</li>
+										<li class="list-inline-item">
 											<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('user.show_vehiclesale', [$listing->id, $vehicle->id])}}">
 												<i class="fa fa-eye"></i>
 											</a>
@@ -152,6 +157,7 @@
 											  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 											</form>
 										</li>
+										
 									</ul>
 								</div>
 							</td>
