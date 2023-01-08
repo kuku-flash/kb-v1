@@ -194,9 +194,9 @@ Public function dashboard_archived_ads(){
 }
 
 
-Public function dashboard_favourite_ads(){
+Public function dashboard_wishlist(){
 
-    return view ('pages.dashboard_favourite_ads');
+    return view ('pages.dashboard_wishlist');
     
 }
 

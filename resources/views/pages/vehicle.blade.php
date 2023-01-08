@@ -84,6 +84,18 @@
 					  </section>
 
 	  <section class="vehicle specifications">
+		<div class="favourist-list">
+			<form method="POST" action="{{route('user.add_wishlist')}}">
+				@csrf
+				<input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+				<input type="hidden" name="user_id" value="#">
+				<button type="submit"><i class="fa fa-heart-o"></i></button>
+			</form>
+
+
+
+            
+        </div>
 		<ul aria-label="Key Specifications" data-gui="key-specs-section" class="sc-jYKCQm isection"><li class="sc-jfkLlK ialighment atc-type-fiesta atc-type--regular">
 
 				<span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">

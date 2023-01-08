@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminListingController;
 use App\Http\Controllers\User\ListingController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -38,6 +39,7 @@ Route :: get ('ad_list_view',  [PagesController::class, 'ad_list_view'])->name('
 Route :: get ('blog',  [PagesController::class, 'blog'])->name('blog');
 Route :: get ('contact_us',  [PagesController::class, 'contact_us'])->name('contact_us');
 Route :: get ('signup',  [PagesController::class, 'signup'])->name('signup');
+
 Route :: post ('storeuser',  [PagesController::class, 'storeuser'])->name('storeuser');
 Route :: get ('user/login',  [PagesController::class, 'login'])->name('user.login');
 Route :: get ('package',  [PagesController::class, 'package'])->name('package');
@@ -98,7 +100,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('model',  [ListingController::class, 'model'])->name('model');
     Route :: get ('invoice/{listing}/{vehicle}',  [ListingController::class, 'invoice'])->name('invoice');
 
-    
+
     Route :: get ('carhire',  [ListingController::class, 'index_carhire'])->name('index_carhire');
     Route :: get ('create_carhire',  [ListingController::class, 'create_carhire'])->name('create_carhire');
     Route :: post ('store_carhire',  [ListingController::class, 'store_carhire'])->name('store_carhire');
@@ -114,7 +116,8 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
 
     Route :: get ('vehicleparts',  [ListingController::class, 'index_vehicleparts'])->name('index_vehicleparts');
     
-   
+    Route :: post ('add_wishlist',  [WishlistController::class, 'add_wishlist'])->name('add_wishlist');
+    Route :: get ('wishlist',  [WishlistController::class, 'get_wishlist'])->name('wishlist');
 
 
 });

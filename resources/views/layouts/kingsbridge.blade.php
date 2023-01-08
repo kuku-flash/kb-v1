@@ -109,6 +109,7 @@
                     <a class="dropdown-item" href="{{route('user.my_list')}}"> My List</a>
                     <a class="dropdown-item" href="{{route('user.index_carhire')}}">Carhire</a>
                     <a class="dropdown-item" href="{{route('user.index_vehiclesale')}}">vehiclesale</a>
+                    <a class="dropdown-item" href="{{route('user.wishlist')}}"> Wish List</a>
                     <a class="dropdown-item" href="#">Vehicle Parts</a>
                     <a class="dropdown-item" href="{{route('user.active_list')}}"> Active List</a>  
                     <a class="dropdown-item" href="{{route('user.pending_list')}}"> Pending List</a>                    
