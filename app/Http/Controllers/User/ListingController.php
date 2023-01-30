@@ -10,6 +10,7 @@ use App\Models\Carmake;
 use App\Models\Carmodel;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Invoice;
 use App\Models\Listing;
 use App\Models\Package;
 use App\Models\Vehicle;
@@ -124,19 +125,18 @@ class ListingController extends Controller
             'duty_type' => 'required',
             'interior_type' => 'required',
             'engine_size' => 'required',
-            'package_id' => 'required',
-            'vehicle_type' => 'required',
-            'color' => 'required',
             'front_img' => ' required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
             'back_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
             'right_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
             'left_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
             'interiorf_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
             'interiorb_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'engine_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
             'opt_img1' => '|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
             'opt_img2' => ' image|max:2048|mimes:jpeg,png,jpg,gif,svg',
             'opt_img3' => ' image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+            'vehicle_type' => 'required',
+            'color' => 'required',
+   
 
 
             ]);
@@ -145,7 +145,6 @@ class ListingController extends Controller
 
       $listing->category_id = $request->category;
       $listing->city_id = $request->city;
-      $listing->package_id = $request->package_id;
       $listing->user_id = $request->user_id;
       $listing->ads_status = 'Pending';
       $listing->save();
@@ -234,6 +233,8 @@ class ListingController extends Controller
         $path = $request->file('opt_img3')->storeAs('public/photos', $opt_img3Store);
     } else { $opt_img3Store = ''; }     
 
+
+
         $vehicle->listing_id = $currentId;
         $vehicle->model_id = $request->model_id;
         $vehicle->year_of_build = $request->year_of_build;
@@ -264,6 +265,7 @@ class ListingController extends Controller
         if($request->hasFile('opt_img2')) { $vehicle->opt_img2 = $opt_img2Store; }
         if($request->hasFile('opt_img3')) { $vehicle->opt_img3 = $opt_img3Store;   } 
 
+
         $vehicle->save();
 
        
@@ -287,7 +289,7 @@ class ListingController extends Controller
           }     
         } */
   
-    return redirect() -> route('user.invoice', [$listing->id, $vehicle->id])->with('success','Added'); 
+    return redirect() -> route('user.packages',['listing_id' => $listing->id])->with('success','Added'); 
      
     }
     public function show_vehiclesale(Listing $listing, Vehicle $vehicle){
@@ -822,6 +824,54 @@ if($request->hasFile('opt_img3')){
         $arr['packages'] = Package::all();
 
         return view('user.invoice')->with($arr);
+    }
+
+    public function packages(Request $request )
+    {
+        $listingid = $request->listing_id;
+        $arr['packages'] = Package::all();
+        $arr['listing'] =   $listingid;
+
+
+        return view('user.packages')->with($arr);
+
+    }
+
+    public function post_invoice(Request $request,  Invoice $invoice, Listing $listing)
+    {
+        
+      
+        $current = Carbon::now();
+        // add 3 days to the current time
+        $InvoiceExpires = $current->addDays(3);
+
+        $invoice->user_id = $request->user_id;
+        $invoice->bill_to = auth::user()->name;
+        $invoice->generate_date = Carbon::now()->format('Y-m-d');
+        $invoice->due_date = $InvoiceExpires;
+        $invoice->package_id = $request->package_id;
+        $invoice->listing_id = $request->listing_id;
+        $invoice->status = 'UNPAID';
+
+
+        $invoice->save();
+
+        $listing->package_id = $request->package_id;
+        $listing->update();
+
+        return redirect() -> route('user.invoice.show', $invoice->id)->with('success','Added');
+       
+
+    /*    
+        $invoice->bill_to
+        $invoice->generate_date
+        $invoice->due_date
+        $invoice->subtotal
+        $invoice->tax
+        $invoice->total 
+        $invoice->bill_to
+
+        */
     }
     
 

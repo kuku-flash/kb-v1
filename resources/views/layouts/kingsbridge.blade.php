@@ -117,6 +117,8 @@
                     <a class="dropdown-item" href="{{route('user.sold_list')}}"> Sold Ads</a> 
                     <a class="dropdown-item" href="{{route('user.expired_list')}}"> Expired List</a>                   
                     <a class="dropdown-item" href="#">Chat</a> 
+                    <a class="dropdown-item" href="{{route('user.invoice.index')}}">Invoices</a> 
+                    <a class="dropdown-item" href="#">Payments</a> 
                     <a class="dropdown-item" href="{{ route('user.user_profile', Auth::user()->id )}}">User Profile</a> 
                     <a class="dropdown-item" href="{{ route('logout') }}"
                      onclick="event.preventDefault();

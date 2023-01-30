@@ -107,7 +107,7 @@
 					  <div class="mdl-card__title">
 						<h2 style="font-weight: 450; font-size:20px;" 
 						class="mdl-card__title-text">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}} 
-							- <small>{{ $listing->package->package_name }} <span style="color: red;"> {{ $listing->category->category_name }} </span></h2>
+							- <small> <span style="color: red;"> {{ $listing->category->category_name }} </span></h2>
 						
 					  </div>
 					  <div class="mdl-card__supporting-text">
@@ -133,7 +133,7 @@
 								<div class="change-icons">
 									<ul class="list-inline justify-content-center">
 										<li class="list-inline-item">
-											<a data-toggle="tooltip" data-placement="top" title="Boost" class="edit" href="#">
+											<a data-toggle="tooltip" data-placement="top" title="Boost" class="edit" href="{{ route('user.packages', ['listing_id'=>$listing->id])}}">
 												<span class="btn btn-secondary">Boost your Listing</span>
 											</a>
 										</li>

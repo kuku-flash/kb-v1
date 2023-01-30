@@ -17,6 +17,8 @@ use App\Http\Controllers\Admin\AdminListingController;
 use App\Http\Controllers\User\ListingController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -98,6 +100,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
 
     Route :: get ('category',  [ListingController::class, 'category'])->name('category');
     Route :: get ('model',  [ListingController::class, 'model'])->name('model');
+    
     Route :: get ('invoice/{listing}/{vehicle}',  [ListingController::class, 'invoice'])->name('invoice');
 
 
@@ -115,9 +118,18 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('archived_list',  [ListingController::class, 'archived_list'])->name('archived_list');
 
     Route :: get ('vehicleparts',  [ListingController::class, 'index_vehicleparts'])->name('index_vehicleparts');
+
+    Route :: get ('packages',  [ListingController::class, 'packages'])->name('packages');
+    Route :: post ('post_invoice',  [ListingController::class, 'post_invoice'])->name('post_invoice');
     
     Route :: post ('add_wishlist',  [WishlistController::class, 'add_wishlist'])->name('add_wishlist');
     Route :: get ('wishlist',  [WishlistController::class, 'get_wishlist'])->name('wishlist');
+
+    Route::resource('invoice', InvoiceController::class);
+    Route :: get ('generated_invoice',  [InvoiceController::class, 'generated_invoice'])->name('generated_invoice');
+
+
+    Route::resource('payment', PaymentController::class);
 
 
 });
