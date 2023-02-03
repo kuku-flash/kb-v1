@@ -133,7 +133,7 @@
 								<div class="change-icons">
 									<ul class="list-inline justify-content-center">
 										<li class="list-inline-item">
-											<a data-toggle="tooltip" data-placement="top" title="Boost" class="edit" href="{{ route('user.packages', ['listing_id'=>$listing->id])}}">
+											<a data-toggle="tooltip" data-placement="top" title="Boost" class="edit" href="{{ route('user.packages', $listing->id)}}">
 												<span class="btn btn-secondary">Boost your Listing</span>
 											</a>
 										</li>

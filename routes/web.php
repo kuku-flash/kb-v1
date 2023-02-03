@@ -119,7 +119,9 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
 
     Route :: get ('vehicleparts',  [ListingController::class, 'index_vehicleparts'])->name('index_vehicleparts');
 
-    Route :: get ('packages',  [ListingController::class, 'packages'])->name('packages');
+    Route :: get ('packages/{listing}',  [ListingController::class, 'packages'])->name('packages');
+    Route :: post ('packageupdate/{listing}',  [ListingController::class, 'packageupdate'])->name('packageupdate');
+    Route :: get ('checkout',  [ListingController::class, 'checkout'])->name('checkout');
     Route :: post ('post_invoice',  [ListingController::class, 'post_invoice'])->name('post_invoice');
     
     Route :: post ('add_wishlist',  [WishlistController::class, 'add_wishlist'])->name('add_wishlist');

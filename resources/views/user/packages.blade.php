@@ -3,9 +3,9 @@
 
 <section class="section-sm">
     <div class="container">
-      <form action="{{ route('user.post_invoice')}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">     
+      <form action="{{ route('user.packageupdate', $listing->id)}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">     
         @csrf
-       
+  
 
 <fieldset class="border border-gary p-4 mb-5">
   <h4 style=" text-align: center;">Choose your boosting Plan</h4>
@@ -19,7 +19,7 @@
       </div>
   </div>
   <input type="hidden" name="user_id" value="{{ Auth::user()->id}}" >
-  <input type="hidden" name="listing_id" value="{{ $listing }}" >
+  <input type="hidden" name="listing_id" value="{{ $listing->id }}" >
   <div class="container">
     <div class="row">
       @foreach ($packages as $package )
@@ -55,7 +55,7 @@
 </fieldset>
 
 
-<button type="submit" class="btn btn-primary d-block mt-2 float-right">Click to Pay</button>
+<button type="submit" class="btn btn-primary d-block mt-2 float-right">Click to Checkout</button>
 </form>
     
         </form>

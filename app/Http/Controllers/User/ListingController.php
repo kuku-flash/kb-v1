@@ -289,7 +289,7 @@ class ListingController extends Controller
           }     
         } */
   
-    return redirect() -> route('user.packages',['listing_id' => $listing->id])->with('success','Added'); 
+    return redirect() -> route('user.packages',$listing->id)->with('success','Added'); 
      
     }
     public function show_vehiclesale(Listing $listing, Vehicle $vehicle){
@@ -826,14 +826,38 @@ if($request->hasFile('opt_img3')){
         return view('user.invoice')->with($arr);
     }
 
-    public function packages(Request $request )
+    public function packages(Request $request, listing $listing )
     {
-        $listingid = $request->listing_id;
         $arr['packages'] = Package::all();
-        $arr['listing'] =   $listingid;
+        $arr['listing'] =   $listing;
 
 
         return view('user.packages')->with($arr);
+
+    }
+
+    public function packageupdate(Request $request, $listing) {
+        $package_id = $request->input('package_id');
+ 
+        /*$data=array('first_name'=>$first_name,"last_name"=>$last_name,"city_name"=>$city_name,"email"=>$email);*/
+        /*DB::table('student')->update($data);*/
+        /* DB::table('student')->whereIn('id', $id)->update($request->all());*/
+        DB::update('update listings set package_id = ? where id = ?',[$package_id,$listing]);
+        echo "Record updated successfully.
+        ";
+       return  redirect() -> route('user.checkout',['listing_id'=>$listing, 'package_id'=>$package_id]);
+    }
+ 
+    public function checkout(Request $request )
+    {
+        $listingid = $request->listing_id;
+        $packageid = $request->package_id;
+        $arr['packages'] = Package::all();
+        $arr['listing'] =   $listingid;
+        $arr['packageid'] =   $packageid;
+
+
+        return view('user.checkout')->with($arr);
 
     }
 
@@ -856,8 +880,7 @@ if($request->hasFile('opt_img3')){
 
         $invoice->save();
 
-        $listing->package_id = $request->package_id;
-        $listing->update();
+       
 
         return redirect() -> route('user.invoice.show', $invoice->id)->with('success','Added');
        
