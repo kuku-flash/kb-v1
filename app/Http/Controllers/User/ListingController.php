@@ -837,12 +837,15 @@ if($request->hasFile('opt_img3')){
     }
 
     public function packageupdate(Request $request, $listing) {
+        $current = Carbon::now();
+        // add 3 days to the current time
         $package_id = $request->input('package_id');
+        $package_duration = $current->addDays($request->input('package_duration'))->format('Y-m-d');
  
         /*$data=array('first_name'=>$first_name,"last_name"=>$last_name,"city_name"=>$city_name,"email"=>$email);*/
         /*DB::table('student')->update($data);*/
         /* DB::table('student')->whereIn('id', $id)->update($request->all());*/
-        DB::update('update listings set package_id = ? where id = ?',[$package_id,$listing]);
+        DB::update('update listings set package_id = ?, ads_duration = ? where id = ?',[$package_id, $package_duration, $listing]);
         echo "Record updated successfully.
         ";
        return  redirect() -> route('user.checkout',['listing_id'=>$listing, 'package_id'=>$package_id]);
@@ -876,6 +879,7 @@ if($request->hasFile('opt_img3')){
         $invoice->package_id = $request->package_id;
         $invoice->listing_id = $request->listing_id;
         $invoice->status = 'UNPAID';
+        $invoice->total = $request->total;
 
 
         $invoice->save();

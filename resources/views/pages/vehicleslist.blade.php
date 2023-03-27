@@ -6,8 +6,74 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="search-result bg-gray">
-					<h2>Results For "Vehicles"</h2>
-					<p>123 Results on  {{ now()->format('d F Y') }}</p>
+					
+
+						
+							<form action="{{ route('vehicle_search') }}" method="get">
+								<div class="form-row">
+									<div class=" form-group col-md-2">
+										<select name="make" class="make form-control ">
+										<option value="">Choose a Make</option>
+							
+										@foreach($makes as $make)
+											<option value="{{ $make->id }}" {{(old('make'))? 'selected':''}}>{{ $make->make }}</option>
+										@endforeach
+									</select>
+										@error('make_id')
+										<span class="invalid"  role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+										@enderror
+									</div>
+						
+									<div class="carmodel form-group col-md-2">
+										
+									<select name="model_id" class="model form-control ">
+										<option value="0"  disabled="true" selected="true">Choose a model</option>
+
+									</select>
+									
+									</div>
+						
+									<div class="form-group col-md-2">
+										<select name="city" id="inputGroupSelect" class="form-control">
+											<option value="">Select City</option>
+											@foreach ($cities as $city )
+											 <option value="{{ $city->id }}" {{(old('city')==$city->id)? 'selected':''}}>
+											  {{ $city->city }}</option> 
+											@endforeach
+										</select>
+					
+									</div>
+									<div class="form-group col-md-2">
+										<select name="price" id="inputGroupSelect" class="form-control">
+											<option value="">Max Price</option>
+											<option value="10000000">100,000,000</option>
+											<option value="50000000">50,000,000</option>
+											<option value="10000000">10,000,000</option>
+											<option value="5000000">5,000,000</option>
+											<option value="1000000">1,000,000</option>
+										</select>
+					
+									</div>
+									<div class="form-group col-md-2">
+										<select name="price" id="inputGroupSelect" class="form-control">
+											<option value="">Min Price</option>
+											<option value="900000">900,000</option>
+											<option value="700000">700,000</option>
+											<option value="500000">500,000</option>
+											
+										</select>
+					
+									</div>
+
+									<div class="form-group col-md-2 ">
+										<button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
+										
+									</div>
+								</div>
+							</form>
+						<p>123 Results on  {{ now()->format('d F Y') }}</p>
 				</div>
 			</div>
 		</div>

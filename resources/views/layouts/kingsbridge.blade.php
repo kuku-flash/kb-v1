@@ -28,7 +28,8 @@
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css')}}" >
     <link rel="stylesheet"  href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" >
-
+    <link rel="stylesheet" href="{{ asset('plugins/slick-carousel/slick/slick.css')}}" >
+    <link rel="stylesheet" href="{{ asset('plugins/slick-carousel/slick/slick-theme.css')}}" >
 
   
   
@@ -62,18 +63,11 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('carhire')}}">Car Hire</a>
-                </li>
+              
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('vehicleslist')}}">Buy a Vehicle</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Vehicle Parts</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Car Events</a>
-                </li>
+             
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('about_us')}}">About Us</a>
                 </li>
@@ -245,8 +239,9 @@
   </div>
 </footer>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>	
+<script src="{{ asset('plugins/jquery-2.2.0.min.js')}}"></script>
 <!-- JAVASCRIPTS -->
-<script src="{{ asset('plugins/jQuery/jquery.min.js')}}"></script>
+<script src="{{ asset('plugins/jquery.min.js')}}"></script>
 <script src="{{ asset('plugins/bootstrap/js/popper.min.js')}}"></script>
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('plugins/bootstrap/js/bootstrap-slider.js')}}"></script>

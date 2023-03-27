@@ -86,9 +86,9 @@
 					<table class="table table-responsive product-dashboard-table">
 						<thead>
               <h4>
-                <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
+                <img src="{{ asset('images/king2.png')}}" 
                 style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " >
-                <span style="color:#d4af37">Kings</span><span style="color:#aaa9ad">bridge</span></a>
+                <span style="color:#d4af37">Kings</span><span style="color:#aaa9ad">bridge</span>
                 <br>
               <small class="float-right">Date: {{ $listing->created_at}}</small>
               <br>

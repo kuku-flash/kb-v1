@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\Allusercontroller;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminListingController;
+use App\Http\Controllers\Admin\AdminInvoiceController;
 use App\Http\Controllers\User\ListingController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\WishlistController;
@@ -60,6 +61,9 @@ Route :: get ('carhire',  [PagesController::class, 'carhire'])->name('carhire');
 Route :: get ('carhirelist',  [PagesController::class, 'carhirelist'])->name('carhirelist');
 Route :: get ('showcarhire/{listing}/{vehicle}',  [PagesController::class, 'showcarhire'])->name('showcarhire');
 
+Route::get('/login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
+
 
 Auth::routes();
 
@@ -80,6 +84,11 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin', 'as' => 'admin.
     Route::get ('listing/{listing}',  [AdminListingController::class, 'delete'])->name('listing.delete');
     Route::get ('vehicle',  [AdminListingController::class, 'vehicles'])->name('listing.vehicles');
     Route::get ('carhirelist',  [AdminListingController::class, 'carhirelist'])->name('listing.carhirelist');
+    Route::get ('invoice',  [AdminInvoiceController::class, 'index'])->name('invoice.index');
+    Route::get ('unpaid_invoice',  [AdminInvoiceController::class, 'unpaid_invoice'])->name('invoice.unpaid_invoice');
+    Route::get ('paid_invoice',  [AdminInvoiceController::class, 'paid_invoice'])->name('invoice.paid_invoice');
+    Route::get ('invoice_edit/{invoice}',  [AdminInvoiceController::class, 'invoice_edit'])->name('invoice.invoice_edit');
+    Route::put ('invoice_update/{invoice}',  [AdminInvoiceController::class, 'invoice_update'])->name('invoice.invoice_update');
 
 });
 

@@ -37,6 +37,7 @@
                 <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
             </ul>
             <input type="radio"  id="inputGroupSelect" class="form-control" name="package_id" value="{{ $package->id }}" {{(old('package_id')==$package->id)? 'checked':''}}>
+            <input type="hidden" name="package_duration" value="{{ $package->package_duration }}" >
         
                   @error('package_id')
                   <span class="invalid" role="alert">

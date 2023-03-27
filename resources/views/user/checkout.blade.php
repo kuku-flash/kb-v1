@@ -2,111 +2,97 @@
 @section('content')
 
 
-<section class="section-sm">
+<section class=" bg-gray py-5">
     <div class="container">
-<div class="row">
-    <form action="{{ route('user.post_invoice')}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">     
-        @csrf
 
-    <div class="col-75">
-      <div class="container">
+<fieldset class="border bg-white p-4 my-5 ad-feature bg-gray">
+  <div class="row">
+        
+      <div class="col-lg-12">
 
-  
-          <div class="row">
-            <div class="col-50">
-              <h3>Billing Address</h3>
-              <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-              <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-              <label for="email"><i class="fa fa-envelope"></i> Email</label>
-              <input type="text" id="email" name="email" placeholder="john@example.com">
-              <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-              <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-              <label for="city"><i class="fa fa-institution"></i> City</label>
-              <input type="text" id="city" name="city" placeholder="New York">
-  
-              <div class="row">
-                <div class="col-50">
-                  <label for="state">State</label>
-                  <input type="text" id="state" name="state" placeholder="NY">
-                </div>
-                <div class="col-50">
-                  <label for="zip">Zip</label>
-                  <input type="text" id="zip" name="zip" placeholder="10001">
-                </div>
-              </div>
-            </div>
-  
-            <div class="col-50">
-              <h3>Payment</h3>
-              <label for="fname">Accepted Cards</label>
-              <div class="icon-container">
-                <i class="fa fa-cc-visa" style="color:navy;"></i>
-                <i class="fa fa-cc-amex" style="color:blue;"></i>
-                <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                <i class="fa fa-cc-discover" style="color:orange;"></i>
-              </div>
-              <label for="cname">Name on Card</label>
-              <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-              <label for="ccnum">Credit card number</label>
-              <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-              <label for="expmonth">Exp Month</label>
-              <input type="text" id="expmonth" name="expmonth" placeholder="September">
-  
-              <div class="row">
-                <div class="col-50">
-                  <label for="expyear">Exp Year</label>
-                  <input type="text" id="expyear" name="expyear" placeholder="2018">
-                </div>
-                <div class="col-50">
-                  <label for="cvv">CVV</label>
-                  <input type="text" id="cvv" name="cvv" placeholder="352">
-                </div>
-              </div>
-            </div>
-  
-          </div>
-          <label>
-            <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-          </label>
+          <h2 class="pb-3">Your Order Summary
+              
+          </h2>
 
       </div>
-    </div>
-  
-    <div class="col-25">
-      <div class="container">
-        <h4>Cart
-          <span class="price" style="color:black">
-            <i class="fa fa-shopping-cart"></i>
-            <b>4</b>
-          </span>
-        </h4>
-        <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-        <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-        <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-        <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-        <hr>
-        <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-      </div>
-    </div>
-  </div>
+      <div class="col-lg-6 my-3">
+        @foreach ($packages as $package)
+        @if ($package->id == $packageid)
 
-  <input  name="user_id" value="{{ Auth::user()->id}}" >
-  <input  name="listing_id" value="{{ $listing }}" >
-  <input  name="package_id" value="{{ $packageid }}" >
 
-@foreach ($packages as $package)
-@if ($package->id == $packageid)
-
+        
+          
+          <div class="package-content  border text-center p-5  mb-4 my-lg-0">
+            <div class="package-content-heading border-bottom">
+             
+                <h2>{{ $package->package_name}}</h2>
+                <h2 class="py-3"> Kes {{ $package->package_amount}}</h2>
+                <h5 class="py-3"> <span> For {{ $package->package_duration}} Days</h5>
+            </div>
+            <ul>
+                <li class="my-4"> <i class="fa fa-check"></i> Features Ad Availability</li>
+                <li class="my-4"> <i class="fa fa-check"></i>For {{ $package->package_duration}} Days</li>
+                <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
+            </ul>
  
-  <input  name="total" value=" {{ $package->package_amount}}" >
-@endif
+        </div>
+
+        @endif
+        @endforeach 
+        <div class="package-content  border text-center p-5  mt-4 my-lg-0">
+        <span class="mb-3 d-block">Please select the preferred payment method:</span>
+          <select>
+            <option>Mpesa</option>
+          </select>
+        </div>
+
+      </div>
+      
+      <div class="col-lg-6 my-3">
+        <form action="{{ route('user.post_invoice')}}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data"> 
+          @csrf
+          <input type="hidden"  name="user_id" value="{{ Auth::user()->id}}" >
+          <input type="hidden" name="listing_id" value="{{ $listing }}" >
+          <input type="hidden" name="package_id" value="{{ $packageid }}" >
+          @foreach ($packages as $package)
+          @if ($package->id == $packageid)
+          <input type="hidden" name="total" value=" {{ $package->package_amount}}" >
+          <input type="hidden" name="package_duration" value=" {{ $package->package_duration}}" >
+          <span class="mb-3 d-block">{{$package->package_name}}</span>
+         
+          
+          <table class="table ">
+           
+            <tbody>
+            <tr>
+              <tr>
+                <th class="text-right">Subtotal</th>
+                <td class="text-center">kes {{$package->package_amount}}</td>
+              </tr>
+              <tr>
+                <th class="text-right">VAT</th>
+                <td class="text-center"> 0%</td>
+              </tr>
+           
+              <tr>
+                <th class="text-right">Total Amount</th>
+                <td class="text-center"> <h2> <b>kes {{ $package->package_amount}} </b> </h2></td>
+              </tr>
+            </tr>
+            </tbody>
     
-@endforeach
+          </table>
 
-<button type="submit" class="btn btn-primary d-block mt-2 float-right">Click to Pay</button>
-
-</form>
+          <button type="submit" class="btn btn-primary d-block mt-2 float-right">Checkout to Pay Now</button>
+        </form>
+      </div>
+    
+  </div>
+  @endif
+  @endforeach
+</fieldset>
     </div>
 </section>
+
 
   @endsection

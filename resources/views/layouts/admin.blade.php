@@ -326,6 +326,20 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-note menu-icon"></i><span class="nav-text">Invoices</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li>
+                                <a href="{{ route('admin.invoice.index')}}" class="nav-text  
+                                    @if($segment=='invoices')
+                                    active   
+                                    @endif "> <i class="icon-note menu-icon"></i>Invoice</a>
+                            </li>
+                          
+                        </ul>
+                    </li>
 
                     <li>
                         <a href="{{ route('admin.category.index')}}" class="nav-text  
