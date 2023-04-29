@@ -46,7 +46,11 @@ class VehicleController extends Controller
      */
     public function show($id)
     {
-        //
+        $vehicle = Vehicle::findOrFail($id);
+        $vehicle->increment('views');
+        $vehicle->refresh();
+        ($vehicle->views);
+        return view('vehicle', compact('vehicle'));
     }
 
     /**
@@ -82,4 +86,17 @@ class VehicleController extends Controller
     {
         //
     }
+    public function favorites(Vehicle $vehicle)
+{
+    if (Auth::check()) {
+        $user = Auth::user();
+        if ($vehicle->isFavoritedBy($user)) {
+            $user->favorites()->detach($vehicle);
+        } else {
+            $user->favorites()->attach($vehicle);
+        }
+    }
+    return redirect()->back();
 }
+}
+

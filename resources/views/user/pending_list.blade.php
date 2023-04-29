@@ -99,32 +99,30 @@
     <div class="row">
         <div class="col-lg-12 mt-3">
           
-                <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal">
-					<div class="mdl-card__media">
-						<img class="img-square-wrapper" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
-					</div>
-					  <div class="mdl-card__title">
-						<h2 style="font-weight: 450; font-size:20px;" 
-						class="mdl-card__title-text">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}} 
-							- <small>{{ $listing->package->package_name }} <span style="color: red;"> {{ $listing->category->category_name }} </span></h2>
-						
-					  </div>
-					  <div class="mdl-card__supporting-text">
-						<p class="card-text">
-							<ul class="list-horizontal">
-								<li class="li-size"><b>Listing ID: </b><span class="car-li">{{ $listing->id }}</span></li>
-								<li class="li-size"><b>Price: </b><span class="car-li"> {{ $vehicle->price}}</span></li>
-								<li class="li-size"><b>Status: </b><span class="car-li">{{ $listing->ads_status }}</span></li>
-								<li class="li-size"><b>Category: </b><span class="car-li">{{ $vehicle->vehicle_type }}</span></li>
-								<li class="li-size"><b>Invoice: </b><span class="car-li"><a href="{{ route('user.invoice', [$listing->id, $vehicle->id])}}"> Click Here </a></span></li>
-								<li class="li-size"><b>Visitors </b><span class="car-li fa fa-users "></span>: 5000</li>
-								<li class="li-size"><b>Duration <span class="car-li fa fa-count "></span>: 30 left
-							
-								</li> 
-								<li class="li-size"><b>Chats <span class="car-li fa fa-comments "></span>: 50</li>
-							</ul>
-						</p>
-					  </div>
+			<div class="listing-container">
+				<div class="listing-image">
+				  <img class="img-square-wrapper" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
+				</div>
+				<div class="listing-info">
+				  <div class="mdl-card__title">
+					<h2 style="font-weight: 450; font-size:20px;" class="mdl-card__title-text">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}} - <small><span style="color: red;"> {{ $listing->category->category_name }}</span></small></h2>
+				  </div>
+				  <div class="mdl-card__supporting-text">
+					<p class="card-text">
+					  <ul class="list-horizontal">
+						<li><b>Listing ID:</b> <span>{{ $listing->id }}</span></li>
+						<li><b>Price:</b> <span>{{ $vehicle->price }}</span></li>
+						<li><b>Status:</b> <span class="car-li-active">{{ $listing->ads_status }}</span></li>
+						<li><b>Category:</b> <span>{{ $vehicle->vehicle_type }}</span></li>
+						<li><b>Duration <span class="fa fa-count"></span>:</b> <span>30 left</span></li>
+					  </ul>
+					  <a href="{{ route('user.invoice', [$listing->id, $vehicle->id])}}" class="invoice-link">Invoice</a>
+					</p>
+				  </div>
+				</div>
+			  </div>
+
+
 				<div class="my-list-footer">
 						<small class="text-muted">  
 							<div class="change-icons">

@@ -147,6 +147,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
 Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.'], function () {
     Route :: get ('user_profile/{user}',  [UserController::class, 'user_profile'])->name('user_profile');
     Route :: put ('update_user/{user}',  [UserController::class, 'update_user'])->name('update_user');
+    Route::get('/user/favorites', [UserController::class, 'favorites'])->name('user.favorites');
 
 });
 

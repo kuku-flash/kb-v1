@@ -96,68 +96,60 @@
             </h4>
           </div>
           <!-- /.col -->
-        </div>
+        
         <!-- info row -->
-        <div class="row invoice-info">
-          <div class="col-sm-4 invoice-col">
-            To
-            <address>
-              <strong>{{ $listing->user->name}}</strong><br>
-              Phone: {{ $listing->user->phone_number}}<br>
-              Email: {{ $listing->user->email}}
-            </address>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <h4>To</h4>
+              <address>
+                <strong>{{ $listing->user->name }}</strong><br>
+                Phone: {{ $listing->user->phone_number }}<br>
+                Email: {{ $listing->user->email }}
+              </address>
+            </div>
+            <div class="col-sm-12 col-md-4"></div>
+            <div class="col-sm-12 col-md-4"></div>
           </div>
-          <!-- /.col -->
-          <div class="col-sm-4 invoice-col">
-            
+          <div class="row">
+            <div class="col-12 table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ $listing->package->package_name }} - {{ $vehicle->carmodel->carmake->make }} {{ $vehicle->carmodel->model }} {{ $vehicle->year_of_build }}</td>
+                    <td>kes {{ $listing->package->package_amount }}</td>
+                  </tr>
+                  <tr>
+                    <th style="">Subtotal:</th>
+                    <td>kes {{ $listing->package->package_amount }}</td>
+                  </tr>
+                  <tr>
+                    <th>Tax (9.3%)</th>
+                    <td>kes 10.34</td>
+                  </tr>
+                  <tr>
+                    <th>Total:</th>
+                    <td>kes {{ $listing->package->package_amount }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="lead">Payment Method:</p>
+              <img src="{{ asset('images/M-PESA_LOGO-01.svg')}}"style=" width:65px; height:65px;"> 
+            </div>
           </div>
-          <!-- /.col -->
-          <div class="col-sm-4 invoice-col">
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-    
-        <!-- Table row -->
-        <div class="row">
-          <div class="col-12 table-responsive">
-            <table class="table table-striped">
-              <thead>
-              <tr>
-               
-                <th>Description</th>
-                <th>Subtotal</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>{{ $listing->package->package_name}} - {{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->year_of_build}} </td>
-                <td>kes {{ $listing->package->package_amount}}</td>
-                <tr>
-                  <th style="">Subtotal:</th>
-                  <td>kes {{ $listing->package->package_amount}}</td>
-                </tr>
-                <tr>
-                  <th>Tax (9.3%)</th>
-                  <td>kes 10.34</td>
-                </tr>
-             
-                <tr>
-                  <th>Total:</th>
-                  <td>kes {{ $listing->package->package_amount}}</td>
-                </tr>
-              </tr>
-              </tbody>
-              <small class="float-left">Amount Due : {{ $listing->created_at}}</small>
-            </table>
-            <p class="lead">Payment Method:</p>
-            <img src="{{ asset('images/M-PESA_LOGO-01.svg')}}"style=" width:65px; height:65px;"> 
-            <p class="text-muted well well-sm shadow-none" style="text-align: center; margin-top: 10px;">
-             KingsBridge the leading online platform that sells both Vehicles and Houses.
-            </p>
+          <div class="row">
+            <div class="col-12">
+              <small class="float-left">Amount Due: {{ $listing->created_at }}</small>
+            </div>
           </div>
         </div>
-      </div>
+        
 						</thead>
 						<tbody>
 							</tr>

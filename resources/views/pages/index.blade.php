@@ -246,7 +246,7 @@
 =            Popular deals section            =
 ============================================-->
 
-<section class="product">
+<section class="popular-deals section bg-gray">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -258,10 +258,10 @@
 		<div class="row">
 			<!-- offer 01 -->
 			<div class="col-lg-12">
-				<div class="slider owl-drag">
+				<div class="trending-ads-slide ">
 					<div class="col-sm-12 col-lg-4">
 						<!-- product card -->
-<div class="product-item bg-light owl-drag">
+<div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
 			<div class="price">Silver Package</div>
@@ -447,13 +447,11 @@
 		</div>
 	</div>
 </div>
-
+<button type="button" class="slick-next"></button>
 
 					</div>
 				</div>
 			</div>
-			
-			
 		</div>
 	</div>
 </section>
@@ -473,7 +471,7 @@
 		<div class="row">
 			<!-- offer 01 -->
 			<div class="col-lg-12">
-				<div class="slider owl-drag">
+				<div class="trending-ads-slide slider">
 					<div class="col-sm-12 col-lg-4">
 						<!-- product card -->
 <div class="product-item bg-light owl-drag">
@@ -688,12 +686,12 @@
 				</div>
 				<div class="col-sm-6">
 				  <div class="whycard">
-					<div class="card-body">
-					  <h5 class="why-title">Special title treatment</h5>
+					<div class="card-bodyy">
+					  <h5 class="why-title">Customizable Pricing</h5>
 					  <p class="why-text">
-						  With supporting text below as a natural lead-in to additional content.
-						With supporting text below as a natural lead-in to additional content.
-						With supporting text below as a natural lead-in to additional content.
+						We offer a unique and customizable pricing model that allows our customers to choose the package that best fits their needs and budget.
+						 With options ranging from basic to premium listings, 
+						our platform is accessible to car owners of all types and sizes, making it a one-stop-shop for all car needs.
 					  </p>
 					  <li class="why-btn-alighn" "><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
 					</div>
@@ -701,12 +699,10 @@
 				</div>
 				<div class="col-sm-6">
 				  <div class="whycard">
-					<div class="card-body">
-					  <h5 class="why-title">Special title treatment</h5>
+					<div class="card-bodyy">
+					  <h5 class="why-title">Trust and Security</h5>
 					  <p class="why-text">
-						  With supporting text below as a natural lead-in to additional content.
-						With supporting text below as a natural lead-in to additional content.
-						With supporting text below as a natural lead-in to additional content.
+						Our strict vetting process and fraud prevention measures ensure a secure and reliable rental experience.
 					  </p>
 					  <li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
 					</div>
@@ -715,7 +711,7 @@
 
 				<div class="col-sm-6">
 					<div class="whycard">
-					  <div class="card-body">
+					  <div class="card-bodyy">
 						<h5 class="why-title">Special title treatment</h5>
 						<p class="why-text">
 							With supporting text below as a natural lead-in to additional content.
@@ -941,10 +937,10 @@ $(document).ready(function(){
 	
 		// List of sentences
 var _CONTENT = [ 
-"Buy, Sell and Car Rental", 
+"Buy and Sell", 
 "Advertising a Purpose, a Car at a Time,", 
 "With KingsBridge you get your money’s worth!!!.", 
-"Find the best rental prices on luxury, economy, and family rental cars."
+"You're in control, choose the right package to sell your car ."
 ];
 
 // Current sentence being processed
@@ -1008,10 +1004,8 @@ setTimeout(function() {
 }
 }
 
-// Start the typing effect on load
+/// Start the typing effect on load
 _INTERVAL_VAL = setInterval(Type, 100);
-
-
 
 window.onload=function(){
   $('.slider').slick({

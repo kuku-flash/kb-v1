@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Carmake;
 use App\Models\Carmodel;
 use App\Models\Category;
@@ -148,8 +147,10 @@ Public function vehicles_list(){
     
 }
 public function vehicle(Listing $listing, Vehicle $vehicle){
+    $vehicle->increment('views');
     $arr['listing'] = $listing;
     $arr['vehicle'] = $vehicle;
+    $vehicle->save();
     $arr['vehiclephotos'] = Vehicle_photo::all();
 
     return view ('pages.vehicle')->with($arr);
@@ -194,11 +195,20 @@ Public function dashboard_archived_ads(){
 }
 
 
-Public function dashboard_wishlist(){
+Public function dashboard_favorites(){
 
-    return view ('pages.dashboard_wishlist');
+    return view ('pages.dashboard_favourites');
     
 }
+
+public function toggleFavorite(Request $request, Vehicle $vehicle)
+{
+    $user = $request->user();
+    $user->favorites()->toggle($vehicle);
+
+    return redirect()->back();
+}
+
 
 Public function dashboard_my_ads(){
 

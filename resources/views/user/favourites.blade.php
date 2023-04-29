@@ -88,10 +88,10 @@
 				
 						
 						
-							@foreach($wishlists as $wishlist)
+							@foreach($favourites as $favourite)
 							<tr>
 								@foreach ($vehicles as $vehicle)
-										@if($wishlist->id == $vehicle->vehicle_id)
+										@if($favourite->id == $vehicle->vehicle_id)
 										
 	
 <div class="container-fluid">

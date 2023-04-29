@@ -27,7 +27,7 @@
 					</div>
 
 					<section>
-						<div class=" main single-item slider">
+						<div class=" main single-item">
 						 
 				@if ($vehicle->front_img) <div class="main" ><img   src="/storage/photos/{{ $vehicle->front_img }}"> </div> @endif
 				@if ($vehicle->back_img) <div  class="main"><img  src="/storage/photos/{{ $vehicle->back_img }}"></div>  @endif
@@ -40,10 +40,10 @@
 				@if ($vehicle->opt_img2) <div class="main" ><img  src="/storage/photos/{{ $vehicle->opt_img2 }}"> </div> @endif
 				@if ($vehicle->opt_img3) <div class="main"><img   src="/storage/photos/{{ $vehicle->opt_img3 }}"></div> @endif
 					</div>
-				
-					<!--		  <ul class="thumbs mt-3 slider-nav">
+				<!--
+					 <ul class="thumbs mt-3 slider-nav">
 									<li>
-										<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->front_img }}">
+										<img class="thumbnail thumb-img active" src="/storage/photos/{{ $vehicle->front_img }}">
 									</li>
 									<li>
 										<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->back_img }}">
@@ -61,11 +61,11 @@
 										<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorb_img }}">
 									</li>
 									
-										@if ($vehicle->engine_img)
+										
 										<li>
 										<img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->engine_img }}">
 										</li>
-										@endif
+										
 										
 									
 									<li>
@@ -78,24 +78,21 @@
 										<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img3 }}">
 									</li>
 								
-							</ul> -->
-							
+							</ul>
+							!-->
 						  
 					  </section>
 
 	  <section class="vehicle specifications">
 		<div class="favourist-list">
 			<form method="POST" action="{{route('user.add_wishlist')}}">
-				@csrf
-				<input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-				<input type="hidden" name="user_id" value="#">
-				<button type="submit"><i class="fa fa-heart-o"></i></button>
-			</form>
-
-
-
-            
-        </div>
+			@csrf
+			<input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+			<input type="hidden" name="user_id" value="#">
+			<button type="submit"><i class="fa fa-heart-o"></i></button>
+		</form>
+		</div>
+		<p>viewed {{ $vehicle->views }} times.</p>
 		<ul aria-label="Key Specifications" data-gui="key-specs-section" class="sc-jYKCQm isection"><li class="sc-jfkLlK ialighment atc-type-fiesta atc-type--regular">
 
 				<span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
@@ -144,17 +141,19 @@
 		</svg>
 	</ul>
 
+	<!-- Car Description -->
+	<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+		<h3 class="tab-title">Car Description</h3>
+		<p>{!! $vehicle->description !!}</p>
+
+	</div>
 	  </section>	  
 					<!-- product slider -->
 
 					<div class="content ">
 						<ul class="nav nav-pills  justify-content-center" id="pills-tab" role="tablist">
 							<li class="nav-item">
-								<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home"
-								 aria-selected="true">Car Description</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
+								<a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
 								 aria-selected="false">Specifications</a>
 							</li>
 							<li class="nav-item">
@@ -163,12 +162,7 @@
 							</li>
 						</ul>
 						<div class="tab-content" id="pills-tabContent">
-							<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-								<h3 class="tab-title">Car Description</h3>
-								<p>{!! $vehicle->description !!}</p>
-
-							</div>
-							<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+							<div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 								<h3 class="tab-title">Car Specifications</h3>
 								<table class="table table-bordered product-table">
 									<tbody>
@@ -343,7 +337,7 @@
 	<!-- Container End -->
 </section>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>	
 <script type="text/javascript">
 	let thumbnails = document.getElementsByClassName('thumbnail')
@@ -364,27 +358,51 @@
 		  document.getElementById('featured').src = this.src
 	  })
 	}        
+
+
+	$(function() {
+  // Get references to the main image container and thumbnails
+  var $mainImages = $('.main > img');
+  var $thumbnails = $('.thumb-img');
+  
+  // Listen for click events on the left and right arrows
+  $('.slider-prev, .slider-next').on('click', function() {
+    // Find the index of the currently active main image
+    var activeIndex = $mainImages.index($('.main > img.active'));
+    
+    // Calculate the index of the next main image based on the clicked arrow
+    var nextIndex = activeIndex + ($(this).hasClass('slider-next') ? 1 : -1);
+    
+    // Make sure the index is within the bounds of the main images array
+    if (nextIndex < 0) {
+      nextIndex = $mainImages.length - 1;
+    } else if (nextIndex >= $mainImages.length) {
+      nextIndex = 0;
+    }
+    
+    // Update the active class on the main image and its corresponding thumbnail
+    $mainImages.removeClass('active').eq(nextIndex).addClass('active');
+    $thumbnails.removeClass('active').eq(nextIndex).addClass('active');
+  });
+});
 	</script> 
  <script type="text/javascript">
-    $(document).ready(function(){
-		
-	  $('.slider-for').slick({
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			arrows: false,
-			fade: true,
-			asNavFor: '.slider-nav'
-		});
-		$('.slider-nav').slick({
-			slidesToShow: 3,
-			slidesToScroll: 1,
-			asNavFor: '.slider-for',
-			dots: true,
-			centerMode: true,
-			focusOnSelect: true
-		});
-		$('.single-item').slick();
-	});
+  $(document).ready(function() {
+    $('.single-item').slick({
+      arrows: true,
+      prevArrow: '<button type="button" class="slick-prev">&#8592;</button>',
+      nextArrow: '<button type="button" class="slick-next">&#8594;</button>'
+    });
+
+    $('.slider-nav').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      asNavFor: '.single-item',
+      dots: false,
+      centerMode: false,
+      focusOnSelect: true
+    });
+  });
 	
 
 $(document).ready(function(){
