@@ -70,9 +70,9 @@ class ListingController extends Controller
         $vehicles = Vehicle::all();
         return view ('user.archived_list', compact('listings','vehicles'));
     }
-    Public function favourite_list(){
+    Public function favourites(){
     
-        return view ('user.favourite_list'); 
+        return view ('user.favourites'); 
         
     }
 

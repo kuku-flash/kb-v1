@@ -26,18 +26,24 @@
             </div>
             <div class="col-lg-6 pt-5 pt-lg-0">
                 <div class="about-content">
-                    <h3 class="font-weight-bold">Introduction</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc est justo, aliquam nec tempor
-                        fermentum, commodo et libero. Quisque et rutrum arcu. Vivamus dictum tincidunt magna id
-                        euismod. Nam sollicitudin mi quis orci lobortis feugiat.</p>
-                    <h3 class="font-weight-bold">How we can help</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc est justo, aliquam nec tempor
-                        fermentum, commodo et libero. Quisque et rutrum arcu. Vivamus dictum tincidunt magna id
-                        euismod. Nam sollicitudin mi quis orci lobortis feugiat. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Nunc est justo, aliquam nec tempor fermentum, commodo et libero.
-                        Quisque et rutrum arcu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc est
-                        justo, aliquam nec tempor fermentum, commodo et libero. Quisque et rutrum arcu. Vivamus dictum
-                        tincidunt magna id euismod. Nam sollicitudin mi quis orci lobortis feugiat.</p>
+                    <h3 class="font-weight-bold mb-4">About Us:</h3>
+                    <p>KingsBridge is an online car selling platform that provides 
+                        a one-stop-shop for all your car needs. 
+                        We offer a platform for users to buy and sell vehicles with ease. 
+                        Additionally, we provide a unique opportunity for garage owners 
+                        to showcase their services and products. 
+                        Our website is designed to be a comprehensive source of all things automotive.</p>
+                    <h3 class="font-weight-bold mt-5 mb-4">Mission Statement:</h3>
+                    <p>Our mission at KingsBridge is to provide our customers with a seamless car buying and selling experience. 
+                        We strive to connect car enthusiasts and provide them with the resources they need to make informed decisions.
+                         We aim to empower garage owners by providing them with a platform to showcase their services and products. 
+                        Our goal is to become the go-to source for all things automotive.</p>
+                        <h3 class="font-weight-bold mt-5 mb-4">Vision:</h3>
+                    <p>We envision a world where buying and selling cars is a hassle-free and enjoyable experience for everyone. 
+                        Our vision for KingsBridge is to create a platform that is the ultimate destination for car enthusiasts, 
+                        where they can find everything they need in one place. We want to continue to innovate and provide 
+                        our users with new and exciting features that make their experience with us even better. 
+                        Our ultimate goal is to be the leading online car selling platform in the country.</p>
                 </div>
             </div>
         </div>
@@ -59,37 +65,37 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="meetcard my-3 my-lg-0">
-                    <img class="meetcard-img-top" src="images/team/team1.jpg" class="img-fluid w-100" alt="Card image cap">
+                    <img class="meetcard-img-top" src="images/team/" class="img-fluid w-100" alt="Card image cap">
                     <div class="card-body  text-center">
-                        <h5 class="card-title">John Doe</h5>
+                        <h5 class="card-title">Joshua Warutere</h5>
                         <p class="card-text">Founder / CEO</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="meetcard my-3 my-lg-0">
-                    <img class="meetcard-img-top" src="images/team/team2.jpg" class="img-fluid w-100" alt="Card image cap">
+                    <img class="meetcard-img-top" src="images/team/" class="img-fluid w-100" alt="Card image cap">
                     <div class="card-body text-center">
-                        <h5 class="card-title">John Doe</h5>
-                        <p class="card-text">Founder / CEO</p>
+                        <h5 class="card-title">Fajak Kuku </h5>
+                        <p class="card-text">Founder / CTO</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="meetcard my-3 my-lg-0">
-                    <img class="meetcard-img-top" src="images/team/team3.jpg" class="img-fluid w-100" alt="Card image cap">
+                    <img class="meetcard-img-top" src="images/team/.jpg" class="img-fluid w-100" alt="Card image cap">
                     <div class="card-body  text-center">
-                        <h5 class="card-title">John Doe</h5>
-                        <p class="card-text">Founder / CEO</p>
+                        <h5 class="card-title">Elizabeth Wamugo </h5>
+                        <p class="card-text">Manager</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="meetcard my-3 my-lg-0">
-                    <img class="meetcard-img-top" src="images/team/team4.jpg" class="img-fluid w-100" alt="Card image cap">
+                    <img class="meetcard-img-top" src="images/team/.jpg" class="img-fluid w-100" alt="Card image cap">
                     <div class="card-body  text-center">
-                        <h5 class="card-title">John Doe</h5>
-                        <p class="card-text">Founder / CEO</p>
+                        <h5 class="card-title">Sharon Njeri</h5>
+                        <p class="card-text">Accountant</p>
                     </div>
                 </div>
             </div>

@@ -44,6 +44,10 @@ class Vehicle extends Model
         'facebook_link',
         'youtube_link',
         'color',
+        'views',
+        
+
+        
     ];
 
     public function listing(){

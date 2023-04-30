@@ -80,28 +80,87 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div class="category-sidebar">
+						<!--===================================
+						=            Select Location           =
+						====================================-->
 					<div class="widget category-list">
-	<h4 class="widget-header">Select Vehicle Type</h4>
+						<h4 class="widget-header">Select Location</h4>
+						<div class="dropdown">
+						  <button class="btn btn-secondary dropdown-toggle" type="button" id="locationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Choose Location
+						  </button>
+						  <div class="dropdown-menu" aria-labelledby="locationDropdown">
+							@foreach ($cities as $city )
+							  <a class="dropdown-item" href="{{ route('listing_filter', $city->id)}}">{{$city->city}}</a>
+							@endforeach
+						  </div>
+						</div>
+					  </div>
 
-	@foreach ($vehicles as $vehicle)
-		<li><a href="{{ route('vehicle_filter', $vehicle->id)}}">Car <span>({{$vehicle->vehicle_type}})</span></li>
-	@endforeach
-	
+ <!--===================================
+=            Select Make           =
+====================================-->
+<div class="widget category-list">
+    <h4 class="widget-header">Select Make</h4>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="makeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Make
+        </button>
+        <div class="dropdown-menu" aria-labelledby="makeDropdown">
+            @foreach ($makes as $make)
+                @php
+                    $hasModels = false;
+                @endphp
+                @foreach ($models as $model)
+                    @if ($make->id == $model->make_id)
+                        @php
+                            $hasModels = true;
+                        @endphp
+                        @break
+                    @endif
+                @endforeach
+                @if ($hasModels)
+                    <a class="dropdown-item dropdown-toggle" href="#">{{$make->make}}</a>
+                    <div class="dropdown-menu">
+                        @foreach ($models as $model)
+                            @if ($make->id == $model->make_id)
+                                <a class="dropdown-item" href="{{ route('vehicle_filter', $model->id)}}">{{$model->model}}</a>
+                            @endif
+                        @endforeach
+                    </div>
+                @else
+                    <a class="dropdown-item" href="{{ route('vehicle_filter', $make->id)}}">{{$make->make}}</a>
+                @endif
+            @endforeach
+        </div>
+    </div>
 </div>
+	<!--===================================
+	=           Select Select Model         =
+	====================================-->
 
 <div class="widget category-list">
-	<h4 class="widget-header">Select Location</h4>
-	<ul class="category-list">
-		@foreach ($cities as $city )
-				
-		<li><a href="{{ route('listing_filter', $city->id)}}">{{$city->city}} <span></span></li>
-
-		@endforeach
-		
-	</ul>
-
+    <h4 class="widget-header">Select Model</h4>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="modelDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Choose Model
+        </button>
+        <div class="dropdown-menu" aria-labelledby="modelDropdown">
+            @foreach ($models as $model)
+                <a class="dropdown-item" href="#">
+                    @foreach ($vehicles as $vehicle)
+                        @if ($vehicle->model_id == $model->id)
+                            {{ $model->model }}
+                            @break
+                        @endif
+                    @endforeach
+                </a>
+            @endforeach
+        </div>
+    </div>
 </div>
 
+<<<<<<< HEAD
 <div class="widget category-list">
 	<h4 class="widget-header">Select Make</h4>
 	@foreach ($makes as $make )
@@ -139,6 +198,25 @@
 	@endforeach
 	</ul>
 </div>
+=======
+<!--===================================
+=           Select Vehicle Type           =
+====================================-->
+						<div class="widget category-list">
+							<h4 class="widget-header">Select Vehicle Type</h4>
+							<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button" id="vehicleTypeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Select Vehicle Type
+								</button>
+								<div class="dropdown-menu" aria-labelledby="vehicleTypeDropdown">
+									@foreach ($vehicles as $vehicle)
+										<a class="dropdown-item" href="{{ route('vehicle_filter', $vehicle->id)}}">{{$vehicle->vehicle_type}}</a>
+									@endforeach
+								</div>
+							</div>
+						</div>
+
+>>>>>>> 6790257e6652bec9ef267a51e922a18e5308a4e8
 <div class="widget price-range w-100">
 	<h4 class="widget-header">Price Range</h4>
 	<div class="block">
@@ -162,13 +240,22 @@
 					<div class="row">
 						<div class="col-md-6">
 							<strong>Sort</strong>
-							<select>
+							<div class="select-wrapper">
+							  <select>
 								<option>Most Recent</option>
 								<option value="1">Most Popular</option>
 								<option value="2">Lowest Price</option>
 								<option value="4">Highest Price</option>
-							</select>
-						</div>
+							  </select>
+							  <ul>
+								<li>Most Recent</li>
+								<li>Most Popular</li>
+								<li>Lowest Price</li>
+								<li>Highest Price</li>
+							  </ul>
+							</div>
+						  </div>
+						  
 						<div class="col-md-6">
 							<div class="view">
 								<strong>Views</strong>
@@ -195,7 +282,7 @@
 							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
-										<div class="price"> {{ $listing->package->package_name}}</div>
+										<div class="price"> </div>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											
 											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
@@ -244,7 +331,7 @@
 										</a>
 									</div>
 
-									@endif	
+									@endif
 									@endforeach
 									@endforeach
 

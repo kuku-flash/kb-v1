@@ -536,6 +536,137 @@ button {
 
 
 /* Start kingsbridge */
+/* Custom select */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.select-wrapper select {
+  background-color: transparent;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  color: #555;
+  font-size: 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.select-wrapper:after {
+  content: "\f107";
+  font-family: FontAwesome;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #ccc;
+  pointer-events: none;
+}
+
+.select-wrapper select:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #ccc;
+  border-color: #d4af37;
+}
+
+.select-wrapper select::-ms-expand {
+  display: none;
+}
+
+/* Positioning the dropdown */
+.select-wrapper ul {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  z-index: 99;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+
+.select-wrapper.open ul {
+  display: block;
+}
+
+.select-wrapper ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.select-wrapper ul li:hover {
+  background-color: #f5f5f5;
+}
+
+.select-wrapper ul li.active {
+  font-weight: bold;
+}
+
+/* Add arrow to dropdown when open */
+.select-wrapper.open:after {
+  content: "\f106";
+  color: #d4af37;
+}
+
+
+.my-slider {
+  position: relative;
+}
+
+.my-slider .slick-prev,
+.my-slider .slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.my-slider .slick-prev {
+  left: 20px;
+}
+
+.my-slider .slick-next {
+  right: 20px;
+}
+
+.my-slider .slick-prev:before,
+.my-slider .slick-next:before {
+  font-family: 'FontAwesome';
+  font-size: 30px;
+  color: #fff;
+  opacity: 0.75;
+}
+
+.my-slider .slick-prev:before {
+  content: '\f104';
+}
+
+.my-slider .slick-next:before {
+  content: '\f105';
+}
+
+@media (max-width: 767px) {
+  .my-slider {
+    margin: 0 -15px;
+  }
+
+  .my-slider .slide {
+    padding: 0 15px;
+  }
+}
+
 .Hdrive{
   position: relative;
   overflow: hidden;
@@ -608,7 +739,7 @@ margin: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-top: 10px;
+    
     
     }
 .ialighment {
@@ -945,6 +1076,17 @@ div.cardive-image img {
 
 
 /*why kingsbridge */
+.card-bodyy{
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+@media only screen and (min-width: 768px){
+  .card-bodyy{
+    width: 300px;
+    height: 310px;
+  }
+}
 .whycard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
@@ -1068,61 +1210,121 @@ a.text-secondary:hover {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
 /*join today */
 .faq{
   display: flex;
     justify-content: center;
     align-items: center;
 }
-.joinimg1{
-  float: right;
-  
-}
-
-.section-join{
-  padding: 21px 0;
+.section-join {
+  padding: 60px 0;
   background-color: #D3D3D3;
 }
-.join{
-  text-align: right;
+
+.joinimg1{
+  float: right;
 }
 
-.grid-flex {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  flex-direction: row; 
-  -webkit-flex-direction: row;
+@media (max-width: 768px) {
+  .join {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .joinimg1 {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+  }
+  .block {
+    text-align: center;
+  }
 }
 
-@media (max-width: 640px) {
-  .grid-flex {
-    height: 40em;
-    display: -webkit-flex;
-    -webkit-flex-direction: column;
-    flex-direction: column; 
-   }
-  .col {
-    order:vertical;
+@media (min-width: 769px) {
+  .join {
+    float: left;
+    margin-right: 30px;
   }
-  .col-left {
-    -webkit-box-ordinal-group:0;
-    -webkit-order: 0;
-    -ms-flex-order: 0;
-    order: 0;
-  }
-  .col-text div p {
-    padding: 1em;
-  }
-  .Aligner-item {
-    width: 90%;
+  .joinimg1 {
+    max-width: none;
+    height: auto;
   }
 }
+
+.block {
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .section-join .row {
+    display: flex;
+    align-items: center;
+  }
+  .join {
+    float: none;
+    margin-right: 0;
+  }
+  .section-join .block {
+    flex: 1 1 auto;
+    text-align: left;
+  }
+}
+
+/* About us Page */
+.about-img {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+
+.about-img:before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.about-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.about-content h3 {
+  color: #333;
+  font-size: 2rem;
+}
+
+.about-content p {
+  color: #777;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*meet our team */
 .meetcard {
@@ -1173,7 +1375,7 @@ border-radius: 25px;
 .product {
   position: relative;
   overflow: hidden;
-  padding: 35px;
+  
 }
 
 .product-category {
@@ -1389,6 +1591,154 @@ display: flex;
   left: auto;
   right: 0;
 }
+
+
+.listing-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.listing-image {
+  margin-bottom: 16px;
+  height: 200px;
+}
+
+.listing-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.listing-info {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .listing-container {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .listing-image {
+    margin-right: 16px;
+    margin-bottom: 0;
+    max-width: 400px;
+  }
+  
+  .listing-info {
+    flex: 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .listing-info {
+    font-size: 10px;
+  }
+  
+  .list-horizontal li {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+
+
+
+.listing-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  flex: 0 0 auto;
+  height: 200px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.details-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 10px;
+}
+
+.detail-item {
+  margin-bottom: 5px;
+}
+
+.detail-item b {
+  margin-right: 5px;
+}
+
+.invoice-link {
+  align-self: flex-end;
+  padding: 5px 10px;
+  background-color: #337ab7;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+@media only screen and (min-width: 768px) {
+  .listing-card {
+    flex-direction: row;
+  }
+
+  .image-container {
+    flex: 0 0 40%;
+    height: auto;
+  }
+
+  .details-container {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .details-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .detail-item {
+    margin-right: 40px;
+  }
+
+  .invoice-link {
+    align-self: flex-start;
+  }
+}
+
 
 
 
@@ -2068,10 +2418,6 @@ top: 115px;
     overflow: hidden;
     
   }
-
-
-
-
 
 /* auto typing*/
 #autotext {
@@ -3495,8 +3841,13 @@ background-color: #f1f1f1;
   list-style: none;
 }
 
+.single-item {
+  position: relative;
+  margin-bottom: 1rem;
+
+}
 .main{
-  padding: 21px 0;
+  padding: 10px 0;
   display: inline-block;
   margin: auto;
   
@@ -3515,10 +3866,9 @@ background-color: #f1f1f1;
 
 
 .main img{
-object-fit: cover;
-min-height: 500px;
-max-height: 500px;
-margin: auto;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
   
 }
 @media (max-width: 390.98px) {
@@ -3532,9 +3882,16 @@ margin: auto;
     }
 }
 
+@media (max-width: 1440px) {
+  .main img {
+    max-width: 100%;
+    height: auto;
+  }
+}
 .thumbs{
   
   position: relative;
+  top: -40px;
   
   
 }
@@ -3561,7 +3918,7 @@ margin: auto;
     -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding: 0.15rem; 
+  padding: 0.25rem;
   
 }
 
@@ -3992,6 +4349,7 @@ max-width: 100%;
   height: 157px;
   border-radius: 100%;
   border: 1px solid #dedede;
+  object-fit: cover;
 }
 
 .widget.user h5 {

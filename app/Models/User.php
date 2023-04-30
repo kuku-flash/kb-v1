@@ -50,6 +50,11 @@ class User extends Authenticatable
         return $this->hasMany( 'App\Models\Listing');
     }
 
+    public function favorites()
+{
+    return $this->hasMany(Favorite::class);
+}
+
     public function roles(){
         return $this->belongsToMany(Role::class);
     }
