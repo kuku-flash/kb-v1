@@ -40,7 +40,7 @@
 				@if ($vehicle->opt_img2) <div class="main" ><img  src="/storage/photos/{{ $vehicle->opt_img2 }}"> </div> @endif
 				@if ($vehicle->opt_img3) <div class="main"><img   src="/storage/photos/{{ $vehicle->opt_img3 }}"></div> @endif
 					</div>
-				<!--
+				
 					 <ul class="thumbs mt-3 slider-nav">
 									<li>
 										<img class="thumbnail thumb-img active" src="/storage/photos/{{ $vehicle->front_img }}">
@@ -79,7 +79,7 @@
 									</li>
 								
 							</ul>
-							!-->
+							
 						  
 					  </section>
 
