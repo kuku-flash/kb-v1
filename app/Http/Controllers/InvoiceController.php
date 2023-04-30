@@ -11,8 +11,7 @@ use App\Models\Listing;
 use App\Models\Package;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
-
+use PDF;
 class InvoiceController extends Controller
 {
     /**
@@ -75,6 +74,30 @@ class InvoiceController extends Controller
         $pdf = Pdf::loadView('user.show_invoice', $data);
         return $pdf->download('invoice.pdf');
     }
+    
+    public function generatePDF(Invoice $invoice)
+    {
+        $arr['categories'] = Category::all();
+        $arr['cities'] = City::all();
+        $arr['makes'] = Carmake::all();
+        $arr['models'] = Carmodel::all();
+        $arr['listing'] = Listing::all();
+        $arr['vehicle'] = Vehicle::all();
+        $arr['packages'] = Package::all();
+        $arr['invoice'] = $invoice;
+  
+        $data = [
+            'title' => 'Welcome to ItSolutionStuff.com',
+            'date' => date('m/d/Y'),
+            'invoice' => $invoice
+        ]; 
+            
+        $pdf = PDF::loadView('user.show_invoice', $data);
+     
+        return $pdf->download('itsolutionstuff.pdf');
+    }
+
+
 
     /**
      * Show the form for editing the specified resource.

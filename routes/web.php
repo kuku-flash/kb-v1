@@ -138,6 +138,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
 
     Route::resource('invoice', InvoiceController::class);
     Route :: get ('generated_invoice',  [InvoiceController::class, 'generated_invoice'])->name('generated_invoice');
+    Route :: get ('generatePDF/{invoice}',  [InvoiceController::class, 'generatePDF'])->name('generatePDF');
 
 
     Route::resource('payment', PaymentController::class);

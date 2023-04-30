@@ -368,7 +368,7 @@
     <div class="space column">
       <div class="card">
         <h3>Right side-image</h3>
-        <input type="file" id="right" name="right_img"/>
+        <input type="file" id="right_img" name="right_img"/>
       </div>
       @error('right_img')
             <span class="invalid"  role="alert">
@@ -380,7 +380,7 @@
     <div class="space column">
       <div class="card">
         <h3>Left side-image</h3>
-        <input type="file" id="files" name="left_img" />
+        <input type="file" id="left_img" name="left_img" />
       </div>
       @error('left_img')
             <span class="invalid"  role="alert">
@@ -391,7 +391,7 @@
     <div class="space column">
       <div class="card">
         <h3>Interior front</h3>
-        <input type="file" id="files" name="interiorf_img"  />
+        <input type="file" id="interior_front" name="interiorf_img"  />
       </div>
       @error('interiorf_img')
             <span class="invalid"  role="alert">
@@ -402,7 +402,7 @@
     <div class="space column">
       <div class="card">
         <h3>Interior back</h3>
-        <input type="file" id="files" name="interiorb_img"  />
+        <input type="file" id="interior_back" name="interiorb_img"  />
       </div>
       @error('interiorb_img')
             <span class="invalid"  role="alert">
@@ -413,19 +413,19 @@
     <div class="space column">
       <div class="card">
         <h3>Optional 1</h3>
-        <input type="file" id="files" name="opt_img1" />
+        <input type="file" id="optional_1" name="opt_img1" />
       </div>
     </div>
     <div class="space column">
       <div class="card">
         <h3>Optional 2</h3>
-        <input type="file" id="files" name="opt_img2" />
+        <input type="file" id="optional_2" name="opt_img2" />
       </div>
     </div>
     <div class="space column">
       <div class="card">
         <h3>Optional 3</h3>
-        <input type="file" id="files" name="opt_img3" />
+        <input type="file" id="optional_3" name="opt_img3" />
       </div>
     </div>
   </div>
@@ -635,6 +635,197 @@ $(document).ready(function() {
     }
   });
   </script>
+<script>
+  $(document).ready(function() {
+    if (window.File && window.FileList && window.FileReader) {
+      $("#right_img").on("change", function(e) {
+        var files = e.target.files,
+          filesLength = files.length;
+        for (var i = 0; i < filesLength; i++) {
+          var f = files[i]
+          var fileReader = new FileReader();
+          fileReader.onload = (function(e) {
+            var file = e.target;
+            $("<span class=\"pip\">" +
+              "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+              "<br/><span class=\"remove\">Remove image</span>" +
+              "</span>").insertAfter("#right_img");
+            $(".remove").click(function(){
+              $(this).parent(".pip").remove();
+            });
+          });
+          fileReader.readAsDataURL(f);
+        }
+      });
+    } else {
+      alert("Your browser doesn't support to File API")
+    }
+  });
+  </script>
+
+<script>
+$(document).ready(function() {
+  if (window.File && window.FileList && window.FileReader) {
+    $("#left_img").on("change", function(e) {
+      var files = e.target.files,
+        filesLength = files.length;
+      for (var i = 0; i < filesLength; i++) {
+        var f = files[i]
+        var fileReader = new FileReader();
+        fileReader.onload = (function(e) {
+          var file = e.target;
+          $("<span class=\"pip\">" +
+            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+            "<br/><span class=\"remove\">Remove image</span>" +
+            "</span>").insertAfter("#left_img");
+          $(".remove").click(function(){
+            $(this).parent(".pip").remove();
+          });
+        });
+        fileReader.readAsDataURL(f);
+      }
+    });
+  } else {
+    alert("Your browser doesn't support to File API")
+  }
+});
+</script>
+<script>
+  $(document).ready(function() {
+    if (window.File && window.FileList && window.FileReader) {
+      $("#interior_front").on("change", function(e) {
+        var files = e.target.files,
+          filesLength = files.length;
+        for (var i = 0; i < filesLength; i++) {
+          var f = files[i]
+          var fileReader = new FileReader();
+          fileReader.onload = (function(e) {
+            var file = e.target;
+            $("<span class=\"pip\">" +
+              "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+              "<br/><span class=\"remove\">Remove image</span>" +
+              "</span>").insertAfter("#interior_front");
+            $(".remove").click(function(){
+              $(this).parent(".pip").remove();
+            });
+          });
+          fileReader.readAsDataURL(f);
+        }
+      });
+    } else {
+      alert("Your browser doesn't support to File API")
+    }
+  });
+  </script>
+  <script>
+    $(document).ready(function() {
+      if (window.File && window.FileList && window.FileReader) {
+        $("#interior_back").on("change", function(e) {
+          var files = e.target.files,
+            filesLength = files.length;
+          for (var i = 0; i < filesLength; i++) {
+            var f = files[i]
+            var fileReader = new FileReader();
+            fileReader.onload = (function(e) {
+              var file = e.target;
+              $("<span class=\"pip\">" +
+                "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                "<br/><span class=\"remove\">Remove image</span>" +
+                "</span>").insertAfter("#interior_back");
+              $(".remove").click(function(){
+                $(this).parent(".pip").remove();
+              });
+            });
+            fileReader.readAsDataURL(f);
+          }
+        });
+      } else {
+        alert("Your browser doesn't support to File API")
+      }
+    });
+    </script>
+
+<script>
+  $(document).ready(function() {
+    if (window.File && window.FileList && window.FileReader) {
+      $("#optional_1").on("change", function(e) {
+        var files = e.target.files,
+          filesLength = files.length;
+        for (var i = 0; i < filesLength; i++) {
+          var f = files[i]
+          var fileReader = new FileReader();
+          fileReader.onload = (function(e) {
+            var file = e.target;
+            $("<span class=\"pip\">" +
+              "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+              "<br/><span class=\"remove\">Remove image</span>" +
+              "</span>").insertAfter("#optional_1");
+            $(".remove").click(function(){
+              $(this).parent(".pip").remove();
+            });
+          });
+          fileReader.readAsDataURL(f);
+        }
+      });
+    } else {
+      alert("Your browser doesn't support to File API")
+    }
+  });
+  </script>
+  <script>
+    $(document).ready(function() {
+      if (window.File && window.FileList && window.FileReader) {
+        $("#optional_2").on("change", function(e) {
+          var files = e.target.files,
+            filesLength = files.length;
+          for (var i = 0; i < filesLength; i++) {
+            var f = files[i]
+            var fileReader = new FileReader();
+            fileReader.onload = (function(e) {
+              var file = e.target;
+              $("<span class=\"pip\">" +
+                "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                "<br/><span class=\"remove\">Remove image</span>" +
+                "</span>").insertAfter("#optional_2");
+              $(".remove").click(function(){
+                $(this).parent(".pip").remove();
+              });
+            });
+            fileReader.readAsDataURL(f);
+          }
+        });
+      } else {
+        alert("Your browser doesn't support to File API")
+      }
+    });
+    </script>
+    <script>
+      $(document).ready(function() {
+        if (window.File && window.FileList && window.FileReader) {
+          $("#optional_3").on("change", function(e) {
+            var files = e.target.files,
+              filesLength = files.length;
+            for (var i = 0; i < filesLength; i++) {
+              var f = files[i]
+              var fileReader = new FileReader();
+              fileReader.onload = (function(e) {
+                var file = e.target;
+                $("<span class=\"pip\">" +
+                  "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                  "<br/><span class=\"remove\">Remove image</span>" +
+                  "</span>").insertAfter("#optional_3");
+                $(".remove").click(function(){
+                  $(this).parent(".pip").remove();
+                });
+              });
+              fileReader.readAsDataURL(f);
+            }
+          });
+        } else {
+          alert("Your browser doesn't support to File API")
+        }
+      });
+      </script>
 
   <!-- The script for Car Make -->
   <script>

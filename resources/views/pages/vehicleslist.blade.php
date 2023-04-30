@@ -46,7 +46,7 @@
 					
 									</div>
 									<div class="form-group col-md-2">
-										<select name="price" id="inputGroupSelect" class="form-control">
+										<select name="price_max" id="inputGroupSelect" class="form-control">
 											<option value="">Max Price</option>
 											<option value="10000000">100,000,000</option>
 											<option value="50000000">50,000,000</option>
@@ -57,7 +57,7 @@
 					
 									</div>
 									<div class="form-group col-md-2">
-										<select name="price" id="inputGroupSelect" class="form-control">
+										<select name="price_min" id="inputGroupSelect" class="form-control">
 											<option value="">Min Price</option>
 											<option value="900000">900,000</option>
 											<option value="700000">700,000</option>
@@ -110,12 +110,16 @@
 			@foreach ($models as $model )
 			@if ($make->id == $model->make_id)
 			href="{{ route('vehicle_filter', $model->id)}}"
-			@endif
-			 @endforeach
+			
+			
 			 >{{$make->make}} <span></span></li>
-
+			 @endif
+			 @endforeach
 	@endforeach
 	</ul>
+	<select>
+		<option></option>
+	</select>
 </div>
 
 

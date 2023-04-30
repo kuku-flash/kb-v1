@@ -116,7 +116,7 @@
             </table>
             <div class="payment widget-header">   <div class="float-right btn-group btn-group-sm d-print-none">
               <a href="javascript:window.print()" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-              <a href="dl.php?type=i&amp;id=255952" class="btn btn-default"><i class="fas fa-download"></i> Download</a>
+              <a href="{{ route('user.generatePDF',$invoice->id)}}" class="btn btn-default"><i class="fas fa-download"></i> Download</a>
             </div>
              </div>  
              <div class="d-print-none">  

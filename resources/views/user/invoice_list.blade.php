@@ -85,7 +85,7 @@
                     <td> {{ $invoice->due_date}} </td>
                     <td> {{ $invoice->total}} </td>
                     <td> {{ $invoice->status}} </td>
-                    <td> <a href="{{ route('user.invoice.show',$invoice->id)}}">view</a> |  <a href="{{ route('user.generated_invoice',$invoice->id)}}">download</a></td>
+                    <td> <a href="{{ route('user.invoice.show',$invoice->id)}}">view</a> |  <a href="{{ route('user.generatePDF',$invoice->id)}}">download</a></td>
                   </tr>
     @endforeach
                 </tbody>

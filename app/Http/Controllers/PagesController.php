@@ -79,13 +79,16 @@ public function vehicle_search(Request $request){
     $arr['cities'] = City::all();
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
+    $price_max = 500000;
     $arr['listings'] = Listing::where([
         ['city_id', '!=', Null],
+   
         [ function ($query) use ($request) {
            
             if (( $city = $request->city)){
                 $query->orWhere('city_id', 'LIKE', '%' .$city. '%')->get();
             }
+           
         }]
 
     ])
@@ -94,10 +97,17 @@ public function vehicle_search(Request $request){
     $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
     $arr['vehicles'] = Vehicle::where([
         ['model_id', '!=', Null],
+        ['price', '!=', Null],
         [ function ($query) use ($request) {
            
+            if (( $make_id = $request->make_id)){
+                $query->orWhere('make', 'LIKE', '%' .$make_id. '%')->get();
+            }
             if (( $model_id = $request->model_id)){
                 $query->orWhere('model_id', 'LIKE', '%' .$model_id. '%')->get();
+            }
+            if (( $price_max = $request->price_max)){
+                $query->orWhere('price', '>=', $price_max)->get();
             }
         }]
 
@@ -129,7 +139,7 @@ Public function vehicleslist(){
     $arr['models'] = Carmodel::all();
     $arr['cities'] = City::all();
     $arr['vehicles'] = Vehicle::all();
-    $arr['listings'] = Listing::where('category_id',2)->take(20)->get(); //the 2 is the id of car category
+    $arr['listings'] = Listing::where('category_id',2)->where('ads_status','Active')->take(20)->get(); //the 2 is the id of car category
    // $arr['carcities'] = Listing::where('category_id',2)->where('city_id',$request->city_id)->take(20)->get();
    $imagecount =! Null;
    $arr['imgcount'] = Vehicle::where(['front_img' => Null,'back_img'=> Null, 'right_img'=> Null, 'left_img'=> Null])->count();
