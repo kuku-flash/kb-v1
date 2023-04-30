@@ -12,6 +12,7 @@
                     <h2 class="font-weight-bold">Featured Categories</h2>
                 </div>
             </div>
+ <!--           
             <div class="col-lg-4 col-md-6">
                 <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
                     <div class="package-content-heading border-bottom">
@@ -25,6 +26,7 @@
                     <a href="{{ route('user.create_carhire')}}" class="btn btn-primary">Choose</a>
                 </div>
             </div>
+-->
             <div class="col-lg-4 col-md-6">
                 <div class="package-content bg-light border text-center my-2 my-lg-0 p-5">
                     <div class="package-content-heading border-bottom">
@@ -39,6 +41,7 @@
                     <a href="{{ route('user.create_vehiclesale')}}" class="btn btn-primary">Choose</a>
                 </div>
             </div>
+ <!--
             <div class="col-lg-4 col-md-6">
                 <div class="package-content bg-light border text-center my-2 my-lg-0 p-5">
                     <div class="package-content-heading border-bottom">
@@ -53,6 +56,7 @@
                     <a href="#" class="btn btn-primary">Choose</a>
                 </div>
             </div>
+-->
 
         </div>
     </div>

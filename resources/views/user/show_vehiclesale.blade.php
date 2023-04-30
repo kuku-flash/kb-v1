@@ -52,16 +52,24 @@
 		<img   src="/storage/photos/{{ $vehicle->engine_img }}">
 		</div>
 		@endif
-	
+
+		@if ($vehicle->opt_img1)
 		<div class="main">
 		<img  src="/storage/photos/{{ $vehicle->opt_img1 }}">
 		</div>
+		@endif
+
+		@if ($vehicle->opt_img2)
 		<div class="main" >
 		<img  src="/storage/photos/{{ $vehicle->opt_img2 }}">
 		</div>
+		@endif
+
+		@if ($vehicle->opt_img3)
 		<div class="main">
 		<img   src="/storage/photos/{{ $vehicle->opt_img3 }}">
 		</div>
+		@endif
 </div>
 
 <!--		  <ul class="thumbs mt-3 slider-nav">

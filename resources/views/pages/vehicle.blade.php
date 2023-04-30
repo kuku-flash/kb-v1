@@ -42,41 +42,18 @@
 					</div>
 				
 					 <ul class="thumbs mt-3 slider-nav">
-									<li>
-										<img class="thumbnail thumb-img active" src="/storage/photos/{{ $vehicle->front_img }}">
-									</li>
-									<li>
-										<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->back_img }}">
-									</li>
-									<li>
-										<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->right_img }}">
-									</li>
-									<li>
-										<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->left_img }}">
-									</li>
-									<li>
-										<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorf_img }}">
-									</li>
-									<li>
-										<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorb_img }}">
-									</li>
 									
-										
-										<li>
-										<img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->engine_img }}">
-										</li>
-										
-										
-									
-									<li>
-										<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img1 }}">
-									</li>
-									<li>
-										<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img2 }}">
-									</li>
-									<li>
-										<img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img3 }}">
-									</li>
+
+				@if ($vehicle->front_img) <div  ><img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->front_img }}"> </div> @endif
+				@if ($vehicle->back_img) <div  ><img class="thumbnail thumb-img"  src="/storage/photos/{{ $vehicle->back_img }}"></div>  @endif
+				@if ($vehicle->right_img) <div ><img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->right_img }}"></div> @endif
+				@if ($vehicle->left_img) <div  ><img class="thumbnail thumb-img"  src="/storage/photos/{{ $vehicle->left_img }}"></div> @endif
+				@if ($vehicle->interiorf_img) <div  ><img class="thumbnail thumb-img"  src="/storage/photos/{{ $vehicle->interiorf_img }}"></div> @endif
+				@if ($vehicle->interiorb_img) <div ><img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->interiorb_img }}"></div> @endif		
+				@if($vehicle->engine_img) <div> <img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->engine_img }}"> </div> @endif		
+				@if ($vehicle->opt_img1) <div ><img class="thumbnail thumb-img"  src="/storage/photos/{{ $vehicle->opt_img1 }}"></div> @endif
+				@if ($vehicle->opt_img2) <div ><img  class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img2 }}"> </div> @endif
+				@if ($vehicle->opt_img3) <div ><img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->opt_img3 }}"></div> @endif
 								
 							</ul>
 							
@@ -305,6 +282,15 @@
 							<li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an
 									offer</a></li>
 						</ul>
+						<p style="font-size: 20px;">
+				
+							<a href="https://www.facebook.com/kingsbridge.kenya/"><i class="fa fa-facebook"></i><span class="icon-facebook"></span></a>
+							<i class="fa fa-email"><a href="#"><span class="icon-email"></span></a></i>
+							<i class="fa fa-instagram"><a href="#"><span class="icon-instagram"></span></a></i>
+							
+						 
+					</p>
+					<p ><a aria-label="Chat on WhatsApp" href="https://wa.me/{{ $listing->user->phone_number }}"> <img class="w-75" alt="Chat on WhatsApp" src="{{ asset('images/WhatsAppButtonGreenSmall.png')}}" /></p>
 					</div>
 					<!-- Safety tips widget -->
 					<div class="widget disclaimer">
