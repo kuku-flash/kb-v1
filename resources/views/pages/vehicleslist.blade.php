@@ -160,45 +160,6 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-<div class="widget category-list">
-	<h4 class="widget-header">Select Make</h4>
-	@foreach ($makes as $make )
-	<ul class="category-list">			
-		<li><a
-			@foreach ($models as $model )
-			@if ($make->id == $model->make_id)
-			href="{{ route('vehicle_filter', $model->id)}}"
-			
-			
-			 >{{$make->make}} <span></span></li>
-			 @endif
-			 @endforeach
-	@endforeach
-	</ul>
-	<select>
-		<option></option>
-	</select>
-</div>
-
-
-<div class="widget category-list">
-	<h4 class="widget-header">Select Model</h4>
-	<h4 class="widget-header">Select Make</h4>
-	@foreach ($models as $model )
-	<ul class="category-list">			
-		<li><a
-			@foreach ($vehicles as $vehicle )
-			@if ($vehicle->model_id == $model->id)
-			href="{{ route('vehicle_filter', $vehicle->model_id)}}"
-			@endif
-			 @endforeach
-			 >{{$model->model}} <span></span></li>
-
-	@endforeach
-	</ul>
-</div>
-=======
 <!--===================================
 =           Select Vehicle Type           =
 ====================================-->
@@ -216,7 +177,6 @@
 							</div>
 						</div>
 
->>>>>>> 6790257e6652bec9ef267a51e922a18e5308a4e8
 <div class="widget price-range w-100">
 	<h4 class="widget-header">Price Range</h4>
 	<div class="block">
@@ -343,27 +303,9 @@
 				</div>
 				
 				<div class="pagination justify-content-center">
-					<nav aria-label="Page navigation example">
-						<ul class="pagination">
-
-							
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">Previous</span>
-								</a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item active"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next">
-									<span aria-hidden="true">&raquo;</span>
-									<span class="sr-only">Next</span>
-								</a>
-							</li>
-						</ul>
-					</nav>
+					
+							{{ $listings->links('vendor.pagination.custom') }}
+					
 				</div>
 			</div>
 		</div>
@@ -382,4 +324,82 @@ $(document).ready(function(){
   });
 });
 </script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+$(document).on('change','.make',function(){
+// console.log("hmm its change");
+var make_id=$(this).val();
+// console.log(cat_id);
+var div=$("div.carmodel").parent();
+var option=" ";
+$.ajax({
+	type:'get',
+	url:'{!!URL::to('carmodel')!!}',
+	data:{'id':make_id},
+	success:function(data)
+	{
+		for(var i=0;i<data.length;i++)
+		{
+			option+='<option value="'+data[i].id+'">'+data[i].model+'</option>';
+			
+		}
+			div.find('.model').html(" ");
+			div.find('.model').append(option);
+	},
+	
+	error:function(){    }
+});
+});
+});
+$(document).ready(function(){
+    new ConditionalField({
+          control: ' .select-field',
+          visibility: {
+            'sale': '.sale',
+            'hire': '.hire',
+            'parts': '.parts'
+          }
+        });
+
+});
+</script>
+  <!-- The script for Car Make -->
+  <script>
+    $('input.number').keyup(function(event) {
+// skip for arrow keys
+if(event.which >= 37 && event.which <= 40) return;
+// format number
+$(this).val(function(index, value) {
+  return value
+  .replace(/\D/g, "")
+  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  ;
+});
+});
+  $(document).ready(function(){
+$(document).on('change','.make',function(){
+  // console.log("hmm its change");
+  var make_id=$(this).val();
+  // console.log(cat_id);
+  var div=$("div.carmodel").parent();
+  var option=" ";
+  $.ajax({
+    type:'get',
+    url:'{!!URL::to('user/model')!!}',
+    data:{'id':make_id},
+    success:function(data){
+      
+      for(var i=0;i<data.length;i++){
+        option+='<option value="'+data[i].id+'" >'+data[i].model+'</option>';
+       }
+       div.find('.model').html(" ");
+       div.find('.model').append(option);
+    },
+    
+    error:function(){    }
+  });
+});
+});
+  </script>
 @endsection

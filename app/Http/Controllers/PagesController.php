@@ -91,7 +91,7 @@ public function vehicle_search(Request $request){
         }]
 
     ])
-    ->orderBy("id", "desc")->take(10)->get();
+    ->orderBy("id", "desc")->paginate(4);
 
     $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
     $arr['vehicles'] = Vehicle::where([
@@ -138,7 +138,7 @@ Public function vehicleslist(){
     $arr['models'] = Carmodel::all();
     $arr['cities'] = City::all();
     $arr['vehicles'] = Vehicle::all();
-    $arr['listings'] = Listing::where('category_id',2)->where('ads_status','Active')->take(20)->get(); //the 2 is the id of car category
+    $arr['listings'] = Listing::where('category_id',2)->paginate(4); //the 2 is the id of car category
    // $arr['carcities'] = Listing::where('category_id',2)->where('city_id',$request->city_id)->take(20)->get();
    $imagecount =! Null;
    $arr['imgcount'] = Vehicle::where(['front_img' => Null,'back_img'=> Null, 'right_img'=> Null, 'left_img'=> Null])->count();

@@ -233,7 +233,7 @@ class ListingController extends Controller
         $path = $request->file('opt_img3')->storeAs('public/photos', $opt_img3Store);
     } else { $opt_img3Store = ''; }     
 
-
+        $default_view = 0;
 
         $vehicle->listing_id = $currentId;
         $vehicle->model_id = $request->model_id;
@@ -252,6 +252,7 @@ class ListingController extends Controller
         $vehicle->engine_size = $request->engine_size;
         $vehicle->vehicle_type = $request->vehicle_type;
         $vehicle->color = $request->color;
+        $vehicle->views = $default_view;
 
 
         if($request->hasFile('front_img')) { $vehicle->front_img = $front_imgStore; }

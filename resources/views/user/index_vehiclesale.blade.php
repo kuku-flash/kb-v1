@@ -84,92 +84,89 @@
 			</div>
 			@if ( count($listings) > 0)
 			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
-				<!-- Recently Favorited -->
-				<div class=" dashboard-container my-list">
-				
-				
-						
 						
 							@foreach($listings as $listing)
-							<tr>
+							
 								@foreach ($vehicles as $vehicle)
 										@if($listing->id == $vehicle->listing_id)
 										
-	
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12 mt-3">
-          
-                <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal">
-					<div class="mdl-card__media">
-						<img class="img-square-wrapper" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
+
+
+<div class=" dashboard-container my-list">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 mt-3">
+				<div class="listing-container">
+					<div class="listing-image">
+					  <img class="img-square-wrapper" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
 					</div>
+					<div class="listing-info">
 					  <div class="mdl-card__title">
-						<h2 style="font-weight: 450; font-size:20px;" 
-						class="mdl-card__title-text">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}} 
-							- <small> <span style="color: red;"> {{ $listing->category->category_name }} </span></h2>
-						
+						<h2 style="font-weight: 450; font-size:20px;" class="mdl-card__title-text">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}} - <small><span style="color: red;"> {{ $listing->category->category_name }}</span></small></h2>
 					  </div>
 					  <div class="mdl-card__supporting-text">
 						<p class="card-text">
-							<ul class="list-horizontal">
-								<li class="li-size"><b>Listing ID: </b><span class="car-li">{{ $listing->id }}</span></li>
-								<li class="li-size"><b>Price: </b><span class="car-li"> {{ $vehicle->price}}</span></li>
-								<li class="li-size"><b>Status: </b><span class="car-li">{{ $listing->ads_status }}</span></li>
-								<li class="li-size"><b>Category: </b><span class="car-li">{{ $vehicle->vehicle_type }}</span></li>
-								<li class="li-size"><b>Invoice: </b><span class="car-li"><a href="{{ route('user.invoice', [$listing->id, $vehicle->id])}}"> Click Here </a></span></li>
-								<li class="li-size"><b>Visitors </b><span class="car-li fa fa-users "></span>: 5000</li>
-								<li class="li-size"><b>Duration <span class="car-li fa fa-count "></span>: 30 left
-							
-								</li> 
-								<li class="li-size"><b>Chats <span class="car-li fa fa-comments "></span>: 50</li>
-							</ul>
+						  <ul class="list-horizontal">
+							<li><b>Listing ID:</b> <span>{{ $listing->id }}</span></li>
+							<li><b>Price:</b> <span>{{ $vehicle->price }}</span></li>
+							<li><b>Status:</b> <span class="car-li-active">{{ $listing->ads_status }}</span></li>
+							<li><b>Category:</b> <span>{{ $vehicle->vehicle_type }}</span></li>
+							<li><b>Visitors <span class="fa fa-users"></span>:</b> <span>{{ $vehicle->views }} </span></li>
+							<li><b>Duration <span class="fa fa-count"></span>:</b> <span>30 left</span></li>
+							<li><b>Chats <span class="fa fa-comments"></span>:</b> <span>50</span></li>
+						  </ul>
+						  <a href="{{ route('user.invoice', [$listing->id, $vehicle->id])}}" class="invoice-link">Invoice</a>
 						</p>
 					  </div>
-				<div class="my-list-footer">
-						<small class="text-muted">  
-							<div class="change-icons">
-							<td class="action" data-title="Action">
-								<div class="change-icons">
-									<ul class="list-inline justify-content-center">
-										<li class="list-inline-item">
-											<a data-toggle="tooltip" data-placement="top" title="Boost" class="edit" href="{{ route('user.packages', $listing->id)}}">
-												<span class="btn btn-secondary">Boost your Listing</span>
-											</a>
-										</li>
-										<li class="list-inline-item">
-											<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('user.show_vehiclesale', [$listing->id, $vehicle->id])}}">
-												<i class="fa fa-eye"></i>
-											</a>
-										</li>
-										<li class="list-inline-item">
-											<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_vehiclesale', [$listing->id, $vehicle->id])}}">
-												<i class="fa fa-pencil"></i>
-											</a>
-										</li>
-										<li class="list-inline-item">
-									
-											<a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" data-toggle="tooltip" data-placement="top" title="Delete" class="delete">
-												<i class="fa fa-trash"></i>
-											</a>
-											<form action="{{ route('user.delete_vehiclesale', [$listing->id, $vehicle->id])}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
-											  @method('DELETE')
-											  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-											</form>
-										</li>
-										
-									</ul>
-								</div>
-							</td>
-							</div>
-							</small>
-					
-				</div>
+					</div>
 				  </div>
-         
-        </div>
-    </div>
-</div>
+						  
+			
+					<div class="my-list-footer">
+							<small class="text-muted">  
+								<div class="change-icons">
+								<td class="action" data-title="Action">
+									<div class="change-icons">
+										<ul class="list-inline justify-content-center">
+											<li class="list-inline-item">
+												<a data-toggle="tooltip" data-placement="top" title="Boost" class="edit" href="{{ route('user.packages', $listing->id)}}">
+													<span class="btn btn-secondary">Boost your Listing</span>
+												</a>
+											</li>
+											<li class="list-inline-item">
+												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{{ route('user.show_vehiclesale', [$listing->id, $vehicle->id])}}">
+													<i class="fa fa-eye"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
+												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_vehiclesale', [$listing->id, $vehicle->id])}}">
+													<i class="fa fa-pencil"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
+										
+												<a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" data-toggle="tooltip" data-placement="top" title="Delete" class="delete">
+													<i class="fa fa-trash"></i>
+												</a>
+												<form action="{{ route('user.delete_vehiclesale', [$listing->id, $vehicle->id])}}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
+												  @method('DELETE')
+												  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+												</form>
+											</li>
+											
+										</ul>
+									</div>
+								</td>
+								</div>
+								</small>
+						
+					</div>
+					  </div>
+			 
+			</div>
+		</div>
+								
+	</div>
 @endif
 @endforeach
 @endforeach

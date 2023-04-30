@@ -82,20 +82,21 @@
 
 				</div>
 			</div>
+
+
 			@if ( count($listings) > 0)
 			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
 				<!-- Recently Favorited -->
-				<div class=" dashboard-container my-list">
+			
 				
 				
-						
-						
+					
 							@foreach($listings as $listing)
-							<tr>
+							
 								@foreach ($vehicles as $vehicle)
 										@if($listing->id == $vehicle->listing_id)
 										
-	
+	<div class=" dashboard-container my-list">
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12 mt-3">
@@ -162,10 +163,13 @@
          
         </div>
     </div>
+							
 </div>
+
 @endif
 @endforeach
 @endforeach
+
 				</div>
 				
 				<!-- pagination 
@@ -199,6 +203,7 @@
 			</h1>
 			@endif
 		</div>
+		
 		<!-- Row End -->
 	</div>
 	<!-- Container End -->
