@@ -11,6 +11,7 @@ use App\Models\Listing;
 use App\Models\Package;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 class InvoiceController extends Controller
 {
@@ -21,8 +22,8 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $arr['invoices'] = Invoice::all();
-        $arr['listings'] = Listing::all();
+        $arr['invoices'] = Invoice::where('user_id', Auth::id());
+        $arr['listings'] = Listing::where('user_id', Auth::id());
         return view ('user.invoice_list')->with ($arr);
     }
 

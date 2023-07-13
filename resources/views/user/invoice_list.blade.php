@@ -1,3 +1,5 @@
+
+
 @extends('layouts.kingsbridge')
 @section('content')
 
@@ -29,73 +31,71 @@
 					</div>
 					<!-- Dashboard Links -->
 					<div class="widget user-dashboard-menu">
+						<h3>My list</h3>
 						<ul>
-							<li class="active">
-								<a href="{{ route('user.my_list')}}"><i class="fa fa-user"></i> My List <span>{{$listings->count()}}</span></a>
-							</li>
-							<li>
-								<a href="{{ route('user.pending_list')}}"><i class="fa fa-bolt"></i> Pending Approval</a>
-							</li>
-							<li>
-								<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite List </a>
-							</li>
-							<li>
-								<a href="dashboard-archived-ads.html"><i class="fa fa-file-archive-o"></i>Archived List </a>
-							</li>
-							<li>
-								<a href=""><i class="fa fa-cog"></i> Logout</a>
-							</li>
-							<li>
-								<a href="" data-toggle="modal" data-target="#deleteaccount"><i class="fa fa-power-off"></i>Delete Account</a>
-							</li>
+							<li> <a href="{{ route('user.index_vehiclesale')}}"><i class="fa fa-car"></i>Vehicles for Sale <span>{{$listings->where('category_id','2')->count()}}</a> </li>
+						<!--	<li> <a href="{{ route('user.index_carhire')}}"><i class="fa fa-car"></i>Vehicles for Hire <span>{{$listings->where('category_id','1')->count()}}</a> </li> -->
+
 						</ul>
 					</div>
-
+					<div class="widget user-dashboard-menu">
+						<ul>
+							<li> <a href=""><i class="fa fa-heart"></i>Favourite</a> </li>
+	
+						</ul>
+					</div>
+					<div class="widget user-dashboard-menu">
+						<h3>Listing Status</h3>
+						<ul>
+							<li> <a href="{{ route('user.active_list')}}"><i class="fa fa-circle"></i>Active <span>{{$listings->where('ads_status','Approved')->count()}}</span></a> </li>
+							<li> <a href="{{ route('user.pending_list')}}"><i class="fa fa-file-archive-o"></i>Pending <span>{{$listings->where('ads_status','Pending')->count()}}</span></a></a> </li>
+							<li> <a href="{{ route('user.expired_list')}}"><i class="fa fa-flag"></i>Expired <span>{{$listings->where('ads_status','Expired')->count()}}</span></a></a> </li>
+							<li> <a href="{{ route('user.sold_list')}}"><i class="fa fa-money"></i>Sold <span>{{$listings->where('ads_status','Sold')->count()}}</span></a></a> </li>
+						
+						</ul>
+					</div>
 				</div>
 			</div>
-		
 			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
-				<!-- Recently Favorited -->
-				<div class=" dashboard-container my-list">
-				
-				
-								
-	
+
+<div class=" dashboard-container my-list">
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12 mt-3">
-          
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#Invoice</th>
-                    <th scope="col">Invoice date</th>
-                    <th scope="col">Due Date</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
+<div class="row">
+<div class="table">
+	<table class="table" >
+		<thead>
+		  <tr>
+			<th scope="col">#Invoice</th>
+			<th scope="col">Invoice date</th>
+			<th scope="col">Due Date</th>
+			<th scope="col">Total</th>
+			<th scope="col">Status</th>
+			<th scope="col">Action</th>
+		  </tr>
+		</thead>
+		<tbody>
 
 @foreach($invoices as $invoice)                   
-                  <tr>
-                    <th scope="row">{{ $invoice->id}} </th>
-                    <td>{{ $invoice->generate_date}}</td>
-                    <td> {{ $invoice->due_date}} </td>
-                    <td> {{ $invoice->total}} </td>
-                    <td> {{ $invoice->status}} </td>
-                    <td> <a href="{{ route('user.invoice.show',$invoice->id)}}">view</a> |  <a href="{{ route('user.generatePDF',$invoice->id)}}">download</a></td>
-                  </tr>
-    @endforeach
-                </tbody>
-              </table>
-        </div>
-    </div>
+		  <tr>
+			<th scope="row">{{ $invoice->id}} </th>
+			<td>{{ $invoice->generate_date}}</td>
+			<td> {{ $invoice->due_date}} </td>
+			<td> {{ $invoice->total}} </td>
+			<td> {{ $invoice->status}} </td>
+			<td> <a href="{{ route('user.invoice.show',$invoice->id)}}">view</a> |  <a href="{{ route('user.generatePDF',$invoice->id)}}">download</a></td>
+		  </tr>
+@endforeach
+		</tbody>
+	  </table>
+
+</div>
+ 
+</div>
+</div>
+					
 </div>
 
-				</div>
-				
+	</div>	
 				<!-- pagination 
 				<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">

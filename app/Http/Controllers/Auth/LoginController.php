@@ -103,5 +103,22 @@ class LoginController extends Controller
       
     }
 
+    //Facebok login
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    //Facebook callbacks
+    public function handleFacebookCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        $this->_registerOrLoginUser($user);
+
+        // Return home after login
+        return redirect()->route('user.my_list');
+    }
+
     
 }

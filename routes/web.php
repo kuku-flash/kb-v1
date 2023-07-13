@@ -20,6 +20,8 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CareventController;
+use App\Models\Carevent;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -63,6 +65,10 @@ Route :: get ('showcarhire/{listing}/{vehicle}',  [PagesController::class, 'show
 
 Route::get('/login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
+
+Route::get('/login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'redirectToFacebook'])->name('login.facebook');
+Route::get('/login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleFacebookCallback']);
+
 
 
 Auth::routes();
@@ -133,8 +139,12 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('checkout',  [ListingController::class, 'checkout'])->name('checkout');
     Route :: post ('post_invoice',  [ListingController::class, 'post_invoice'])->name('post_invoice');
     
-    Route :: post ('add_wishlist',  [WishlistController::class, 'add_wishlist'])->name('add_wishlist');
-    Route :: get ('wishlist',  [WishlistController::class, 'get_wishlist'])->name('wishlist');
+    Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
+    Route :: get ('create_carevent',  [CareventController::class, 'create_carevent'])->name('create_carevent');
+    Route :: post ('store_carevent',  [CareventController::class, 'store_carevent'])->name('store_carevent');
+    Route :: get ('edit_carevent/{carevent}',  [CareventController::class, 'edit_carevent'])->name('edit_carevent');
+    Route :: put ('update_carevent/{carevent}',  [CareventController::class, 'update_carevent'])->name('update_carevent');
+    Route :: delete ('delete_carevent/{carevent}',  [CareventController::class, 'delete_carevent'])->name('delete_carevent');
 
     Route::resource('invoice', InvoiceController::class);
     Route :: get ('generated_invoice',  [InvoiceController::class, 'generated_invoice'])->name('generated_invoice');

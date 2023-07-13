@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Vehicle extends Model
 {
@@ -58,6 +59,17 @@ class Vehicle extends Model
     }
     public function carmodel(){
         return $this->belongsTo(Carmodel::class, 'model_id');
+    }
+
+    public function scopeFilterByRequest($query, Request $request)
+    {
+        if ($request->input('model_id')) {
+            $query->where('model_id', '=', $request->input('model_id'));
+        }
+
+       
+
+        return $query;
     }
  
 

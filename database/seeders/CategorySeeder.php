@@ -39,6 +39,10 @@ class CategorySeeder extends Seeder
                 'id'    => 6,
                 'category_name' => 'Commercials',
             ],
+            [
+                'id'    => 7,
+                'category_name' => 'Car-events',
+            ],
         
         ];
 

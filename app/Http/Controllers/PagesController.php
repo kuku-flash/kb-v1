@@ -93,6 +93,7 @@ public function vehicle_search(Request $request){
     ])
     ->orderBy("id", "desc")->paginate(4);
 
+  
     $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
     $arr['vehicles'] = Vehicle::where([
         ['model_id', '!=', Null],
@@ -111,7 +112,7 @@ public function vehicle_search(Request $request){
         }]
 
     ])
-    ->orderBy("id", "desc")->take(10)->get();
+    ->orderBy("id", "desc")->take(10)->get();  
     
     return view ('pages.vehicleslist')->with($arr);
 }

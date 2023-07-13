@@ -73,7 +73,7 @@
 									</div>
 								</div>
 							</form>
-						<p>123 Results on  {{ now()->format('d F Y') }}</p>
+						<p> {{$listings->count()}} Results on  {{ now()->format('d F Y') }}</p>
 				</div>
 			</div>
 		</div>
@@ -242,7 +242,7 @@
 							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
-										<div class="price"> </div>
+										<div class="price">{{ $listing->package->package_name}} </div>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											
 											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
@@ -304,7 +304,7 @@
 				
 				<div class="pagination justify-content-center">
 					
-							{{ $listings->links('vendor.pagination.custom') }}
+							{{ $listings->appends(Request::all())->links('vendor.pagination.custom') }}
 					
 				</div>
 			</div>
