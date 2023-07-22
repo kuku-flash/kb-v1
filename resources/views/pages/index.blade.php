@@ -253,7 +253,7 @@
 		<div class="row">
 			<!-- offer 01 -->
 			<div class="col-lg-12">
-				<div class="slider owl-drag">
+				<div class="owl-drag">
 					<div class="col-sm-12 col-lg-4">
 						<!-- product card -->
 <div class="product-item bg-light owl-drag">
@@ -285,91 +285,8 @@
 					</div>
 				  </div>
 				</div>
-				<div class="col-sm-6">
-				  <div class="whycard">
-					<div class="card-body">
-					  <h5 class="why-title">Special title treatment</h5>
-					  <p class="why-text">
-						  With supporting text below as a natural lead-in to additional content.
-						With supporting text below as a natural lead-in to additional content.
-						With supporting text below as a natural lead-in to additional content.
-					  </p>
-					  <li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-					</div>
-				  </div>
-				</div>
-
-				<div class="col-sm-6">
-					<div class="whycard">
-					  <div class="card-body">
-						<h5 class="why-title">Special title treatment</h5>
-						<p class="why-text">
-							With supporting text below as a natural lead-in to additional content.
-							With supporting text below as a natural lead-in to additional content.
-							With supporting text below as a natural lead-in to additional content.
-						</p>
-						<li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-					  </div>
-					</div>
-				  </div>
-				  <div class="col-sm-6">
-					<div class="whycard">
-					  <div class="card-body">
-						<h5 class="why-title">Special title treatment</h5>
-						<p class="why-text">
-							With supporting text below as a natural lead-in to additional content.
-							With supporting text below as a natural lead-in to additional content.
-							With supporting text below as a natural lead-in to additional content.
-						</p>
-						<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-					  </div>
-					</div>
-				  </div>
-			  </div>
-		</div>
-</div>
-
-
-
-					</div>
-					<div class="col-sm-12 col-lg-4">
-
-						<!-- product card -->
-<div class="slide product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<div class="price">Gold Package</div>
-			<a href="{{ route('single') }}">
-				<img class="index-img-fluid" src="images/land1.jpg" alt="">
-			</a>
-		</div>
-		<div class="card-body">
-		   <h4 class="card-title"><a href="{{ route('single') }}">Land located in karen 
-		   </a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
-		    	</li>
-		    </ul>
-		    <div class="product-ratings">
-		    	<ul class="trending-horizontal">
-					<li>Acres:<span class="car-li">30</span></li>
-					<li>Trans:<span class="car-li">Automatic</span></li>
-				</ul>  
-				<div class="property-price">
-					<p class="badge-sale">For Sale</p>
-					<p class="price">Ksh9.4M</p></a>
-					</div>
-		    </div>
-		</div>
 	</div>
 </div>
-
-
-					</div>
 				</div>
 			</div>
 			
@@ -377,6 +294,73 @@
 		</div>
 	</div>
 </section>
+<!--==========================================
+=          Why KingsBridge            =
+===========================================-->
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="section-title section-why-title">
+				<h2>Why KingsBridge?</h2>
+				<p>we dont just sell cars we sell a lifestyle </p>
+			</div>
+		</div>
+		<div class="col-sm-6">
+		  <div class="whycard">
+			<div class="card-bodyy">
+			  <h5 class="why-title">Customizable Pricing</h5>
+			  <p class="why-text">
+				We offer a unique and customizable pricing model that allows our customers to choose the package that best fits their needs and budget.
+				 With options ranging from basic to premium listings, 
+				our platform is accessible to car owners of all types and sizes, making it a one-stop-shop for all car needs.
+			  </p>
+			  <li class="why-btn-alighn" "><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+			</div>
+		  </div>
+		</div>
+		<div class="col-sm-6">
+		  <div class="whycard">
+			<div class="card-bodyy">
+			  <h5 class="why-title">Trust and Security</h5>
+			  <p class="why-text">
+				Our strict vetting process and fraud prevention measures ensure a secure and reliable rental experience.
+			  </p>
+			  <li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+			</div>
+		  </div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="whycard">
+			  <div class="card-bodyy">
+				<h5 class="why-title">Special title treatment</h5>
+				<p class="why-text">
+					With supporting text below as a natural lead-in to additional content.
+					With supporting text below as a natural lead-in to additional content.
+					With supporting text below as a natural lead-in to additional content.
+				</p>
+				<li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+			  </div>
+			</div>
+		  </div>
+		  <div class="col-sm-6">
+			<div class="whycard">
+			  <div class="card-body">
+				<h5 class="why-title">Special title treatment</h5>
+				<p class="why-text">
+					With supporting text below as a natural lead-in to additional content.
+					With supporting text below as a natural lead-in to additional content.
+					With supporting text below as a natural lead-in to additional content.
+				</p>
+				<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+			  </div>
+			</div>
+		  </div>
+	  </div>
+</div>
+</div>
+
+
 <!--==========================================
 =            All Category Section            =
 ===========================================-->
@@ -396,7 +380,7 @@
 		<div class="row">
 			<!-- offer 01 -->
 			<div class="col-lg-12">
-				<div class="slider owl-drag">
+				<div class="owl-drag">
 					<div class="col-sm-12 col-lg-4">
 						<!-- product card -->
 <div class="product-item bg-light owl-drag">
@@ -431,127 +415,14 @@
 	</div>
 </div>
 
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-home icon-bg-3"></i> 
-								<h4>Real Estate</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Houses <span>393</span></a></li>
-								<li><a href="category.html">Apartments <span>23</span></a></li>
-								<li><a href="category.html">Commercials  <span>13</span></a></li>
-								<li><a href="category.html">Industrial<span>43</span></a></li>
-							</ul>
-						</div>
-					</div> 
-					<!-- /Category List -->
-
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-home icon-bg-7"></i> 
-								<h4>BnBs</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Houses <span>65</span></a></li>
-								<li><a href="category.html">Apartments <span>23</span></a></li>
-							</ul>
-						</div>
-					</div> 
-					<!-- /Category List -->
-
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-taxi icon-bg-4"></i> 
-								<h4>Car Hire</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Saloons <span>53</span></a></li>
-								<li><a href="category.html">Suvs <span>53</span></a></li>
-							</ul>
-						</div>
-					</div> 
-					<!-- /Category List -->
-
 					
 					
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- Container End -->
+
 </section>
-<!--==========================================
-=          Why KingsBridge            =
-===========================================-->
-<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="section-title section-why-title">
-						<h2>Why KingsBridge?</h2>
-						<p>we dont just sell cars we sell a lifestyle </p>
-					</div>
-				</div>
-				<div class="col-sm-6">
-				  <div class="whycard">
-					<div class="card-bodyy">
-					  <h5 class="why-title">Customizable Pricing</h5>
-					  <p class="why-text">
-						We offer a unique and customizable pricing model that allows our customers to choose the package that best fits their needs and budget.
-						 With options ranging from basic to premium listings, 
-						our platform is accessible to car owners of all types and sizes, making it a one-stop-shop for all car needs.
-					  </p>
-					  <li class="why-btn-alighn" "><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-					</div>
-				  </div>
-				</div>
-				<div class="col-sm-6">
-				  <div class="whycard">
-					<div class="card-bodyy">
-					  <h5 class="why-title">Trust and Security</h5>
-					  <p class="why-text">
-						Our strict vetting process and fraud prevention measures ensure a secure and reliable rental experience.
-					  </p>
-					  <li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-					</div>
-				  </div>
-				</div>
-
-				<div class="col-sm-6">
-					<div class="whycard">
-					  <div class="card-bodyy">
-						<h5 class="why-title">Special title treatment</h5>
-						<p class="why-text">
-							With supporting text below as a natural lead-in to additional content.
-							With supporting text below as a natural lead-in to additional content.
-							With supporting text below as a natural lead-in to additional content.
-						</p>
-						<li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-					  </div>
-					</div>
-				  </div>
-				  <div class="col-sm-6">
-					<div class="whycard">
-					  <div class="card-body">
-						<h5 class="why-title">Special title treatment</h5>
-						<p class="why-text">
-							With supporting text below as a natural lead-in to additional content.
-							With supporting text below as a natural lead-in to additional content.
-							With supporting text below as a natural lead-in to additional content.
-						</p>
-						<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-					  </div>
-					</div>
-				  </div>
-			  </div>
-		</div>
-</div>
-
 
 
 <!--==========================================
