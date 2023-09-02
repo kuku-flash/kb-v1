@@ -69,7 +69,6 @@
 													
 												<select name="model_id" class="model form-control ">
 													<option value="0"  disabled="true" selected="true" data-live-search="true">Choose a model</option>
-
 												</select>
 												
 												</div>

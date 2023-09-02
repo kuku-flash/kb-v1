@@ -37,6 +37,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -61,6 +63,8 @@ class User extends Authenticatable
     public function getIsSuperAdminAttribute()
     {
         return $this->roles()->where('id', 1)->exists();
+       
+
     }
     
     public function getIsManagerAttribute()
@@ -72,18 +76,21 @@ class User extends Authenticatable
         return $this->roles()->where('id', 2)->exists();
     }
     public function getIsUserAttribute()
-    {
-        return $this->roles()->where('id', 3)->exists();
-    }
+   {
+       $userIdsToCheck = [1, 2];
+            return !$this->roles()->whereIn('id', $userIdsToCheck)->exists();
+   }
     public function getIsBusinessAttribute()
     {
         return $this->roles()->where('id', 4)->exists();
     }
     public function setPasswordAttribute($input)
-    {
-        if ($input) {
-            $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
-        }
+{
+    if ($input) {
+        $hashedPassword = Hash::make($input);
+        $this->attributes['password'] = $hashedPassword;
     }
+}
+    
 
 }
