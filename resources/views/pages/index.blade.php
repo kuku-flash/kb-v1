@@ -64,22 +64,7 @@
 													</span>
 													@enderror
 												</div>
-												
-												<!-- <div class=" form-group col-md-2">
-													<select name="model_id" class="model form-control ">
-													<option value="" data-live-search="true">Choose a Model</option>
-										
-													@foreach($models as $model)
-														<option value="{{ $model->id }}" {{(old('model'))? 'selected':''}}>{{ $model->model }}</option>
-													@endforeach
-													</select>
-													@error('model_id')
-													<span class="invalid"  role="alert">
-														<strong>{{ $message }}</strong>
-													</span>
-													@enderror
-												</div> -->
-												
+			
 												<div class="carmodel form-group col-md-2">
 													
 												<select name="model_id" class="model form-control ">
@@ -145,23 +130,18 @@
 			<h2>Find your drive</h2>
 		</div>
 	</div>
-    <div class="Hdrive row">
-		
-        <div class="carousel  owl-carousel  w-100" data-ride="carousel">
-			
-			
-			@foreach ($listings as $listing )		
-			@foreach ($vehicles as $vehicle)
-			@if ($listing->id == $vehicle->listing_id)
-		
-			<div class="carousel-item active">
-						<div class="col-sm-4 col-md-4 col-lg-4 " >
+	<div class="product-grid-list">
+					<div class="row mt-30">
+				
+					@foreach ($listings as $listing )		
+						@foreach ($vehicles as $vehicle)
+						@if ($listing->id == $vehicle->listing_id)
+						<div class="col-sm col-md-3 col-lg-3">
 							<!-- product card -->
-							
 							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
-										<div class="price"> {{ $listing->package->package_name}}</div>
+										<div class="price">{{ $listing->package->package_name}} </div>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											
 											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
@@ -209,24 +189,17 @@
 										</div>
 										</a>
 									</div>
-								</div>
-					
-									@endif	
+
+									@endif
 									@endforeach
 									@endforeach
-									
-           
-            <a class="slick-prev" role="button" data-slide="prev">
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="slick-next"  role="button" data-slide="next">
-                <span class="sr-only">Next</span>
-            </a>
-			
-        </div>
-                
-    </div>
-</div>
+
+
+											
+
+				
+					</div>
+				</div>
 
 <!--===================================
 =           Our Partners           =

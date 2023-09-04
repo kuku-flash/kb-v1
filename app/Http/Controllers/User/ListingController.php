@@ -98,11 +98,11 @@ class ListingController extends Controller
 
         return view('user.index_vehiclesale')->with($arr);
     }
-    public function create_vehiclesale(){
+    public function create_vehiclesale(Request $request){
         $arr['categories'] = Category::all();
         $arr['cities'] = City::all();
         $arr['makes'] = Carmake::all();
-        $arr['models'] = Carmodel::all();
+        $arr['models'] = Carmodel::select('model','id')->where('make_id',$request->id)->get(20);
         $arr['packages'] = Package::where('package_featured',null)->orderBy('id','desc')->get();
         return view('user.create_vehiclesale')->with($arr);
     } 
