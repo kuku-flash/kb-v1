@@ -57,14 +57,29 @@
 													@foreach($makes as $make)
 														<option value="{{ $make->id }}" {{(old('make'))? 'selected':''}}>{{ $make->make }}</option>
 													@endforeach
-												</select>
+													</select>
 													@error('make_id')
 													<span class="invalid"  role="alert">
 														<strong>{{ $message }}</strong>
 													</span>
 													@enderror
 												</div>
-									
+												
+												<!-- <div class=" form-group col-md-2">
+													<select name="model_id" class="model form-control ">
+													<option value="" data-live-search="true">Choose a Model</option>
+										
+													@foreach($models as $model)
+														<option value="{{ $model->id }}" {{(old('model'))? 'selected':''}}>{{ $model->model }}</option>
+													@endforeach
+													</select>
+													@error('model_id')
+													<span class="invalid"  role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+													@enderror
+												</div> -->
+												
 												<div class="carmodel form-group col-md-2">
 													
 												<select name="model_id" class="model form-control ">

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -22,6 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'phone_number',
+        'isVerified',
         'avatar',
         'social_links',
         'identification_number',
@@ -52,10 +54,11 @@ class User extends Authenticatable
         return $this->hasMany( 'App\Models\Listing');
     }
 
-    public function favorites()
-{
-    return $this->hasMany(Favorite::class);
-}
+    public function favorites(){
+        return $this->hasMany(Favorite::class);
+    }
+
+    // 
 
     public function roles(){
         return $this->belongsToMany(Role::class);

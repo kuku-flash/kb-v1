@@ -71,6 +71,10 @@ class Vehicle extends Model
 
         return $query;
     }
+
+    Public function favorites(){
+                return $this->belongsToMany(Favorite::class);
+    }
  
 
 

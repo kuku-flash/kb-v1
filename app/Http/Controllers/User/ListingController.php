@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Expr\List_;
+use App\Models\User;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 class ListingController extends Controller
 {
@@ -75,6 +78,10 @@ class ListingController extends Controller
         return view ('user.favourites'); 
         
     }
+
+   // app/Http/Controllers/FavoriteVehicleController.php
+
+
 
     
 //Post the ad or the list page

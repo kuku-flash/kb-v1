@@ -62,10 +62,10 @@
 
 	  <section class="vehicle specifications">
 		<div class="favourist-list">
-			<form method="POST" action="#">
+			<form method="POST" action="{{ route('add_to_favourites') }}">
 			@csrf
 			<input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-			<input type="hidden" name="user_id" value="#">
+			<input type="hidden" name="user_id" value="{{ Auth::user()->id}}">
 			<button type="submit"><i class="fa fa-heart-o"></i></button>
 		</form>
 		</div>

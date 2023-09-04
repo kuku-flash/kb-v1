@@ -28,7 +28,8 @@ Public function index (){
         
 }
 public function carmodel(Request $request) {
-    $data = Carmodel::select('model','id')->where('make_id',$request->id)->take(10)->get();
+    // $data = Carmodel::select('model','id')->where('make_id',$request->id)->take(10)->get();
+    $data = Carmodel::select('model','id')->where('make_id',$request->id)->get();
     return response()->json($data);//then sent this data to aax success
 }
 
