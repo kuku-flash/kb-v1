@@ -22,7 +22,7 @@ Public function index (){
     $arr['vehicles'] = Vehicle::all();
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
-    $arr['listings'] = Listing::where('category_id',2)->take(20)->get(); 
+    $arr['listings'] = Listing::where('category_id',2)->get(); 
     
     return view ('pages.index')->with($arr);
         
