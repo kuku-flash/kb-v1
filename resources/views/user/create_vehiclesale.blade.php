@@ -118,7 +118,8 @@
           <select name="condition" id="inputGroupSelect" class="form-control">
               <option value="{{ old('condition')}}" {{(old('condition'))? 'selected':''}}> {{ old('condition')}} </option>     
               <option >Foreign Used</option>     
-              <option>Local Used</option>    
+              <option>Local Used</option> 
+              <option>Brand New</option>
           </select>
           @error('condition')
             <span class="invalid" role="alert">

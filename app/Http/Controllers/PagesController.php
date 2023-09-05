@@ -79,6 +79,7 @@ public function vehicle_search(Request $request){
     $arr['cities'] = City::all();
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
+    // $arr['price'] = 
     $price_max = 500000;
     $arr['listings'] = Listing::where([
         ['city_id', '!=', Null],

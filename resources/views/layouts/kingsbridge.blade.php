@@ -60,15 +60,15 @@
   
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto main-nav ">
-                <li class="nav-item active">
+                <li class="nav-item {{ request()->routeIs('/') ? 'active' : '' }}">
                   <a class="nav-link" href="/">Home</a>
                 </li>
               
-                <li class="nav-item">
+                <li class="nav-item {{ request()->routeIs('vehiclelist') ? 'active' : '' }}">
                   <a class="nav-link" href="{{ route('vehicleslist')}}">Buy a Vehicle</a>
                 </li>
              
-                <li class="nav-item">
+                <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
                   <a class="nav-link" href="{{ route('about_us')}}">About Us</a>
                 </li>
               

@@ -230,55 +230,80 @@
 
 <section class="product">
 	<div class="container">
-		<div class="row">
 			<div class="col-md-12">
 				<div class="section-title">
 					<h2>Trending Ads</h2>
 				</div>
-			</div>
 		</div>
-		<div class="row">
-			<!-- offer 01 -->
-			<div class="col-lg-12">
-				<div class="owl-drag">
-					<div class="col-sm-12 col-lg-4">
-						<!-- product card -->
-<div class="product-item bg-light owl-drag">
-	<div class="card">
-		<div class="thumb-content">
-			<div class="price">Silver Package</div>
-			<a href="{{ route('single') }}">
-				<img class="index-img-fluid" src="images/amg1.jpg" alt="">
-			</a>
-		</div>
-		<div class="card-body">
-		   <h4 class="card-title"><a href="{{ route('single') }}">2013 Mercedes Benz E-Class AMG</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
-		    	</li>
-		    </ul>
-		    <div class="product-ratings">
-		    	<ul class="trending-horizontal">
-					<li>Mileage:<span class="car-li">19400Km</span></li>
-					<li>Trans:<span class="car-li">Automatic</span></li>
-				</ul>  
-				<div class="property-price">
-					<p class="badge-sale">For Sale</p>
-					<p class="price">Ksh9.4M</p></a>
+		<div class="product-grid-list">
+					<div class="row mt-30">
+				
+					@foreach ($listings as $listing )		
+						@foreach ($vehicles as $vehicle)
+						@if ($listing->id == $vehicle->listing_id)
+						<div class="col-sm col-md-3 col-lg-3">
+							<!-- product card -->
+							<div class="product-item bg-light">
+								<div class="card">
+									<div class="thumb-content">
+										<div class="price">{{ $listing->package->package_name}} </div>
+										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
+											
+											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
+											
+										</a>
+									<div class="img-count">
+										<svg style="color:#d4af37;" 
+										xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+										class="bi bi-camera-fill" viewBox="0 0 16 16"> 
+										<path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" fill="#ffd040">
+											</path>
+											 <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z" fill="#ffd040">
+												</path> </svg>
+										 <h2 class="text-white"> {{$listings->count()}}</h2>
+									</div>
+									</div>
+									<div class="card-body">
+										<h4 class="card-title"><a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->year_of_build}}</a></h4>
+										<ul class="list-inline product-meta">
+											<li class="list-inline-item">
+												<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}"><i class="fa fa-folder-open-o"></i>{{ $listing->category->category_name}}</a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#"><i class="fa fa-location-arrow"></i>{{ $listing->city->city}} </a>
+											</li>
+										</ul>
+										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
+											<ul class="styled-list">
+												<li ><b>Engine Size:</b><span>{{ $vehicle->engine_size}}</span></li>
+												<li ><b>Trans:</b><span >{{ $vehicle->transmission}}</span></li>
+												<li ><b>Miles:</b><span>{{ $vehicle->mileage}}Km</span></li>
+												<li ><b>Fuel:</b><span>{{ $vehicle->fuel_type}}</span></li>
+				
+											</ul>
+											</div>
+											<div class="property-price">
+											<p class="badge-sale">For Sale</p>
+											<p class="price">Ksh {{ $vehicle->price}}</p>
+											</div>
+											<div>
+											
+											
+												</div>
+											</div>
+										</div>
+										</a>
+									</div>
+
+									@endif
+									@endforeach
+									@endforeach
+
+
+											
+
+				
 					</div>
-				  </div>
-				</div>
-	</div>
-</div>
-				</div>
-			</div>
-			
-			
-		</div>
 	</div>
 </section>
 <!--==========================================
