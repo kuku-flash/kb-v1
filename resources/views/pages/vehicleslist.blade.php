@@ -231,13 +231,12 @@
 						</div>
 					</div>
 				</div>
-				<div class="product-grid-list">
+				 <div class="product-grid-list">
 					<div class="row mt-30">
-				
 					@foreach ($listings as $listing )		
 						@foreach ($vehicles as $vehicle)
 						@if ($listing->id == $vehicle->listing_id)
-						<div class="col-sm col-md-4 col-lg-4">
+						<div class="col-sm-4 col-md-4 col-lg-4">
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card">
@@ -245,7 +244,7 @@
 										<div class="price">{{ $listing->package->package_name}} </div>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											
-											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
+											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description"style="max-height: 200px;">
 											
 										</a>
 									<div class="img-count">
@@ -293,12 +292,7 @@
 
 									@endif
 									@endforeach
-									@endforeach
-
-
-											
-
-				
+									@endforeach										
 					</div>
 				</div>
 				

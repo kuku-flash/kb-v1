@@ -35,7 +35,7 @@
                  
                     </div>
                     <ul>
-                        <li class="my-4"> <i class="fa fa-check"></i> Click the "choose" to countiue with listing process</li>
+                        <li class="my-4"> <i class="fa fa-check"></i> Click the "choose" to countinue with listing process</li>
                 
                     </ul>
                     <a href="{{ route('user.create_vehiclesale')}}" class="btn btn-primary">Choose</a>

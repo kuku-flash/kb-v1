@@ -54,6 +54,8 @@ class Vehicle extends Model
     public function listing(){
         return $this->hasMany(Listing::class, 'listing_id');
     }
+    
+
     public function vehiclephotos(){
         return $this->hasMany(Vehicle_photo::class, 'vehicle_id');
     }

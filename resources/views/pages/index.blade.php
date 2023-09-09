@@ -132,10 +132,14 @@
 	</div>
 	<div class="product-grid-list">
 					<div class="row mt-30">
+					@php
+                $carCount = 0; // Initialize a counter
+            @endphp
 				
 					@foreach ($listings as $listing )		
+					@if ($listing->package_id == 2) 
 						@foreach ($vehicles as $vehicle)
-						@if ($listing->id == $vehicle->listing_id)
+						@if ($listing->id == $vehicle->listing_id  && $carCount < 4) <!-- Check the counter -->
 						<div class="col-sm col-md-3 col-lg-3">
 							<!-- product card -->
 							<div class="product-item bg-light">
@@ -147,7 +151,7 @@
 											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
 											
 										</a>
-									<div class="img-count">
+									 <div class="img-count">
 										<svg style="color:#d4af37;" 
 										xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
 										class="bi bi-camera-fill" viewBox="0 0 16 16"> 
@@ -156,9 +160,9 @@
 											 <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z" fill="#ffd040">
 												</path> </svg>
 										 <h2 class="text-white"> {{$listings->count()}}</h2>
-									</div>
-									</div>
-									<div class="card-body">
+									 </div>
+									 </div>
+									 <div class="card-body">
 										<h4 class="card-title"><a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->year_of_build}}</a></h4>
 										<ul class="list-inline product-meta">
 											<li class="list-inline-item">
@@ -189,9 +193,13 @@
 										</div>
 										</a>
 									</div>
+									@php
+                                $carCount++; // Increment the counter
+                            @endphp
 
 									@endif
 									@endforeach
+									@endif
 									@endforeach
 
 
@@ -201,28 +209,7 @@
 					</div>
 				</div>
 
-<!--===================================
-=           Our Partners           =
-====================================-->
-<!--
-<section class="product">
-	<p style="font-weight: 450; font-size:20px; text-align: center;"> <b>Our Partners</b></p>
-	<div class="slider ">
-		<div> <img src="../images/king2.png" alt="" style='width: 50px; height: 50px;'>
-		</div>
-		<div><img src="../images/GarageGallery Logo.jpg" alt="" style='width: 50px; height: 50px;'>
-		</div>
-		<div><img src="../images/sti.png" alt="" style='width: 50px; height:50px;'>
-		</div>
-		<div><img src="../images/benz.jpg" alt="" style='width: 50px; height: 50px;'>
-		</div>
-		<div><img src="../images/king2.png" alt="" style='width: 50px; height: 50px;'>
-		</div>
-		<div><img src="../images/king2.png" alt="" style='width: 50px; height: 50px;'>
-		</div>
-	  </div>
-</section>
--->
+
 <!--===========================================
 --===========================================
 =            Popular deals section            =
@@ -237,10 +224,12 @@
 		</div>
 		<div class="product-grid-list">
 					<div class="row mt-30">
-				
+					@php
+                $carCount = 0; // Initialize a counter
+            @endphp				
 					@foreach ($listings as $listing )		
 						@foreach ($vehicles as $vehicle)
-						@if ($listing->id == $vehicle->listing_id)
+						@if ($listing->id == $vehicle->listing_id  && $carCount < 4) <!-- Check the counter -->
 						<div class="col-sm col-md-3 col-lg-3">
 							<!-- product card -->
 							<div class="product-item bg-light">
@@ -294,6 +283,9 @@
 										</div>
 										</a>
 									</div>
+									@php
+                                $carCount++; // Increment the counter
+                            @endphp
 
 									@endif
 									@endforeach
@@ -351,7 +343,7 @@
 					With supporting text below as a natural lead-in to additional content.
 					With supporting text below as a natural lead-in to additional content.
 				</p>
-				<li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+				<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
 			  </div>
 			</div>
 		  </div>
@@ -373,68 +365,7 @@
 </div>
 
 
-<!--==========================================
-=            All Category Section            =
-===========================================-->
 
-<section class=" section-categories">
-	<!-- Container Start -->
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<!-- Section title -->
-				<div class="section-title">
-					<h2>All Categories</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<!-- offer 01 -->
-			<div class="col-lg-12">
-				<div class="owl-drag">
-					<div class="col-sm-12 col-lg-4">
-						<!-- product card -->
-<div class="product-item bg-light owl-drag">
-	<div class="card">
-		<div class="thumb-content">
-			<div class="price">Gold Package</div>
-			<a href="{{ route('single') }}">
-				<img class="index-img-fluid" src="images/amg1.jpg" alt="">
-			</a>
-		</div>
-		<div class="card-body">
-		   <h4 class="card-title"><a href="{{ route('single') }}">2013 Mercedes Benz E-Class AMG</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
-		    	</li>
-		    </ul>
-		    <div class="product-ratings">
-		    	<ul class="trending-horizontal">
-					<li>Mileage:<span class="car-li">19400Km</span></li>
-					<li>Trans:<span class="car-li">Automatic</span></li>
-				</ul>  
-				<div class="property-price">
-					<p class="badge-sale">For Hire</p>
-					<p class="price">Ksh9.4M</p></a>
-					</div>
-		    </div>
-		</div>
-	</div>
-</div>
-
-					
-					
-				</div>
-			</div>
-		</div>
-	</div>
-
-</section>
 
 
 <!--==========================================
@@ -458,6 +389,24 @@
 			</div>
 		</div>
 	</div>
+</section>
+
+<!--===================================
+=           Our Partners           =
+====================================-->
+
+<section class="product">
+	<p style="font-weight: 450; font-size:20px; text-align: center;"> <b>Our Partners</b></p>
+	<div class="slider ">
+		<div> <img src="../images/king2.png" alt="" style="max-height: 150px;">
+		</div>
+		<div><img src="../images/GarageGallery Logo.jpg" alt="" style="max-height: 150px;">
+		</div>
+		<div><img src="../images/sti.png" alt="" style="max-height: 150px;">
+		</div>
+		<div><img src="../images/benz.jpg" alt="" style="max-height: 150px;">
+		</div>
+	  </div>
 </section>
 <!--==========================================
 =            All Category Section            =
@@ -565,13 +514,16 @@
 				<div class="content-holder">
 					<h2>Join the largest community of vehicle enthusiasts</h2>
 					<ul class="list-inline mt-30">
-						<li class="list-inline-item"><a class="btn btn-main" href="ad-listing.html">Add Listing</a></li>
-						<li class="list-inline-item"><a class="btn btn-secondary" href="category.html">Browser Listing</a></li>
+						<li class="list-inline-item"><a class="btn btn-main" href="{{ route('user.new_listing')}}">Add Listing</a></li>
+						<li class="list-inline-item"><a class="btn btn-secondary" href="{{ route('vehicleslist')}}">Browser Listing</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
+	
 	<!-- Container End -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>

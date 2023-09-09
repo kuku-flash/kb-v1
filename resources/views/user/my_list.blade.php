@@ -86,11 +86,7 @@
 
 			@if ( count($listings) > 0)
 			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
-				<!-- Recently Favorited -->
-			
-				
-				
-					
+				<!-- Recently Favorited -->													
 							@foreach($listings as $listing)
 							
 								@foreach ($vehicles as $vehicle)

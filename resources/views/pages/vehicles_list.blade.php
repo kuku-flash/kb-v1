@@ -177,7 +177,7 @@
             <a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
                 @foreach ($vehiclephotos as $vehiclephoto)
                     @if ($vehicle->id == $vehiclephoto->vehicle_id)
-                    <img class="img-square-wrapper" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
+                    <img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
                     @endif
                 @endforeach
             </a>
