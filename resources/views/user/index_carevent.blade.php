@@ -144,6 +144,8 @@
 
 			</div>
 			@else
+			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+				<a href="{{ route('user.create_carevent')}}" class="btn btn-primary mb-2">Create a Car Event</a>
 			<h1> No Events Founds......
 			
 			</h1>

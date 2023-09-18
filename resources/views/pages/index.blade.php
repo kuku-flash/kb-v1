@@ -125,6 +125,7 @@
 </section>
 
 <div class="Hdrive text-center my-3">
+	<div class = "container">
 	<div class="col-md-12">
 		<div class="section-title">
 			<h2>Find your drive</h2>
@@ -207,6 +208,7 @@
 
 				
 					</div>
+</div>
 				</div>
 
 
