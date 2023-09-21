@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Carevent;
 use App\Models\Carmake;
 use App\Models\Carmodel;
 use App\Models\Category;
@@ -22,10 +23,11 @@ Public function index (){
     $arr['vehicles'] = Vehicle::all();
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
+    $arr['carevents'] = Carevent::all();
     $arr['listings'] = Listing::where('category_id',2)->get(); 
     
     return view ('pages.index')->with($arr);
-        
+    
 }
 public function carmodel(Request $request) {
     $data = Carmodel::select('model','id')->where('make_id',$request->id)->get();

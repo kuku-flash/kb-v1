@@ -21,6 +21,7 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CareventController;
+use App\Http\Controllers\MpesaSTKPUSHController;
 use App\Models\Carevent;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,6 +45,8 @@ Route :: get ('ad_list_view',  [PagesController::class, 'ad_list_view'])->name('
 Route :: get ('blog',  [PagesController::class, 'blog'])->name('blog');
 Route :: get ('contact_us',  [PagesController::class, 'contact_us'])->name('contact_us');
 Route :: get ('signup',  [PagesController::class, 'signup'])->name('signup');
+Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
+
 
 Route :: post ('storeuser',  [PagesController::class, 'storeuser'])->name('storeuser');
 Route :: get ('user/login',  [PagesController::class, 'login'])->name('user.login');
@@ -154,6 +157,10 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
 
 
     Route::resource('payment', PaymentController::class);
+    Route::post('/v1/mpesatest/stk/push', [MpesaSTKPUSHController::class, 'STKPush']);
+    Route::post('v1/confirm', [MpesaSTKPUSHController::class, 'STKConfirm'])->name('mpesa.confirm');
+
+
 
 
 });

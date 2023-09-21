@@ -128,22 +128,100 @@
 	<div class = "container">
 	<div class="col-md-12">
 		<div class="section-title">
+			<h2>Upcoming Events</h2>
+		</div>
+	</div>
+	<div id="eventCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @foreach ($carevents as $index => $carevent)
+            <li data-target="#eventCarousel" data-slide-to="{{ $index }}" @if ($index === 0) class="active" @endif></li>
+        @endforeach
+    </ol>
+
+    <!-- Slides -->
+    <div class="carousel-inner">
+        @for ($i = 0; $i < count($carevents); $i += 3)
+            <div class="carousel-item @if ($i === 0) active @endif">
+                <div class="row">
+                    @for ($j = $i; $j < min($i + 3, count($carevents)); $j++)
+                        <div class="col-sm col-md-4 col-lg-4">
+                            <!-- event card -->
+                            <div class="product-item bg-light" style="margin-right: 10px;"> <!-- Adjust this value as needed -->
+                                <div class="card">
+                                    <div class="thumb-content">
+                                        <div class="price">Event</div>
+                                        <a href="{{ route('carevent', $carevents[$j]->id) }}">
+                                            <!-- Display event image -->
+                                            <img class="card-img-top category-img-fluid" src="/storage/photos/{{ $carevents[$j]->event_image }}" alt="Event Image" style="max-height: 400px;">
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mdl-card__title">
+                                            <!-- Display event title -->
+                                            <h2 style="font-weight: 450; font-size: 20px;" class="mdl-card__title-text">{{ $carevents[$j]->event_title }}</h2>
+                                        </div>
+                                        <div class="mdl-card__supporting-text">
+                                            <p class="card-text">
+                                                <ul class="list-horizontal">
+                                                    <!-- Display event details -->
+                                                    <li><b>Location:</b> <span>{{ $carevents[$j]->event_location }}</span></li>
+                                                    <li><b>Date:</b> <span>{{ $carevents[$j]->event_date }}</span></li>
+                                                    <li><b>Time:</b> <span>{{ $carevents[$j]->event_time }}</span></li>
+                                                    <li><b>Organizer:</b> <span>{{ $carevents[$j]->organizer }}</span></li>
+                                                    <li><b>Ticket:</b> <span>Kes: {{ $carevents[$j]->ticket_price }}</span></li>
+                                                </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endfor
+                </div>
+            </div>
+        @endfor
+    </div>
+
+    <!-- Controls -->
+    <a class="carousel-control-prev" href="#eventCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#eventCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+</div>
+</div>
+
+<div class="Hdrive text-center my-3">
+	<div class = "container">
+	<div class="col-md-12">
+		<div class="section-title">
 			<h2>Find your drive</h2>
 		</div>
 	</div>
-	<div class="product-grid-list">
-					<div class="row mt-30">
-					@php
-                $carCount = 0; // Initialize a counter
-            @endphp
-				
-					@foreach ($listings as $listing )		
-					@if ($listing->package_id == 2) 
-						@foreach ($vehicles as $vehicle)
-						@if ($listing->id == $vehicle->listing_id  && $carCount < 4) <!-- Check the counter -->
-						<div class="col-sm col-md-3 col-lg-3">
-							<!-- product card -->
-							<div class="product-item bg-light">
+	<div id="productCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        @php
+            $carCount = 0; // Initialize a counter
+            $slideNumber = 0; // Initialize a slide counter
+        @endphp
+        <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
+            <div class="row mt-30">
+                @foreach ($listings as $listing)
+                    @if ($listing->package_id == 2)
+                        @foreach ($vehicles as $vehicle)
+                            @if ($listing->id == $vehicle->listing_id && $carCount < 4)
+                                <div class="col-sm col-md-3 col-lg-3">
+                                    <!-- product card -->
+                                    <div class="product-item bg-light">
+                                        <div class="card">
+											<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
 										<div class="price">{{ $listing->package->package_name}} </div>
@@ -191,24 +269,37 @@
 											
 												</div>
 											</div>
-										</div>
-										</a>
-									</div>
-									@php
-                                $carCount++; // Increment the counter
-                            @endphp
-
-									@endif
-									@endforeach
-									@endif
-									@endforeach
-
-
-											
-
-				
-					</div>
 </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @php
+                                    $carCount++; // Increment the counter
+                                    if ($carCount % 4 === 0) {
+                                        $slideNumber++;
+                                        $carCount = 0; // Reset the counter
+                                    }
+                                @endphp
+                            @endif
+                        @endforeach
+                    @endif
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel navigation controls -->
+    <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+	
 				</div>
 
 
@@ -224,16 +315,20 @@
 					<h2>Trending Ads</h2>
 				</div>
 		</div>
-		<div class="product-grid-list">
-					<div class="row mt-30">
-					@php
-                $carCount = 0; // Initialize a counter
-            @endphp				
-					@foreach ($listings as $listing )		
-						@foreach ($vehicles as $vehicle)
-						@if ($listing->id == $vehicle->listing_id  && $carCount < 4) <!-- Check the counter -->
-						<div class="col-sm col-md-3 col-lg-3">
-							<!-- product card -->
+	<div id="productCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        @php $slideNumber = 0; @endphp
+        @foreach ($listings as $listing)
+            @foreach ($vehicles as $vehicle)
+                @if ($listing->id == $vehicle->listing_id)
+                    @if ($slideNumber % 4 == 0)
+                        <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
+                            <div class="row mt-30">
+                    @endif
+                    <div class="col-sm col-md-3 col-lg-3">
+                        <!-- product card -->
+                        <div class="product-item bg-light">
+                            <div class="card">
 							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
@@ -283,22 +378,31 @@
 												</div>
 											</div>
 										</div>
-										</a>
-									</div>
-									@php
-                                $carCount++; // Increment the counter
-                            @endphp
+                                <!-- Your card content here -->
+                            </div>
+                        </div>
+                    </div>
+                    @php $slideNumber++; @endphp
+                    @if ($slideNumber % 4 == 0)
+                            </div>
+                        </div>
+                    @endif
+                @endif
+            @endforeach
+        @endforeach
+    </div>
 
-									@endif
-									@endforeach
-									@endforeach
+    <!-- Carousel navigation controls -->
+    <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
 
-
-											
-
-				
-					</div>
-	</div>
 </section>
 <!--==========================================
 =          Why KingsBridge            =
@@ -320,7 +424,7 @@
 				 With options ranging from basic to premium listings, 
 				our platform is accessible to car owners of all types and sizes, making it a one-stop-shop for all car needs.
 			  </p>
-			  <li class="why-btn-alighn" "><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+			  <li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
 			</div>
 		  </div>
 		</div>
@@ -331,7 +435,7 @@
 			  <p class="why-text">
 				Our strict vetting process and fraud prevention measures ensure a secure and reliable rental experience.
 			  </p>
-			  <li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+			  <li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
 			</div>
 		  </div>
 		</div>
