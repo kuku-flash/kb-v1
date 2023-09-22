@@ -207,21 +207,20 @@
 	</div>
 	<div id="productCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-        @php
-            $carCount = 0; // Initialize a counter
-            $slideNumber = 0; // Initialize a slide counter
-        @endphp
-        <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
-            <div class="row mt-30">
-                @foreach ($listings as $listing)
-                    @if ($listing->package_id == 2)
-                        @foreach ($vehicles as $vehicle)
-                            @if ($listing->id == $vehicle->listing_id && $carCount < 4)
-                                <div class="col-sm col-md-3 col-lg-3">
-                                    <!-- product card -->
-                                    <div class="product-item bg-light">
-                                        <div class="card">
-											<div class="product-item bg-light">
+        @php $slideNumber = 0; @endphp
+        @foreach ($listings as $listing)
+		@if ($listing->package_id == 2)
+            @foreach ($vehicles as $vehicle)
+                @if ($listing->id == $vehicle->listing_id)
+                    @if ($slideNumber % 3 == 0)
+                        <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
+                            <div class="row mt-30">
+                    @endif
+                    <div class="col-sm col-md-4 col-lg-4">
+                        <!-- product card -->
+                        <div class="product-item bg-light">
+                            <div class="card">
+							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
 										<div class="price">{{ $listing->package->package_name}} </div>
@@ -230,7 +229,7 @@
 											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
 											
 										</a>
-									 <div class="img-count">
+									<div class="img-count">
 										<svg style="color:#d4af37;" 
 										xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
 										class="bi bi-camera-fill" viewBox="0 0 16 16"> 
@@ -239,9 +238,9 @@
 											 <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z" fill="#ffd040">
 												</path> </svg>
 										 <h2 class="text-white"> {{$listings->count()}}</h2>
-									 </div>
-									 </div>
-									 <div class="card-body">
+									</div>
+									</div>
+									<div class="card-body">
 										<h4 class="card-title"><a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->year_of_build}}</a></h4>
 										<ul class="list-inline product-meta">
 											<li class="list-inline-item">
@@ -264,28 +263,22 @@
 											<p class="badge-sale">For Sale</p>
 											<p class="price">Ksh {{ $vehicle->price}}</p>
 											</div>
-											<div>
 											
-											
-												</div>
 											</div>
-</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @php
-                                    $carCount++; // Increment the counter
-                                    if ($carCount % 4 === 0) {
-                                        $slideNumber++;
-                                        $carCount = 0; // Reset the counter
-                                    }
-                                @endphp
-                            @endif
-                        @endforeach
+										</div>
+                                <!-- Your card content here -->
+                            </div>
+                        </div>
+                    </div>
+                    @php $slideNumber++; @endphp
+                    @if ($slideNumber % 3 == 0)
+                            </div>
+                        </div>
                     @endif
-                @endforeach
-            </div>
-        </div>
+				@endif
+            @endforeach
+			@endif
+        @endforeach
     </div>
 
     <!-- Carousel navigation controls -->
@@ -302,7 +295,7 @@
 	
 				</div>
 
-
+</div>
 <!--===========================================
 --===========================================
 =            Popular deals section            =
@@ -321,11 +314,11 @@
         @foreach ($listings as $listing)
             @foreach ($vehicles as $vehicle)
                 @if ($listing->id == $vehicle->listing_id)
-                    @if ($slideNumber % 4 == 0)
+                    @if ($slideNumber % 3 == 0)
                         <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
                             <div class="row mt-30">
                     @endif
-                    <div class="col-sm col-md-3 col-lg-3">
+                    <div class="col-sm col-md-4 col-lg-4">
                         <!-- product card -->
                         <div class="product-item bg-light">
                             <div class="card">
@@ -378,12 +371,11 @@
 												</div>
 											</div>
 										</div>
-                                <!-- Your card content here -->
                             </div>
                         </div>
                     </div>
                     @php $slideNumber++; @endphp
-                    @if ($slideNumber % 4 == 0)
+                    @if ($slideNumber % 3 == 0)
                             </div>
                         </div>
                     @endif
@@ -469,10 +461,7 @@
 	  </div>
 </div>
 </div>
-
-
-
-
+</div>
 
 <!--==========================================
 =        Join the Largest car community  =
@@ -620,7 +609,7 @@
 				<div class="content-holder">
 					<h2>Join the largest community of vehicle enthusiasts</h2>
 					<ul class="list-inline mt-30">
-						<li class="list-inline-item"><a class="btn btn-main" href="{{ route('user.new_listing')}}">Add Listing</a></li>
+						<li class="list-inline-item"><a class="btn btn-main" href="{{ Auth::check() ? route('user.new_listing') : route('login') }}">Add Listing</a></li>						
 						<li class="list-inline-item"><a class="btn btn-secondary" href="{{ route('vehicleslist')}}">Browser Listing</a></li>
 					</ul>
 				</div>

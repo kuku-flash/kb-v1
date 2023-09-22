@@ -65,7 +65,9 @@
 			<form method="POST" action="{{ route('add_to_favourites') }}">
 			@csrf
 			<input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-			<input type="hidden" name="user_id" value="{{ Auth::user()->id}}">
+			@auth
+    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+@endauth
 			<button type="submit"><i class="fa fa-heart-o"></i></button>
 		</form>
 		</div>
@@ -250,7 +252,7 @@
 													<textarea name="review" id="review" rows="10" class="form-control" placeholder="Message"></textarea>
 												</div>
 												<div class="col-12">
-													<button type="submit" class="btn btn-main">Sumbit</button>
+													<button type="submit" class="btn btn-main">Submit</button>
 												</div>
 											</form>
 										</div>
@@ -308,11 +310,9 @@
 						<p>Have a great product to post ? Share it with
 							your fellow users.
 						</p>
-						<!-- Submii button -->
+						<!-- Submii button -->						
+						<a href="{{ Auth::check() ? route('user.create_vehiclesale') : route('login') }}" class="btn btn-transparent-white">Submit Listing</a>
 
-						<a href="" class="btn btn-transparent-white">Submit Listing</a>
-						
-					  
 					</div>
 
 				</div>
