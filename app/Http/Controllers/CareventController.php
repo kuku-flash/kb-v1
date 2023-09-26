@@ -81,10 +81,6 @@ class CareventController extends Controller
      * @param  \App\Models\Carevent  $carevent
      * @return \Illuminate\Http\Response
      */
-    public function show(Carevent $carevent)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

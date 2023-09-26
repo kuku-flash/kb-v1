@@ -46,6 +46,9 @@ Route :: get ('blog',  [PagesController::class, 'blog'])->name('blog');
 Route :: get ('contact_us',  [PagesController::class, 'contact_us'])->name('contact_us');
 Route :: get ('signup',  [PagesController::class, 'signup'])->name('signup');
 Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
+Route :: get ('events',  [PagesController::class, 'showEventsPage'])->name('events');
+
+
 
 
 Route :: post ('storeuser',  [PagesController::class, 'storeuser'])->name('storeuser');
@@ -61,6 +64,7 @@ Route :: get ('vehicle/{listing}/{vehicle}',  [PagesController::class, 'vehicle'
 Route :: get ('post_ad_form',  [PagesController::class, 'post_ad_form'])->name('post_ad_form');
 Route :: get ('single_blog',  [PagesController::class, 'single_blog'])->name('single_blog');
 Route :: get ('terms_condition',  [PagesController::class, 'terms_condition'])->name('terms_condition');
+
 
 Route :: get ('carhire',  [PagesController::class, 'carhire'])->name('carhire');
 Route :: get ('carhirelist',  [PagesController::class, 'carhirelist'])->name('carhirelist');
@@ -145,6 +149,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('checkout',  [ListingController::class, 'checkout'])->name('checkout');
     Route :: post ('post_invoice',  [ListingController::class, 'post_invoice'])->name('post_invoice');
     Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
+    
     Route :: get ('create_carevent',  [CareventController::class, 'create_carevent'])->name('create_carevent');
     Route :: post ('store_carevent',  [CareventController::class, 'store_carevent'])->name('store_carevent');
     Route :: get ('edit_carevent/{carevent}',  [CareventController::class, 'edit_carevent'])->name('edit_carevent');

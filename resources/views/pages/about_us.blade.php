@@ -51,57 +51,6 @@
 </section>
 
 
-<section class="mb-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="heading text-center text-capitalize font-weight-bold py-5">
-                    <h2>Meet Our Team</h2>
-                    <p>"Teamwork is the ability to work together toward a common vision.
-                        The ability to direct individual accomplishments toward organizational objectives. 
-                        It is the fuel that allows common people to attain uncommon results."
-                         – Andrew Carnegie</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="meetcard my-3 my-lg-0">
-                    <img class="meetcard-img-top" src="images/team/" class="img-fluid w-100" alt="Card image cap">
-                    <div class="card-body  text-center">
-                        <h5 class="card-title">Joshua Warutere</h5>
-                        <p class="card-text">Founder / CEO</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="meetcard my-3 my-lg-0">
-                    <img class="meetcard-img-top" src="images/team/" class="img-fluid w-100" alt="Card image cap">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Fajak Kuku </h5>
-                        <p class="card-text">Founder / CTO</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="meetcard my-3 my-lg-0">
-                    <img class="meetcard-img-top" src="images/team/.jpg" class="img-fluid w-100" alt="Card image cap">
-                    <div class="card-body  text-center">
-                        <h5 class="card-title">Elizabeth Wamugo </h5>
-                        <p class="card-text">Manager</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="meetcard my-3 my-lg-0">
-                    <img class="meetcard-img-top" src="images/team/.jpg" class="img-fluid w-100" alt="Card image cap">
-                    <div class="card-body  text-center">
-                        <h5 class="card-title">Sharon Njeri</h5>
-                        <p class="card-text">Accountant</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section class="section bg-gray">
     <div class="container">

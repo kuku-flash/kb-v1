@@ -41,6 +41,13 @@ Public function category (){
     
 }
 
+public function showEventsPage()
+{
+    $carevents = Carevent::all();
+    view()->share('pages.eventspage', $carevents);
+ 
+}
+
 Public function single (Vehicle $vehicle){
     $arr['vehicle'] = $vehicle;
     return view ('pages.single')->with($arr);
