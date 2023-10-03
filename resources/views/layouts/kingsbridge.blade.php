@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=1024">
     <title>KingsBridge</title>
     
-`    <!-- FAVICON -->
-`    <link href="img/favicon.png" rel="shortcut icon">
+    <!-- FAVICON -->
+    <link href="img/favicon.png" rel="shortcut icon">
     <!-- PLUGINS CSS STYLE -->
     <!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
     <!-- Bootstrap -->

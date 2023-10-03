@@ -21,7 +21,6 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CareventController;
-use App\Http\Controllers\MpesaSTKPUSHController;
 use App\Models\Carevent;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,14 +44,6 @@ Route :: get ('ad_list_view',  [PagesController::class, 'ad_list_view'])->name('
 Route :: get ('blog',  [PagesController::class, 'blog'])->name('blog');
 Route :: get ('contact_us',  [PagesController::class, 'contact_us'])->name('contact_us');
 Route :: get ('signup',  [PagesController::class, 'signup'])->name('signup');
-Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
-Route:: get('events', [PagesController::class, 'events'])->name('event');
-Route::get('/events/{id}', [PagesController::class, 'show'])->name('events.show');
-
-
-
-
-
 
 Route :: post ('storeuser',  [PagesController::class, 'storeuser'])->name('storeuser');
 Route :: get ('user/login',  [PagesController::class, 'login'])->name('user.login');
@@ -67,11 +58,6 @@ Route :: get ('vehicle/{listing}/{vehicle}',  [PagesController::class, 'vehicle'
 Route :: get ('post_ad_form',  [PagesController::class, 'post_ad_form'])->name('post_ad_form');
 Route :: get ('single_blog',  [PagesController::class, 'single_blog'])->name('single_blog');
 Route :: get ('terms_condition',  [PagesController::class, 'terms_condition'])->name('terms_condition');
-Route::post('/add-to-favorites', [PagesController::class, 'addToFavorites'])->name('addtofavourites');
-    Route :: get ('favourite_list',  [ListingController::class, 'showFavoriteVehicles'])->name('favourite_list');
-
-
-
 
 Route :: get ('carhire',  [PagesController::class, 'carhire'])->name('carhire');
 Route :: get ('carhirelist',  [PagesController::class, 'carhirelist'])->name('carhirelist');
@@ -82,7 +68,6 @@ Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController:
 
 Route::get('/login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'redirectToFacebook'])->name('login.facebook');
 Route::get('/login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleFacebookCallback']);
-
 
 
 
@@ -111,12 +96,11 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin', 'as' => 'admin.
     Route::get ('invoice_edit/{invoice}',  [AdminInvoiceController::class, 'invoice_edit'])->name('invoice.invoice_edit');
     Route::put ('invoice_update/{invoice}',  [AdminInvoiceController::class, 'invoice_update'])->name('invoice.invoice_update');
 
-
 });
 
 Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.'], function () {
     Route :: get ('archived_list',  [ListingController::class, 'archived_list'])->name('archived_list');
-    Route :: get ('favourite_list',  [ListingController::class, 'showFavoriteVehicles'])->name('favourite_list');
+    Route :: get ('favourite_list',  [ListingController::class, 'favourite_list'])->name('favourite_list');
     Route :: get ('my_list',  [ListingController::class, 'my_list'])->name('my_list');
     Route :: get ('pending_list',  [ListingController::class, 'pending_list'])->name('pending_list');
 
@@ -128,8 +112,6 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: put ('update_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'update_vehiclesale'])->name('update_vehiclesale');
     Route :: get ('show_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'show_vehiclesale'])->name('show_vehiclesale');
     Route :: delete ('delete_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'delete_vehiclesale'])->name('delete_vehiclesale');
-    Route::post('/add-to-favorites', [PagesController::class, 'addToFavorites'])->name('addtofavourites');
-
 
     Route :: get ('category',  [ListingController::class, 'category'])->name('category');
     Route :: get ('model',  [ListingController::class, 'model'])->name('model');
@@ -156,10 +138,8 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: post ('packageupdate/{listing}',  [ListingController::class, 'packageupdate'])->name('packageupdate');
     Route :: get ('checkout',  [ListingController::class, 'checkout'])->name('checkout');
     Route :: post ('post_invoice',  [ListingController::class, 'post_invoice'])->name('post_invoice');
-    Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
-    Route :: get ('index_carevent',  [ListingController::class, 'userevent'])->name('userevent');
-
     
+    Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
     Route :: get ('create_carevent',  [CareventController::class, 'create_carevent'])->name('create_carevent');
     Route :: post ('store_carevent',  [CareventController::class, 'store_carevent'])->name('store_carevent');
     Route :: get ('edit_carevent/{carevent}',  [CareventController::class, 'edit_carevent'])->name('edit_carevent');
@@ -172,14 +152,6 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
 
 
     Route::resource('payment', PaymentController::class);
-    Route::post('/v1/mpesatest/stk/push', [MpesaSTKPUSHController::class, 'STKPush']);
-    Route::post('v1/confirm', [MpesaSTKPUSHController::class, 'STKConfirm'])->name('mpesa.confirm');
-    Route::post('register-urls', [MPESAC2BController::class, 'registerURLS']);
-    Route::post('validation', [MPESAC2BController::class, 'validation'])->name('c2b.validate');
-    Route::post('confirmation', [MPESAC2BController::class, 'confirmation'])->name('c2b.confirm');
-
-
-
 
 
 });

@@ -57,26 +57,6 @@ class VehicleController extends Controller
         return view('vehicle', compact('vehicle'));
     }
 
-    public function add_to_favourites(Request $request, $vehicleId)
-{
-    $user = auth()->user();
-    $favorite = Favorite::where([
-        'user_id' => $user->getAuthIdentifier(),
-        'vehicle_id' => $vehicleId,
-    ])->first();
-
-    if ($favorite) {
-        // If the vehicle is already a favorite, remove it
-        $favorite->delete();
-    } else {
-        // If the vehicle is not a favorite, add it
-        $favorite = new Favorite([
-            'user_id' => $user->getAuthIdentifier(),
-            'vehicle_id' => $vehicleId,
-        ]);
-        $favorite->save();
-    }
-}
 
 
     /**

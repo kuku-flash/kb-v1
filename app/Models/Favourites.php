@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Favourites extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'vehicle_id',];
+    protected $fillable = ['user_id', 'vehicle_id'];
 
     public function user () {
         return $this->belongsTo(User::class, 'user_id');
@@ -18,7 +18,7 @@ class Favourites extends Model
   // Define the relationship with the associated vehicle
     public function vehicle()
     {
-        return $this->belongsTo(Vehicle::class);
+        return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
     
      public function listing()

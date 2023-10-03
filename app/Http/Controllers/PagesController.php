@@ -11,6 +11,7 @@ use App\Models\Package;
 use App\Models\User;
 use App\Models\Vehicle;
 use App\Models\Favorite;
+use App\Models\Favourites;
 use App\Models\Vehicle_photo;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -224,7 +225,7 @@ public function addToFavorites(Request $request)
     // You can check if the user is authenticated here
 
     // Create a new Favourite record in the database
-    $favourite = new Vehicle();
+    $favourite = new Favourites();
     $favourite->user_id = $user;
     $favourite->vehicle_id = $vehicleId;
     $favourite->save();
