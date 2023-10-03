@@ -9,10 +9,13 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Carmake;
 use App\Models\Carmodel;
 use App\Models\Category;
+use App\Models\Favourites; // Import the Favorite model at the top of your controller
 use App\Models\City;
 use App\Models\Invoice;
 use App\Models\Listing;
 use App\Models\Package;
+use App\Models\Carevent;
+use Intervention\Image\Facades\Image;
 use App\Models\Vehicle;
 use App\Models\Vehicle_photo;
 use Carbon\Carbon;
@@ -21,12 +24,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Expr\List_;
+use App\Models\User;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 class ListingController extends Controller
 {
     public function model(Request $request)
     {
-       $data = Carmodel::select('model','id')->where('make_id',$request->id)->take(10)->get();
+       $data = Carmodel::select('model','id')->where('make_id',$request->id)->get();
         return response()->json($data);//then sent this data to aax success
     }
     public function my_list() {
@@ -70,11 +76,35 @@ class ListingController extends Controller
         $vehicles = Vehicle::all();
         return view ('user.archived_list', compact('listings','vehicles'));
     }
+    public function userevent(){
+
+     $carevents = Carevent::where('user_id',Auth::id())->get();
+    return view ('user.archived_list', compact('carevents'));
+
+
+}
+
+
     Public function favourites(){
     
         return view ('user.favourites'); 
         
     }
+
+
+
+public function showFavoriteVehicles()
+{
+    $user = auth()->user();
+    $favoriteVehicles = $user->favorites; // Assuming you've defined the relationship in the User model
+    
+    $listings = Listing::all(); // Retrieve the listings data
+
+    return view('user.favourites', compact('favoriteVehicles', 'listings'));
+}
+
+
+
 
     
 //Post the ad or the list page
@@ -91,11 +121,11 @@ class ListingController extends Controller
 
         return view('user.index_vehiclesale')->with($arr);
     }
-    public function create_vehiclesale(){
+    public function create_vehiclesale(Request $request){
         $arr['categories'] = Category::all();
         $arr['cities'] = City::all();
         $arr['makes'] = Carmake::all();
-        $arr['models'] = Carmodel::all();
+        $arr['models'] = Carmodel::select('model','id')->where('make_id',$request->id)->get(20);
         $arr['packages'] = Package::where('package_featured',null)->orderBy('id','desc')->get();
         return view('user.create_vehiclesale')->with($arr);
     } 
@@ -108,40 +138,37 @@ class ListingController extends Controller
         return view('user.create_listing2')->with($arr);
     } 
 
-    public function store_vehiclesale(Request $request, Listing $listing, Vehicle $vehicle) {
-        $this->validate($request,[
-            'category' => 'required',
-            'city' => 'required',
-            'model_id' => 'required', 
-            'year_of_build' => 'required',
-            'condition' => 'required',
-            'mileage' => 'required',
-            'transmission' => 'required',
-            'fuel_type' => 'required',
-            'exchange' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'body_type' => 'required',
-            'duty_type' => 'required',
-            'interior_type' => 'required',
-            'engine_size' => 'required',
-            'front_img' => ' required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'back_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'right_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'left_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'interiorf_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'interiorb_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'opt_img1' => '|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'opt_img2' => ' image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'opt_img3' => ' image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'vehicle_type' => 'required',
-            'color' => 'required',
-   
+  public function store_vehiclesale(Request $request, Listing $listing, Vehicle $vehicle)
+{
+    $this->validate($request, [
+        'category' => 'required',
+        'city' => 'required',
+        'model_id' => 'required',
+        'year_of_build' => 'required',
+        'condition' => 'required',
+        'mileage' => 'required',
+        'transmission' => 'required',
+        'fuel_type' => 'required',
+        'exchange' => 'required',
+        'price' => 'required',
+        'description' => 'required',
+        'body_type' => 'required',
+        'duty_type' => 'required',
+        'interior_type' => 'required',
+        'engine_size' => 'required',
+        'front_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'back_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'right_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'left_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'interiorf_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'interiorb_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'opt_img1' => '|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'opt_img2' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'opt_img3' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'vehicle_type' => 'required',
+        'color' => 'required',
+    ]);
 
-
-            ]);
-
-           
 
       $listing->category_id = $request->category;
       $listing->city_id = $request->city;

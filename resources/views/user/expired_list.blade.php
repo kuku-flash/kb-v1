@@ -170,7 +170,7 @@
 
 			</div>
 			@else
-			<h1> No List Founds...Please Add your first Listing 
+			<h1> No Listings Found...Add your first Listing? 
 			
 			</h1>
 			@endif

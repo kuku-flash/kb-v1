@@ -26,49 +26,58 @@
 						</ul>
 					</div>
 
-					<section>
-						<div class=" main single-item">
-						 
-				@if ($vehicle->front_img) <div class="main" ><img   src="/storage/photos/{{ $vehicle->front_img }}"> </div> @endif
-				@if ($vehicle->back_img) <div  class="main"><img  src="/storage/photos/{{ $vehicle->back_img }}"></div>  @endif
-				@if ($vehicle->right_img) <div class="main"><img   src="/storage/photos/{{ $vehicle->right_img }}"></div> @endif
-				@if ($vehicle->left_img) <div class="main" ><img  src="/storage/photos/{{ $vehicle->left_img }}"></div> @endif
-				@if ($vehicle->interiorf_img) <div class="main" ><img  src="/storage/photos/{{ $vehicle->interiorf_img }}"></div> @endif
-				@if ($vehicle->interiorb_img) <div class="main"><img   src="/storage/photos/{{ $vehicle->interiorb_img }}"></div> @endif		
-				@if($vehicle->engine_img) <div class="main"> <img src="/storage/photos/{{ $vehicle->engine_img }}"> </div> @endif		
-				@if ($vehicle->opt_img1) <div class="main"><img  src="/storage/photos/{{ $vehicle->opt_img1 }}"></div> @endif
-				@if ($vehicle->opt_img2) <div class="main" ><img  src="/storage/photos/{{ $vehicle->opt_img2 }}"> </div> @endif
-				@if ($vehicle->opt_img3) <div class="main"><img   src="/storage/photos/{{ $vehicle->opt_img3 }}"></div> @endif
-					</div>
-				
-					 <ul class="thumbs mt-3 slider-nav">
-									
+									<section>
+    <div class="main single-item">
+        @if ($vehicle->front_img) <div class="main"><img src="/storage/photos/{{ $vehicle->front_img }}" class="vehicle-img"></div> @endif
+        @if ($vehicle->back_img) <div class="main"><img src="/storage/photos/{{ $vehicle->back_img }}" class="vehicle-img"></div> @endif
+        @if ($vehicle->right_img) <div class="main"><img src="/storage/photos/{{ $vehicle->right_img }}" class="vehicle-img"></div> @endif
+        @if ($vehicle->left_img) <div class="main"><img src="/storage/photos/{{ $vehicle->left_img }}" class="vehicle-img"></div> @endif
+        @if ($vehicle->interiorf_img) <div class="main"><img src="/storage/photos/{{ $vehicle->interiorf_img }}" class="vehicle-img"></div> @endif
+        @if ($vehicle->interiorb_img) <div class="main"><img src="/storage/photos/{{ $vehicle->interiorb_img }}" class="vehicle-img"></div> @endif
+        @if ($vehicle->engine_img) <div class="main"><img src="/storage/photos/{{ $vehicle->engine_img }}" class="vehicle-img"></div> @endif
+        @if ($vehicle->opt_img1) <div class="main"><img src="/storage/photos/{{ $vehicle->opt_img1 }}" class="vehicle-img"></div> @endif
+        @if ($vehicle->opt_img2) <div class="main"><img src="/storage/photos/{{ $vehicle->opt_img2 }}" class="vehicle-img"></div> @endif
+        @if ($vehicle->opt_img3) <div class="main"><img src="/storage/photos/{{ $vehicle->opt_img3 }}" class="vehicle-img"></div> @endif
+    </div>
 
-				@if ($vehicle->front_img) <div  ><img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->front_img }}"> </div> @endif
-				@if ($vehicle->back_img) <div  ><img class="thumbnail thumb-img"  src="/storage/photos/{{ $vehicle->back_img }}"></div>  @endif
-				@if ($vehicle->right_img) <div ><img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->right_img }}"></div> @endif
-				@if ($vehicle->left_img) <div  ><img class="thumbnail thumb-img"  src="/storage/photos/{{ $vehicle->left_img }}"></div> @endif
-				@if ($vehicle->interiorf_img) <div  ><img class="thumbnail thumb-img"  src="/storage/photos/{{ $vehicle->interiorf_img }}"></div> @endif
-				@if ($vehicle->interiorb_img) <div ><img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->interiorb_img }}"></div> @endif		
-				@if($vehicle->engine_img) <div> <img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->engine_img }}"> </div> @endif		
-				@if ($vehicle->opt_img1) <div ><img class="thumbnail thumb-img"  src="/storage/photos/{{ $vehicle->opt_img1 }}"></div> @endif
-				@if ($vehicle->opt_img2) <div ><img  class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img2 }}"> </div> @endif
-				@if ($vehicle->opt_img3) <div ><img class="thumbnail thumb-img"   src="/storage/photos/{{ $vehicle->opt_img3 }}"></div> @endif
-								
-							</ul>
-							
-						  
-					  </section>
+    <ul class="thumbs mt-3 slider-nav">
+        @if ($vehicle->front_img) <div><img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->front_img }}"></div> @endif
+        @if ($vehicle->back_img) <div><img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->back_img }}"></div> @endif
+        @if ($vehicle->right_img) <div><img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->right_img }}"></div> @endif
+        @if ($vehicle->left_img) <div><img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->left_img }}"></div> @endif
+        @if ($vehicle->interiorf_img) <div><img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorf_img }}"></div> @endif
+        @if ($vehicle->interiorb_img) <div><img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->interiorb_img }}"></div> @endif
+        @if ($vehicle->engine_img) <div><img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->engine_img }}"></div> @endif
+        @if ($vehicle->opt_img1) <div><img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img1 }}"></div> @endif
+        @if ($vehicle->opt_img2) <div><img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img2 }}"></div> @endif
+        @if ($vehicle->opt_img3) <div><img class="thumbnail thumb-img" src="/storage/photos/{{ $vehicle->opt_img3 }}"></div> @endif
+    </ul>
+</section>
 
-	  <section class="vehicle specifications">
-		<div class="favourist-list">
-			<form method="POST" action="#">
-			@csrf
-			<input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-			<input type="hidden" name="user_id" value="#">
-			<button type="submit"><i class="fa fa-heart-o"></i></button>
-		</form>
-		</div>
+<style>
+    /* CSS to set a fixed height and width for the images */
+    .vehicle-img {
+        max-height: 400px; /* Adjust the height as needed */
+        max-width: 100%; /* Keeps the aspect ratio */
+    }
+</style>
+
+<section class="vehicle specifications">
+    <div class="favourist-list">
+        @auth
+            <form method="POST" action="{{ route('addtofavourites') }}">
+                @csrf
+                <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                <button type="submit"><i class="fa fa-heart-o"></i></button>
+            </form>
+        @else
+            <a href="{{ route('login') }}"><i class="fa fa-heart-o"></i></a>
+        @endauth
+    </div>
+
+
+
 		<p>viewed {{ $vehicle->views }} times.</p>
 		<ul aria-label="Key Specifications" data-gui="key-specs-section" class="sc-jYKCQm isection"><li class="sc-jfkLlK ialighment atc-type-fiesta atc-type--regular">
 
@@ -133,10 +142,10 @@
 								<a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
 								 aria-selected="false">Specifications</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact"
-								 aria-selected="false">Reviews</a>
-							</li>
+							<!--<li class="nav-item">-->
+							<!--	<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact"-->
+							<!--	 aria-selected="false">Reviews</a>-->
+							<!--</li>-->
 						</ul>
 						<div class="tab-content" id="pills-tabContent">
 							<div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -250,7 +259,7 @@
 													<textarea name="review" id="review" rows="10" class="form-control" placeholder="Message"></textarea>
 												</div>
 												<div class="col-12">
-													<button type="submit" class="btn btn-main">Sumbit</button>
+													<button type="submit" class="btn btn-main">Submit</button>
 												</div>
 											</form>
 										</div>
@@ -278,15 +287,18 @@
 						<a href="">See all ads</a>
 						<p>{{ $listing->user->phone_number }} </p>
 						<ul class="list-inline mt-20">
-							<li class="list-inline-item"><a href="" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
-							<li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an
+        <li class="list-inline-item">
+            <a href="tel:{{ $listing->user->phone_number }}" class="btn btn-contact d-inline-block btn-primary px-lg-5 my-1 px-md-3">
+                Contact
+            </a>
+        </li>							<li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an
 									offer</a></li>
 						</ul>
 						<p style="font-size: 20px;">
 				
-							<a href="https://www.facebook.com/kingsbridge.kenya/"><i class="fa fa-facebook"></i><span class="icon-facebook"></span></a>
-							<i class="fa fa-email"><a href="#"><span class="icon-email"></span></a></i>
-							<i class="fa fa-instagram"><a href="#"><span class="icon-instagram"></span></a></i>
+							<!--<a href="https://www.facebook.com/kingsbridge.kenya/"><i class="fa fa-facebook"></i><span class="icon-facebook"></span></a>-->
+							<!--<i class="fa fa-email"><a href="#"><span class="icon-email"></span></a></i>-->
+							<!--<i class="fa fa-instagram"><a href="#"><span class="icon-instagram"></span></a></i>-->
 							
 						 
 					</p>
@@ -308,11 +320,9 @@
 						<p>Have a great product to post ? Share it with
 							your fellow users.
 						</p>
-						<!-- Submii button -->
+						<!-- Submii button -->						
+						<a href="{{ Auth::check() ? route('user.create_vehiclesale') : route('login') }}" class="btn btn-transparent-white">Submit Listing</a>
 
-						<a href="" class="btn btn-transparent-white">Submit Listing</a>
-						
-					  
 					</div>
 
 				</div>

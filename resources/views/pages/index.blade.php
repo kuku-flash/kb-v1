@@ -57,19 +57,18 @@
 													@foreach($makes as $make)
 														<option value="{{ $make->id }}" {{(old('make'))? 'selected':''}}>{{ $make->make }}</option>
 													@endforeach
-												</select>
+													</select>
 													@error('make_id')
 													<span class="invalid"  role="alert">
 														<strong>{{ $message }}</strong>
 													</span>
 													@enderror
 												</div>
-									
+			
 												<div class="carmodel form-group col-md-2">
 													
 												<select name="model_id" class="model form-control ">
 													<option value="0"  disabled="true" selected="true" data-live-search="true">Choose a model</option>
-
 												</select>
 												
 												</div>
@@ -84,24 +83,29 @@
 													</select>
 								
 												</div>
-												<div class="form-group col-md-2">
+                                                <div class="form-group col-md-2">
 													<select name="price" id="inputGroupSelect" class="form-control">
 														<option value="">Max Price</option>
-														<option value="10000000">100,000,000</option>
-														<option value="50000000">50,000,000</option>
-														<option value="10000000">10,000,000</option>
-														<option value="5000000">5,000,000</option>
-														<option value="1000000">1,000,000</option>
+														<option value="100,000,000">100,000,000</option>
+														<option value="50,000,000">50,000,000</option>
+														<option value="10,000,000">10,000,000</option>
+														<option value="5,000,000">5,000,000</option>
+														<option value="1,000,000">3,000,000</option>
+														<option value="1,000,000">1,000,000</option>
+														<option value="500,000">500,000</option>
+														<option value="300,000">300,000</option>
 													</select>
 								
 												</div>
 												<div class="form-group col-md-2">
 													<select name="price" id="inputGroupSelect" class="form-control">
 														<option value="">Min Price</option>
-														<option value="900000">900,000</option>
-														<option value="700000">700,000</option>
-														<option value="500000">500,000</option>
-														
+														<option value="3,000,000">3,000,000</option>
+														<option value="2,000,000">2,000,000</option>
+														<option value="1,000,000">1,000,000</option>
+														<option value="700,000">700,000</option>
+														<option value="500,000">500,000</option>
+														<option value="300,000">300,000</option>														
 													</select>
 								
 												</div>
@@ -125,29 +129,135 @@
 	<!-- Container End -->
 </section>
 
+
 <div class="Hdrive text-center my-3">
+	<div class = "container">
 	<div class="col-md-12">
 		<div class="section-title">
-			<h2>Find your drive</h2>
+			<h2>Trending Ads</h2>
 		</div>
 	</div>
-    <div class="Hdrive row">
-		
-        <div class="carousel  owl-carousel  w-100" data-ride="carousel">
-			
-			
-			@foreach ($listings as $listing )		
-			@foreach ($vehicles as $vehicle)
-			@if ($listing->id == $vehicle->listing_id)
-		
-			<div class="carousel-item active">
-						<div class="col-sm-4 col-md-4 col-lg-4 " >
-							<!-- product card -->
-							
+	<div id="productCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        @php $slideNumber = 0; @endphp
+        @foreach ($listings as $listing)
+		@if ($listing->package_id == 2)
+            @foreach ($vehicles as $vehicle)
+                @if ($listing->id == $vehicle->listing_id)
+                    @if ($slideNumber % 3 == 0)
+                        <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
+                            <div class="row mt-30">
+                    @endif
+                    <div class="col-sm col-md-4 col-lg-4">
+                        <!-- product card -->
+                        <div class="product-item bg-light">
+                            <div class="card">
 							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
-										<div class="price"> {{ $listing->package->package_name}}</div>
+										<div class="price">{{ $listing->package->package_name}} </div>
+										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
+											
+											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
+											
+										</a>
+									<div class="img-count">
+										<svg style="color:#d4af37;" 
+										xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+										class="bi bi-camera-fill" viewBox="0 0 16 16"> 
+										<path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" fill="#ffd040">
+											</path>
+											 <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z" fill="#ffd040">
+												</path> </svg>
+										 <h2 class="text-white"> {{$listings->count()}}</h2>
+									</div>
+									</div>
+									<div class="card-body">
+										<h4 class="card-title"><a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->year_of_build}}</a></h4>
+										<ul class="list-inline product-meta">
+											<li class="list-inline-item">
+												<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}"><i class="fa fa-folder-open-o"></i>{{ $listing->category->category_name}}</a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#"><i class="fa fa-location-arrow"></i>{{ $listing->city->city}} </a>
+											</li>
+										</ul>
+										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
+											<ul class="styled-list">
+												<li ><b>Engine Size:</b><span>{{ $vehicle->engine_size}}</span></li>
+												<li ><b>Trans:</b><span >{{ $vehicle->transmission}}</span></li>
+												<li ><b>Miles:</b><span>{{ $vehicle->mileage}}Km</span></li>
+												<li ><b>Fuel:</b><span>{{ $vehicle->fuel_type}}</span></li>
+				
+											</ul>
+											</div>
+											<div class="property-price">
+											<p class="badge-sale">For Sale</p>
+											<p class="price">Ksh {{ $vehicle->price}}</p>
+											</div>
+											
+											</div>
+										</div>
+                                <!-- Your card content here -->
+                            </div>
+                        </div>
+                    </div>
+                    @php $slideNumber++; @endphp
+                    @if ($slideNumber % 3 == 0)
+                            </div>
+                        </div>
+                    @endif
+				@endif
+            @endforeach
+			@endif
+        @endforeach
+    </div>
+
+    <!-- Carousel navigation controls -->
+    <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+	
+				</div>
+
+</div>
+<!--===========================================
+--===========================================
+=            Popular deals section            =
+============================================-->
+
+<section class="product">
+	<div class="container">
+			<div class="col-md-12">
+				<div class="section-title">
+					<h2>Find Your Drive</h2>
+				</div>
+		</div>
+	<div id="productCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        @php $slideNumber = 0; @endphp
+        @foreach ($listings as $listing)
+            @foreach ($vehicles as $vehicle)
+                @if ($listing->id == $vehicle->listing_id)
+                    @if ($slideNumber % 3 == 0)
+                        <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
+                            <div class="row mt-30">
+                    @endif
+                    <div class="col-sm col-md-4 col-lg-4">
+                        <!-- product card -->
+                        <div class="product-item bg-light">
+                            <div class="card">
+							<div class="product-item bg-light">
+								<div class="card">
+									<div class="thumb-content">
+										<div class="price">{{ $listing->package->package_name}} </div>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											
 											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
@@ -193,107 +303,114 @@
 												</div>
 											</div>
 										</div>
-										</a>
-									</div>
-								</div>
-					
-									@endif	
-									@endforeach
-									@endforeach
-									
-           
-            <a class="slick-prev" role="button" data-slide="prev">
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="slick-next"  role="button" data-slide="next">
-                <span class="sr-only">Next</span>
-            </a>
-			
-        </div>
-                
+                            </div>
+                        </div>
+                    </div>
+                    @php $slideNumber++; @endphp
+                    @if ($slideNumber % 3 == 0)
+                            </div>
+                        </div>
+                    @endif
+                @endif
+            @endforeach
+        @endforeach
     </div>
+
+    <!-- Carousel navigation controls -->
+    <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 
-<!--===================================
-=           Our Partners           =
-====================================-->
-<!--
-<section class="product">
-	<p style="font-weight: 450; font-size:20px; text-align: center;"> <b>Our Partners</b></p>
-	<div class="slider ">
-		<div> <img src="../images/king2.png" alt="" style='width: 50px; height: 50px;'>
-		</div>
-		<div><img src="../images/GarageGallery Logo.jpg" alt="" style='width: 50px; height: 50px;'>
-		</div>
-		<div><img src="../images/sti.png" alt="" style='width: 50px; height:50px;'>
-		</div>
-		<div><img src="../images/benz.jpg" alt="" style='width: 50px; height: 50px;'>
-		</div>
-		<div><img src="../images/king2.png" alt="" style='width: 50px; height: 50px;'>
-		</div>
-		<div><img src="../images/king2.png" alt="" style='width: 50px; height: 50px;'>
-		</div>
-	  </div>
 </section>
--->
-<!--===========================================
---===========================================
-=            Popular deals section            =
-============================================-->
 
-<section class="product">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="section-title">
-					<h2>Trending Ads</h2>
-				</div>
-			</div>
+<div class="Hdrive text-center my-3">
+	<div class = "container">
+	<div class="col-md-12">
+		<div class="section-title">
+			<h2>Events</h2>
 		</div>
-		<div class="row">
-			<!-- offer 01 -->
-			<div class="col-lg-12">
-				<div class="owl-drag">
-					<div class="col-sm-12 col-lg-4">
-						<!-- product card -->
-<div class="product-item bg-light owl-drag">
-	<div class="card">
-		<div class="thumb-content">
-			<div class="price">Silver Package</div>
-			<a href="{{ route('single') }}">
-				<img class="index-img-fluid" src="images/amg1.jpg" alt="">
-			</a>
-		</div>
-		<div class="card-body">
-		   <h4 class="card-title"><a href="{{ route('single') }}">2013 Mercedes Benz E-Class AMG</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
-		    	</li>
-		    </ul>
-		    <div class="product-ratings">
-		    	<ul class="trending-horizontal">
-					<li>Mileage:<span class="car-li">19400Km</span></li>
-					<li>Trans:<span class="car-li">Automatic</span></li>
-				</ul>  
-				<div class="property-price">
-					<p class="badge-sale">For Sale</p>
-					<p class="price">Ksh9.4M</p></a>
-					</div>
-				  </div>
-				</div>
 	</div>
+	<div id="eventCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @foreach ($carevents as $index => $carevent)
+            <li data-target="#eventCarousel" data-slide-to="{{ $index }}" @if ($index === 0) class="active" @endif></li>
+        @endforeach
+    </ol>
+
+    <!-- Slides -->
+<div id="eventCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @foreach ($carevents as $index => $carevent)
+            <li data-target="#eventCarousel" data-slide-to="{{ $index }}" @if ($index === 0) class="active" @endif></li>
+        @endforeach
+    </ol>
+
+    <!-- Slides -->
+    <div class="carousel-inner">
+        @for ($i = 0; $i < count($carevents); $i += 3)
+            <div class="carousel-item @if ($i === 0) active @endif">
+                <div class="row">
+                    @for ($j = $i; $j < min($i + 3, count($carevents)); $j++)
+                        <div class="col-sm col-md-4 col-lg-4">
+                            <!-- event card -->
+                            <div class="product-item bg-light" style="margin-right: 10px;"> <!-- Adjust this value as needed -->
+                                <div class="card">
+                                    <div class="thumb-content">
+                                        <div class="price">Event</div>
+                                        <a href="{{ route('carevent') }}">
+                                            <!-- Display event image -->
+                                            <img class="card-img-top category-img-fluid" src="/storage/photos/{{ $carevents[$j]->event_image }}" alt="Event Image" style="max-height: 400px;">
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mdl-card__title">
+                                            <!-- Display event title -->
+                                            <h2 style="font-weight: 450; font-size: 20px;" class="mdl-card__title-text">{{ $carevents[$j]->event_title }}</h2>
+                                        </div>
+                                        <div class="mdl-card__supporting-text">
+                                            <p class="card-text">
+                                                <ul class="list-horizontal">
+                                                    <!-- Display event details -->
+                                                    <li><b>Location:</b> <span>{{ $carevents[$j]->event_location }}</span></li>
+                                                    <li><b>Date:</b> <span>{{ $carevents[$j]->event_date }}</span></li>
+                                                    <li><b>Time:</b> <span>{{ $carevents[$j]->event_time }}</span></li>
+                                                    <li><b>Organizer:</b> <span>{{ $carevents[$j]->organizer }}</span></li>
+                                                    <li><b>Ticket:</b> <span>Kes: {{ $carevents[$j]->ticket_price }}</span></li>
+                                                </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endfor
+                </div>
+            </div>
+        @endfor
+    </div>
+
+    <!-- Controls -->
+    <a class="carousel-control-prev" href="#eventCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#eventCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
-				</div>
-			</div>
-			
-			
-		</div>
-	</div>
-</section>
+</div>
+
+</div>
+</div>
 <!--==========================================
 =          Why KingsBridge            =
 ===========================================-->
@@ -308,122 +425,33 @@
 		<div class="col-sm-6">
 		  <div class="whycard">
 			<div class="card-bodyy">
-			  <h5 class="why-title">Customizable Pricing</h5>
+			  <h5 class="why-title">You might wonder why</h5>
 			  <p class="why-text">
-				We offer a unique and customizable pricing model that allows our customers to choose the package that best fits their needs and budget.
-				 With options ranging from basic to premium listings, 
-				our platform is accessible to car owners of all types and sizes, making it a one-stop-shop for all car needs.
+				At KingsBridge, we take pride in being more than just an online car selling platform. 
+				We are your automotive hub, a comprehensive destination where car enthusiasts and sellers unite.
+				Here's why you should choose us:
 			  </p>
-			  <li class="why-btn-alighn" "><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+				<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
 			</div>
 		  </div>
 		</div>
 		<div class="col-sm-6">
 		  <div class="whycard">
 			<div class="card-bodyy">
-			  <h5 class="why-title">Trust and Security</h5>
-			  <p class="why-text">
-				Our strict vetting process and fraud prevention measures ensure a secure and reliable rental experience.
-			  </p>
-			  <li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+			  <h5 class="why-title">Flexible Options for All</h5>
+                <p class="why-text" style="text-align: justify;">
+                    At KingsBridge, we offer flexible pricing options to cater to your unique needs.
+                    Whether you're a car seller, a garage owner, or a car event organizer, we have a solution tailored just for you. 
+                    Explore the possibilities:			  
+                    </p>
+				<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
 			</div>
 		  </div>
 		</div>
-
-		<div class="col-sm-6">
-			<div class="whycard">
-			  <div class="card-bodyy">
-				<h5 class="why-title">Special title treatment</h5>
-				<p class="why-text">
-					With supporting text below as a natural lead-in to additional content.
-					With supporting text below as a natural lead-in to additional content.
-					With supporting text below as a natural lead-in to additional content.
-				</p>
-				<li class="why-btn-alighn""><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-			  </div>
-			</div>
-		  </div>
-		  <div class="col-sm-6">
-			<div class="whycard">
-			  <div class="card-body">
-				<h5 class="why-title">Special title treatment</h5>
-				<p class="why-text">
-					With supporting text below as a natural lead-in to additional content.
-					With supporting text below as a natural lead-in to additional content.
-					With supporting text below as a natural lead-in to additional content.
-				</p>
-				<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-			  </div>
-			</div>
-		  </div>
 	  </div>
 </div>
 </div>
-
-
-<!--==========================================
-=            All Category Section            =
-===========================================-->
-
-<section class=" section-categories">
-	<!-- Container Start -->
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<!-- Section title -->
-				<div class="section-title">
-					<h2>All Categories</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<!-- offer 01 -->
-			<div class="col-lg-12">
-				<div class="owl-drag">
-					<div class="col-sm-12 col-lg-4">
-						<!-- product card -->
-<div class="product-item bg-light owl-drag">
-	<div class="card">
-		<div class="thumb-content">
-			<div class="price">Gold Package</div>
-			<a href="{{ route('single') }}">
-				<img class="index-img-fluid" src="images/amg1.jpg" alt="">
-			</a>
-		</div>
-		<div class="card-body">
-		   <h4 class="card-title"><a href="{{ route('single') }}">2013 Mercedes Benz E-Class AMG</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="{{ route('single') }}"><i class="fa fa-folder-open-o"></i>Cars</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-location-arrow"></i>Parklands</a>
-		    	</li>
-		    </ul>
-		    <div class="product-ratings">
-		    	<ul class="trending-horizontal">
-					<li>Mileage:<span class="car-li">19400Km</span></li>
-					<li>Trans:<span class="car-li">Automatic</span></li>
-				</ul>  
-				<div class="property-price">
-					<p class="badge-sale">For Hire</p>
-					<p class="price">Ksh9.4M</p></a>
-					</div>
-		    </div>
-		</div>
-	</div>
 </div>
-
-					
-					
-				</div>
-			</div>
-		</div>
-	</div>
-
-</section>
-
 
 <!--==========================================
 =        Join the Largest car community  =
@@ -447,98 +475,18 @@
 		</div>
 	</div>
 </section>
-<!--==========================================
-=            All Category Section            =
-===========================================-->
 
-<section class=" section-categories">
-	<!-- Container Start -->
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<!-- Section title -->
-				<div class="section-title">
-					<h2>All Categories</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
-				</div>
-				<div class="row">
-<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-car icon-bg-3"></i> 
-								<h4>Vehicles</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Cars <span>93</span></a></li>
-								<li><a href="category.html">Buses <span>23</span></a></li>
-								<li><a href="category.html">Motorcycles  <span>83</span></a></li>
-								<li><a href="category.html">Trucks <span>33</span></a></li>
-								<li><a href="category.html">Heavy Equipments <span>33</span></a></li>
-							</ul>
-						</div>
-					</div> 
-					<!-- /Category List -->
+<!--===================================
+=           Our Partners           =
+====================================-->
 
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-home icon-bg-3"></i> 
-								<h4>Real Estate</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Houses <span>393</span></a></li>
-								<li><a href="category.html">Apartments <span>23</span></a></li>
-								<li><a href="category.html">Commercials  <span>13</span></a></li>
-								<li><a href="category.html">Industrial<span>43</span></a></li>
-							</ul>
-						</div>
-					</div> 
-					<!-- /Category List -->
-
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-home icon-bg-7"></i> 
-								<h4>BnBs</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Houses <span>65</span></a></li>
-								<li><a href="category.html">Apartments <span>23</span></a></li>
-							</ul>
-						</div>
-					</div> 
-					<!-- /Category List -->
-
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-taxi icon-bg-4"></i> 
-								<h4>Car Hire</h4>
-							</div>
-							<ul class="category-list" >
-								<li><a href="category.html">Saloons <span>53</span></a></li>
-								<li><a href="category.html">Suvs <span>53</span></a></li>
-							</ul>
-						</div>
-					</div> 
-					<!-- /Category List -->
-
-					
-					
-				</div>
-			</div>
+<section class="product">
+	<p style="font-weight: 450; font-size:20px; text-align: center;"> <b>Our Partners</b></p>
+	<div class="slider ">
+		<div><img src="../images/GarageGallery Logo.jpg" alt="" style="max-height: 150px;">
 		</div>
-	</div>
-	<!-- Container End -->
+	  </div>
 </section>
-
-
-
-
 
 <!--====================================
 =            Call to Action            =
@@ -553,13 +501,16 @@
 				<div class="content-holder">
 					<h2>Join the largest community of vehicle enthusiasts</h2>
 					<ul class="list-inline mt-30">
-						<li class="list-inline-item"><a class="btn btn-main" href="ad-listing.html">Add Listing</a></li>
-						<li class="list-inline-item"><a class="btn btn-secondary" href="category.html">Browser Listing</a></li>
+						<li class="list-inline-item"><a class="btn btn-main" href="{{ Auth::check() ? route('user.new_listing') : route('login') }}">Add Listing</a></li>						
+						<li class="list-inline-item"><a class="btn btn-secondary" href="{{ route('vehicleslist')}}">Browser Listing</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
+	
 	<!-- Container End -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -22,6 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'phone_number',
+        'isVerified',
         'avatar',
         'social_links',
         'identification_number',
@@ -37,6 +39,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -50,10 +54,16 @@ class User extends Authenticatable
         return $this->hasMany( 'App\Models\Listing');
     }
 
+
+
+   // Define the relationship with favorite vehicles
     public function favorites()
-{
-    return $this->hasMany(Favorite::class);
-}
+    {
+        return $this->hasMany(Favourites::class);
+    }
+
+
+    // 
 
     public function roles(){
         return $this->belongsToMany(Role::class);
@@ -61,6 +71,8 @@ class User extends Authenticatable
     public function getIsSuperAdminAttribute()
     {
         return $this->roles()->where('id', 1)->exists();
+       
+
     }
     
     public function getIsManagerAttribute()
@@ -72,18 +84,21 @@ class User extends Authenticatable
         return $this->roles()->where('id', 2)->exists();
     }
     public function getIsUserAttribute()
-    {
-        return $this->roles()->where('id', 3)->exists();
-    }
+   {
+       $userIdsToCheck = [1, 2];
+            return !$this->roles()->whereIn('id', $userIdsToCheck)->exists();
+   }
     public function getIsBusinessAttribute()
     {
         return $this->roles()->where('id', 4)->exists();
     }
     public function setPasswordAttribute($input)
-    {
-        if ($input) {
-            $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
-        }
+{
+    if ($input) {
+        $hashedPassword = Hash::make($input);
+        $this->attributes['password'] = $hashedPassword;
     }
+}
+    
 
 }

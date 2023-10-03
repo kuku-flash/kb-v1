@@ -38,7 +38,7 @@
 					</div>
 					<div class="widget user-dashboard-menu">
 						<ul>
-							<li> <a href=""><i class="fa fa-heart"></i>Favourite</a> </li>
+							<li> <a href="{{ route('favourite_list')}}"><i class="fa fa-heart"></i>Favourite</a> </li>
 	
 						</ul>
 					</div>
@@ -85,12 +85,16 @@
 
 
 			@if ( count($listings) > 0)
-			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
-				<!-- Recently Favorited -->
-			
-				
-				
-					
+<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+   <div class="Hdrive text-center my-3">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>My Listings</h2>
+                </div>
+            </div>
+        </div>
+    </div>										
 							@foreach($listings as $listing)
 							
 								@foreach ($vehicles as $vehicle)
@@ -101,6 +105,7 @@
     <div class="row">
         <div class="col-lg-12 mt-3">
 			<div class="listing-container">
+			 <a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 				<div class="listing-image">
 				  <img class="img-square-wrapper" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
 				</div>

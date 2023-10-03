@@ -72,23 +72,7 @@
                           <h4 class="info-text"> What type of User are you? (checkboxes) </h4>
                          
                           <div class="row">
-                            <div class="col-lg-4 col-md-4">
-                              <div class="package-content bg-light border text-center p-1 my-2 my-lg-0">
-                                  <div class="package-content-heading ">
-                                      <i class="fa fa-user" style="font-size: 50px"></i>
-                                      <h4>Buyer or Seeker</h4>
-              
-                                  </div>
-                                  
-                                  <input type="radio"  id="inputGroupSelect" class=" user-radios" name="role" value="3" required>
-                                  @error('role')
-                                  <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>
-                                   @enderror
-                                      
-                              </div>
-                              
-                            </div>
-                            <div class="col-lg-4 col-md-4">
+                            <div class="col-lg-6 col-md-6">
                               <div class="package-content bg-light border text-center p-1 my-2 my-lg-0">
                                   <div class="package-content-heading">
                                       <i class="fa fa-user" style="font-size: 50px"></i>
@@ -103,7 +87,7 @@
                               </div>
                               
                             </div>
-                            <div class="col-lg-4 col-md-4">
+                            <div class="col-lg-6 col-md-6">
                               <div class="package-content bg-light border text-center p-1 my-2 my-lg-0">
                                   <div class="package-content-heading">
                                       <i class="fa fa-user" style="font-size: 50px"></i>

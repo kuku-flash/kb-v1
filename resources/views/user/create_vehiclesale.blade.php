@@ -118,7 +118,8 @@
           <select name="condition" id="inputGroupSelect" class="form-control">
               <option value="{{ old('condition')}}" {{(old('condition'))? 'selected':''}}> {{ old('condition')}} </option>     
               <option >Foreign Used</option>     
-              <option>Local Used</option>    
+              <option>Local Used</option> 
+              <option>Brand New</option>
           </select>
           @error('condition')
             <span class="invalid" role="alert">
@@ -339,7 +340,7 @@
 </fieldset>
 <fieldset class="border border-gary p-4 mb-5">
   <h4 style=" text-align: center;">Upload your cars image</h4>
-  <h6 class="font-weight-bold pt-4 pb-1">Kindly follow the below processes</h6>
+  <h6 class="font-weight-bold pt-4 pb-1">First image must be the front of the vehicle, the rest can come in any order.</h6>
   <div class="row">
     <div class="space column">
       <div class="card">

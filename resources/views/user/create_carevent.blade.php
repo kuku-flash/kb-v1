@@ -50,7 +50,7 @@
               @enderror
           </div>
           <div class="col-lg-6">
-            <h6 class="font-weight-bold pt-4 pb-1">Ticket Price AUD</h6>
+            <h6 class="font-weight-bold pt-4 pb-1">Ticket Price Ksh</h6>
             <input name="ticket_price" value="{{ old('ticket_price')}}" type="text" class="border w-100 p-2 bg-white text-capitalize" >
             @error('ticket_price') 
              <span class="invalid" role="alert"> <strong>{{ $message }}</strong> </span> 

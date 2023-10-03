@@ -78,124 +78,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-3">
-				<div class="category-sidebar">
-						<!--===================================
-						=            Select Location           =
-						====================================-->
-					<div class="widget category-list">
-						<h4 class="widget-header">Select Location</h4>
-						<div class="dropdown">
-						  <button class="btn btn-secondary dropdown-toggle" type="button" id="locationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Choose Location
-						  </button>
-						  <div class="dropdown-menu" aria-labelledby="locationDropdown">
-							@foreach ($cities as $city )
-							  <a class="dropdown-item" href="{{ route('listing_filter', $city->id)}}">{{$city->city}}</a>
-							@endforeach
-						  </div>
-						</div>
-					  </div>
-
- <!--===================================
-=            Select Make           =
-====================================-->
-<div class="widget category-list">
-    <h4 class="widget-header">Select Make</h4>
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="makeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Make
-        </button>
-        <div class="dropdown-menu" aria-labelledby="makeDropdown">
-            @foreach ($makes as $make)
-                @php
-                    $hasModels = false;
-                @endphp
-                @foreach ($models as $model)
-                    @if ($make->id == $model->make_id)
-                        @php
-                            $hasModels = true;
-                        @endphp
-                        @break
-                    @endif
-                @endforeach
-                @if ($hasModels)
-                    <a class="dropdown-item dropdown-toggle" href="#">{{$make->make}}</a>
-                    <div class="dropdown-menu">
-                        @foreach ($models as $model)
-                            @if ($make->id == $model->make_id)
-                                <a class="dropdown-item" href="{{ route('vehicle_filter', $model->id)}}">{{$model->model}}</a>
-                            @endif
-                        @endforeach
-                    </div>
-                @else
-                    <a class="dropdown-item" href="{{ route('vehicle_filter', $make->id)}}">{{$make->make}}</a>
-                @endif
-            @endforeach
-        </div>
-    </div>
-</div>
-	<!--===================================
-	=           Select Select Model         =
-	====================================-->
-
-<div class="widget category-list">
-    <h4 class="widget-header">Select Model</h4>
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="modelDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Choose Model
-        </button>
-        <div class="dropdown-menu" aria-labelledby="modelDropdown">
-            @foreach ($models as $model)
-                <a class="dropdown-item" href="#">
-                    @foreach ($vehicles as $vehicle)
-                        @if ($vehicle->model_id == $model->id)
-                            {{ $model->model }}
-                            @break
-                        @endif
-                    @endforeach
-                </a>
-            @endforeach
-        </div>
-    </div>
-</div>
-
-<!--===================================
-=           Select Vehicle Type           =
-====================================-->
-						<div class="widget category-list">
-							<h4 class="widget-header">Select Vehicle Type</h4>
-							<div class="dropdown">
-								<button class="btn btn-secondary dropdown-toggle" type="button" id="vehicleTypeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Select Vehicle Type
-								</button>
-								<div class="dropdown-menu" aria-labelledby="vehicleTypeDropdown">
-									@foreach ($vehicles as $vehicle)
-										<a class="dropdown-item" href="{{ route('vehicle_filter', $vehicle->id)}}">{{$vehicle->vehicle_type}}</a>
-									@endforeach
-								</div>
-							</div>
-						</div>
-
-<div class="widget price-range w-100">
-	<h4 class="widget-header">Price Range</h4>
-	<div class="block">
-						<input class="range-track w-100" type="text" data-slider-min="0" data-slider-max="5000" data-slider-step="5"
-						data-slider-value="[0,5000]">
-				<div class="d-flex justify-content-between mt-2">
-						<span class="value">$10 - $5000</span>
-				</div>
-	</div>
-</div>
-				</div>
-			</div>
-
-
-
-
-
-
-			<div class="col-md-9">
+			<div class="col-md-12">
 				<div class="category-search-filter">
 					<div class="row">
 						<div class="col-md-6">
@@ -231,13 +114,12 @@
 						</div>
 					</div>
 				</div>
-				<div class="product-grid-list">
+				 <div class="product-grid-list">
 					<div class="row mt-30">
-				
 					@foreach ($listings as $listing )		
 						@foreach ($vehicles as $vehicle)
 						@if ($listing->id == $vehicle->listing_id)
-						<div class="col-sm col-md-4 col-lg-4">
+						<div class="col-sm-3 col-md-3 col-lg-3">
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card">
@@ -245,7 +127,7 @@
 										<div class="price">{{ $listing->package->package_name}} </div>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											
-											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
+											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description"style="max-height: 200px;">
 											
 										</a>
 									<div class="img-count">
@@ -293,12 +175,7 @@
 
 									@endif
 									@endforeach
-									@endforeach
-
-
-											
-
-				
+									@endforeach										
 					</div>
 				</div>
 				

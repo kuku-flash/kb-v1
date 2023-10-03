@@ -4,6 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Favorite;
+use App\Models\User;
+
+
 
 class VehicleController extends Controller
 {
@@ -53,6 +57,28 @@ class VehicleController extends Controller
         return view('vehicle', compact('vehicle'));
     }
 
+    public function add_to_favourites(Request $request, $vehicleId)
+{
+    $user = auth()->user();
+    $favorite = Favorite::where([
+        'user_id' => $user->getAuthIdentifier(),
+        'vehicle_id' => $vehicleId,
+    ])->first();
+
+    if ($favorite) {
+        // If the vehicle is already a favorite, remove it
+        $favorite->delete();
+    } else {
+        // If the vehicle is not a favorite, add it
+        $favorite = new Favorite([
+            'user_id' => $user->getAuthIdentifier(),
+            'vehicle_id' => $vehicleId,
+        ]);
+        $favorite->save();
+    }
+}
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -86,17 +112,6 @@ class VehicleController extends Controller
     {
         //
     }
-    public function favorites(Vehicle $vehicle)
-{
-    if (Auth::check()) {
-        $user = Auth::user();
-        if ($vehicle->isFavoritedBy($user)) {
-            $user->favorites()->detach($vehicle);
-        } else {
-            $user->favorites()->attach($vehicle);
-        }
-    }
-    return redirect()->back();
-}
+
 }
 

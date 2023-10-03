@@ -31,6 +31,11 @@ class Listing extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
     
+       public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class);
+    }
+    
 
 
     
