@@ -46,28 +46,26 @@
 					
 									</div>
 									<div class="form-group col-md-2">
-                <select name="max_price" id="max_price" class="form-control">
-                    <option value="">Select Max Price</option>
-                    <option value="100,000,000">100,000,000</option>
-                    <option value="50,000,000">50,000,000</option>
-                    <option value="10,000,000">10,000,000</option>
-                    <option value="5,000,000">5,000,000</option>
-                    <option value="1,000,000">1,000,000</option>
-                    <option value="500,000">500,000</option>
-                    <option value="300,000">300,000</option>
-                </select>
-            </div>
-			<div class="form-group col-md-2">
-                <select name="min_price" id="min_price" class="form-control">
-                    <option value="">Select Min Price</option>
-                    <option value="3,000,000">3,000,000</option>
-                    <option value="2,000,000">2,000,000</option>
-                    <option value="1,000,00">1,000,000</option>
-                    <option value="700,000">700,000</option>
-                    <option value="500,000">500,000</option>
-                    <option value="300,000">300,000</option>
-                </select>
-            </div>
+										<select name="price_max" id="inputGroupSelect" class="form-control">
+											<option value="">Max Price</option>
+											<option value="10000000">100,000,000</option>
+											<option value="50000000">50,000,000</option>
+											<option value="10000000">10,000,000</option>
+											<option value="5000000">5,000,000</option>
+											<option value="1000000">1,000,000</option>
+										</select>
+					
+									</div>
+									<div class="form-group col-md-2">
+										<select name="price_min" id="inputGroupSelect" class="form-control">
+											<option value="">Min Price</option>
+											<option value="900000">900,000</option>
+											<option value="700000">700,000</option>
+											<option value="500000">500,000</option>
+											
+										</select>
+					
+									</div>
 
 									<div class="form-group col-md-2 ">
 										<button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>

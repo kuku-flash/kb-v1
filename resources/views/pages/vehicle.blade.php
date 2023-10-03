@@ -26,7 +26,7 @@
 						</ul>
 					</div>
 
-					<section>
+									<section>
     <div class="main single-item">
         @if ($vehicle->front_img) <div class="main"><img src="/storage/photos/{{ $vehicle->front_img }}" class="vehicle-img"></div> @endif
         @if ($vehicle->back_img) <div class="main"><img src="/storage/photos/{{ $vehicle->back_img }}" class="vehicle-img"></div> @endif
@@ -62,18 +62,22 @@
     }
 </style>
 
+<section class="vehicle specifications">
+    <div class="favourist-list">
+        @auth
+            <form method="POST" action="{{ route('addtofavourites') }}">
+                @csrf
+                <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                <button type="submit"><i class="fa fa-heart-o"></i></button>
+            </form>
+        @else
+            <a href="{{ route('login') }}"><i class="fa fa-heart-o"></i></a>
+        @endauth
+    </div>
 
-	  <section class="vehicle specifications">
-		<div class="favourist-list">
-			<form method="POST" action="{{ route('addtofavourites') }}">
-			@csrf
-			<input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-			@auth
-    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-@endauth
-			<button type="submit"><i class="fa fa-heart-o"></i></button>
-		</form>
-		</div>
+
+
 		<p>viewed {{ $vehicle->views }} times.</p>
 		<ul aria-label="Key Specifications" data-gui="key-specs-section" class="sc-jYKCQm isection"><li class="sc-jfkLlK ialighment atc-type-fiesta atc-type--regular">
 
@@ -138,7 +142,10 @@
 								<a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
 								 aria-selected="false">Specifications</a>
 							</li>
-							
+							<!--<li class="nav-item">-->
+							<!--	<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact"-->
+							<!--	 aria-selected="false">Reviews</a>-->
+							<!--</li>-->
 						</ul>
 						<div class="tab-content" id="pills-tabContent">
 							<div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -193,7 +200,72 @@
 									</tbody>
 								</table>
 							</div>
-
+							<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+								<h3 class="tab-title">Product Review</h3>
+								<div class="product-review">
+									<div class="media">
+										<!-- Avater -->
+										<img src="images/joshua.jpeg" alt="avater">
+										<div class="media-body">
+											<!-- Ratings -->
+											<div class="ratings">
+												<ul class="list-inline">
+													<li class="list-inline-item">
+														<i class="fa fa-star"></i>
+													</li>
+													<li class="list-inline-item">
+														<i class="fa fa-star"></i>
+													</li>
+													<li class="list-inline-item">
+														<i class="fa fa-star"></i>
+													</li>
+													<li class="list-inline-item">
+														<i class="fa fa-star"></i>
+													</li>
+													<li class="list-inline-item">
+														<i class="fa fa-star"></i>
+													</li>
+												</ul>
+											</div>
+											<div class="name">
+												<h5>Jessica Brown</h5>
+											</div>
+											<div class="date">
+												<p>Mar 20, 2018</p>
+											</div>
+											<div class="review-comment">
+												<p>
+													Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremqe laudant tota rem ape
+													riamipsa eaque.
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="review-submission">
+										<h3 class="tab-title">Submit your review</h3>
+										<!-- Rate -->
+										<div class="rate">
+											<div class="starrr"></div>
+										</div>
+										<div class="review-submit">
+											<form action="#" class="row">
+												<div class="col-lg-6">
+													<input type="text" name="name" id="name" class="form-control" placeholder="Name">
+												</div>
+												<div class="col-lg-6">
+													<input type="email" name="email" id="email" class="form-control" placeholder="Email">
+												</div>
+												<div class="col-12">
+													<textarea name="review" id="review" rows="10" class="form-control" placeholder="Message"></textarea>
+												</div>
+												<div class="col-12">
+													<button type="submit" class="btn btn-main">Submit</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -215,15 +287,18 @@
 						<a href="">See all ads</a>
 						<p>{{ $listing->user->phone_number }} </p>
 						<ul class="list-inline mt-20">
-							<li class="list-inline-item"><a href="" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
-							<li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an
+        <li class="list-inline-item">
+            <a href="tel:{{ $listing->user->phone_number }}" class="btn btn-contact d-inline-block btn-primary px-lg-5 my-1 px-md-3">
+                Contact
+            </a>
+        </li>							<li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an
 									offer</a></li>
 						</ul>
 						<p style="font-size: 20px;">
 				
-							<a href="https://www.facebook.com/kingsbridge.kenya/"><i class="fa fa-facebook"></i><span class="icon-facebook"></span></a>
-							<i class="fa fa-email"><a href="#"><span class="icon-email"></span></a></i>
-							<i class="fa fa-instagram"><a href="#"><span class="icon-instagram"></span></a></i>
+							<!--<a href="https://www.facebook.com/kingsbridge.kenya/"><i class="fa fa-facebook"></i><span class="icon-facebook"></span></a>-->
+							<!--<i class="fa fa-email"><a href="#"><span class="icon-email"></span></a></i>-->
+							<!--<i class="fa fa-instagram"><a href="#"><span class="icon-instagram"></span></a></i>-->
 							
 						 
 					</p>

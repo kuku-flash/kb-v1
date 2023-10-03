@@ -33,7 +33,7 @@
 					<div class="widget user-dashboard-menu">
 						<h3>My Events</h3>
 						<ul>
-							<li> <a href="{{ route('user.carevent')}}"><i class="fa fa-car"></i>Car Events <span> {{$carevents->count()}}</a> </li>
+							<li> <a href=""><i class="fa fa-car"></i>Car Events <span> {{$carevents->count()}}</a> </li>
 						<!--	<li> <a href="{{ route('user.index_carhire')}}"><i class="fa fa-car"></i>Vehicles for Hire <span></a> </li> -->
 
 						</ul>

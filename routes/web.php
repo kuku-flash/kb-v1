@@ -67,6 +67,10 @@ Route :: get ('vehicle/{listing}/{vehicle}',  [PagesController::class, 'vehicle'
 Route :: get ('post_ad_form',  [PagesController::class, 'post_ad_form'])->name('post_ad_form');
 Route :: get ('single_blog',  [PagesController::class, 'single_blog'])->name('single_blog');
 Route :: get ('terms_condition',  [PagesController::class, 'terms_condition'])->name('terms_condition');
+Route::post('/add-to-favorites', [PagesController::class, 'addToFavorites'])->name('addtofavourites');
+    Route :: get ('favourite_list',  [ListingController::class, 'showFavoriteVehicles'])->name('favourite_list');
+
+
 
 
 Route :: get ('carhire',  [PagesController::class, 'carhire'])->name('carhire');
@@ -112,7 +116,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin', 'as' => 'admin.
 
 Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.'], function () {
     Route :: get ('archived_list',  [ListingController::class, 'archived_list'])->name('archived_list');
-    Route :: get ('favourite_list',  [ListingController::class, 'favourite_list'])->name('favourite_list');
+    Route :: get ('favourite_list',  [ListingController::class, 'showFavoriteVehicles'])->name('favourite_list');
     Route :: get ('my_list',  [ListingController::class, 'my_list'])->name('my_list');
     Route :: get ('pending_list',  [ListingController::class, 'pending_list'])->name('pending_list');
 
@@ -124,6 +128,8 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: put ('update_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'update_vehiclesale'])->name('update_vehiclesale');
     Route :: get ('show_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'show_vehiclesale'])->name('show_vehiclesale');
     Route :: delete ('delete_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'delete_vehiclesale'])->name('delete_vehiclesale');
+    Route::post('/add-to-favorites', [PagesController::class, 'addToFavorites'])->name('addtofavourites');
+
 
     Route :: get ('category',  [ListingController::class, 'category'])->name('category');
     Route :: get ('model',  [ListingController::class, 'model'])->name('model');
@@ -144,7 +150,6 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('expired_list',  [ListingController::class, 'expired_list'])->name('expired_list');
     Route :: get ('archived_list',  [ListingController::class, 'archived_list'])->name('archived_list');
 
-
     Route :: get ('vehicleparts',  [ListingController::class, 'index_vehicleparts'])->name('index_vehicleparts');
 
     Route :: get ('packages/{listing}',  [ListingController::class, 'packages'])->name('packages');
@@ -152,6 +157,8 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('checkout',  [ListingController::class, 'checkout'])->name('checkout');
     Route :: post ('post_invoice',  [ListingController::class, 'post_invoice'])->name('post_invoice');
     Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
+    Route :: get ('index_carevent',  [ListingController::class, 'userevent'])->name('userevent');
+
     
     Route :: get ('create_carevent',  [CareventController::class, 'create_carevent'])->name('create_carevent');
     Route :: post ('store_carevent',  [CareventController::class, 'store_carevent'])->name('store_carevent');
