@@ -10,6 +10,7 @@ use App\Models\Listing;
 use App\Models\Package;
 use App\Models\User;
 use App\Models\Vehicle;
+use App\Models\Favorite;
 use App\Models\Vehicle_photo;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -215,6 +216,23 @@ Public function dashboard_archived_ads(){
     
 }
 
+public function addToFavorites(Request $request)
+{
+    // Get the vehicle ID and user ID from the form
+    $vehicleId = $request->input('vehicle_id');
+    $user = $request->user();
+    // You can check if the user is authenticated here
+
+    // Create a new Favourite record in the database
+    $favourite = new Vehicle();
+    $favourite->user_id = $user;
+    $favourite->vehicle_id = $vehicleId;
+    $favourite->save();
+
+    // Redirect back to the previous page or wherever you want
+    return back()->with('success', 'Vehicle added to favorites.');
+}
+
 
 Public function dashboard_favorites(){
 
@@ -249,7 +267,8 @@ Public function signup(){
     
 }
 
-Public function storeuser(Request $request, User $user){
+public function storeuser(Request $request, User $user)
+{
     $validatedData = $this->validate($request, [
         'name' => 'required|max:255',
         'email' => 'required|unique:users|email|max:255',
@@ -259,17 +278,26 @@ Public function storeuser(Request $request, User $user){
         'identification_number' => '',
         'kra_pin' => '',  
         'role' => 'required',
-        
     ]);
-   
+
+    // Check if the phone number starts with '+254'
+    $phoneNumber = $validatedData['phone_number'];
+    if (!str_starts_with($phoneNumber, '+254')) {
+        // If it doesn't start with '+254', prepend it
+        $phoneNumber = '+254' . $phoneNumber;
+    }
+
+    $validatedData['phone_number'] = $phoneNumber; // Update the phone_number in the validated data
+
     $user = User::create($validatedData);
     $user->roles()->sync($request->input('role',[]));
 
+    return redirect()->route('user.my_list')->with('success', 'Successfully Added');
+}
 
-  return redirect() -> route('user.my_list')->with('success','Succesfully Added');
   
     
-}
+
 
 Public function login(){
 
@@ -277,6 +305,17 @@ Public function login(){
     
 }
 
+public function events(){
+    return view ('pages.eventspage');
+}
+
+public function show($id)
+{
+    // Retrieve the event by its ID
+    $carevent = Carevent::find($id);
+  // Pass the retrieved event to the view for display
+    return view('pages.single_event', compact('carevent'));
+}
 
 Public function register(){
 

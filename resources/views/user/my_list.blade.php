@@ -4,6 +4,7 @@
 <!--==================================
 =            User Profile            =
 ===================================-->
+
 @if(session('success'))
 <div class="mt-3 alert alert-success">
  <span> {{ session('success') }} </span>

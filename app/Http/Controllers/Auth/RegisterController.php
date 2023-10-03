@@ -62,12 +62,24 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+    use App\User;
+    use Illuminate\Support\Facades\Hash;
+    
     protected function create(array $data)
     {
+        // Check if the phone number starts with '+254'
+        $phoneNumber = $data['phone_number'];
+        if (!str_starts_with($phoneNumber, '+254')) {
+            // If it doesn't start with '+254', prepend it
+            $phoneNumber = '+254' . $phoneNumber;
+        }
+    
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone_number' => $phoneNumber, // Assuming 'phone_number' is your field name
         ]);
     }
+    
 }

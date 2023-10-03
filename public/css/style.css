@@ -1111,6 +1111,8 @@ line-height: 36px;
 }
 .why-text{
   text-align: left;
+  margin: 0; /* Remove any margin */
+  padding: 0; /* Remove any padding */
 font-style: normal;
 font-weight: 200;
 font-size: 15px;

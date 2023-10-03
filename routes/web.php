@@ -46,7 +46,10 @@ Route :: get ('blog',  [PagesController::class, 'blog'])->name('blog');
 Route :: get ('contact_us',  [PagesController::class, 'contact_us'])->name('contact_us');
 Route :: get ('signup',  [PagesController::class, 'signup'])->name('signup');
 Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
-Route :: get ('events',  [PagesController::class, 'showEventsPage'])->name('events');
+Route:: get('events', [PagesController::class, 'events'])->name('event');
+Route::get('/events/{id}', [PagesController::class, 'show'])->name('events.show');
+
+
 
 
 
@@ -75,7 +78,6 @@ Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController:
 
 Route::get('/login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'redirectToFacebook'])->name('login.facebook');
 Route::get('/login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleFacebookCallback']);
-Route :: post ('add_to_favourites',  [Vehicle::class, 'add_to_favourites'])->name('add_to_favourites');
 
 
 
@@ -141,6 +143,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('sold_list',  [ListingController::class, 'sold_list'])->name('sold_list');
     Route :: get ('expired_list',  [ListingController::class, 'expired_list'])->name('expired_list');
     Route :: get ('archived_list',  [ListingController::class, 'archived_list'])->name('archived_list');
+
 
     Route :: get ('vehicleparts',  [ListingController::class, 'index_vehicleparts'])->name('index_vehicleparts');
 

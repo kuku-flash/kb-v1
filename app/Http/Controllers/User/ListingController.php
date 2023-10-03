@@ -9,10 +9,12 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Carmake;
 use App\Models\Carmodel;
 use App\Models\Category;
+use App\Models\Favourites; // Import the Favorite model at the top of your controller
 use App\Models\City;
 use App\Models\Invoice;
 use App\Models\Listing;
 use App\Models\Package;
+use App\Models\Carevent;
 use App\Models\Vehicle;
 use App\Models\Vehicle_photo;
 use Carbon\Carbon;
@@ -73,13 +75,33 @@ class ListingController extends Controller
         $vehicles = Vehicle::all();
         return view ('user.archived_list', compact('listings','vehicles'));
     }
+    public function userevent(){
+
+     $carevents = Carevent::where('user_id',Auth::id())->get();
+    return view ('user.archived_list', compact('carevents'));
+
+
+}
+
+
     Public function favourites(){
     
         return view ('user.favourites'); 
         
     }
 
-   // app/Http/Controllers/FavoriteVehicleController.php
+
+
+public function showFavoriteVehicles()
+{
+    $user = auth()->user();
+    $favoriteVehicles = $user->favorites; // Assuming you've defined the relationship in the User model
+    
+    $listings = Listing::all(); // Retrieve the listings data
+
+    return view('user.favourites', compact('favoriteVehicles', 'listings'));
+}
+
 
 
 
@@ -115,40 +137,73 @@ class ListingController extends Controller
         return view('user.create_listing2')->with($arr);
     } 
 
-    public function store_vehiclesale(Request $request, Listing $listing, Vehicle $vehicle) {
-        $this->validate($request,[
-            'category' => 'required',
-            'city' => 'required',
-            'model_id' => 'required', 
-            'year_of_build' => 'required',
-            'condition' => 'required',
-            'mileage' => 'required',
-            'transmission' => 'required',
-            'fuel_type' => 'required',
-            'exchange' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'body_type' => 'required',
-            'duty_type' => 'required',
-            'interior_type' => 'required',
-            'engine_size' => 'required',
-            'front_img' => ' required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'back_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'right_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'left_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'interiorf_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'interiorb_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'opt_img1' => '|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'opt_img2' => ' image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'opt_img3' => ' image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-            'vehicle_type' => 'required',
-            'color' => 'required',
-   
+  public function store_vehiclesale(Request $request, Listing $listing, Vehicle $vehicle)
+{
+    $this->validate($request, [
+        'category' => 'required',
+        'city' => 'required',
+        'model_id' => 'required',
+        'year_of_build' => 'required',
+        'condition' => 'required',
+        'mileage' => 'required',
+        'transmission' => 'required',
+        'fuel_type' => 'required',
+        'exchange' => 'required',
+        'price' => 'required',
+        'description' => 'required',
+        'body_type' => 'required',
+        'duty_type' => 'required',
+        'interior_type' => 'required',
+        'engine_size' => 'required',
+        'front_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'back_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'right_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'left_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'interiorf_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'interiorb_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'opt_img1' => '|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'opt_img2' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'opt_img3' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'vehicle_type' => 'required',
+        'color' => 'required',
+    ]);
+
+    // Process image uploads and apply watermark to each image
+    $images = [];
+
+    foreach (['front_img', 'back_img', 'right_img', 'left_img', 'interiorf_img', 'interiorb_img', 'opt_img1', 'opt_img2', 'opt_img3'] as $imageField) {
+        if ($request->hasFile($imageField)) {
+            $uploadedImage = $request->file($imageField);
+            $imageFileName = $imageField . '_' . time() . '.' . $uploadedImage->getClientOriginalExtension();
+
+            // Load the uploaded image using Intervention Image
+            $image = Image::make($uploadedImage->getRealPath());
+
+            // Get the authenticated user's name to use as part of the watermark
+            $userName = auth()->user()->name;
+
+            // Define the watermark text
+            $watermarkText = $userName . ' KingsBridge';
+
+            // Apply the watermark
+            $image->text($watermarkText, 10, 10, function ($font) {
+                $font->file(public_path('path_to_font_file.ttf')); // Specify the font file
+                $font->size(24); // Font size
+                $font->color('#ffffff'); // Text color
+                $font->align('left'); // Text alignment (left, right, center)
+                $font->valign('top'); // Vertical text alignment (top, middle, bottom)
+            });
+
+            // Save the watermarked image
+            $image->save(storage_path('/' . $imageFileName)); // Save the watermarked image to a specific folder
+
+            // Store the image file name in the $images array
+            $images[$imageField] = $imageFileName;
+        }
+    }
 
 
-            ]);
 
-           
 
       $listing->category_id = $request->category;
       $listing->city_id = $request->city;

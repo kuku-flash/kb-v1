@@ -4,8 +4,7 @@
 
     <!-- SITE TITTLE -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=1024">
     <title>KingsBridge</title>
     
     <!-- FAVICON -->
@@ -63,14 +62,21 @@
                 <li class="nav-item {{ request()->routeIs('/') ? 'active' : '' }}">
                   <a class="nav-link" href="/">Home</a>
                 </li>
-              
+                <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
+                  <a class="nav-link" href="{{ route('about_us')}}">About Us</a>
+                </li>              
                 <li class="nav-item {{ request()->routeIs('vehiclelist') ? 'active' : '' }}">
                   <a class="nav-link" href="{{ route('vehicleslist')}}">Buy a Vehicle</a>
                 </li>
              
                 <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
-                  <a class="nav-link" href="{{ route('about_us')}}">About Us</a>
+                  <a class="nav-link" href="{{ route('carevent') }}">Car Events</a>
                 </li>
+                
+                <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
+                  <a class="nav-link" href="{{ route('about_us')}}">Garages</a>
+                </li>
+                
               
            
               </ul>
@@ -148,8 +154,8 @@
         <div class="block about">
           <!-- footer logo -->
           <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
-          style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; "><span style="color:#d4af37">Kings</span><span style="color:#aaa9ad">bridge</span></a><p>Kingsbridge Properties</p></a>
-          <p>The leading online platform that sells both Vehicles and Houses.</p>
+          style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; "><span style="color:#d4af37">Kings</span><span style="color:#aaa9ad">bridge</span></a><p>Kingsbridge</p></a>
+          <p>The leading online platform that sells, vehicles, promoting car events and garage owners.</p>
           <ul class="ftco-footer-social  float-md-left float-lft mt-5">
             <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
             <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
@@ -162,7 +168,7 @@
         <div class="block">
           <h4>Site Pages</h4>
           <ul>
-            <li><a href="#">Boston</a></li>
+            <li><a href="#">Blog</a></li>
             <li><a href="#">How It works</a></li>
             <li><a href="#">Deals & Coupons</a></li>
             <li><a href="#">Articls & Tips</a></li>
@@ -195,8 +201,8 @@
             <h4>Have a question?</h4>
           <ul>
             <li><span class="icon fa fa-map-marker"></span><span class="text">Nandi Road, Karen, Nairobi, Kenya,at Nandi Road, Karen.</span></li>
-	                <li><span class="icon fa fa-phone"></span><span class="text">+254 725122126</span></li>
-	                <li><span class="icon fa fa-envelope-o"></span><span class="text">info@KingShip.com</span></li>
+	                <li><span class="icon fa fa-phone"></span><span class="text">+254 703126261</span></li>
+	                <li><span class="icon fa fa-envelope-o"></span><span class="text">info@kingsbridgeke.com</span></li>
 
 
 

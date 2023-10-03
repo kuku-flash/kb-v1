@@ -84,26 +84,28 @@
 								
 												</div>
 												<div class="form-group col-md-2">
-													<select name="price" id="inputGroupSelect" class="form-control">
-														<option value="">Max Price</option>
-														<option value="10000000">100,000,000</option>
-														<option value="50000000">50,000,000</option>
-														<option value="10000000">10,000,000</option>
-														<option value="5000000">5,000,000</option>
-														<option value="1000000">1,000,000</option>
-													</select>
-								
-												</div>
-												<div class="form-group col-md-2">
-													<select name="price" id="inputGroupSelect" class="form-control">
-														<option value="">Min Price</option>
-														<option value="900000">900,000</option>
-														<option value="700000">700,000</option>
-														<option value="500000">500,000</option>
-														
-													</select>
-								
-												</div>
+                <select name="min_price" id="min_price" class="form-control">
+                    <option value="">Select Min Price</option>
+                    <option value="3,000,000">3,000,000</option>
+                    <option value="2,000,000">2,000,000</option>
+                    <option value="1,000,00">1,000,000</option>
+                    <option value="700,000">700,000</option>
+                    <option value="500,000">500,000</option>
+                    <option value="300,000">300,000</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <select name="max_price" id="max_price" class="form-control">
+                    <option value="">Select Max Price</option>
+                    <option value="100,000,000">100,000,000</option>
+                    <option value="50,000,000">50,000,000</option>
+                    <option value="10,000,000">10,000,000</option>
+                    <option value="5,000,000">5,000,000</option>
+                    <option value="1,000,000">1,000,000</option>
+                    <option value="500,000">500,000</option>
+                    <option value="300000">300,000</option>
+                </select>
+            </div>
 
 												<div class="form-group col-md-2 ">
 													<button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
@@ -124,85 +126,12 @@
 	<!-- Container End -->
 </section>
 
-<div class="Hdrive text-center my-3">
-	<div class = "container">
-	<div class="col-md-12">
-		<div class="section-title">
-			<h2>Upcoming Events</h2>
-		</div>
-	</div>
-	<div id="eventCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        @foreach ($carevents as $index => $carevent)
-            <li data-target="#eventCarousel" data-slide-to="{{ $index }}" @if ($index === 0) class="active" @endif></li>
-        @endforeach
-    </ol>
-
-    <!-- Slides -->
-    <div class="carousel-inner">
-        @for ($i = 0; $i < count($carevents); $i += 3)
-            <div class="carousel-item @if ($i === 0) active @endif">
-                <div class="row">
-                    @for ($j = $i; $j < min($i + 3, count($carevents)); $j++)
-                        <div class="col-sm col-md-4 col-lg-4">
-                            <!-- event card -->
-                            <div class="product-item bg-light" style="margin-right: 10px;"> <!-- Adjust this value as needed -->
-                                <div class="card">
-                                    <div class="thumb-content">
-                                        <div class="price">Event</div>
-                                        <a href="{{ route('events') }}">
-                                            <!-- Display event image -->
-                                            <img class="card-img-top category-img-fluid" src="/storage/photos/{{ $carevents[$j]->event_image }}" alt="Event Image" style="max-height: 400px;">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="mdl-card__title">
-                                            <!-- Display event title -->
-                                            <h2 style="font-weight: 450; font-size: 20px;" class="mdl-card__title-text">{{ $carevents[$j]->event_title }}</h2>
-                                        </div>
-                                        <div class="mdl-card__supporting-text">
-                                            <p class="card-text">
-                                                <ul class="list-horizontal">
-                                                    <!-- Display event details -->
-                                                    <li><b>Location:</b> <span>{{ $carevents[$j]->event_location }}</span></li>
-                                                    <li><b>Date:</b> <span>{{ $carevents[$j]->event_date }}</span></li>
-                                                    <li><b>Time:</b> <span>{{ $carevents[$j]->event_time }}</span></li>
-                                                    <li><b>Organizer:</b> <span>{{ $carevents[$j]->organizer }}</span></li>
-                                                    <li><b>Ticket:</b> <span>Kes: {{ $carevents[$j]->ticket_price }}</span></li>
-                                                </ul>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endfor
-                </div>
-            </div>
-        @endfor
-    </div>
-
-    <!-- Controls -->
-    <a class="carousel-control-prev" href="#eventCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#eventCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-
-
-</div>
-</div>
 
 <div class="Hdrive text-center my-3">
 	<div class = "container">
 	<div class="col-md-12">
 		<div class="section-title">
-			<h2>Find your drive</h2>
+			<h2>Trending Ads</h2>
 		</div>
 	</div>
 	<div id="productCarousel" class="carousel slide" data-ride="carousel">
@@ -305,7 +234,7 @@
 	<div class="container">
 			<div class="col-md-12">
 				<div class="section-title">
-					<h2>Trending Ads</h2>
+					<h2>Find Your Drive</h2>
 				</div>
 		</div>
 	<div id="productCarousel" class="carousel slide" data-ride="carousel">
@@ -396,6 +325,89 @@
 </div>
 
 </section>
+
+<div class="Hdrive text-center my-3">
+	<div class = "container">
+	<div class="col-md-12">
+		<div class="section-title">
+			<h2>Events</h2>
+		</div>
+	</div>
+	<div id="eventCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @foreach ($carevents as $index => $carevent)
+            <li data-target="#eventCarousel" data-slide-to="{{ $index }}" @if ($index === 0) class="active" @endif></li>
+        @endforeach
+    </ol>
+
+    <!-- Slides -->
+<div id="eventCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @foreach ($carevents as $index => $carevent)
+            <li data-target="#eventCarousel" data-slide-to="{{ $index }}" @if ($index === 0) class="active" @endif></li>
+        @endforeach
+    </ol>
+
+    <!-- Slides -->
+    <div class="carousel-inner">
+        @for ($i = 0; $i < count($carevents); $i += 3)
+            <div class="carousel-item @if ($i === 0) active @endif">
+                <div class="row">
+                    @for ($j = $i; $j < min($i + 3, count($carevents)); $j++)
+                        <div class="col-sm col-md-4 col-lg-4">
+                            <!-- event card -->
+                            <div class="product-item bg-light" style="margin-right: 10px;"> <!-- Adjust this value as needed -->
+                                <div class="card">
+                                    <div class="thumb-content">
+                                        <div class="price">Event</div>
+                                        <a href="{{ route('carevent') }}">
+                                            <!-- Display event image -->
+                                            <img class="card-img-top category-img-fluid" src="/storage/photos/{{ $carevents[$j]->event_image }}" alt="Event Image" style="max-height: 400px;">
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mdl-card__title">
+                                            <!-- Display event title -->
+                                            <h2 style="font-weight: 450; font-size: 20px;" class="mdl-card__title-text">{{ $carevents[$j]->event_title }}</h2>
+                                        </div>
+                                        <div class="mdl-card__supporting-text">
+                                            <p class="card-text">
+                                                <ul class="list-horizontal">
+                                                    <!-- Display event details -->
+                                                    <li><b>Location:</b> <span>{{ $carevents[$j]->event_location }}</span></li>
+                                                    <li><b>Date:</b> <span>{{ $carevents[$j]->event_date }}</span></li>
+                                                    <li><b>Time:</b> <span>{{ $carevents[$j]->event_time }}</span></li>
+                                                    <li><b>Organizer:</b> <span>{{ $carevents[$j]->organizer }}</span></li>
+                                                    <li><b>Ticket:</b> <span>Kes: {{ $carevents[$j]->ticket_price }}</span></li>
+                                                </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endfor
+                </div>
+            </div>
+        @endfor
+    </div>
+
+    <!-- Controls -->
+    <a class="carousel-control-prev" href="#eventCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#eventCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+</div>
+
+</div>
+</div>
 <!--==========================================
 =          Why KingsBridge            =
 ===========================================-->
@@ -410,54 +422,29 @@
 		<div class="col-sm-6">
 		  <div class="whycard">
 			<div class="card-bodyy">
-			  <h5 class="why-title">Customizable Pricing</h5>
+			  <h5 class="why-title">You might wonder why</h5>
 			  <p class="why-text">
-				We offer a unique and customizable pricing model that allows our customers to choose the package that best fits their needs and budget.
-				 With options ranging from basic to premium listings, 
-				our platform is accessible to car owners of all types and sizes, making it a one-stop-shop for all car needs.
+				At KingsBridge, we take pride in being more than just an online car selling platform. 
+				We are your automotive hub, a comprehensive destination where car enthusiasts and sellers unite.
+				Here's why you should choose us:
 			  </p>
-			  <li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+				<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
 			</div>
 		  </div>
 		</div>
 		<div class="col-sm-6">
 		  <div class="whycard">
 			<div class="card-bodyy">
-			  <h5 class="why-title">Trust and Security</h5>
-			  <p class="why-text">
-				Our strict vetting process and fraud prevention measures ensure a secure and reliable rental experience.
-			  </p>
-			  <li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+			  <h5 class="why-title">Flexible Options for All</h5>
+                <p class="why-text" style="text-align: justify;">
+                    At KingsBridge, we offer flexible pricing options to cater to your unique needs.
+                    Whether you're a car seller, a garage owner, or a car event organizer, we have a solution tailored just for you. 
+                    Explore the possibilities:			  
+                    </p>
+				<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
 			</div>
 		  </div>
 		</div>
-
-		<div class="col-sm-6">
-			<div class="whycard">
-			  <div class="card-bodyy">
-				<h5 class="why-title">Special title treatment</h5>
-				<p class="why-text">
-					With supporting text below as a natural lead-in to additional content.
-					With supporting text below as a natural lead-in to additional content.
-					With supporting text below as a natural lead-in to additional content.
-				</p>
-				<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-			  </div>
-			</div>
-		  </div>
-		  <div class="col-sm-6">
-			<div class="whycard">
-			  <div class="card-body">
-				<h5 class="why-title">Special title treatment</h5>
-				<p class="why-text">
-					With supporting text below as a natural lead-in to additional content.
-					With supporting text below as a natural lead-in to additional content.
-					With supporting text below as a natural lead-in to additional content.
-				</p>
-				<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
-			  </div>
-			</div>
-		  </div>
 	  </div>
 </div>
 </div>
@@ -493,13 +480,7 @@
 <section class="product">
 	<p style="font-weight: 450; font-size:20px; text-align: center;"> <b>Our Partners</b></p>
 	<div class="slider ">
-		<div> <img src="../images/king2.png" alt="" style="max-height: 150px;">
-		</div>
 		<div><img src="../images/GarageGallery Logo.jpg" alt="" style="max-height: 150px;">
-		</div>
-		<div><img src="../images/sti.png" alt="" style="max-height: 150px;">
-		</div>
-		<div><img src="../images/benz.jpg" alt="" style="max-height: 150px;">
 		</div>
 	  </div>
 </section>
