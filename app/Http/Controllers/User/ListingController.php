@@ -15,6 +15,7 @@ use App\Models\Invoice;
 use App\Models\Listing;
 use App\Models\Package;
 use App\Models\Carevent;
+use Intervention\Image\Facades\Image;
 use App\Models\Vehicle;
 use App\Models\Vehicle_photo;
 use Carbon\Carbon;
@@ -167,42 +168,6 @@ public function showFavoriteVehicles()
         'vehicle_type' => 'required',
         'color' => 'required',
     ]);
-
-    // Process image uploads and apply watermark to each image
-    $images = [];
-
-    foreach (['front_img', 'back_img', 'right_img', 'left_img', 'interiorf_img', 'interiorb_img', 'opt_img1', 'opt_img2', 'opt_img3'] as $imageField) {
-        if ($request->hasFile($imageField)) {
-            $uploadedImage = $request->file($imageField);
-            $imageFileName = $imageField . '_' . time() . '.' . $uploadedImage->getClientOriginalExtension();
-
-            // Load the uploaded image using Intervention Image
-            $image = Image::make($uploadedImage->getRealPath());
-
-            // Get the authenticated user's name to use as part of the watermark
-            $userName = auth()->user()->name;
-
-            // Define the watermark text
-            $watermarkText = $userName . ' KingsBridge';
-
-            // Apply the watermark
-            $image->text($watermarkText, 10, 10, function ($font) {
-                $font->file(public_path('path_to_font_file.ttf')); // Specify the font file
-                $font->size(24); // Font size
-                $font->color('#ffffff'); // Text color
-                $font->align('left'); // Text alignment (left, right, center)
-                $font->valign('top'); // Vertical text alignment (top, middle, bottom)
-            });
-
-            // Save the watermarked image
-            $image->save(storage_path('/' . $imageFileName)); // Save the watermarked image to a specific folder
-
-            // Store the image file name in the $images array
-            $images[$imageField] = $imageFileName;
-        }
-    }
-
-
 
 
       $listing->category_id = $request->category;

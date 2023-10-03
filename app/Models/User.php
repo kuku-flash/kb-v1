@@ -54,9 +54,14 @@ class User extends Authenticatable
         return $this->hasMany( 'App\Models\Listing');
     }
 
-    public function favorites(){
+
+
+   // Define the relationship with favorite vehicles
+    public function favorites()
+    {
         return $this->hasMany(Favourites::class);
     }
+
 
     // 
 

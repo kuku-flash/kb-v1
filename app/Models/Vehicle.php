@@ -51,8 +51,9 @@ class Vehicle extends Model
         
     ];
 
-    public function listing(){
-        return $this->hasMany(Listing::class, 'listing_id');
+ public function listing()
+    {
+        return $this->belongsTo(Listing::class);
     }
     
 
@@ -75,7 +76,7 @@ class Vehicle extends Model
     }
 
     Public function favorites(){
-                return $this->belongsToMany(Favourites::class);
+                return $this->belongsToMany(Favorite::class);
     }
  
 

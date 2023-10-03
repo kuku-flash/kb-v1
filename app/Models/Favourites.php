@@ -15,19 +15,18 @@ class Favourites extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function vehicle (){
-        return $this->belongsTo(Vehicle::Class, 'vehicle_id');
+  // Define the relationship with the associated vehicle
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class);
+    }
+    
+     public function listing()
+    {
+        return $this->belongsTo(Listing::class); // Specify the foreign key column as 'id'
     }
 
-    public function isFavorited($vehicleId)
-{
-    if (auth()->check()) {
-        $userId = auth()->user()->id;
-        return Favourites::where('user_id', $userId)
-            ->where('vehicle_id', $vehicleId)
-            ->exists();
-    }
-    return false;
-}
+    
+    
 
 }
