@@ -16,18 +16,28 @@
 					<div class="widget user-dashboard-menu">
 						<ul>
 							<li class="active">
-								<a href="{{ route('user.my_list')}}"><i class="fa fa-money"></i> Choose payment method <span></span></a>
+								<a href="{{ route('user.my_list')}}"><i class="fa fa-money"></i> Payment method <span></span></a>
 							</li>
 							<li class="payment">
-                <a href="#" target="_blank" class="btn btn-light"><i class="fa fa-money"></i> Mpesa</a>
-                
+                <a><i class="fa fa-money"></i> Mpesa</a>
+                </ul><b>From your phone,</b>
+            <ul style="text-align: left;list-style-image: url(modules/gateways/images/check.gif);">
+              <li>Go to <b>Safaricom</b> Menu</li>
+              <li>Select <b>M-PESA</b></li>
+              <li>Select <b>Lipa na MPESA</b></li>
+              <li>Select <b>Till Number</b></li>
+              <li>Enter Till Number <b>5750721</b></li>
+              <li>Enter Amount  <b>{{ $listing->package->package_amount }}</b> <br> then Confirm</li>  
+            </ul>
+            </ul>
+            <hr/>
               </li>
-              <li class="rpayment payment">
+              <!-- <li class="rpayment payment">
                 <a href="#" target="_blank" class="btn btn-light"><i class="fa fa-credit-card"></i> Visa</a>
                 
-              </li>
-            
-              <div class="field padding-bottom--24">
+              </li> --> 
+
+              <!-- <div class="field padding-bottom--24">
                 <br>
                 <label for="phone">  Number(Required)</label>
                 <input type="phone" name="phone" value="" 
@@ -44,7 +54,7 @@
                      
               </div>
                 <a href="#" target="_blank" class="btn btn-light"><i class="fa fa-right"></i> Continue</a>
-							</li>
+							</li> -->
 						
 						</ul>
 					</div>
@@ -129,10 +139,7 @@
                     <th style="">Subtotal:</th>
                     <td>kes {{ $listing->package->package_amount }}</td>
                   </tr>
-                  <tr>
-                    <th>Tax (9.3%)</th>
-                    <td>kes 10.34</td>
-                  </tr>
+
                   <tr>
                     <th>Total:</th>
                     <td>kes {{ $listing->package->package_amount }}</td>

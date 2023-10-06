@@ -75,7 +75,8 @@
 		</thead>
 		<tbody>
 
-@foreach($invoices as $invoice)                   
+@foreach($invoices as $invoice)
+@if (auth::id() == $invoice->user_id)                   
 		  <tr>
 			<th scope="row">{{ $invoice->id}} </th>
 			<td>{{ $invoice->generate_date}}</td>
@@ -84,6 +85,7 @@
 			<td> {{ $invoice->status}} </td>
 			<td> <a href="{{ route('user.invoice.show',$invoice->id)}}">view</a> |  <a href="{{ route('user.generatePDF',$invoice->id)}}">download</a></td>
 		  </tr>
+@endif		  
 @endforeach
 		</tbody>
 	  </table>

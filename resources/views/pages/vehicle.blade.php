@@ -285,12 +285,20 @@
 						<h4><a href="">  {{ $listing->user->name }} </a></h4>
 						<p class="member-time">Member Since {{ $listing->user->created_at->diffForHumans() }} </p>
 						<a href="">See all ads</a>
-						<p>{{ $listing->user->phone_number }} </p>
+						@if(Auth::check())
+    <p>{{ $listing->user->phone_number }}</p>
+@else
+    <a href="{{ route('login') }}"></a>
+@endif
+
 						<ul class="list-inline mt-20">
         <li class="list-inline-item">
-            <a href="tel:{{ $listing->user->phone_number }}" class="btn btn-contact d-inline-block btn-primary px-lg-5 my-1 px-md-3">
-                Contact
-            </a>
+		@if(Auth::check())
+    <a href="tel:{{ $listing->user->phone_number }}" class="btn btn-contact d-inline-block btn-primary px-lg-5 my-1 px-md-3">Contact</a>
+@else
+    <a href="{{ route('login') }}" class="btn btn-contact d-inline-block btn-primary px-lg-5 my-1 px-md-3">Contact</a>
+@endif
+
         </li>							<li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an
 									offer</a></li>
 						</ul>
@@ -301,9 +309,18 @@
 							<!--<i class="fa fa-instagram"><a href="#"><span class="icon-instagram"></span></a></i>-->
 							
 						 
-					</p>
-					<p ><a aria-label="Chat on WhatsApp" href="https://wa.me/{{ $listing->user->phone_number }}"> <img class="w-75" alt="Chat on WhatsApp" src="{{ asset('images/WhatsAppButtonGreenSmall.png')}}" /></p>
-					</div>
+<div>
+    @if(Auth::check())
+        <a aria-label="Chat on WhatsApp" href="https://wa.me/{{ $listing->user->phone_number }}">
+            <img class="w-75" alt="Chat on WhatsApp" src="{{ asset('images/WhatsAppButtonGreenSmall.png')}}" />
+        </a>
+    @else
+	<a aria-label="Chat on WhatsApp" href="{{ route('login') }}">
+            <img class="w-75" alt="Chat on WhatsApp" src="{{ asset('images/WhatsAppButtonGreenSmall.png')}}" />
+        </a>
+    @endif
+</div>
+</div>
 					<!-- Safety tips widget -->
 					<div class="widget disclaimer">
 						<h5 class="widget-header">Safety Tips</h5>

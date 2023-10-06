@@ -103,7 +103,17 @@ public function showFavoriteVehicles()
     return view('user.favourites', compact('favoriteVehicles', 'listings'));
 }
 
+public function invoice (Listing $listing, Vehicle $vehicle, Invoice $invoice){
+    $arr['categories'] = Category::all();
+    $arr['cities'] = City::all();
+    $arr['makes'] = Carmake::all();
+    $arr['models'] = Carmodel::all();
+    $arr['listing'] = $listing;
+    $arr['vehicle'] = $vehicle;
+    $arr['packages'] = Package::all();
 
+    return view('user.invoice')->with($arr);
+}
 
 
     
@@ -178,88 +188,34 @@ public function showFavoriteVehicles()
 
         $currentId = $listing->id;
 
-
- //Handle File Upload
-    if($request->hasFile('front_img')){
-        $imagenamewithExt = $request->file('front_img')->getClientOriginalName();
-        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
-        $extension = $request->file('front_img')->getClientOriginalExtension();
-        $front_imgStore = $imagename.'_'.time().'.'.$extension;
-        $path = $request->file('front_img')->storeAs('public/photos', $front_imgStore);
-    } 
-
-    if($request->hasFile('back_img')){
-        $imagenamewithExt = $request->file('back_img')->getClientOriginalName();
-        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
-        $extension = $request->file('back_img')->getClientOriginalExtension();
-        $back_imgStore = $imagename.'_'.time().'.'.$extension;
-        $path = $request->file('back_img')->storeAs('public/photos', $back_imgStore);
-    } 
-
-    if($request->hasFile('right_img')){
-        $imagenamewithExt = $request->file('right_img')->getClientOriginalName();
-        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
-        $extension = $request->file('right_img')->getClientOriginalExtension();
-        $right_imgStore = $imagename.'_'.time().'.'.$extension;
-        $path = $request->file('right_img')->storeAs('public/photos', $right_imgStore);
-    } 
-
-    if($request->hasFile('left_img')){
-        $imagenamewithExt = $request->file('left_img')->getClientOriginalName();
-        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
-        $extension = $request->file('left_img')->getClientOriginalExtension();
-        $left_imgStore = $imagename.'_'.time().'.'.$extension;
-        $path = $request->file('left_img')->storeAs('public/photos', $left_imgStore);
-    } 
-
-    if($request->hasFile('interiorf_img')){
-        $imagenamewithExt = $request->file('interiorf_img')->getClientOriginalName();
-        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
-        $extension = $request->file('interiorf_img')->getClientOriginalExtension();
-        $interiorf_imgStore = $imagename.'_'.time().'.'.$extension;
-        $path = $request->file('interiorf_img')->storeAs('public/photos', $interiorf_imgStore);
-    } 
-    //interior back image upload code
-    if($request->hasFile('interiorb_img')){
-        $imagenamewithExt = $request->file('interiorb_img')->getClientOriginalName();
-        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
-        $extension = $request->file('interiorb_img')->getClientOriginalExtension();
-        $interiorb_imgStore = $imagename.'_'.time().'.'.$extension;
-        $path = $request->file('interiorb_img')->storeAs('public/photos', $interiorb_imgStore);
-    } 
-
-    if($request->hasFile('engine_img')){
-        $imagenamewithExt = $request->file('engine_img')->getClientOriginalName();
-        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
-        $extension = $request->file('engine_img')->getClientOriginalExtension();
-        $engine_imgStore = $imagename.'_'.time().'.'.$extension;
-        $path = $request->file('engine_img')->storeAs('public/photos', $engine_imgStore);
-    } 
-
-    if($request->hasFile('opt_img1')){
-        $imagenamewithExt = $request->file('opt_img1')->getClientOriginalName();
-        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
-        $extension = $request->file('opt_img1')->getClientOriginalExtension();
-        $opt_img1Store = $imagename.'_'.time().'.'.$extension;
-        $path = $request->file('opt_img1')->storeAs('public/photos', $opt_img1Store);
-    } else { $opt_img1Store = ''; }
-
-    if($request->hasFile('opt_img2')){
-        $imagenamewithExt = $request->file('opt_img2')->getClientOriginalName();
-        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
-        $extension = $request->file('opt_img2')->getClientOriginalExtension();
-        $opt_img2Store = $imagename.'_'.time().'.'.$extension;
-        $path = $request->file('opt_img2')->storeAs('public/photos', $opt_img2Store);
-    } else { $opt_img2Store = ''; }
-
-    if($request->hasFile('opt_img3')){
-        $imagenamewithExt = $request->file('opt_img3')->getClientOriginalName();
-        $imagename = pathinfo($imagenamewithExt, PATHINFO_FILENAME);
-        $extension = $request->file('opt_img3')->getClientOriginalExtension();
-        $opt_img3Store = $imagename.'_'.time().'.'.$extension;
-        $path = $request->file('opt_img3')->storeAs('public/photos', $opt_img3Store);
-    } else { $opt_img3Store = ''; }     
-
+           
+        $imageFields = ['front_img', 'back_img', 'right_img', 'left_img', 'interiorf_img', 'interiorb_img', 'engine_img', 'opt_img1', 'opt_img2', 'opt_img3'];
+        
+        foreach ($imageFields as $fieldName) {
+            if ($request->hasFile($fieldName)) {
+                $image = $request->file($fieldName);
+                $imagename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $extension = $image->getClientOriginalExtension();
+                $imageStore = $imagename . '_' . time() . '.' . $extension;
+        
+                // Open the image using Intervention/Image
+                $img = Image::make($image);
+        
+                // Load the watermark image
+                $watermark = Image::make(public_path('watermark/king.png'));
+        
+                // Add the watermark to the image
+                $img->insert($watermark, 'bottom-right', 10, 10); // You can adjust the position and size of the watermark
+        
+                // Save the watermarked image with the user's name
+                $img->save(public_path('storage/photos/' . $imageStore));
+        
+                // Assign the image store path to the corresponding model field
+                $vehicle->$fieldName = $imageStore;
+            }
+        }
+        
+        // Rest of your code to save the vehicle details
         $default_view = 0;
 
         $vehicle->listing_id = $currentId;
@@ -280,23 +236,10 @@ public function showFavoriteVehicles()
         $vehicle->vehicle_type = $request->vehicle_type;
         $vehicle->color = $request->color;
         $vehicle->views = $default_view;
-
-
-        if($request->hasFile('front_img')) { $vehicle->front_img = $front_imgStore; }
-        if($request->hasFile('back_img')) { $vehicle->back_img = $back_imgStore; }
-        if($request->hasFile('right_img')) { $vehicle->right_img = $right_imgStore; }
-        if($request->hasFile('left_img')) { $vehicle->left_img = $left_imgStore; }
-        if($request->hasFile('interiorf_img')) { $vehicle->interiorf_img = $interiorf_imgStore; }
-        if($request->hasFile('interiorb_img')) { $vehicle->interiorb_img = $interiorb_imgStore; }
-        if($request->hasFile('engine_img')) { $vehicle->engine_img = $engine_imgStore; }
-        if($request->hasFile('opt_img1')) { $vehicle->opt_img1 = $opt_img1Store; }
-        if($request->hasFile('opt_img2')) { $vehicle->opt_img2 = $opt_img2Store; }
-        if($request->hasFile('opt_img3')) { $vehicle->opt_img3 = $opt_img3Store;   } 
-
-
+        
         $vehicle->save();
 
-       
+    
 
 
    /*   if ($request->hasFile('images')) 
@@ -842,17 +785,7 @@ if($request->hasFile('opt_img3')){
     return redirect()->route('user.index_carhire')->with('success','removed successfully');
    }
 
-    public function invoice (Listing $listing, Vehicle $vehicle){
-        $arr['categories'] = Category::all();
-        $arr['cities'] = City::all();
-        $arr['makes'] = Carmake::all();
-        $arr['models'] = Carmodel::all();
-        $arr['listing'] = $listing;
-        $arr['vehicle'] = $vehicle;
-        $arr['packages'] = Package::all();
 
-        return view('user.invoice')->with($arr);
-    }
 
     public function packages(Request $request, listing $listing )
     {

@@ -6,14 +6,15 @@ use App\Models\Carmake;
 use App\Models\Carmodel;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Favourites;
 use App\Models\Listing;
 use App\Models\Package;
 use App\Models\User;
 use App\Models\Vehicle;
-use App\Models\Favorite;
 use App\Models\Vehicle_photo;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Intersection;
 
 class PagesController extends Controller
@@ -150,7 +151,7 @@ Public function vehicleslist(){
     $arr['models'] = Carmodel::all();
     $arr['cities'] = City::all();
     $arr['vehicles'] = Vehicle::all();
-    $arr['listings'] = Listing::where('category_id',2)->paginate(20); //the 2 is the id of car category
+    $arr['listings'] = Listing::where('category_id',2)->paginate(16); //the 2 is the id of car category
    // $arr['carcities'] = Listing::where('category_id',2)->where('city_id',$request->city_id)->take(20)->get();
    $imagecount =! Null;
    $arr['imgcount'] = Vehicle::where(['front_img' => Null,'back_img'=> Null, 'right_img'=> Null, 'left_img'=> Null])->count();
@@ -216,22 +217,38 @@ Public function dashboard_archived_ads(){
     
 }
 
+
+
 public function addToFavorites(Request $request)
 {
-    // Get the vehicle ID and user ID from the form
+    // Get the user ID of the authenticated user
+    $userId = Auth::id();
+
+    // Get the vehicle ID from the request
     $vehicleId = $request->input('vehicle_id');
-    $user = $request->user();
-    // You can check if the user is authenticated here
 
-    // Create a new Favourite record in the database
-    $favourite = new Vehicle();
-    $favourite->user_id = $user;
-    $favourite->vehicle_id = $vehicleId;
-    $favourite->save();
+    // Check if the user has already favorited the vehicle
+    $existingFavorite = Favourites::where('user_id', $userId)
+        ->where('vehicle_id', $vehicleId)
+        ->first();
 
-    // Redirect back to the previous page or wherever you want
+    if ($existingFavorite) {
+        // The user has already favorited this vehicle, no need to add it again
+        return back()->with('info', 'Vehicle is already in favorites.');
+    }
+
+    // If the vehicle is not already favorited, add it to favorites
+    $favorite = new Favourites();
+    $favorite->user_id = $userId;
+    $favorite->vehicle_id = $vehicleId;
+    $favorite->save();
+
     return back()->with('success', 'Vehicle added to favorites.');
 }
+
+
+
+
 
 
 Public function dashboard_favorites(){
@@ -240,13 +257,7 @@ Public function dashboard_favorites(){
     
 }
 
-public function toggleFavorite(Request $request, Vehicle $vehicle)
-{
-    $user = $request->user();
-    $user->favorites()->toggle($vehicle);
 
-    return redirect()->back();
-}
 
 
 Public function dashboard_my_ads(){
@@ -340,28 +351,6 @@ public function package (){
     return view ('pages.package');
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

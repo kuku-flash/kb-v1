@@ -63,6 +63,12 @@ class User extends Authenticatable
     }
 
 
+    public function invoice(){
+
+        return $this->hasMany(Invoice::class, 'invoice_id');
+    }
+
+
     // 
 
     public function roles(){

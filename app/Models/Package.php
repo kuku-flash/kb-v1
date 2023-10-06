@@ -19,4 +19,10 @@ class Package extends Model
     public function listing () {
         return $this->hasMany( 'App\Models\Listing');
     }
+
+    public function Invoice (){
+        return $this->hasMany(Invoice::class, 'invoice_id');
+    }
+
+    
 }
