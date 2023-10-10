@@ -68,6 +68,12 @@ class User extends Authenticatable
         return $this->hasMany(Invoice::class, 'invoice_id');
     }
 
+    public function garage(){
+
+        return $this->hasMany(Garage::class, 'garage_id');
+    }
+
+
 
     // 
 

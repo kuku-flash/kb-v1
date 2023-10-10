@@ -13,6 +13,7 @@ use App\Models\Favourites; // Import the Favorite model at the top of your contr
 use App\Models\City;
 use App\Models\Invoice;
 use App\Models\Listing;
+use App\Models\Garage;
 use App\Models\Package;
 use App\Models\Carevent;
 use Intervention\Image\Facades\Image;
@@ -79,10 +80,12 @@ class ListingController extends Controller
     public function userevent(){
 
      $carevents = Carevent::where('user_id',Auth::id())->get();
-    return view ('user.archived_list', compact('carevents'));
+    return view ('user.index_carevent', compact('carevents'));
 
 
 }
+
+
 
 
     Public function favourites(){
@@ -259,10 +262,68 @@ public function invoice (Listing $listing, Vehicle $vehicle, Invoice $invoice){
  
           }     
         } */
-  
     return redirect() -> route('user.packages',$listing->id)->with('success','Added'); 
      
     }
+
+
+
+
+//     public function store_garage(Request $request)
+//     {
+//         // Validate the form data
+//         $validatedData = $request->validate([
+//             'garage_title' => 'required|string|max:255',
+//             'garage_location' => 'required|string|max:255',
+//             'garage_description' => 'required|string',
+//             'front_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Example validation for an image file
+//             'back_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+//             'right_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+//             'left_img' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+//             'interiorf_img' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+//             'interiorb_img' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+//             'engine_img' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+//             'opt_img1' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+//             'opt_img2' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+//             'opt_img3' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+//             'user_id' => 'required',
+//         ]);
+
+//         // Handle file uploads and store them
+//         $imagePaths = [];
+//         foreach (['front_img', 'back_img', 'right_img', 'left_img', 'interiorf_img', 'interiorb_img', 'engine_img', 'opt_img1', 'opt_img2', 'opt_img3'] as $field) {
+//             if ($request->hasFile($field)) {
+//                 $imagePath = $request->file($field)->store('garage_images', 'public'); // Store in the public storage under the 'garage_images' directory
+//                 $imagePaths[$field] = $imagePath;
+//             }
+//         }
+
+//         // Create a new Garage model and save the data
+//         $garage = new Garage();
+//         $garage->garage_title = $validatedData['garage_title'];
+//         $garage->garage_location = $validatedData['garage_location'];
+//         $garage->garage_description = $validatedData['garage_description'];
+//         $garage->user_id = $request->user_id;
+//         // Attach image paths to the garage model
+//         $garage->front_img = $imagePaths['front_img'];
+//         $garage->back_img = $imagePaths['back_img'];
+//         $garage->left_img = $imagePaths['right_img'];
+//         $garage->right_img = $imagePaths['left_img'];
+//         $garage->interiorf_img = $imagePaths['interiorf_img'];
+//         $garage->interiorb_img = $imagePaths['interiorb_img'];
+//         $garage->engine_img = $imagePaths['engine_img'];
+//         $garage->opt_img1 = $imagePaths['opt_img1'];
+//         $garage->opt_img2 = $imagePaths['opt_img2'];
+//         $garage->opt_img3 = $imagePaths['opt_img3'];
+//         // Attach other image paths as needed
+
+//         // Save the garage data
+//         $garage->save();
+
+//         // Redirect back with a success message
+//         return redirect()->back()->with('success', 'Garage created successfully.');
+    
+// }
     public function show_vehiclesale(Listing $listing, Vehicle $vehicle){
         $arr['categories'] = Category::all();
         $arr['cities'] = City::all();

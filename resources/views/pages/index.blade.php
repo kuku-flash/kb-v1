@@ -257,7 +257,6 @@
 							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
-										<div class="price">{{ $listing->package->package_name}} </div>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											
 											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">

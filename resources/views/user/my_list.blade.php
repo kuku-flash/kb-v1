@@ -143,7 +143,7 @@
 											</a>
 										</li>
 										<li class="list-inline-item">
-											<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="#">
+											<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{{ route('user.edit_vehiclesale', ['listing' => $listing, 'vehicle' => $vehicle]) }}">
 												<i class="fa fa-pencil"></i>
 											</a>
 										</li>
@@ -152,7 +152,7 @@
 											<a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" data-toggle="tooltip" data-placement="top" title="Delete" class="delete">
 												<i class="fa fa-trash"></i>
 											</a>
-											<form action="#" method="post" onsubmit="return confirm('Are you sure want to delete?');">
+											<form action="{{ route('user.delete_vehiclesale', ['listing' => $listing, 'vehicle' => $vehicle]) }}" method="post" onsubmit="return confirm('Are you sure want to delete?');">
 											  @method('DELETE')
 											  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 											</form>

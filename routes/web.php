@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GarageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Request;
 use App\Http\Controllers\PagesController;
@@ -48,6 +49,10 @@ Route :: get ('signup',  [PagesController::class, 'signup'])->name('signup');
 Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
 Route:: get('events', [PagesController::class, 'events'])->name('event');
 Route::get('/events/{id}', [PagesController::class, 'show'])->name('events.show');
+Route:: get('events', [PagesController::class, 'events'])->name('event');
+Route::get('/garages', [GarageController::class, 'index'])->name('garages.index');
+
+
 
 
 
@@ -119,6 +124,9 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('favourite_list',  [ListingController::class, 'showFavoriteVehicles'])->name('favourite_list');
     Route :: get ('my_list',  [ListingController::class, 'my_list'])->name('my_list');
     Route :: get ('pending_list',  [ListingController::class, 'pending_list'])->name('pending_list');
+    Route :: post ('garages',  [GarageController::class, 'store_garage'])->name('garages');
+    Route :: get ('garage_create',  [GarageController::class, 'create_garage'])->name('garage_create');
+
 
     Route :: get ('new_listing',  [ListingController::class, 'new_listing'])->name('new_listing');
     Route :: get ('index_vehiclesale',  [ListingController::class, 'index_vehiclesale'])->name('index_vehiclesale');
@@ -129,6 +137,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('show_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'show_vehiclesale'])->name('show_vehiclesale');
     Route :: delete ('delete_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'delete_vehiclesale'])->name('delete_vehiclesale');
     Route::post('/add-to-favorites', [PagesController::class, 'addToFavorites'])->name('addtofavourites');
+    Route :: get ('usercarevent',  [ListingController::class, 'create_vehiclesale'])->name('user.events');
 
 
     Route :: get ('category',  [ListingController::class, 'category'])->name('category');

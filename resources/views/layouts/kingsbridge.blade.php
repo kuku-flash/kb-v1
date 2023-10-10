@@ -74,7 +74,7 @@
                 </li>
                 
                 <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
-                  <a class="nav-link" href="{{ route('user.favourite_list')}}">Garages</a>
+                  <a class="nav-link" href="{{ route('garages.index')}}">Garages</a>
                 </li>
                 
               
@@ -108,7 +108,7 @@
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{route('user.my_list')}}"> My List</a>
              <!--       <a class="dropdown-item" href="{{route('user.index_carhire')}}">Carhire</a> -->
-                    <a class="dropdown-item" href="{{route('user.carevent')}}"> Events</a>
+                    <a class="dropdown-item" href="{{route('user.userevent')}}"> Events</a>
                     <a class="dropdown-item" href="{{route('user.invoice.index')}}">Invoices</a> 
                     <a class="dropdown-item" href="#">Payments</a> 
                     <a class="dropdown-item" href="{{ route('user.user_profile', Auth::user()->id )}}">User Profile</a> 
