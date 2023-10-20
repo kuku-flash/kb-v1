@@ -163,7 +163,7 @@ Public function vehicleslist(){
 Public function vehicles_list(){
     $arr['cities'] = City::all();
     $arr['vehicles'] = Vehicle::all();
-    $arr['listings'] = Listing::where('category_id',2)->take(20)->get(); //the 2 is the id of car category
+    $arr['listings'] = Listing::where('category_id',2)->paginate(8); //the 2 is the id of car category
   
     $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
     return view ('pages.vehicles_list')->with($arr);

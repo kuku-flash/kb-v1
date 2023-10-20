@@ -86,8 +86,6 @@ class ListingController extends Controller
 }
 
 
-
-
     Public function favourites(){
     
         return view ('user.favourites'); 
@@ -106,17 +104,6 @@ public function showFavoriteVehicles()
     return view('user.favourites', compact('favoriteVehicles', 'listings'));
 }
 
-public function invoice (Listing $listing, Vehicle $vehicle, Invoice $invoice){
-    $arr['categories'] = Category::all();
-    $arr['cities'] = City::all();
-    $arr['makes'] = Carmake::all();
-    $arr['models'] = Carmodel::all();
-    $arr['listing'] = $listing;
-    $arr['vehicle'] = $vehicle;
-    $arr['packages'] = Package::all();
-
-    return view('user.invoice')->with($arr);
-}
 
 
     
@@ -242,26 +229,6 @@ public function invoice (Listing $listing, Vehicle $vehicle, Invoice $invoice){
         
         $vehicle->save();
 
-    
-
-
-   /*   if ($request->hasFile('images')) 
-      {
-          $photos = $request->file('images');
-          $i = 1;
-         foreach ($photos as $image) {
-             $name = time().'-'.$image->getClientOriginalName();
-             $name = str_replace('','-',$name);
-             $image->storeAs('public/photos', $name);
-           
-            #$vehicle_photo->photo = $name;
-            #$vehicle_photo->vehicle_id = $vehicle->id;
-            #$vehicle_photo->save();
-    
-            $vehicle->vehiclephotos()->create(['photo' => $name, 'photo_postion' => $i++]);
- 
-          }     
-        } */
     return redirect() -> route('user.packages',$listing->id)->with('success','Added'); 
      
     }

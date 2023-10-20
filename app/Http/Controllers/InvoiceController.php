@@ -68,11 +68,26 @@ class InvoiceController extends Controller
         return view('user.show_invoice')->with($arr);
     }
 
+    
+public function invoice (Listing $listing, Vehicle $vehicle, Invoice $invoice){
+    $arr['categories'] = Category::all();
+    $arr['cities'] = City::all();
+    $arr['makes'] = Carmake::all();
+    $arr['models'] = Carmodel::all(); 
+    $arr['invoice'] = Invoice::all();
+    $arr['listing'] = $listing;
+    $arr['vehicle'] = $vehicle;
+    $arr['invoice'] = $invoice;
+    $arr['packages'] = Package::all();
+
+    return view('user.invoice')->with($arr);
+}
+
     public function generated_invoice(Invoice $invoice) 
     {
         $invoiced = Invoice::findorFail($invoice);
         $data = ['invoice' => $invoiced];
-        $pdf = Pdf::loadView('user.show_invoice', $data);
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('user.show_invoice', $data);
         return $pdf->download('invoice.pdf');
     }
 

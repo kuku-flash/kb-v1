@@ -143,7 +143,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('category',  [ListingController::class, 'category'])->name('category');
     Route :: get ('model',  [ListingController::class, 'model'])->name('model');
     
-    Route :: get ('invoice/{listing}/{vehicle}',  [ListingController::class, 'invoice'])->name('invoice');
+    Route :: get ('invoice/{listing}/{vehicle}',  [InvoiceController::class, 'invoice'])->name('invoice');
 
 
     Route :: get ('carhire',  [ListingController::class, 'index_carhire'])->name('index_carhire');

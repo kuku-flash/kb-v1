@@ -143,7 +143,7 @@
         @foreach ($listings as $listing)
 		@if ($listing->package_id == 2)
             @foreach ($vehicles as $vehicle)
-                @if ($listing->id == $vehicle->listing_id)
+        @if ($listing->id == $vehicle->listing_id && $listing->ads_status == 'Approved')
                     @if ($slideNumber % 3 == 0)
                         <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
                             <div class="row mt-30">
@@ -243,9 +243,9 @@
 	<div id="productCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         @php $slideNumber = 0; @endphp
-        @foreach ($listings as $listing)
-            @foreach ($vehicles as $vehicle)
-                @if ($listing->id == $vehicle->listing_id)
+  @foreach ($listings as $listing )
+        @foreach ($listing->vehicles->unique() as $vehicle)
+            @if ($listing->ads_status == 'Approved' || $listing->package_id == 3)
                     @if ($slideNumber % 3 == 0)
                         <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
                             <div class="row mt-30">
@@ -257,6 +257,7 @@
 							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
+										<div class="price">{{ $listing->package->package_name}} </div>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											
 											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt=""style="max-height: 400px;">
@@ -418,19 +419,18 @@
 		<div class="col-md-12">
 			<div class="section-title section-why-title">
 				<h2>Why KingsBridge?</h2>
-				<p>we dont just sell cars we sell a lifestyle </p>
 			</div>
 		</div>
 		<div class="col-sm-6">
 		  <div class="whycard">
 			<div class="card-bodyy">
-			  <h5 class="why-title">You might wonder why</h5>
+			  <h5 class="why-title">Why us?</h5>
 			  <p class="why-text">
 				At KingsBridge, we take pride in being more than just an online car selling platform. 
 				We are your automotive hub, a comprehensive destination where car enthusiasts and sellers unite.
 				Here's why you should choose us:
 			  </p>
-				<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+				<li class="why-btn-alighn"><a class="btn btn-main" href="{{ route('about_us')}}">Learn more</a></li>
 			</div>
 		  </div>
 		</div>
@@ -443,7 +443,7 @@
                     Whether you're a car seller, a garage owner, or a car event organizer, we have a solution tailored just for you. 
                     Explore the possibilities:			  
                     </p>
-				<li class="why-btn-alighn"><a class="btn btn-main" href="ad-listing.html">Learn more</a></li>
+				<li class="why-btn-alighn"><a class="btn btn-main" href="{{ route('about_us')}}">Learn more</a></li>
 			</div>
 		  </div>
 		</div>
@@ -464,7 +464,7 @@
 					<h2>Start today to get more exposure and
 					grow your business</h2>
 					<ul class="list-inline mt-30">
-						<li class="list-inline-item"><a class="btn btn-main" href="ad-listing.html">Join Today</a></li>
+						<li class="list-inline-item"><a class="btn btn-main" href="{{ Auth::check() ? route('user.new_listing') : route('login') }}">Join Today</a></li>
 					</ul>
 				</div>
 			</div>

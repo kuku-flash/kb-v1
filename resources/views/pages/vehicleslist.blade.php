@@ -116,10 +116,10 @@
 				</div>
 				 <div class="product-grid-list">
 					<div class="row mt-30">
-					@foreach ($listings as $listing )		
-						@foreach ($vehicles as $vehicle)
-						@if ($listing->id == $vehicle->listing_id)
-						<div class="col-sm-3 col-md-3 col-lg-3">
+  @foreach ($listings as $listing )
+        @foreach ($listing->vehicles->unique() as $vehicle)
+            @if ($listing->ads_status == 'Approved' || $listing->package_id == 3)
+						<div class="col-sm-4 col-md-4 col-lg-4">
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card">
