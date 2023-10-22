@@ -59,21 +59,21 @@
   
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto main-nav ">
-                <li class="nav-item {{ request()->routeIs('/') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('index') ? 'active' : '' }}">
                   <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
                   <a class="nav-link" href="{{ route('about_us')}}">About Us</a>
                 </li>              
-                <li class="nav-item {{ request()->routeIs('vehiclelist') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('vehicleslist') ? 'active' : '' }}">
                   <a class="nav-link" href="{{ route('vehicleslist')}}">Buy a Vehicle</a>
                 </li>
              
-                <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('carevent') ? 'active' : '' }}">
                   <a class="nav-link" href="{{ route('carevent') }}">Car Events</a>
                 </li>
                 
-                <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('garages.index') ? 'active' : '' }}">
                   <a class="nav-link" href="{{ route('garages.index')}}">Garages</a>
                 </li>
                 
