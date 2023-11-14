@@ -200,72 +200,7 @@
 									</tbody>
 								</table>
 							</div>
-							<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-								<h3 class="tab-title">Product Review</h3>
-								<div class="product-review">
-									<div class="media">
-										<!-- Avater -->
-										<img src="images/joshua.jpeg" alt="avater">
-										<div class="media-body">
-											<!-- Ratings -->
-											<div class="ratings">
-												<ul class="list-inline">
-													<li class="list-inline-item">
-														<i class="fa fa-star"></i>
-													</li>
-													<li class="list-inline-item">
-														<i class="fa fa-star"></i>
-													</li>
-													<li class="list-inline-item">
-														<i class="fa fa-star"></i>
-													</li>
-													<li class="list-inline-item">
-														<i class="fa fa-star"></i>
-													</li>
-													<li class="list-inline-item">
-														<i class="fa fa-star"></i>
-													</li>
-												</ul>
-											</div>
-											<div class="name">
-												<h5>Jessica Brown</h5>
-											</div>
-											<div class="date">
-												<p>Mar 20, 2018</p>
-											</div>
-											<div class="review-comment">
-												<p>
-													Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremqe laudant tota rem ape
-													riamipsa eaque.
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="review-submission">
-										<h3 class="tab-title">Submit your review</h3>
-										<!-- Rate -->
-										<div class="rate">
-											<div class="starrr"></div>
-										</div>
-										<div class="review-submit">
-											<form action="#" class="row">
-												<div class="col-lg-6">
-													<input type="text" name="name" id="name" class="form-control" placeholder="Name">
-												</div>
-												<div class="col-lg-6">
-													<input type="email" name="email" id="email" class="form-control" placeholder="Email">
-												</div>
-												<div class="col-12">
-													<textarea name="review" id="review" rows="10" class="form-control" placeholder="Message"></textarea>
-												</div>
-												<div class="col-12">
-													<button type="submit" class="btn btn-main">Submit</button>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
+
 						</div>
 					</div>
 				</div>
@@ -339,11 +274,10 @@
 						</p>
 						<!-- Submii button -->						
 						<a href="{{ Auth::check() ? route('user.create_vehiclesale') : route('login') }}" class="btn btn-transparent-white">Submit Listing</a>
-
 					</div>
 
 				</div>
-			</div>
+			</div>	
 
 		</div>
 	</div>

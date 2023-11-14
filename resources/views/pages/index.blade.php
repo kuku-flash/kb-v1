@@ -24,20 +24,7 @@
 							<li class="list-inline-item">
 								<a href="{{ route('vehicleslist') }}"><i class="fa fa-car"></i> Vehicles</a>
 							</li>
-						
-							<!--
-								<li class="list-inline-item">
-								<a href="{{ route('category') }}"><i class="fa fa-bed"></i> BnB</a>
-							</li>
-								<li class="list-inline-item">
-								<a href="{{ route('category') }}"><i class="fa fa-home"></i> Houses</a>
-							</li> 
-								<li class="list-inline-item">
-								<a href="{{ route('category') }}"><i class="fa fa-building"></i> Commercials</a>
-							</li>
-							<li class="list-inline-item">
-								<a href="{{ route('category') }}"><i class="fa fa-taxi"></i> Car hire</a>
-							</li> -->
+					
 						</ul>
 					</div>
 					
@@ -478,14 +465,14 @@
 <!--===================================
 =           Our Partners           =
 ====================================-->
-
+<!-- 
 <section class="product">
 	<p style="font-weight: 450; font-size:20px; text-align: center;"> <b>Our Partners</b></p>
 	<div class="slider ">
 		<div><img src="../images/GarageGallery Logo.jpg" alt="" style="max-height: 150px;">
 		</div>
 	  </div>
-</section>
+</section> -->
 
 <!--====================================
 =            Call to Action            =

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GarageController;
+use App\Http\Controllers\SparePartController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Request;
 use App\Http\Controllers\PagesController;
@@ -73,7 +74,12 @@ Route :: get ('post_ad_form',  [PagesController::class, 'post_ad_form'])->name('
 Route :: get ('single_blog',  [PagesController::class, 'single_blog'])->name('single_blog');
 Route :: get ('terms_condition',  [PagesController::class, 'terms_condition'])->name('terms_condition');
 Route::post('/add-to-favorites', [PagesController::class, 'addToFavorites'])->name('addtofavourites');
-    Route :: get ('favourite_list',  [ListingController::class, 'showFavoriteVehicles'])->name('favourite_list');
+Route :: get ('favourite_list',  [ListingController::class, 'showFavoriteVehicles'])->name('favourite_list');
+Route::get('/sparepartssearch', [SparePartController::class, 'spare_parts_search'])->name('spare_parts_search');
+Route::get('/spareparts', [SparePartController::class, 'showspareparts'])->name('spareparts');
+Route::get('/sparepart/{id}', [SparePartController::class, 'sparepart'])->name('sparepart');
+
+
 
 
 
@@ -140,6 +146,8 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('usercarevent',  [ListingController::class, 'create_vehiclesale'])->name('user.events');
 
 
+
+
     Route :: get ('category',  [ListingController::class, 'category'])->name('category');
     Route :: get ('model',  [ListingController::class, 'model'])->name('model');
     
@@ -167,6 +175,14 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: post ('post_invoice',  [ListingController::class, 'post_invoice'])->name('post_invoice');
     Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
     Route :: get ('index_carevent',  [ListingController::class, 'userevent'])->name('userevent');
+    Route::get('/spareparts/create', [SparePartController::class, 'create'])->name('sparepartscreate');
+    Route::post('/spareparts', [SparePartController::class, 'store'])->name('sparepartsstore');
+    Route::get('/myspareparts', [SparePartController::class, 'myspareparts'])->name('myspareparts');
+    
+
+
+    
+
 
     
     Route :: get ('create_carevent',  [CareventController::class, 'create_carevent'])->name('create_carevent');

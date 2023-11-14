@@ -164,10 +164,7 @@
 											<p class="badge-sale">For Sale</p>
 											<p class="price">Ksh {{ $vehicle->price}}</p>
 											</div>
-											<div>
-											
-											
-												</div>
+										
 											</div>
 										</div>
 										</a>

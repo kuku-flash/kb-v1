@@ -54,6 +54,10 @@ class User extends Authenticatable
         return $this->hasMany( 'App\Models\Listing');
     }
 
+    public function sparePart () {
+        return $this->belongsTo(SparePart::class);
+    }
+
 
 
    // Define the relationship with favorite vehicles

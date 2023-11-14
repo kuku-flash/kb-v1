@@ -89,8 +89,7 @@ public function vehicle_search(Request $request){
     $arr['cities'] = City::all();
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
-    // $arr['price'] = 
-    $price_max = 500000;
+
     $arr['listings'] = Listing::where([
         ['city_id', '!=', Null],
    
@@ -118,9 +117,15 @@ public function vehicle_search(Request $request){
             if (( $model_id = $request->model_id)){
                 $query->orWhere('model_id', 'LIKE', '%' .$model_id. '%')->get();
             }
-            if (( $price_max = $request->price_max)){
-                $query->orWhere('price', '>=', $price_max)->get();
-            }
+            // Search by minimum price
+    if ($request->filled('min_price')) {
+        $query->where('price', '>=', $request->input('min_price'));
+    }
+
+    // Search by maximum price
+    if ($request->filled('max_price')) {
+        $query->where('price', '<=', $request->input('max_price'));
+    }
         }]
 
     ])

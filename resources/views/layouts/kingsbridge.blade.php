@@ -4,7 +4,7 @@
 
     <!-- SITE TITTLE -->
     <meta charset="utf-8">
-<meta name="viewport" content="width=1024">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KingsBridge</title>
     
     <!-- FAVICON -->
@@ -67,15 +67,17 @@
                 </li>              
                 <li class="nav-item {{ request()->routeIs('vehicleslist') ? 'active' : '' }}">
                   <a class="nav-link" href="{{ route('vehicleslist')}}">Buy a Vehicle</a>
+                </li> 
+                                
+                <li class="nav-item {{ request()->routeIs('spareparts') ? 'active' : '' }}">
+                  <a class="nav-link" href="{{route('spareparts')}}">Spare Parts</a>
                 </li>
              
                 <li class="nav-item {{ request()->routeIs('carevent') ? 'active' : '' }}">
                   <a class="nav-link" href="{{ route('carevent') }}">Car Events</a>
                 </li>
+
                 
-                <li class="nav-item {{ request()->routeIs('garages.index') ? 'active' : '' }}">
-                  <a class="nav-link" href="{{ route('garages.index')}}">Garages</a>
-                </li>
                 
               
            
@@ -108,7 +110,8 @@
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{route('user.my_list')}}"> My List</a>
              <!--       <a class="dropdown-item" href="{{route('user.index_carhire')}}">Carhire</a> -->
-                    <a class="dropdown-item" href="{{route('user.userevent')}}"> Events</a>
+                    <a class="dropdown-item" href="{{route('user.userevent')}}">Events</a>
+                    <a class="dropdown-item" href="{{route('user.myspareparts')}}">Spare Parts</a> 
                     <a class="dropdown-item" href="{{route('user.invoice.index')}}">Invoices</a> 
                     <a class="dropdown-item" href="#">Payments</a> 
                     <a class="dropdown-item" href="{{ route('user.user_profile', Auth::user()->id )}}">User Profile</a> 
