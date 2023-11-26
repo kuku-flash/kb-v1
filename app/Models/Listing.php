@@ -15,6 +15,7 @@ class Listing extends Model
         'category_id',
         'city_id',
         'package_id',
+        'vehicle_id',
         'user_id'
     ];
 

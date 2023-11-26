@@ -24,91 +24,70 @@
 							<li class="list-inline-item">
 								<a href="{{ route('vehicleslist') }}"><i class="fa fa-car"></i> Vehicles</a>
 							</li>
-					
+														<li class="list-inline-item">
+								<a href="{{ route('spareparts') }}"><i class="fa fa-car"></i> Vehicle Parts</a>
+							</li>
+
 						</ul>
 					</div>
 					
 				</div>
 				<!-- Advance Search -->
 				<div class="advance-search">
-						<div class="container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-12 align-content-center sale">
+                <form action="{{ route('vehicle_search') }}" method="get" id="vehicleSearchForm">
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <select name="make" id="make" class="make form-control">
+                                <option value="" data-live-search="true">Choose a Make</option>
+                                @foreach($makes as $make)
+                                    <option value="{{ $make->id }}">{{ $make->make }}</option>
+                                @endforeach
+                            </select>
+                            <!-- You can leave this error span if needed -->
+                            @error('make_id')
+                            <span class="invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
 
-							<div class="row justify-content-center">
-								<div class="col-lg-12 col-md-12 align-content-center  sale" >
-										<form action="{{ route('vehicle_search') }}" method="get">
-											<div class="form-row">
-												<div class=" form-group col-md-2">
-													<select name="make" class="make form-control ">
-													<option value="" data-live-search="true">Choose a Make</option>
-										
-													@foreach($makes as $make)
-														<option value="{{ $make->id }}" {{(old('make'))? 'selected':''}}>{{ $make->make }}</option>
-													@endforeach
-													</select>
-													@error('make_id')
-													<span class="invalid"  role="alert">
-														<strong>{{ $message }}</strong>
-													</span>
-													@enderror
-												</div>
-			
-												<div class="carmodel form-group col-md-2">
-													
-												<select name="model_id" class="model form-control ">
-													<option value="0"  disabled="true" selected="true" data-live-search="true">Choose a model</option>
-												</select>
-												
-												</div>
-									
-												<div class="form-group col-md-2">
-													<select name="city" id="inputGroupSelect" class="form-control">
-														<option value="">Select City</option>
-														@foreach ($cities as $city )
-														 <option value="{{ $city->id }}" {{(old('city')==$city->id)? 'selected':''}}>
-														  {{ $city->city }}</option> 
-														@endforeach
-													</select>
-								
-												</div>
-                                                <div class="form-group col-md-2">
-													<select name="price" id="inputGroupSelect" class="form-control">
-														<option value="">Max Price</option>
-														<option value="100,000,000">100,000,000</option>
-														<option value="50,000,000">50,000,000</option>
-														<option value="10,000,000">10,000,000</option>
-														<option value="5,000,000">5,000,000</option>
-														<option value="1,000,000">3,000,000</option>
-														<option value="1,000,000">1,000,000</option>
-														<option value="500,000">500,000</option>
-														<option value="300,000">300,000</option>
-													</select>
-								
-												</div>
-												<div class="form-group col-md-2">
-													<select name="price" id="inputGroupSelect" class="form-control">
-														<option value="">Min Price</option>
-														<option value="3,000,000">3,000,000</option>
-														<option value="2,000,000">2,000,000</option>
-														<option value="1,000,000">1,000,000</option>
-														<option value="700,000">700,000</option>
-														<option value="500,000">500,000</option>
-														<option value="300,000">300,000</option>														
-													</select>
-								
-												</div>
+                        <div class="carmodel form-group col-md-2">
+                            <select name="model_id" id="model_id" class="model form-control">
+                                <option value="" disabled="true" selected="true">Choose a model</option>
+                            </select>
+                        </div>
 
-												<div class="form-group col-md-2 ">
-													<button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
-													
-												</div>
-											</div>
-										</form>
-									</div>
+                        <!-- Other search fields here (city, min_price, max_price) -->
+						<div class="form-group col-md-2">
+                            <select name="city" id="inputGroupSelect" class="form-control">
+                                <option value="">Select City</option>
+                                @foreach ($cities as $city )
+                                <option value="{{ $city->id }}" {{(old('city')==$city->id)? 'selected':''}}>
+                                    {{ $city->city }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-					
-								</div>
-					</div>
-				</div>
+                        <div class="form-group col-md-2">
+                            <input type="text" name="min_price" placeholder="Min Price" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <input type="text" name="max_price" placeholder="Max Price" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 				
 			</div>
 		</div>
@@ -116,7 +95,37 @@
 	<!-- Container End -->
 </section>
 
+<style>
+					    @media (max-width: 767px) {
+        .product-item {
+            margin-bottom: 15px; /* Adjust vertical space between items */
+        }
+        .product-grid-list .row > div[class*="col-"] {
+            padding-left: 5px; /* Adjust left padding */
+            padding-right: 5px; /* Adjust right padding */
+        }
+    }
+    /* Set a fixed height for the card bodies */
+    .card-body {
+        height: 150px; /* Adjust this value to your preferred fixed height */
+        overflow: hidden; /* Hide content that exceeds the fixed height */
+    }
 
+	.styled-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .styled-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .styled-list li i {
+        margin-right: 5px;
+    }
+</style>
 <div class="Hdrive text-center my-3">
 	<div class = "container">
 	<div class="col-md-12">
@@ -130,7 +139,7 @@
         @foreach ($listings as $listing)
 		@if ($listing->package_id == 2)
             @foreach ($vehicles as $vehicle)
-        @if ($listing->id == $vehicle->listing_id && $listing->ads_status == 'Approved')
+        @if ($listing->id == $vehicle->listing_id)
                     @if ($slideNumber % 3 == 0)
                         <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
                             <div class="row mt-30">
@@ -231,8 +240,8 @@
     <div class="carousel-inner">
         @php $slideNumber = 0; @endphp
   @foreach ($listings as $listing )
-        @foreach ($listing->vehicles->unique() as $vehicle)
-            @if ($listing->ads_status == 'Approved' || $listing->package_id == 3)
+        @foreach ($vehicles as $vehicle)
+            @if ($listing->id == $vehicle->listing_id)
                     @if ($slideNumber % 3 == 0)
                         <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
                             <div class="row mt-30">
@@ -405,7 +414,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="section-title section-why-title">
-				<h2>Why KingsBridge?</h2>
+				<h2>Why KingsBridge Motors?</h2>
 			</div>
 		</div>
 		<div class="col-sm-6">
@@ -465,14 +474,14 @@
 <!--===================================
 =           Our Partners           =
 ====================================-->
-<!-- 
+
 <section class="product">
 	<p style="font-weight: 450; font-size:20px; text-align: center;"> <b>Our Partners</b></p>
 	<div class="slider ">
 		<div><img src="../images/GarageGallery Logo.jpg" alt="" style="max-height: 150px;">
 		</div>
 	  </div>
-</section> -->
+</section>
 
 <!--====================================
 =            Call to Action            =

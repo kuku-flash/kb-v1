@@ -29,7 +29,7 @@
 									<section>
     <div class="main single-item">
         @if ($vehicle->front_img) <div class="main"><img src="/storage/photos/{{ $vehicle->front_img }}" class="vehicle-img"></div> @endif
-        @if ($vehicle->back_img) <div class="main"><img src="/storage/photos/{{ $vehicle->back_img }}" class="vehicle-img"></div> @endif
+        @if ($vehicle->back_img) <div class="main"><img src="/storage/pphotos/{{ $vehicle->back_img }}" class="vehicle-img"></div> @endif
         @if ($vehicle->right_img) <div class="main"><img src="/storage/photos/{{ $vehicle->right_img }}" class="vehicle-img"></div> @endif
         @if ($vehicle->left_img) <div class="main"><img src="/storage/photos/{{ $vehicle->left_img }}" class="vehicle-img"></div> @endif
         @if ($vehicle->interiorf_img) <div class="main"><img src="/storage/photos/{{ $vehicle->interiorf_img }}" class="vehicle-img"></div> @endif
@@ -262,7 +262,6 @@
 						<ul>
 							<li>Meet seller at a public place</li>
 							<li>Check the item before you buy</li>
-							<li>Pay only after collecting the item</li>
 							<li>Pay only after collecting the item</li>
 						</ul>
 					</div>

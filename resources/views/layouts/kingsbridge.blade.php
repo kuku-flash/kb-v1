@@ -5,10 +5,10 @@
     <!-- SITE TITTLE -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KingsBridge</title>
+    <title>KingsBridgeMotors</title>
     
     <!-- FAVICON -->
-    <link href="img/favicon.png" rel="shortcut icon">
+    <link href="img/king.png" rel="shortcut icon">
     <!-- PLUGINS CSS STYLE -->
     <!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
     <!-- Bootstrap -->
@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/slick-carousel/slick/slick.css')}}" >
     <link rel="stylesheet" href="{{ asset('plugins/slick-carousel/slick/slick-theme.css')}}" >
 
+    
+
   
   
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -50,7 +52,7 @@
         <div class="col-md-12">
           <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar  ftco-navbar-light" id="ftco-navbar">
             <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
-            style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " ><span style="color:#d4af37">Kings</span><span>bridge</span></a>
+            style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " ><span style="color:#d4af37">Kings</span><span>bridge motors</span></a>
   
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -228,7 +230,7 @@
           <p>Copyright © <script>
               var CurrentYear = new Date().getFullYear()
               document.write(CurrentYear)
-            </script>. Kingsbridge</p>
+            </script>. Kingsbridgemotors</p>
         </div>
       </div>
     </div>

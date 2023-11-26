@@ -124,6 +124,8 @@ public function showFavoriteVehicles()
         $arr['categories'] = Category::all();
         $arr['cities'] = City::all();
         $arr['makes'] = Carmake::all();
+        $arr['listing'] = Listing::all();
+        $arr['vehicle'] = Vehicle::all();
         $arr['models'] = Carmodel::select('model','id')->where('make_id',$request->id)->get(20);
         $arr['packages'] = Package::where('package_featured',null)->orderBy('id','desc')->get();
         return view('user.create_vehiclesale')->with($arr);
@@ -173,9 +175,12 @@ public function showFavoriteVehicles()
       $listing->city_id = $request->city;
       $listing->user_id = $request->user_id;
       $listing->ads_status = 'Pending';
-      $listing->save();
 
-        $currentId = $listing->id;
+     $currentId = $listing->id;
+
+
+      
+
 
            
         $imageFields = ['front_img', 'back_img', 'right_img', 'left_img', 'interiorf_img', 'interiorb_img', 'engine_img', 'opt_img1', 'opt_img2', 'opt_img3'];
@@ -225,8 +230,11 @@ public function showFavoriteVehicles()
         $vehicle->vehicle_type = $request->vehicle_type;
         $vehicle->color = $request->color;
         $vehicle->views = $default_view;
-        
+
         $vehicle->save();
+
+        $listing->vehicle_id = $vehicle->id;
+        $listing->save();
 
     return redirect() -> route('user.packages',$listing->id)->with('success','Added'); 
      

@@ -15,6 +15,7 @@ use App\Models\Vehicle_photo;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\Intersection;
 
 class PagesController extends Controller
@@ -85,54 +86,47 @@ Public function contact_us(){
     return view ('pages.contact_us');
      
 }
-public function vehicle_search(Request $request){
-    $arr['cities'] = City::all();
-    $arr['makes'] = Carmake::all();
-    $arr['models'] = Carmodel::all();
 
-    $arr['listings'] = Listing::where([
-        ['city_id', '!=', Null],
-   
-        [ function ($query) use ($request) {
-           
-            if (( $city = $request->city)){
-                $query->orWhere('city_id', 'LIKE', '%' .$city. '%')->get();
-            }
-           
-        }]
 
-    ])
-    ->orderBy("id", "desc")->paginate(20);
+public function vehicle_search(Request $request)
+{
+    $cities = City::all();
+    $makes = Carmake::all();
+    $models = Carmodel::all();
 
-  
-    $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
-    $arr['vehicles'] = Vehicle::where([
-        ['model_id', '!=', Null],
-        ['price', '!=', Null],
-        [ function ($query) use ($request) {
-           
-            if (( $make_id = $request->make_id)){
-                $query->orWhere('make', 'LIKE', '%' .$make_id. '%')->get();
-            }
-            if (( $model_id = $request->model_id)){
-                $query->orWhere('model_id', 'LIKE', '%' .$model_id. '%')->get();
-            }
-            // Search by minimum price
-    if ($request->filled('min_price')) {
-        $query->where('price', '>=', $request->input('min_price'));
+    $listingsQuery = Listing::whereNotNull('city_id');
+
+    if ($request->filled('city')) {
+        $listingsQuery->where('city_id', $request->city);
     }
 
+    if ($request->filled('model_id')) {
+        $listingsQuery->whereHas('vehicles', function ($query) use ($request) {
+            $query->where('model_id', $request->model_id);
+        });
+    }
+
+    if ($request->filled('min_price')) {
+        $minPrice = str_replace(',', '', $request->input('min_price'));
+        $listingsQuery->whereHas('vehicles', function ($query) use ($minPrice) {
+            $query->where('price', '>=', $minPrice);
+        });
+    }
+    
     // Search by maximum price
     if ($request->filled('max_price')) {
-        $query->where('price', '<=', $request->input('max_price'));
+        $maxPrice = str_replace(',', '', $request->input('max_price'));
+        $listingsQuery->whereHas('vehicles', function ($query) use ($maxPrice) {
+            $query->where('price', '<=', $maxPrice);
+        });
     }
-        }]
 
-    ])
-    ->orderBy("id", "desc")->take(20)->get();  
-    
-    return view ('pages.vehicleslist')->with($arr);
+    $listings = $listingsQuery->orderBy("id", "desc")->paginate(16);
+
+    return view('pages.vehicleslist', compact('cities', 'makes', 'models', 'listings'));
 }
+
+
 
 public function listing_filter(Request $request){
     $arr['vehicles'] = Vehicle::all();

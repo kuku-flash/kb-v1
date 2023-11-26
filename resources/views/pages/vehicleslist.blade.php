@@ -5,78 +5,61 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="search-result bg-gray">
-					
+			<div class="search-result bg-gray">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-12 align-content-center sale">
+                <form action="{{ route('vehicle_search') }}" method="get" id="vehicleSearchForm">
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <select name="make" id="make" class="make form-control">
+                                <option value="" data-live-search="true">Choose a Make</option>
+                                @foreach($makes as $make)
+                                    <option value="{{ $make->id }}">{{ $make->make }}</option>
+                                @endforeach
+                            </select>
+                            <!-- You can leave this error span if needed -->
+                            @error('make_id')
+                            <span class="invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
 
-						
-							<form action="{{ route('vehicle_search') }}" method="get">
-								<div class="form-row">
-									<div class=" form-group col-md-2">
-										<select name="make" class="make form-control ">
-										<option value="">Choose a Make</option>
-							
-										@foreach($makes as $make)
-											<option value="{{ $make->id }}" {{(old('make'))? 'selected':''}}>{{ $make->make }}</option>
-										@endforeach
-									</select>
-										@error('make_id')
-										<span class="invalid"  role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-										@enderror
-									</div>
-						
-									<div class="carmodel form-group col-md-2">
-										
-									<select name="model_id" class="model form-control ">
-										<option value="0"  disabled="true" selected="true">Choose a model</option>
+                        <div class="carmodel form-group col-md-2">
+                            <select name="model_id" id="model_id" class="model form-control">
+                                <option value="" disabled="true" selected="true">Choose a model</option>
+                            </select>
+                        </div>
 
-									</select>
-									
-									</div>
-						
-									<div class="form-group col-md-2">
-										<select name="city" id="inputGroupSelect" class="form-control">
-											<option value="">Select City</option>
-											@foreach ($cities as $city )
-											 <option value="{{ $city->id }}" {{(old('city')==$city->id)? 'selected':''}}>
-											  {{ $city->city }}</option> 
-											@endforeach
-										</select>
-					
-									</div>
-									<div class="form-group col-md-2">
-										<select name="price_max" id="inputGroupSelect" class="form-control">
-											<option value="">Max Price</option>
-											<option value="10000000">100,000,000</option>
-											<option value="50000000">50,000,000</option>
-											<option value="10000000">10,000,000</option>
-											<option value="5000000">5,000,000</option>
-											<option value="1000000">1,000,000</option>
-										</select>
-					
-									</div>
-									<div class="form-group col-md-2">
-										<select name="price_min" id="inputGroupSelect" class="form-control">
-											<option value="">Min Price</option>
-											<option value="900000">900,000</option>
-											<option value="700000">700,000</option>
-											<option value="500000">500,000</option>
-											
-										</select>
-					
-									</div>
+                        <!-- Other search fields here (city, min_price, max_price) -->
+						<div class="form-group col-md-2">
+                            <select name="city" id="inputGroupSelect" class="form-control">
+                                <option value="">Select City</option>
+                                @foreach ($cities as $city )
+                                <option value="{{ $city->id }}" {{(old('city')==$city->id)? 'selected':''}}>
+                                    {{ $city->city }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-									<div class="form-group col-md-2 ">
-										<button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
-										
-									</div>
-								</div>
-							</form>
-						<p> {{$listings->count()}} Results on  {{ now()->format('d F Y') }}</p>
-				</div>
-			</div>
-		</div>
+                        <div class="form-group col-md-2">
+                            <input type="text" name="min_price" placeholder="Min Price" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <input type="text" name="max_price" placeholder="Max Price" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
+                        </div>
+                    </div>
+                </form>
+				<p> {{$listings->count()}} Results on  {{ now()->format('d F Y') }}</p>
+            </div>
+        </div>
+    </div>		
 		<div class="row">
 			<div class="col-md-12">
 				<div class="category-search-filter">
@@ -114,12 +97,44 @@
 						</div>
 					</div>
 				</div>
-				 <div class="product-grid-list">
+				<style>
+					    @media (max-width: 767px) {
+        .product-item {
+            margin-bottom: 15px; /* Adjust vertical space between items */
+        }
+        .product-grid-list .row > div[class*="col-"] {
+            padding-left: 5px; /* Adjust left padding */
+            padding-right: 5px; /* Adjust right padding */
+        }
+    }
+    /* Set a fixed height for the card bodies */
+    .card-body {
+        height: 150px; /* Adjust this value to your preferred fixed height */
+        overflow: hidden; /* Hide content that exceeds the fixed height */
+    }
+
+	.styled-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .styled-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .styled-list li i {
+        margin-right: 5px;
+    }
+</style>
+
+<div class="product-grid-list">
 					<div class="row mt-30">
   @foreach ($listings as $listing )
-        @foreach ($listing->vehicles->unique() as $vehicle)
-            @if ($listing->ads_status == 'Approved' || $listing->package_id == 3)
-						<div class="col-sm-4 col-md-4 col-lg-4">
+  @foreach ($listing->vehicles as $vehicle)
+  @if ($listing->id == $vehicle->listing_id)
+                    <div class="col-6 col-sm-3 col-md-3 col-lg-3">
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card">
@@ -153,10 +168,21 @@
 										</ul>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											<ul class="styled-list">
-												<li ><b>Engine Size:</b><span>{{ $vehicle->engine_size}}</span></li>
-												<li ><b>Trans:</b><span >{{ $vehicle->transmission}}</span></li>
-												<li ><b>Miles:</b><span>{{ $vehicle->mileage}}Km</span></li>
-												<li ><b>Fuel:</b><span>{{ $vehicle->fuel_type}}</span></li>
+											<li >
+							                       <a href="#"><i class="fa fa-dot-circle-o"></i><b>Size:</b>  {{ $vehicle->engine_size}}  "  </a>
+												</li>
+												
+												<li >
+							                       <a href="#"><i class="fa fa-dot-circle-o"></i>{{ $vehicle->transmission}}</a>
+												</li>
+												
+												<li >
+							                       <a href="#"><i class="fa fa-dot-circle-o"></i>{{ $vehicle->mileage}} <b>Km</b></a>
+												</li>
+												
+												<li >
+							                       <a href="#"><i class="fa fa-dot-circle-o"></i><b>Fuel:  </b>{{ $vehicle->fuel_type}}</a>
+												</li>
 				
 											</ul>
 											</div>
@@ -164,7 +190,10 @@
 											<p class="badge-sale">For Sale</p>
 											<p class="price">Ksh {{ $vehicle->price}}</p>
 											</div>
-										
+											<div>
+											
+											
+												</div>
 											</div>
 										</div>
 										</a>
@@ -175,15 +204,16 @@
 									@endforeach										
 					</div>
 				</div>
-				
+</div>
+			
 				<div class="pagination justify-content-center">
 					
 							{{ $listings->appends(Request::all())->links('vendor.pagination.custom') }}
 					
 				</div>
+</div>
 			</div>
 		</div>
-	</div>
 </section>
 <script>
 $(document).ready(function(){

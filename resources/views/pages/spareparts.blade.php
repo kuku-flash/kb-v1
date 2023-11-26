@@ -45,6 +45,15 @@
 <div class="form-group col-md-2">
     <input type="text" name="max_price" class="form-control" placeholder="Max Price" value="{{ request('max_price') }}">
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#min_price, #max_price').on('keyup', function () {
+            var num = $(this).val().replace(/,/g, '');
+            $(this).val(num.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'));
+        });
+    });
+</script>
 
             <div class="form-group col-md-2">
                 <button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
@@ -61,7 +70,7 @@
 				<div class="product-grid-list">
 					<div class="row mt-30">
 						@foreach($spareParts as $sparePart)
-							<div class="col-sm-4 col-md-4 col-lg-4">
+						<div class="col-6 col-sm-4 col-md-4 col-lg-4">
 								<!-- product card -->
 								<div class="product-item bg-light">
 									<div class="card">

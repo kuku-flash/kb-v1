@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Allusercontroller;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminListingController;
 use App\Http\Controllers\Admin\AdminInvoiceController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\User\ListingController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\WishlistController;
@@ -52,6 +53,11 @@ Route:: get('events', [PagesController::class, 'events'])->name('event');
 Route::get('/events/{id}', [PagesController::class, 'show'])->name('events.show');
 Route:: get('events', [PagesController::class, 'events'])->name('event');
 Route::get('/garages', [GarageController::class, 'index'])->name('garages.index');
+
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 
 
