@@ -22,12 +22,9 @@
 					
 						<ul class="list-inline">
 							<li class="list-inline-item">
-								<a href="{{ route('vehicleslist') }}"><i class="fa fa-car"></i> Vehicles</a>
+								<a href="{{ route('spareparts') }}"><i class="fa fa-car"></i> Spare Parts</a>
 							</li>
-														<li class="list-inline-item">
-								<a href="{{ route('spareparts') }}"><i class="fa fa-car"></i> Vehicle Parts</a>
-							</li>
-
+					
 						</ul>
 					</div>
 					
@@ -71,13 +68,13 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-2">
-                            <input type="text" name="min_price" placeholder="Min Price" class="form-control">
-                        </div>
+						<div class="form-group col-md-2">
+    <input type="text" name="min_price" class="form-control" placeholder="Min Price" value="{{ request('min_price') }}">
+</div>
 
-                        <div class="form-group col-md-2">
-                            <input type="text" name="max_price" placeholder="Max Price" class="form-control">
-                        </div>
+<div class="form-group col-md-2">
+    <input type="text" name="max_price" class="form-control" placeholder="Max Price" value="{{ request('max_price') }}">
+</div>
 
                         <div class="form-group col-md-2">
                             <button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
@@ -88,6 +85,33 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#make').change(function() {
+            var makeId = $(this).val();
+            if (makeId) {
+                $.ajax({
+                    url: '/fetch-models', // Replace with your route to fetch models
+                    type: 'GET',
+                    data: { make_id: makeId },
+                    success: function(response) {
+                        var modelsDropdown = $('#model_id');
+                        modelsDropdown.empty().removeAttr('disabled');
+                        $.each(response.models, function(key, value) {
+                            modelsDropdown.append('<option value="' + value.id + '">' + value.model + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#model_id').empty().attr('disabled', 'disabled').append('<option value="" disabled="true" selected="true">Choose a model</option>');
+            }
+        });
+    });
+</script>
+
+
 				
 			</div>
 		</div>
@@ -127,7 +151,7 @@
     }
 </style>
 <div class="Hdrive text-center my-3">
-	<div class = "container">
+	<div class = "col-md-12">
 	<div class="col-md-12">
 		<div class="section-title">
 			<h2>Trending Ads</h2>
@@ -139,14 +163,14 @@
         @foreach ($listings as $listing)
 		@if ($listing->package_id == 2)
             @foreach ($vehicles as $vehicle)
-        @if ($listing->id == $vehicle->listing_id)
+        @if ($listing->id == $vehicle->listing_id && $listing->ads_status == 'Approved')
                     @if ($slideNumber % 3 == 0)
                         <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
                             <div class="row mt-30">
                     @endif
                     <div class="col-sm col-md-4 col-lg-4">
                         <!-- product card -->
-                        <div class="product-item bg-light">
+                        <div class="product-iZZtem bg-light">
                             <div class="card">
 							<div class="product-item bg-light">
 								<div class="card">
@@ -240,13 +264,13 @@
     <div class="carousel-inner">
         @php $slideNumber = 0; @endphp
   @foreach ($listings as $listing )
-        @foreach ($vehicles as $vehicle)
-            @if ($listing->id == $vehicle->listing_id)
+        @foreach ($listing->vehicles->unique() as $vehicle)
+            @if ($listing->ads_status == 'Approved' || $listing->package_id == 3)
                     @if ($slideNumber % 3 == 0)
                         <div class="carousel-item{{ $slideNumber === 0 ? ' active' : '' }}">
                             <div class="row mt-30">
                     @endif
-                    <div class="col-sm col-md-4 col-lg-4">
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-4">
                         <!-- product card -->
                         <div class="product-item bg-light">
                             <div class="card">
@@ -355,7 +379,7 @@
             <div class="carousel-item @if ($i === 0) active @endif">
                 <div class="row">
                     @for ($j = $i; $j < min($i + 3, count($carevents)); $j++)
-                        <div class="col-sm col-md-4 col-lg-4">
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-4">
                             <!-- event card -->
                             <div class="product-item bg-light" style="margin-right: 10px;"> <!-- Adjust this value as needed -->
                                 <div class="card">
@@ -414,7 +438,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="section-title section-why-title">
-				<h2>Why KingsBridge Motors?</h2>
+				<h2>Why KingsBridge?</h2>
 			</div>
 		</div>
 		<div class="col-sm-6">
@@ -474,14 +498,14 @@
 <!--===================================
 =           Our Partners           =
 ====================================-->
-
+<!-- 
 <section class="product">
 	<p style="font-weight: 450; font-size:20px; text-align: center;"> <b>Our Partners</b></p>
 	<div class="slider ">
 		<div><img src="../images/GarageGallery Logo.jpg" alt="" style="max-height: 150px;">
 		</div>
 	  </div>
-</section>
+</section> -->
 
 <!--====================================
 =            Call to Action            =
