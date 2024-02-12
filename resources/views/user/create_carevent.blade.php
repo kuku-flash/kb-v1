@@ -65,7 +65,9 @@
                     </span>
                 @enderror
               </div>
+    
 
+        
           <div class="col-lg-12">
           <h6 class="font-weight-bold pt-4 pb-1">Description:</h6>
           <textarea name="event_description"  class="description ckeditor form-control" name="wysiwyg-editor">

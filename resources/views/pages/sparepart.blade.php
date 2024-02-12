@@ -18,7 +18,7 @@
                     <!-- Product Meta Information -->
                     <div class="product-meta">
                         <ul class="list-inline">
-                            <li class="list-inline-item"><i class="fa fa-money"></i> KSH <a href="">{{ $sparePart->price }}</a></li>
+                            <li class="list-inline-item"><i class="fa fa-money"></i> KSH <a href="">{{ number_format($sparePart->price, 0, '.', ',') }}</a></li>
                             <li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Category<a href="">SpareParts</a></li>
 							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="">{{ $sparePart->location }}</a></li>
 						</ul>                        
@@ -128,7 +128,7 @@
                         @if(Auth::check())
                             <p>{{ $userWhoPosted->phone_number }}</p>
                         @else
-                            <a href="{{ route('login') }}"></a>
+                            <a href="{{ route('user.login') }}"></a>
                         @endif
 
                         <!-- Contact and Make Offer Buttons -->
@@ -138,13 +138,13 @@
                                 @if(Auth::check())
                                     <a href="tel:{{ $userWhoPosted->phone_number }}" class="btn btn-contact d-inline-block btn-primary px-lg-5 my-1 px-md-3">Contact</a>
                                 @else
-                                    <a href="{{ route('login') }}" class="btn btn-contact d-inline-block btn-primary px-lg-5 my-1 px-md-3">Contact</a>
+                                    <a href="{{ route('user.login') }}" class="btn btn-contact d-inline-block btn-primary px-lg-5 my-1 px-md-3">Contact</a>
                                 @endif
                             </li>
-                            <li class="list-inline-item">
+                            <!--<li class="list-inline-item">-->
                                 <!-- Make an Offer Button -->
-                                <a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an offer</a>
-                            </li>
+                            <!--    <a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an offer</a>-->
+                            <!--</li>-->
                         </ul>
 
                         <!-- WhatsApp Chat Button -->
@@ -154,7 +154,7 @@
                                     <img class="w-75" alt="Chat on WhatsApp" src="{{ asset('images/WhatsAppButtonGreenSmall.png')}}" />
                                 </a>
                             @else
-                                <a aria-label="Chat on WhatsApp" href="{{ route('login') }}">
+                                <a aria-label="Chat on WhatsApp" href="{{ route('user.login') }}">
                                     <img class="w-75" alt="Chat on WhatsApp" src="{{ asset('images/WhatsAppButtonGreenSmall.png')}}" />
                                 </a>
                             @endif
@@ -177,7 +177,7 @@
 							your fellow users.
 						</p>
 						<!-- Submit button -->						
-						<a href="{{ Auth::check() ? route('user.sparepartscreate') : route('login') }}" class="btn btn-transparent-white">Submit Listing</a>
+						<a href="{{ Auth::check() ? route('user.sparepartscreate') : route('user.login') }}" class="btn btn-transparent-white">Submit Listing</a>
 					</div>
                 </div>
             </div>

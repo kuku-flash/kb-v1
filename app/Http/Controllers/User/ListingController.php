@@ -13,7 +13,6 @@ use App\Models\Favourites; // Import the Favorite model at the top of your contr
 use App\Models\City;
 use App\Models\Invoice;
 use App\Models\Listing;
-use App\Models\Garage;
 use App\Models\Package;
 use App\Models\Carevent;
 use Intervention\Image\Facades\Image;
@@ -105,6 +104,8 @@ public function showFavoriteVehicles()
 }
 
 
+
+
     
 //Post the ad or the list page
     Public function new_listing(){
@@ -124,8 +125,6 @@ public function showFavoriteVehicles()
         $arr['categories'] = Category::all();
         $arr['cities'] = City::all();
         $arr['makes'] = Carmake::all();
-        $arr['listing'] = Listing::all();
-        $arr['vehicle'] = Vehicle::all();
         $arr['models'] = Carmodel::select('model','id')->where('make_id',$request->id)->get(20);
         $arr['packages'] = Package::where('package_featured',null)->orderBy('id','desc')->get();
         return view('user.create_vehiclesale')->with($arr);
@@ -147,7 +146,7 @@ public function showFavoriteVehicles()
         'model_id' => 'required',
         'year_of_build' => 'required',
         'condition' => 'required',
-        'mileage' => 'required',
+        'mileage' => '',
         'transmission' => 'required',
         'fuel_type' => 'required',
         'exchange' => 'required',
@@ -157,15 +156,15 @@ public function showFavoriteVehicles()
         'duty_type' => 'required',
         'interior_type' => 'required',
         'engine_size' => 'required',
-        'front_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'back_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'right_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'left_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'interiorf_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'interiorb_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'opt_img1' => '|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'opt_img2' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'opt_img3' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'front_img' => 'required|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'back_img' => 'required|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'right_img' => 'required|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'left_img' => 'required|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'interiorf_img' => 'required|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'interiorb_img' => 'required|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'opt_img1' => '|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'opt_img2' => 'image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'opt_img3' => 'image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
         'vehicle_type' => 'required',
         'color' => 'required',
     ]);
@@ -175,15 +174,12 @@ public function showFavoriteVehicles()
       $listing->city_id = $request->city;
       $listing->user_id = $request->user_id;
       $listing->ads_status = 'Pending';
+    
 
-     $currentId = $listing->id;
-
-
-      
+        $currentId = $listing->id;
 
 
-           
-        $imageFields = ['front_img', 'back_img', 'right_img', 'left_img', 'interiorf_img', 'interiorb_img', 'engine_img', 'opt_img1', 'opt_img2', 'opt_img3'];
+ $imageFields = ['front_img', 'back_img', 'right_img', 'left_img', 'interiorf_img', 'interiorb_img', 'engine_img', 'opt_img1', 'opt_img2', 'opt_img3'];
         
         foreach ($imageFields as $fieldName) {
             if ($request->hasFile($fieldName)) {
@@ -196,7 +192,7 @@ public function showFavoriteVehicles()
                 $img = Image::make($image);
         
                 // Load the watermark image
-                $watermark = Image::make(public_path('watermark/king.png'));
+                $watermark = Image::make(public_path('watermark/king2.png'));
         
                 // Add the watermark to the image
                 $img->insert($watermark, 'bottom-right', 10, 10); // You can adjust the position and size of the watermark
@@ -209,6 +205,8 @@ public function showFavoriteVehicles()
             }
         }
         
+                $price = str_replace(',', '', $request->input('price'));
+
         // Rest of your code to save the vehicle details
         $default_view = 0;
 
@@ -221,7 +219,7 @@ public function showFavoriteVehicles()
         $vehicle->transmission = $request->transmission;
         $vehicle->fuel_type = $request->fuel_type;
         $vehicle->exchange = $request->exchange;
-        $vehicle->price = $request->price;
+        $vehicle->price = $price;
         $vehicle->description = $request->description;
         $vehicle->body_type = $request->body_type;
         $vehicle->duty_type = $request->duty_type;
@@ -230,20 +228,37 @@ public function showFavoriteVehicles()
         $vehicle->vehicle_type = $request->vehicle_type;
         $vehicle->color = $request->color;
         $vehicle->views = $default_view;
-
+        
         $vehicle->save();
-
+        
         $listing->vehicle_id = $vehicle->id;
+
         $listing->save();
 
+       
+
+
+   /*   if ($request->hasFile('images')) 
+      {
+          $photos = $request->file('images');
+          $i = 1;
+         foreach ($photos as $image) {
+             $name = time().'-'.$image->getClientOriginalName();
+             $name = str_replace('','-',$name);
+             $image->storeAs('public/photos', $name);
+           
+            #$vehicle_photo->photo = $name;
+            #$vehicle_photo->vehicle_id = $vehicle->id;
+            #$vehicle_photo->save();
+    
+            $vehicle->vehiclephotos()->create(['photo' => $name, 'photo_postion' => $i++]);
+ 
+          }     
+        } */
+  
     return redirect() -> route('user.packages',$listing->id)->with('success','Added'); 
      
     }
-
-
-
-
-
     public function show_vehiclesale(Listing $listing, Vehicle $vehicle){
         $arr['categories'] = Category::all();
         $arr['cities'] = City::all();
@@ -357,6 +372,10 @@ if($request->hasFile('opt_img3')){
     $path = $request->file('opt_img3')->storeAs('public/photos', $opt_img3Store);
 } else { $opt_img3Store = ''; }     
 
+    
+     $price = str_replace(',', '', $request->input('price'));
+
+
     $vehicle->listing_id = $currentId;
     $vehicle->model_id = $request->model_id;
     $vehicle->year_of_build = $request->year_of_build;
@@ -365,7 +384,7 @@ if($request->hasFile('opt_img3')){
     $vehicle->transmission = $request->transmission;
     $vehicle->fuel_type = $request->fuel_type;
     $vehicle->exchange = $request->exchange;
-    $vehicle->price = $request->price;
+    $vehicle->price = $price;
     $vehicle->description = $request->description;
     $vehicle->body_type = $request->body_type;
     $vehicle->duty_type = $request->duty_type;
@@ -420,7 +439,7 @@ if($request->hasFile('opt_img3')){
         'public/photos/'.$vehicle->engine_img,
         'public/photos/'.$vehicle->opt_img1,
         'public/photos/'.$vehicle->opt_img2,
-        'public/photos/'.$vehicle->opt_img3,
+        'public/photos/'.$vehicle->opt_img3
         );
 
        /* $vehicle_photos = Vehicle_photo::where('vehicle_id', $vehicle->id)->get();
@@ -466,15 +485,15 @@ if($request->hasFile('opt_img3')){
         'package_id' => 'required',
         'vehicle_type' => 'required',
         'color' => 'required',
-        'front_img' => ' required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'back_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'right_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'left_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'interiorf_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'interiorb_img' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'opt_img1' => '|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'opt_img2' => ' image|max:2048|mimes:jpeg,png,jpg,gif,svg',
-        'opt_img3' => ' image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'front_img' => ' required|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'back_img' => 'required|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'right_img' => 'required|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'left_img' => 'required|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'interiorf_img' => 'required|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'interiorb_img' => 'required|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'opt_img1' => '|image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'opt_img2' => ' image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
+        'opt_img3' => ' image|max:20480|mimes:jpeg,png,jpg,gif,svg,heic',
 
         'pickup_date' => 'nullable|required|date',
         'return_date' => 'nullable|required|date|after:pickup_date',
@@ -758,7 +777,7 @@ if($request->hasFile('opt_img3')){
     'public/photos/'.$vehicle->interiorb_img,
     'public/photos/'.$vehicle->opt_img1,
     'public/photos/'.$vehicle->opt_img2,
-    'public/photos/'.$vehicle->opt_img3,
+    'public/photos/'.$vehicle->opt_img3
     );
 
     $vehicle->delete();
@@ -766,7 +785,17 @@ if($request->hasFile('opt_img3')){
     return redirect()->route('user.index_carhire')->with('success','removed successfully');
    }
 
+    public function invoice (Listing $listing, Vehicle $vehicle){
+        $arr['categories'] = Category::all();
+        $arr['cities'] = City::all();
+        $arr['makes'] = Carmake::all();
+        $arr['models'] = Carmodel::all();
+        $arr['listing'] = $listing;
+        $arr['vehicle'] = $vehicle;
+        $arr['packages'] = Package::all();
 
+        return view('user.invoice')->with($arr);
+    }
 
     public function packages(Request $request, listing $listing )
     {

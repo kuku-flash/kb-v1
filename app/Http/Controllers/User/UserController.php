@@ -4,13 +4,6 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Carbon\Carbon; 
-use Mail; 
-use Illuminate\Support\Facades\DB; 
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -64,32 +57,9 @@ class UserController extends Controller
         
    } 
 
-   public function submitResetPasswordForm(Request $request)
+   public function update_password() 
    {
-       $request->validate([
-           'email' => 'required|email|exists:users',
-           'password' => 'required|string|min:6|confirmed',
-           'password_confirmation' => 'required'
-       ]);
-   
-       $updatePassword = DB::table('password_resets')
-                           ->where([
-                               'email' => $request->email, 
-                               'token' => $request->token
-                           ])
-                           ->first();
-   
-       if(!$updatePassword){{
-           return redirect()->to(route('auth.email'));
-       };    
-       }
-   
-       User::where('email', $request->email)
-                   ->update(['password' =>Hash::make($request->password)]);
-   
-       DB::table('password_resets')->where(['email'=> $request->email])->delete();
-   
-       return redirect('/')->with('message', 'Your password has been changed!');
+
    }
    public function change_email() 
    {

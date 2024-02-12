@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-			<div class="search-result bg-gray">
+				<div class="search-result bg-gray">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12 col-md-12 align-content-center sale">
@@ -42,6 +42,7 @@
                                 @endforeach
                             </select>
                         </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
                         <div class="form-group col-md-2">
                             <input type="text" name="min_price" placeholder="Min Price" class="form-control">
@@ -50,6 +51,27 @@
                         <div class="form-group col-md-2">
                             <input type="text" name="max_price" placeholder="Max Price" class="form-control">
                         </div>
+<script>
+    $(document).ready(function() {
+        // Function to add commas to numbers
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Event listener for min_price input
+        $('#min_price').on('input', function() {
+            let value = $(this).val().replace(/,/g, ''); // Remove existing commas
+            $(this).val(numberWithCommas(value));
+        });
+
+        // Event listener for max_price input
+        $('#max_price').on('input', function() {
+            let value = $(this).val().replace(/,/g, ''); // Remove existing commas
+            $(this).val(numberWithCommas(value));
+        });
+    });
+</script>
+
 
                         <div class="form-group col-md-2">
                             <button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
@@ -59,7 +81,7 @@
 				<p> {{$listings->count()}} Results on  {{ now()->format('d F Y') }}</p>
             </div>
         </div>
-    </div>		
+    </div>
 		<div class="row">
 			<div class="col-md-12">
 				<div class="category-search-filter">
@@ -97,14 +119,15 @@
 						</div>
 					</div>
 				</div>
+				
 				<style>
 					    @media (max-width: 767px) {
         .product-item {
             margin-bottom: 15px; /* Adjust vertical space between items */
         }
         .product-grid-list .row > div[class*="col-"] {
-            padding-left: 5px; /* Adjust left padding */
-            padding-right: 5px; /* Adjust right padding */
+            padding-left: 2px; /* Adjust left padding */
+            padding-right: 2px; /* Adjust right padding */
         }
     }
     /* Set a fixed height for the card bodies */
@@ -113,7 +136,7 @@
         overflow: hidden; /* Hide content that exceeds the fixed height */
     }
 
-	.styled-list {
+     .styled-list {
         list-style: none;
         padding: 0;
     }
@@ -128,18 +151,16 @@
         margin-right: 5px;
     }
 </style>
-
-<div class="product-grid-list">
+				 <div class="product-grid-list">
 					<div class="row mt-30">
   @foreach ($listings as $listing )
-  @foreach ($listing->vehicles as $vehicle)
-  @if ($listing->id == $vehicle->listing_id)
+  @foreach ($vehicles as $vehicle)
+  @if ($listing->id == $vehicle->id)
                     <div class="col-6 col-sm-3 col-md-3 col-lg-3">
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
-										<div class="price">{{ $listing->package->package_name}} </div>
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											
 											<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description"style="max-height: 200px;">
@@ -169,7 +190,7 @@
 										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
 											<ul class="styled-list">
 											<li >
-							                       <a href="#"><i class="fa fa-dot-circle-o"></i><b>Size:</b>  {{ $vehicle->engine_size}}  "  </a>
+							                       <a href="#"><i class="fa fa-dot-circle-o"></i><b></b>  {{ $vehicle->engine_size}}    </a>
 												</li>
 												
 												<li >
@@ -177,11 +198,11 @@
 												</li>
 												
 												<li >
-							                       <a href="#"><i class="fa fa-dot-circle-o"></i>{{ $vehicle->mileage}} <b>Km</b></a>
+							                       <a href="#"><i class="fa fa-dot-circle-o"></i>{{ number_format($vehicle->mileage, 0, '.', ',') }} <b>Km</b></a>
 												</li>
 												
 												<li >
-							                       <a href="#"><i class="fa fa-dot-circle-o"></i><b>Fuel:  </b>{{ $vehicle->fuel_type}}</a>
+							                       <a href="#"><i class="fa fa-dot-circle-o"></i><b></b>{{ $vehicle->fuel_type}}</a>
 												</li>
 				
 											</ul>
@@ -204,17 +225,34 @@
 									@endforeach										
 					</div>
 				</div>
-</div>
-			
+				
 				<div class="pagination justify-content-center">
 					
 							{{ $listings->appends(Request::all())->links('vendor.pagination.custom') }}
 					
 				</div>
-</div>
 			</div>
 		</div>
+	</div>
 </section>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#min_price, #max_price').on('input', function (event) {
+            // Remove non-numeric characters and format with commas
+            var value = $(this).val().replace(/[^\d]/g, '');
+            var formattedValue = formatNumberWithCommas(value);
+            $(this).val(formattedValue);
+        });
+
+        function formatNumberWithCommas(number) {
+            if (number.length > 3) {
+                return number.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            }
+            return number;
+        }
+    });
+</script>
 <script>
 $(document).ready(function(){
   $("#heart").click(function(){

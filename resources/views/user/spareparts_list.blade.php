@@ -100,9 +100,9 @@
                 <div class="dashboard-container my-list">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-12 mt-3">                               
+                            <div class="col-lg-12 mt-3">
                                 <div class="listing-container">
-                                <a href="{{ route('sparepart', $sparePart->id)}}">
+                                 <a href="{{ route('sparepart', $sparePart->id)}}">
 				<div class="listing-image">
 				  <img class="img-square-wrapper" src="/storage/photos/{{ $sparePart->front_img }}" alt="image description">
 				</div>
@@ -122,7 +122,7 @@
                                                     <li><b>Location:</b> <span>{{ $sparePart->location }}</span></li>
                                                     <!-- Add other spare part details as needed -->
                                                 </ul>
-                                                <a href="" class="invoice-link">Invoice</a>
+                                                <a href="" class="invoice-link">Active</a>
                                             </p>
                                         </div>
                                     </div>

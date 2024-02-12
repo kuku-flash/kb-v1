@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\GarageController;
-use App\Http\Controllers\SparePartController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Request;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\GarageController;
+use App\Http\Controllers\SparePartController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PackageController;
@@ -12,12 +12,12 @@ use App\Http\Controllers\Admin\CarmakeController;
 use App\Http\Controllers\Admin\CarmodelController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountyController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\Allusercontroller;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminListingController;
 use App\Http\Controllers\Admin\AdminInvoiceController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\User\ListingController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\WishlistController;
@@ -51,15 +51,12 @@ Route :: get ('signup',  [PagesController::class, 'signup'])->name('signup');
 Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
 Route:: get('events', [PagesController::class, 'events'])->name('event');
 Route::get('/events/{id}', [PagesController::class, 'show'])->name('events.show');
-Route:: get('events', [PagesController::class, 'events'])->name('event');
-Route::get('/garages', [GarageController::class, 'index'])->name('garages.index');
+
 
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
-
-
 
 
 
@@ -81,6 +78,7 @@ Route :: get ('single_blog',  [PagesController::class, 'single_blog'])->name('si
 Route :: get ('terms_condition',  [PagesController::class, 'terms_condition'])->name('terms_condition');
 Route::post('/add-to-favorites', [PagesController::class, 'addToFavorites'])->name('addtofavourites');
 Route :: get ('favourite_list',  [ListingController::class, 'showFavoriteVehicles'])->name('favourite_list');
+Route::get('/garages', [GarageController::class, 'index'])->name('garages.index');
 Route::get('/sparepartssearch', [SparePartController::class, 'spare_parts_search'])->name('spare_parts_search');
 Route::get('/spareparts', [SparePartController::class, 'showspareparts'])->name('spareparts');
 Route::get('/sparepart/{id}', [SparePartController::class, 'sparepart'])->name('sparepart');
@@ -139,7 +137,6 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: post ('garages',  [GarageController::class, 'store_garage'])->name('garages');
     Route :: get ('garage_create',  [GarageController::class, 'create_garage'])->name('garage_create');
 
-
     Route :: get ('new_listing',  [ListingController::class, 'new_listing'])->name('new_listing');
     Route :: get ('index_vehiclesale',  [ListingController::class, 'index_vehiclesale'])->name('index_vehiclesale');
     Route :: get ('create_vehiclesale',  [ListingController::class, 'create_vehiclesale'])->name('create_vehiclesale');
@@ -149,15 +146,13 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: get ('show_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'show_vehiclesale'])->name('show_vehiclesale');
     Route :: delete ('delete_vehiclesale/{listing}/{vehicle}',  [ListingController::class, 'delete_vehiclesale'])->name('delete_vehiclesale');
     Route::post('/add-to-favorites', [PagesController::class, 'addToFavorites'])->name('addtofavourites');
-    Route :: get ('usercarevent',  [ListingController::class, 'create_vehiclesale'])->name('user.events');
-
 
 
 
     Route :: get ('category',  [ListingController::class, 'category'])->name('category');
     Route :: get ('model',  [ListingController::class, 'model'])->name('model');
     
-    Route :: get ('invoice/{listing}/{vehicle}',  [InvoiceController::class, 'invoice'])->name('invoice');
+    Route :: get ('invoice/{listing}/{vehicle}',  [ListingController::class, 'invoice'])->name('invoice');
 
 
     Route :: get ('carhire',  [ListingController::class, 'index_carhire'])->name('index_carhire');
@@ -181,14 +176,9 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
     Route :: post ('post_invoice',  [ListingController::class, 'post_invoice'])->name('post_invoice');
     Route :: get ('carevent',  [CareventController::class, 'index'])->name('carevent');
     Route :: get ('index_carevent',  [ListingController::class, 'userevent'])->name('userevent');
-    Route::get('/spareparts/create', [SparePartController::class, 'create'])->name('sparepartscreate');
+        Route::get('/spareparts/create', [SparePartController::class, 'create'])->name('sparepartscreate');
     Route::post('/spareparts', [SparePartController::class, 'store'])->name('sparepartsstore');
     Route::get('/myspareparts', [SparePartController::class, 'myspareparts'])->name('myspareparts');
-    
-
-
-    
-
 
     
     Route :: get ('create_carevent',  [CareventController::class, 'create_carevent'])->name('create_carevent');

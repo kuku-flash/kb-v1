@@ -98,7 +98,7 @@
 							@foreach($listings as $listing)
 							
 								@foreach ($vehicles as $vehicle)
-										@if($listing->id == $vehicle->listing_id)
+										@if($listing->id == $vehicle->id)
 										
 	<div class=" dashboard-container my-list">
 <div class="container-fluid">
@@ -147,8 +147,7 @@
 												<i class="fa fa-pencil"></i>
 											</a>
 										</li>
-										<li class="list-inline-item">
-									
+                                       <li class="list-inline-item">
 											<a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" data-toggle="tooltip" data-placement="top" title="Delete" class="delete">
 												<i class="fa fa-trash"></i>
 											</a>

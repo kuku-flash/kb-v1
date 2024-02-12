@@ -33,18 +33,14 @@
 
 						</ul>
 					</div>
-					<div class="widget user-dashboard-menu">
-						<ul>
-							<li> <a href=""><i class="fa fa-heart"></i>Favourite</a> </li>
-	
-						</ul>
-					</div>
-					<div class="widget user-dashboard-menu">
+<div class="widget user-dashboard-menu">
     <ul>
-        <li> <a href="{{ route('favourite_list') }}"><i class="fa fa-heart"></i>Favourite</a> </li>
+        <li >
+            <a href="{{ route('favourite_list') }}"><i class="fa fa-heart"></i>Favourite<span>{{$favoriteVehicles->count()}}</span></a>
+        </li>
     </ul>
 </div>
-					<div class="widget user-dashboard-menu">
+				<div class="widget user-dashboard-menu">
 						<h3>Listing Status</h3>
 						<ul>
 							<li> <a href="{{ route('user.active_list')}}"><i class="fa fa-circle"></i>Active <span>{{$listings->where('ads_status','Approved')->count()}}</span></a> </li>
@@ -90,8 +86,18 @@
 
 
 <!-- Your existing content -->
-@if (count($favoriteVehicles ?? []) > 0)
+@if ( count($listings) > 0)
 <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+   <div class="Hdrive text-center my-3">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>Favorite Cars</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Loop through and display favorite vehicles -->
     @foreach($favoriteVehicles as $favorite)
         @php
@@ -100,77 +106,46 @@
         @endphp
 
         <div class="dashboard-container my-list">
-            <div class="container-fluid">
-			<div class="col-lg-12 mt-3">
+                <div class="container-fluid">
+                    <!-- Display favorite vehicle information here -->
+                    <div class="listing-container">
+  										<a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
+                            <div class="listing-image">
+                                <img class="img-square-wrapper" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description" style="width: 230px; height: 230px;">
+                            </div>
+                        </a>
 
-                <!-- Display favorite vehicle information here -->
-                <div class="listing-container">
-                    <div class="listing-image">
-                        <img class="img-square-wrapper" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
-                    </div>
                     <div class="listing-info">
                         <div class="mdl-card__title">
                             <h2 style="font-weight: 450; font-size:20px;" class="mdl-card__title-text">{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}} - <small><span style="color: red;"> {{ $listing->category->category_name }}</span></small></h2>
                         </div>
                         <div class="mdl-card__supporting-text">
                             <p class="card-text">
-                                <ul class="list-horizontal">
-                                    <li><b>Listing ID:</b> <span>{{ $listing->id }}</span></li>
-                                    <li><b>Price:</b> <span>{{ $vehicle->price }}</span></li>
-                                    <li><b>Status:</b> <span class="car-li-active">{{ $listing->ads_status }}</span></li>
-                                    <li><b>Category:</b> <span>{{ $vehicle->vehicle_type }}</span></li>
-                                    <li><b>Visitors <span class="fa fa-users"></span>:</b> <span>{{ $vehicle->views }} </span></li>
-                                    <li><b>Duration <span class="fa fa-count"></span>:</b> <span>30 left</span></li>
-                                    <li><b>Chats <span class="fa fa-comments"></span>:</b> <span>50</span></li>
-                                </ul>
-                                <a href="{{ route('user.invoice', [$listing->id, $vehicle->id]) }}" class="invoice-link">Invoice</a>
+ <ul class="styled-list">
+    <li><b>Engine Size:</b><span>{{ $vehicle->engine_size }}</span></li>
+    <li><b>Trans:</b><span>{{ $vehicle->transmission }}</span></li>
+    <li><b>Miles:</b><span>{{ $vehicle->mileage }}Km</span></li>
+    <li><b>Fuel:</b><span>{{ $vehicle->fuel_type }}</span></li>
+</ul>
                             </p>
                         </div>
+                        <div class="property-price">
+											<p class="badge-sale">For Sale</p>
+											<p class="price">Ksh {{ $vehicle->price}}</p>
+											</div>
                     </div>
                 </div>
-</div>
 
-                <div class="my-list-footer">
-                    <small class="text-muted">
-                        <div class="change-icons">
-                            <td class="action" data-title="Action">
-                                <div class="change-icons">
-                                    <ul class="list-inline justify-content-center">
-                                        <li class="list-inline-item">
-                                            <a data-toggle="tooltip" data-placement="top" title="View" class="view" href="#">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="#">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" data-toggle="tooltip" data-placement="top" title="Delete" class="delete">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                            <form action="#" method="post" onsubmit="return confirm('Are you sure want to delete?');">
-                                                @method('DELETE')
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </div>
-                    </small>
-                </div>
+    
             </div>
         </div>
     @endforeach
-</div>
-
 </div>
 @else
 <h1> No Favorite Vehicles Found... Add some favorites?
 </h1>
 @endif
+</div>
 </div>
 <!-- Your existing content -->
 </section>

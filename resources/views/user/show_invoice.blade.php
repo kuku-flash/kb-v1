@@ -28,12 +28,14 @@
             <div class=" invoice-col text-right">
 
                   <div class="invoice-status">
-                    @if ($invoice->status == 'PAID')
-                    <h2 class="status" style="color: green;">{{ $invoice->status}}</h2>
-                    @endif
-                    @if ($invoice->status == 'UNPAID')
-                    <h2 class="status" style="color: red;">{{ $invoice->status}}</h2>
-                    @endif
+                    <!--@if ($invoice->status == 'PAID')-->
+                    <!--<h2 class="status" style="color: green;">{{ $invoice->status}}</h2>-->
+                    <!--@endif-->
+                    <!--@if ($invoice->status == 'UNPAID')-->
+                    <!--<h2 class="status" style="color: red;">{{ $invoice->status}}</h2>-->
+                    <!--@endif-->
+                                        <h2 class="status" style="color: green;">Paid Invoice</h2>
+
                        
                   </div>
 
@@ -112,30 +114,26 @@
               </tbody>
       
             </table>
-            <div class="payment widget-header">   <div class="float-right btn-group btn-group-sm d-print-none">
-              <a href="javascript:window.print()" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-              <a href="{{ route('user.generatePDF',$invoice->id)}}" class="btn btn-default"><i class="fas fa-download"></i> Download</a>
-            </div>
              </div> 
              <div class="d-print-none">
-             @if ($invoice->status == 'UNPAID')
-            <p class="lead ">Payment Method:</p>
-            <img src="{{ asset('images/M-PESA_LOGO-01.svg')}}"style=" width:65px; height:65px;"> 
-            <form action="modules/gateways/callback/paybill.php" method="post">          
-          </ul><b>From your phone,</b>
-            <ul style="text-align: left;list-style-image: url(modules/gateways/images/check.gif);">
-              <li>Go to <b>Safaricom</b> Menu</li>
-              <li>Select <b>M-PESA</b></li>
-              <li>Select <b>Lipa na MPESA</b></li>
-              <li>Select <b>Till Number</b></li>
-              <li>Enter Till Number <b>5750721</b></li>
-              <li>Enter Amount  <b>{{ $invoice->package->package_amount}}</b> <br> then Confirm</li>  
-            </ul>
-            </ul>
-            <hr/>
-            @else
-            <br>
-            @endif
+          <!--   @if ($invoice->status == 'UNPAID')-->
+          <!--  <p class="lead ">Payment Method:</p>-->
+          <!--  <img src="{{ asset('images/M-PESA_LOGO-01.svg')}}"style=" width:65px; height:65px;"> -->
+          <!--  <form action="modules/gateways/callback/paybill.php" method="post">          -->
+          <!--</ul><b>From your phone,</b>-->
+          <!--  <ul style="text-align: left;list-style-image: url(modules/gateways/images/check.gif);">-->
+          <!--    <li>Go to <b>Safaricom</b> Menu</li>-->
+          <!--    <li>Select <b>M-PESA</b></li>-->
+          <!--    <li>Select <b>Lipa na MPESA</b></li>-->
+          <!--    <li>Select <b>Buy Goods</b></li>-->
+          <!--    <li>Enter Till Number <b>5750721</b></li>-->
+          <!--    <li>Enter Amount  <b>{{ $invoice->package->package_amount}}</b> <br> then Confirm</li>  -->
+          <!--  </ul>-->
+          <!--  </ul>-->
+          <!--  <hr/>-->
+          <!--  @else-->
+          <!--  <br>-->
+          <!--  @endif-->
             
             <!-- Enter the transaction code you received from MPESA<br/>
             <input type="hidden" name="username" value="" />

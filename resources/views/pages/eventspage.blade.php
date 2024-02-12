@@ -15,6 +15,9 @@
 							<li class="list-inline-item">
 								<a href="{{ route('vehicleslist') }}"><i class="fa fa-car"></i> Vehicles</a>
 							</li>
+							<li class="list-inline-item">
+								<a href="{{ route('spareparts') }}"><i class="fa fa-car"></i> Vehicle Parts</a>
+							</li>
 						</ul>
 					</div>
 					
@@ -29,12 +32,12 @@
 	<div class = "container">
 	<div class="col-md-12">
 		<div class="section-title">
-			<h2>Upcoming carevents</h2>
+			<h2>Car Events</h2>
 		</div>
 	</div>
     <div class="row">
     @foreach ($carevents as $j => $carevent)
-                    <div class="col-6 col-sm-4 col-md-4 col-lg-4">
+        <div class="col-sm col-md-4 col-lg-4">
             <!-- event card -->
             <div class="product-item bg-light" style="margin-right: 10px;"> <!-- Adjust this value as needed -->
                 <div class="card">

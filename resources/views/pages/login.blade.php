@@ -89,20 +89,20 @@
                       <input type="submit" name="submit" value="Continue">
                     </div>
                     
-                    <div class="field text-center padding-bottom--5 inline-flex items-center bg-gray-800 border border-transparent rounded-full font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-                      <a href=" {{ route('login.google')}}" class="">
-                      <img style="height: 50px; width:50px;  padding:1px;" src="{{asset('images/gp.png')}}"   >
-                      <span style="color: black;">Continue with Google</span>                
-                      </a>
+                    <!--<div class="field text-center padding-bottom--5 inline-flex items-center bg-gray-800 border border-transparent rounded-full font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">-->
+                    <!--  <a href=" {{ route('login.google')}}" class="">-->
+                    <!--  <img style="height: 50px; width:50px;  padding:1px;" src="{{asset('images/gp.png')}}"   >-->
+                    <!--  <span style="color: black;">Continue with Google</span>                -->
+                    <!--  </a>-->
                       
                      
-                      </div>
-                      <div class="field text-center mt-3 inline-flex items-center bg-gray-800 border border-transparent rounded-full font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-                      <a href=" {{ route('login.facebook')}}" >
-                        <img style="height: 50px; width:50px; padding:5px;" src="{{asset('images/fb.png')}}"   >
-                        <span style="color: black;">Continue with Facebook</span>                
-                        </a> 
-                      </div>
+                    <!--  </div>-->
+                    <!--  <div class="field text-center mt-3 inline-flex items-center bg-gray-800 border border-transparent rounded-full font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">-->
+                    <!--  <a href=" {{ route('login.facebook')}}" >-->
+                    <!--    <img style="height: 50px; width:50px; padding:5px;" src="{{asset('images/fb.png')}}"   >-->
+                    <!--    <span style="color: black;">Continue with Facebook</span>                -->
+                    <!--    </a> -->
+                    <!--  </div>-->
                   </form>
                 </div>
               </div>

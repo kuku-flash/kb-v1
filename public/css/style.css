@@ -2995,7 +2995,7 @@ ul.pagination .active a {
 
 .bg-1::before {
   content: "";
-  background: url("../images/home/jetta.jpg");
+  background: url("../images/home/hero.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   filter: blur(2px); /* Adjust the blur value as needed */
@@ -3025,7 +3025,7 @@ ul.pagination .active a {
 }
 
 .bg-carhire {
-  background: url("../images/home/jetta.jpg");
+  background: url("../images/home/hero.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }

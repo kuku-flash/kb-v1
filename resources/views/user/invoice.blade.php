@@ -18,21 +18,20 @@
 							<li class="active">
 								<a href="{{ route('user.my_list')}}"><i class="fa fa-money"></i> Payment method <span></span></a>
 							</li>
-							<li class="payment">
-                <a><i class="fa fa-money"></i> Mpesa</a>
-                </ul><b>From your phone,</b>
-            <ul style="text-align: left;list-style-image: url(modules/gateways/images/check.gif);">
-              <li>Go to <b>Safaricom</b> Menu</li>
-              <li>Select <b>M-PESA</b></li>
-              <li>Select <b>Lipa na MPESA</b></li>
-              <li>Select <b>Till Number</b></li>
-              <li>Enter Till Number <b>5750721</b></li>
-              <li>Enter Amount  <b>{{ $listing->package->package_amount }}</b> <br> then Confirm</li>  
-              <li><b>Once you have paid the listing will be processed after 15 minutes</b></li>  
-            </ul>
-            </ul>
-            <hr/>
-              </li>
+							<!--<li class="payment">-->
+       <!--         <a><i class="fa fa-money"></i> Mpesa</a>-->
+       <!--         </ul><b>From your phone,</b>-->
+       <!--     <ul style="text-align: left;list-style-image: url(modules/gateways/images/check.gif);">-->
+       <!--       <li>Go to <b>Safaricom</b> Menu</li>-->
+       <!--       <li>Select <b>M-PESA</b></li>-->
+       <!--       <li>Select <b>Lipa na MPESA</b></li>-->
+       <!--       <li>Select <b>Buy Goods</b></li>-->
+       <!--       <li>Enter Till Number <b>5750721</b></li>-->
+       <!--       <li>Enter Amount  <b>{{ $listing->package->package_amount }}</b> <br> then Confirm</li>  -->
+       <!--     </ul>-->
+       <!--     </ul>-->
+       <!--     <hr/>-->
+       <!--       </li>-->
               <!-- <li class="rpayment payment">
                 <a href="#" target="_blank" class="btn btn-light"><i class="fa fa-credit-card"></i> Visa</a>
                 
@@ -93,7 +92,7 @@
 			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
 				<!-- Recently Favorited -->
 				<div class="widget dashboard-container my-adslist">
-					<h3 class="widget-header">{{$invoice->invoice_id}} Invoice</h3>
+					<h3 class="widget-header">Unpaid Invoice</h3>
 					<table class="table table-responsive product-dashboard-table">
 						<thead>
               <h4>
@@ -103,7 +102,7 @@
                 <br>
               <small class="float-right">Date: {{ $listing->created_at}}</small>
               <br>
-              <small class="float-right">Invoice#{{ $invoice->id}}</small>
+              <small class="float-right">Invoice#{{ $listing->id}}</small>
             </h4>
           </div>
           <!-- /.col -->

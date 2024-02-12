@@ -76,7 +76,7 @@ class Vehicle extends Model
     }
 
     Public function favorites(){
-                return $this->belongsToMany(Favorite::class);
+                return $this->belongsToMany(Favourites::class);
     }
  
 

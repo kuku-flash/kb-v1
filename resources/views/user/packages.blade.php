@@ -21,7 +21,7 @@
   <input type="hidden" name="user_id" value="{{ Auth::user()->id}}" >
   <input type="hidden" name="listing_id" value="{{ $listing->id }}" >
   <div class="container">
-  <style>
+    <style>
     .package-content {
         height: 800px; /* Adjust the height as needed */
         display: flex;

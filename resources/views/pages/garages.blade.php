@@ -1,6 +1,5 @@
 @extends('layouts.kingsbridge')
 @section('content')
-
   <section class="hero-area bg-1 text-center overly">
 	<!-- Container Start -->
 	<div class="container">
@@ -43,7 +42,7 @@
                         <div class="price">Garage</div>
                         <a href="">
                             <!-- Display event image -->
-                            <img class="card-img-top category-img-fluid" src="/storage/public/{{ $garage->front_img }}" alt="Garage Image" style="max-height: 400px;">
+                            <img class="card-img-top category-img-fluid" src="/storage/app/{{ $garage->front_img }}" alt="Garage Image" style="max-height: 400px;">
                         </a>
                     </div>
                     <div class="card-body">

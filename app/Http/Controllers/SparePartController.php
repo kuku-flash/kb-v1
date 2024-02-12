@@ -83,7 +83,7 @@ public function store(Request $request)
             $img = Image::make($image);
 
             // Load the watermark image
-            $watermark = Image::make(public_path('watermark/king.png'));
+            $watermark =Image::make(public_path('watermark/king2.png'));
 
             // Add the watermark to the image
             $img->insert($watermark, 'bottom-right', 10, 10); // You can adjust the position and size of the watermark

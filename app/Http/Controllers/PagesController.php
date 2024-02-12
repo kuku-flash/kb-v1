@@ -15,7 +15,6 @@ use App\Models\Vehicle_photo;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\Intersection;
 
 class PagesController extends Controller
@@ -86,13 +85,12 @@ Public function contact_us(){
     return view ('pages.contact_us');
      
 }
-
-
 public function vehicle_search(Request $request)
 {
     $cities = City::all();
     $makes = Carmake::all();
     $models = Carmodel::all();
+    $vehicles = Vehicle::all();
 
     $listingsQuery = Listing::whereNotNull('city_id');
 
@@ -107,30 +105,28 @@ public function vehicle_search(Request $request)
     }
 
     if ($request->filled('min_price')) {
-        $minPrice = str_replace(',', '', $request->input('min_price'));
-        $listingsQuery->whereHas('vehicles', function ($query) use ($minPrice) {
-            $query->where('price', '>=', $minPrice);
-        });
-    }
-    
-    // Search by maximum price
-    if ($request->filled('max_price')) {
-        $maxPrice = str_replace(',', '', $request->input('max_price'));
-        $listingsQuery->whereHas('vehicles', function ($query) use ($maxPrice) {
-            $query->where('price', '<=', $maxPrice);
-        });
-    }
+    $minPrice = str_replace(',', '', $request->input('min_price'));
+    $listingsQuery->whereHas('vehicles', function ($query) use ($minPrice) {
+        $query->where('price', '>=', $minPrice);
+    });
+}
+
+// Search by maximum price
+if ($request->filled('max_price')) {
+    $maxPrice = str_replace(',', '', $request->input('max_price'));
+    $listingsQuery->whereHas('vehicles', function ($query) use ($maxPrice) {
+        $query->where('price', '<=', $maxPrice);
+    });
+}
 
     $listings = $listingsQuery->orderBy("id", "desc")->paginate(16);
 
-    return view('pages.vehicleslist', compact('cities', 'makes', 'models', 'listings'));
+    return view('pages.vehicleslist', compact('cities', 'makes', 'models', 'listings', 'vehicles'));
 }
-
-
 
 public function listing_filter(Request $request){
     $arr['vehicles'] = Vehicle::all();
-    $arr['listings'] = Listing::where('category_id',2)->Where('city_id',$request->id)->take(20)->get(); 
+    $arr['listings'] = Listing::where('category_id',2)->Where('city_id',$request->id)->take(18)->get(); 
     $arr['cities'] = City::all();
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
@@ -139,7 +135,7 @@ public function listing_filter(Request $request){
 public function vehicle_filter(Request $request){
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
-    $arr['listings'] = Listing::where('category_id',2)->take(20)->get(); 
+    $arr['listings'] = Listing::where('category_id',2)->take(18)->get(); 
     $arr['vehicles'] = vehicle::Where('model_id',$request->id)->take(20)->get(); 
     $arr['cities'] = City::all();
     return view ('pages.vehicleslist')->with($arr);
@@ -150,7 +146,7 @@ Public function vehicleslist(){
     $arr['models'] = Carmodel::all();
     $arr['cities'] = City::all();
     $arr['vehicles'] = Vehicle::all();
-    $arr['listings'] = Listing::where('category_id',2)->paginate(16); //the 2 is the id of car category
+    $arr['listings'] = Listing::where('category_id',2)->paginate(20); //the 2 is the id of car category
    // $arr['carcities'] = Listing::where('category_id',2)->where('city_id',$request->city_id)->take(20)->get();
    $imagecount =! Null;
    $arr['imgcount'] = Vehicle::where(['front_img' => Null,'back_img'=> Null, 'right_img'=> Null, 'left_img'=> Null])->count();
@@ -162,7 +158,7 @@ Public function vehicleslist(){
 Public function vehicles_list(){
     $arr['cities'] = City::all();
     $arr['vehicles'] = Vehicle::all();
-    $arr['listings'] = Listing::where('category_id',2)->paginate(8); //the 2 is the id of car category
+    $arr['listings'] = Listing::where('category_id',2)->take(20)->get(); //the 2 is the id of car category
   
     $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
     return view ('pages.vehicles_list')->with($arr);
@@ -350,6 +346,5 @@ public function package (){
     return view ('pages.package');
     
 }
-
 
 }

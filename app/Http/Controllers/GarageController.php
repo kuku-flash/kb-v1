@@ -23,7 +23,7 @@ class GarageController extends Controller
     
     }
 
-    public function store_garage(Request $request)
+   public function store_garage(Request $request)
     {
         $request->validate([
             'garage_title' => 'required',
@@ -47,6 +47,8 @@ class GarageController extends Controller
         $garage->opt_img1 = $request->file('opt_img1');
         $garage->opt_img2 = $request->file('opt_img2');
         $garage->opt_img3 = $request->file('opt_img3');
+        $garage->user_id = auth()->user()->id;
+
 
 
         $garage->save();

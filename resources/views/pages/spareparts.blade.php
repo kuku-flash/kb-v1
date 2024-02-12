@@ -1,6 +1,32 @@
 @extends('layouts.kingsbridge')
 @section('content')
-
+<section class="hero-area bg-1 text-center overly">
+	<!-- Container Start -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Header Contetnt -->
+				<div class="content-block" >
+					<h1>Vehicle Parts</h1>
+					<div class="short-popular-category-list text-center">
+						<h2>Popular Category</h2>
+					
+						<ul class="list-inline">
+							<li class="list-inline-item">
+								<a href="{{ route('vehicleslist') }}"><i class="fa fa-car"></i> Vehicles</a>
+							</li>
+							<li class="list-inline-item">
+								<a href="{{ route('spareparts') }}"><i class="fa fa-car"></i> Vehicle Parts</a>
+							</li>
+						</ul>
+					</div>
+					
+				</div>				
+			</div>
+		</div>
+	</div>
+	<!-- Container End -->
+</section>
 <section class=" section-sm">
 	<div class="container">
 		<div class="row">
@@ -45,15 +71,6 @@
 <div class="form-group col-md-2">
     <input type="text" name="max_price" class="form-control" placeholder="Max Price" value="{{ request('max_price') }}">
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#min_price, #max_price').on('keyup', function () {
-            var num = $(this).val().replace(/,/g, '');
-            $(this).val(num.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'));
-        });
-    });
-</script>
 
             <div class="form-group col-md-2">
                 <button type="submit" class="btn btn-primary" style="padding: 8px; 30px;">Search Now</button>
@@ -67,10 +84,41 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
+			    				<style>
+					    @media (max-width: 767px) {
+        .product-item {
+            margin-bottom: 15px; /* Adjust vertical space between items */
+        }
+        .product-grid-list .row > div[class*="col-"] {
+            padding-left: 2px; /* Adjust left padding */
+            padding-right: 2px; /* Adjust right padding */
+        }
+    }
+    /* Set a fixed height for the card bodies */
+    .card-body {
+        height: 150px; /* Adjust this value to your preferred fixed height */
+        overflow: hidden; /* Hide content that exceeds the fixed height */
+    }
+
+     .styled-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .styled-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .styled-list li i {
+        margin-right: 5px;
+    }
+</style>
 				<div class="product-grid-list">
 					<div class="row mt-30">
 						@foreach($spareParts as $sparePart)
-						<div class="col-6 col-sm-4 col-md-4 col-lg-4">
+                    <div class="col-6 col-sm-3 col-md-3 col-lg-3">
 								<!-- product card -->
 								<div class="product-item bg-light">
 									<div class="card">
@@ -99,6 +147,7 @@
 											<ul class="styled-list">
 												<li><b>Condition:</b><span>{{ $sparePart->condition }}</span></li>
 											</ul>
+
 										</div>
                                         <div class="property-price">
 											<p class="badge-sale">For Sale</p>
