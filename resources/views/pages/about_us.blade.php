@@ -27,7 +27,7 @@
             <div class="col-lg-6 pt-5 pt-lg-0">
                 <div class="about-content">
                     <h3 class="font-weight-bold mb-4">About Us:</h3>
-                    <p>At KingsBridge, we take pride in being more than just an online car selling platform. We are your automotive hub,
+                    <p>At KingsBridge Motors, we take pride in being more than just an online car selling platform. We are your automotive hub,
                     a comprehensive destination where car enthusiasts and sellers unite.
                     Here's why you should choose us: 
                     </p>
@@ -44,7 +44,7 @@
                         
                     <p>With KingsBridge, you're not just choosing a platform; you're joining a community of automotive enthusiasts. 
                     Our commitment to innovation and customer satisfaction ensures that we're your ultimate destination for all things automotive. 
-                    Welcome to KingsBridge – Where Cars Find Their Kingdom!</p>    
+                    Welcome to KingsBridge Motors– Where Cars Find Their Kingdom!</p>    
                 </div>
             </div>
         </div>

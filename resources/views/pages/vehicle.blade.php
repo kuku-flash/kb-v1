@@ -20,7 +20,7 @@
 					<h1 class="product-title"> {{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}} {{ $vehicle->year_of_build}}</h1>
 					<div class="product-meta">
 						<ul class="list-inline">
-							<li class="list-inline-item"><i class="fa fa-money"></i> KSH <a href="">{{ $vehicle->price}}</a></li>
+                            <li class="list-inline-item"><i class="fa fa-money"></i> KSH <a href="">{{ number_format($vehicle->price, 0, '.', ',') }}</a></li>
 							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Category<a href="">{{ $listing->category->category_name}}</a></li>
 							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="">{{ $listing->city->city}}</a></li>
 						</ul>
@@ -86,7 +86,7 @@
 				<path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z" fill="#000000"></path> 
 				<path d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"></path></g>
 		</svg>*
-		</span>{{ $vehicle->mileage}}Km</li><li class="sc-jfkLlK ialighment atc-type-fiesta atc-type--regular">
+		</span>{{ number_format($vehicle->mileage, 0, '.', ',') }} Km</li><li class="sc-jfkLlK ialighment atc-type-fiesta atc-type--regular">
 
 
 
@@ -152,11 +152,6 @@
 								<h3 class="tab-title">Car Specifications</h3>
 								<table class="table table-bordered product-table">
 									<tbody>
-										
-										<tr>	
-											<td>Title</td>
-											<td>{{ $vehicle->title}}</td>
-										</tr>
 										<tr>	
 											<td>Model</td>
 											<td>{{ $vehicle->carmodel->model}} - {{ $vehicle->carmodel->carmake->make}} </td>
@@ -171,7 +166,7 @@
 										</tr>
 										<tr>
 											<td>Mileage</td>
-											<td>{{ $vehicle->mileage}}</td>
+											<td>{{ number_format($vehicle->mileage, 0, '.', ',') }} </td>
 										</tr>
 										<tr>
 											<td>Condition</td>
@@ -285,25 +280,61 @@
 						<h4><a href="">  {{ $listing->user->name }} </a></h4>
 						<p class="member-time">Member Since {{ $listing->user->created_at->diffForHumans() }} </p>
 						<a href="">See all ads</a>
-						<p>{{ $listing->user->phone_number }} </p>
+												@if(Auth::check())
+    <p>{{ $listing->user->phone_number }}</p>
+@else
+    <a href="{{ route('login') }}"></a>
+@endif
 						<ul class="list-inline mt-20">
         <li class="list-inline-item">
-            <a href="tel:{{ $listing->user->phone_number }}" class="btn btn-contact d-inline-block btn-primary px-lg-5 my-1 px-md-3">
-                Contact
-            </a>
-        </li>							<li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an
-									offer</a></li>
-						</ul>
-						<p style="font-size: 20px;">
+@if(Auth::check())
+    <a href="tel:{{ $listing->user->phone_number }}" class="btn btn-contact d-inline-block btn-primary px-lg-5 my-1 px-md-3">Contact</a>
+@else
+    <a href="{{ route('user.login') }}" class="btn btn-contact d-inline-block btn-primary px-lg-5 my-1 px-md-3">Contact</a>
+@endif
+        </li>
+      <!--<li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an-->
+						<!--			offer</a></li>-->
+						<!--</ul>-->
+						<!--<p style="font-size: 20px;">-->
 				
 							<!--<a href="https://www.facebook.com/kingsbridge.kenya/"><i class="fa fa-facebook"></i><span class="icon-facebook"></span></a>-->
 							<!--<i class="fa fa-email"><a href="#"><span class="icon-email"></span></a></i>-->
 							<!--<i class="fa fa-instagram"><a href="#"><span class="icon-instagram"></span></a></i>-->
 							
 						 
-					</p>
-					<p ><a aria-label="Chat on WhatsApp" href="https://wa.me/{{ $listing->user->phone_number }}"> <img class="w-75" alt="Chat on WhatsApp" src="{{ asset('images/WhatsAppButtonGreenSmall.png')}}" /></p>
-					</div>
+<div>
+    @if(Auth::check())
+        <a id="whatsappButton" aria-label="Chat on WhatsApp" href="javascript:void(0);" onclick="openWhatsAppChat('{{ $listing->user->phone_number }}', '{{ $vehicle->carmodel->carmake->make}} {{ $vehicle->carmodel->model}} {{ $vehicle->carmodel->model_year}} {{ $vehicle->year_of_build}}', '{{ route('vehicle', [$listing->id, $vehicle->id])}}')">
+            <img class="w-75" alt="Chat on WhatsApp" src="{{ asset('images/WhatsAppButtonGreenSmall.png')}}" />
+        </a>
+    @else
+        <a aria-label="Chat on WhatsApp" href="{{ route('login') }}">
+            <img class="w-75" alt="Chat on WhatsApp" src="{{ asset('images/WhatsAppButtonGreenSmall.png')}}" />
+        </a>
+    @endif
+</div>
+
+<script>
+    function openWhatsAppChat(phoneNumber, vehicleTitle, vehicleLink) {
+        // Replace special characters in the caption
+        var caption = encodeURIComponent("Is this vehicle available?");
+
+        // Construct the WhatsApp message with the link
+        var message = "Hi, I'm interested in the following vehicle:\n\n";
+        message += " *" + vehicleTitle + "*\n"; 
+        message += " " + vehicleLink + "\n"; // Include the link
+
+        // Construct the WhatsApp API link
+        var whatsappLink = "https://wa.me/" + phoneNumber + "?text=" + caption + "%0A%0A" + message;
+
+        // Open the WhatsApp chat in a new tab
+        window.open(whatsappLink, '_blank');
+    }
+</script>
+
+
+</div>
 					<!-- Safety tips widget -->
 					<div class="widget disclaimer">
 						<h5 class="widget-header">Safety Tips</h5>
@@ -311,7 +342,7 @@
 							<li>Meet seller at a public place</li>
 							<li>Check the item before you buy</li>
 							<li>Pay only after collecting the item</li>
-							<li>Pay only after collecting the item</li>
+
 						</ul>
 					</div>
 					<!-- Coupon Widget -->
@@ -321,7 +352,7 @@
 							your fellow users.
 						</p>
 						<!-- Submii button -->						
-						<a href="{{ Auth::check() ? route('user.create_vehiclesale') : route('login') }}" class="btn btn-transparent-white">Submit Listing</a>
+						<a href="{{ Auth::check() ? route('user.create_vehiclesale') : route('user.login') }}" class="btn btn-transparent-white">Submit Listing</a>
 
 					</div>
 

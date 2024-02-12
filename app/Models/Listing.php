@@ -15,11 +15,15 @@ class Listing extends Model
         'category_id',
         'city_id',
         'package_id',
+        'vehicle_id',
         'user_id'
     ];
 
     public function category() {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+    public function sparePart () {
+        return $this->belongsTo(SparePart::class);
     }
     public function city () {
         return $this->belongsTo(City::class, 'city_id');
@@ -29,6 +33,10 @@ class Listing extends Model
     }
     public function user () {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    
+        public function invoice (){
+        return $this->belongsTo(Invoice::class, 'invoice_id');
     }
     
        public function vehicles()

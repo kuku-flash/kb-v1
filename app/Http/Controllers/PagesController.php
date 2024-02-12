@@ -6,14 +6,15 @@ use App\Models\Carmake;
 use App\Models\Carmodel;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Favourites;
 use App\Models\Listing;
 use App\Models\Package;
 use App\Models\User;
 use App\Models\Vehicle;
-use App\Models\Favorite;
 use App\Models\Vehicle_photo;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Intersection;
 
 class PagesController extends Controller
@@ -84,53 +85,48 @@ Public function contact_us(){
     return view ('pages.contact_us');
      
 }
-public function vehicle_search(Request $request){
-    $arr['cities'] = City::all();
-    $arr['makes'] = Carmake::all();
-    $arr['models'] = Carmodel::all();
-    // $arr['price'] = 
-    $price_max = 500000;
-    $arr['listings'] = Listing::where([
-        ['city_id', '!=', Null],
-   
-        [ function ($query) use ($request) {
-           
-            if (( $city = $request->city)){
-                $query->orWhere('city_id', 'LIKE', '%' .$city. '%')->get();
-            }
-           
-        }]
+public function vehicle_search(Request $request)
+{
+    $cities = City::all();
+    $makes = Carmake::all();
+    $models = Carmodel::all();
+    $vehicles = Vehicle::all();
 
-    ])
-    ->orderBy("id", "desc")->paginate(20);
+    $listingsQuery = Listing::whereNotNull('city_id');
 
-  
-    $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
-    $arr['vehicles'] = Vehicle::where([
-        ['model_id', '!=', Null],
-        ['price', '!=', Null],
-        [ function ($query) use ($request) {
-           
-            if (( $make_id = $request->make_id)){
-                $query->orWhere('make', 'LIKE', '%' .$make_id. '%')->get();
-            }
-            if (( $model_id = $request->model_id)){
-                $query->orWhere('model_id', 'LIKE', '%' .$model_id. '%')->get();
-            }
-            if (( $price_max = $request->price_max)){
-                $query->orWhere('price', '>=', $price_max)->get();
-            }
-        }]
+    if ($request->filled('city')) {
+        $listingsQuery->where('city_id', $request->city);
+    }
 
-    ])
-    ->orderBy("id", "desc")->take(20)->get();  
-    
-    return view ('pages.vehicleslist')->with($arr);
+    if ($request->filled('model_id')) {
+        $listingsQuery->whereHas('vehicles', function ($query) use ($request) {
+            $query->where('model_id', $request->model_id);
+        });
+    }
+
+    if ($request->filled('min_price')) {
+    $minPrice = str_replace(',', '', $request->input('min_price'));
+    $listingsQuery->whereHas('vehicles', function ($query) use ($minPrice) {
+        $query->where('price', '>=', $minPrice);
+    });
+}
+
+// Search by maximum price
+if ($request->filled('max_price')) {
+    $maxPrice = str_replace(',', '', $request->input('max_price'));
+    $listingsQuery->whereHas('vehicles', function ($query) use ($maxPrice) {
+        $query->where('price', '<=', $maxPrice);
+    });
+}
+
+    $listings = $listingsQuery->orderBy("id", "desc")->paginate(16);
+
+    return view('pages.vehicleslist', compact('cities', 'makes', 'models', 'listings', 'vehicles'));
 }
 
 public function listing_filter(Request $request){
     $arr['vehicles'] = Vehicle::all();
-    $arr['listings'] = Listing::where('category_id',2)->Where('city_id',$request->id)->take(20)->get(); 
+    $arr['listings'] = Listing::where('category_id',2)->Where('city_id',$request->id)->take(18)->get(); 
     $arr['cities'] = City::all();
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
@@ -139,7 +135,7 @@ public function listing_filter(Request $request){
 public function vehicle_filter(Request $request){
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
-    $arr['listings'] = Listing::where('category_id',2)->take(20)->get(); 
+    $arr['listings'] = Listing::where('category_id',2)->take(18)->get(); 
     $arr['vehicles'] = vehicle::Where('model_id',$request->id)->take(20)->get(); 
     $arr['cities'] = City::all();
     return view ('pages.vehicleslist')->with($arr);
@@ -216,22 +212,38 @@ Public function dashboard_archived_ads(){
     
 }
 
+
+
 public function addToFavorites(Request $request)
 {
-    // Get the vehicle ID and user ID from the form
+    // Get the user ID of the authenticated user
+    $userId = Auth::id();
+
+    // Get the vehicle ID from the request
     $vehicleId = $request->input('vehicle_id');
-    $user = $request->user();
-    // You can check if the user is authenticated here
 
-    // Create a new Favourite record in the database
-    $favourite = new Vehicle();
-    $favourite->user_id = $user;
-    $favourite->vehicle_id = $vehicleId;
-    $favourite->save();
+    // Check if the user has already favorited the vehicle
+    $existingFavorite = Favourites::where('user_id', $userId)
+        ->where('vehicle_id', $vehicleId)
+        ->first();
 
-    // Redirect back to the previous page or wherever you want
+    if ($existingFavorite) {
+        // The user has already favorited this vehicle, no need to add it again
+        return back()->with('info', 'Vehicle is already in favorites.');
+    }
+
+    // If the vehicle is not already favorited, add it to favorites
+    $favorite = new Favourites();
+    $favorite->user_id = $userId;
+    $favorite->vehicle_id = $vehicleId;
+    $favorite->save();
+
     return back()->with('success', 'Vehicle added to favorites.');
 }
+
+
+
+
 
 
 Public function dashboard_favorites(){
@@ -240,13 +252,7 @@ Public function dashboard_favorites(){
     
 }
 
-public function toggleFavorite(Request $request, Vehicle $vehicle)
-{
-    $user = $request->user();
-    $user->favorites()->toggle($vehicle);
 
-    return redirect()->back();
-}
 
 
 Public function dashboard_my_ads(){
@@ -340,28 +346,5 @@ public function package (){
     return view ('pages.package');
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

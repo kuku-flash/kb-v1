@@ -53,6 +53,11 @@ class User extends Authenticatable
     public function listing () {
         return $this->hasMany( 'App\Models\Listing');
     }
+    
+    
+    public function sparePart () {
+        return $this->belongsTo(SparePart::class);
+    }
 
 
 
@@ -61,6 +66,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Favourites::class);
     }
+    
+    public function invoice(){
+
+        return $this->hasMany(Invoice::class, 'invoice_id');
+    }
+
 
 
     // 

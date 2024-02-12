@@ -22,7 +22,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $arr['invoices'] = Invoice::where('user_id', Auth::id());
+        $arr['invoices'] = Invoice::all();
         $arr['listings'] = Listing::where('user_id', Auth::id());
         return view ('user.invoice_list')->with ($arr);
     }

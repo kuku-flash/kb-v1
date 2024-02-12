@@ -27,11 +27,11 @@
              
                 <h2>{{ $package->package_name}}</h2>
                 <h2 class="py-3"> Kes {{ $package->package_amount}}</h2>
-                <h5 class="py-3"> <span> For {{ $package->package_duration}} Days</h5>
+                <h5 class="py-3"> <span> For {{ $package->package_featured}} Days</h5>
             </div>
             <ul>
                 <li class="my-4"> <i class="fa fa-check"></i> Features Ad Availability</li>
-                <li class="my-4"> <i class="fa fa-check"></i>For {{ $package->package_duration}} Days</li>
+                <li class="my-4"> <i class="fa fa-check"></i>For {{ $package->package_featured}} Days</li>
                 <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
             </ul>
  

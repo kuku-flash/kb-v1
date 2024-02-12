@@ -4,11 +4,11 @@
 
     <!-- SITE TITTLE -->
     <meta charset="utf-8">
-<meta name="viewport" content="width=1024">
-    <title>KingsBridge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KingsBridgeMotors</title>
     
-`    <!-- FAVICON -->
-`    <link href="img/favicon.png" rel="shortcut icon">
+    <!-- FAVICON -->
+    <link href="img/favicon.png" rel="shortcut icon">
     <!-- PLUGINS CSS STYLE -->
     <!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
     <!-- Bootstrap -->
@@ -50,7 +50,7 @@
         <div class="col-md-12">
           <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar  ftco-navbar-light" id="ftco-navbar">
             <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
-            style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " ><span style="color:#d4af37">Kings</span><span>bridge</span></a>
+            style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; " ><span style="color:#d4af37">Kings</span><span>bridge motors</span></a>
   
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,23 +59,24 @@
   
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto main-nav ">
-                <li class="nav-item {{ request()->routeIs('/') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('index') ? 'active' : '' }}">
                   <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
-                  <a class="nav-link" href="{{ route('about_us')}}">About Us</a>
-                </li>              
-                <li class="nav-item {{ request()->routeIs('vehiclelist') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('vehicleslist') ? 'active' : '' }}">
                   <a class="nav-link" href="{{ route('vehicleslist')}}">Buy a Vehicle</a>
                 </li>
+                <li class="nav-item {{ request()->routeIs('spareparts') ? 'active' : '' }}">
+                  <a class="nav-link" href="{{route('spareparts')}}">Vehicle Parts</a>
+                </li>
              
-                <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('carevent') ? 'active' : '' }}">
                   <a class="nav-link" href="{{ route('carevent') }}">Car Events</a>
                 </li>
-                
-                <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
-                  <a class="nav-link" href="{{ route('about_us')}}">Garages</a>
+                                <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
+                  <a class="nav-link" href="{{ route('about_us')}}">About Us</a>
                 </li>
+                
+
                 
               
            
@@ -108,7 +109,8 @@
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{route('user.my_list')}}"> My List</a>
              <!--       <a class="dropdown-item" href="{{route('user.index_carhire')}}">Carhire</a> -->
-                    <a class="dropdown-item" href="{{route('user.carevent')}}"> Events</a>
+                    <a class="dropdown-item" href="{{route('user.myspareparts')}}">Spare Parts</a> 
+                    <a class="dropdown-item" href="{{route('user.userevent')}}"> Events</a>
                     <a class="dropdown-item" href="{{route('user.invoice.index')}}">Invoices</a> 
                     <a class="dropdown-item" href="#">Payments</a> 
                     <a class="dropdown-item" href="{{ route('user.user_profile', Auth::user()->id )}}">User Profile</a> 
@@ -154,7 +156,7 @@
         <div class="block about">
           <!-- footer logo -->
           <a class="navbar-brand" href="/"><img src="{{ asset('images/king2.png')}}" 
-          style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; "><span style="color:#d4af37">Kings</span><span style="color:#aaa9ad">bridge</span></a><p>Kingsbridge</p></a>
+          style=" width:55px; height:50px;vertical-align: middle;padding-left: 0px;padding-right: 0px; padding-top: 0px; border-style: none; "><span style="color:#d4af37">Kings</span><span style="color:#aaa9ad">bridge motors</span></a><p>Kingsbridge Motors Kenya</p></a>
           <p>The leading online platform that sells, vehicles, promoting car events and garage owners.</p>
           <ul class="ftco-footer-social  float-md-left float-lft mt-5">
             <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
@@ -172,7 +174,7 @@
             <li><a href="#">How It works</a></li>
             <li><a href="#">Deals & Coupons</a></li>
             <li><a href="#">Articls & Tips</a></li>
-            <li><a href="terms-condition.html">Terms & Conditions</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
           </ul>
         </div>
       </div>
@@ -181,12 +183,12 @@
         <div class="block">
           <h4>Admin Pages</h4>
           <ul>
-            <li><a href="category.html">Category</a></li>
-            <li><a href="single.html">Single Page</a></li>
-            <li><a href="store.html">Store Single</a></li>
-            <li><a href="single-blog.html">Single Post</a>
+            <li><a href="">Category</a></li>
+            <li><a href="">Single Page</a></li>
+            <li><a href="">Store Single</a></li>
+            <li><a href="">Single Post</a>
             </li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a href="">Blog</a></li>
 
 
 
@@ -225,7 +227,7 @@
           <p>Copyright © <script>
               var CurrentYear = new Date().getFullYear()
               document.write(CurrentYear)
-            </script>. Kingsbridge</p>
+            </script>. Kingsbridge Motors</p>
         </div>
       </div>
     </div>

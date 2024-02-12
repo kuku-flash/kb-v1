@@ -321,13 +321,25 @@
           <h3 style=" text-align: center;">Listing Pricing Information</h3>
       </div>
 
-      <div class="col-lg-6"> 
-        <h6 class="font-weight-bold pt-4 pb-1">Price ($ Kes)</h6>
-        <input name="price" value="{{ old('price')}}" type="text" class="number border w-100 p-2 bg-white text-capitalize" >
-        @error('price') 
-            <span class="invalid" role="alert"> <strong>{{ $message }}</strong> </span> 
-       @enderror
-    </div>
+<div class="col-lg-6">
+    <h6 class="font-weight-bold pt-4 pb-1">Price (in Ksh):</h6>
+    <input name="price" id="priceInput" value="{{ old('price')}}" type="text" class="border w-100 p-2 bg-white text-capitalize">
+    @error('price')
+        <span class="invalid" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
+                    
+                    
+<script>
+    // Add event listener to format price input with commas
+    document.getElementById('priceInput').addEventListener('input', function(e) {
+        let price = e.target.value.replace(/,/g, ''); // Remove existing commas
+        price = parseFloat(price.replace(/[^\d.-]/g, '')); // Remove non-numeric characters
+        e.target.value = price.toLocaleString('en-US'); // Format with commas
+    });
+</script>
 
     <div class="col-lg-6"> 
       <h6 class="font-weight-bold pt-4 pb-1">Negotiable</h6>

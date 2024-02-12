@@ -168,18 +168,14 @@
 				</div>
 
 				<!-- ad listing list  -->
-@foreach ($listings as $listing )		
-@foreach ($vehicles as $vehicle)
-@if ($listing->id == $vehicle->listing_id)              
+  @foreach ($listings as $listing )
+  @foreach ($vehicles as $vehicle)
+  @if ($listing->id == $vehicle->listing_id)
 	<div class="ad-listing-list mt-20">
     <div class="row p-lg-3 p-sm-5 p-4">
         <div class="col-lg-4 align-self-center">
             <a href="{{ route('vehicle', [$listing->id, $vehicle->id])}}">
-                @foreach ($vehiclephotos as $vehiclephoto)
-                    @if ($vehicle->id == $vehiclephoto->vehicle_id)
-                    <img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description">
-                    @endif
-                @endforeach
+					<img class="card-img-top category-img-fluid" src="/storage/photos/{{ $vehicle->front_img }}" alt="image description"style="max-height: 200px;">
             </a>
         </div>
         <div class="col-lg-8">
@@ -216,7 +212,7 @@
     </div>
 </div>
 
-@endif	
+@endif
 @endforeach
 @endforeach
 				<!-- ad listing list  -->
