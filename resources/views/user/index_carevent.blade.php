@@ -33,7 +33,7 @@
 					<div class="widget user-dashboard-menu">
 						<h3>My Events</h3>
 						<ul>
-							<li> <a href="{{ route('user.carevent')}}"><i class="fa fa-car"></i>Car Events <span> {{$carevents->count()}}</a> </li>
+							<li> <a href=""><i class="fa fa-car"></i>Car Events <span> {{$carevents->count()}}</a> </li>
 						<!--	<li> <a href="{{ route('user.index_carhire')}}"><i class="fa fa-car"></i>Vehicles for Hire <span></a> </li> -->
 
 						</ul>
@@ -144,6 +144,8 @@
 
 			</div>
 			@else
+			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+				<a href="{{ route('user.create_carevent')}}" class="btn btn-primary mb-2">Create a Car Event</a>
 			<h1> No Events Founds......
 			
 			</h1>

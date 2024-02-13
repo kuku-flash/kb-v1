@@ -92,16 +92,29 @@ class LoginController extends Controller
     }
 
      //Google callbacks
-    public function handleGoogleCallback()
-    {
+ public function handleGoogleCallback()
+{
+    try {
         $user = Socialite::driver('google')->user();
 
-        $this->_registerOrLoginUser($user);
+        // Check if a user with this email exists in your database
+        $existingUser = User::where('email', $user->email)->first();
 
-        // Return home after login
-        return redirect()->route('user.my_list');
-      
+        if ($existingUser) {
+            // If the user already exists, log them in
+            Auth::login($existingUser);
+
+            // Redirect to the home page or dashboard
+ return redirect()->route('user.my_list');
+        } else {
+            // If the user doesn't exist, throw an error
+            return redirect('/login')->with('error', 'User not found. Please sign up.');
+        }
+    } catch (\Exception $e) {
+        // Handle any exceptions that may occur
+        return redirect('/login')->with('error', 'Google login failed');
     }
+}
 
     //Facebok login
     public function redirectToFacebook()

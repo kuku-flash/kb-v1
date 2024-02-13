@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Carevent;
 use App\Models\Carmake;
 use App\Models\Carmodel;
 use App\Models\Category;
@@ -9,6 +10,7 @@ use App\Models\Listing;
 use App\Models\Package;
 use App\Models\User;
 use App\Models\Vehicle;
+use App\Models\Favorite;
 use App\Models\Vehicle_photo;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -22,13 +24,14 @@ Public function index (){
     $arr['vehicles'] = Vehicle::all();
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
-    $arr['listings'] = Listing::where('category_id',2)->take(20)->get(); 
+    $arr['carevents'] = Carevent::all();
+    $arr['listings'] = Listing::where('category_id',2)->get(); 
     
     return view ('pages.index')->with($arr);
-        
+    
 }
 public function carmodel(Request $request) {
-    $data = Carmodel::select('model','id')->where('make_id',$request->id)->take(10)->get();
+    $data = Carmodel::select('model','id')->where('make_id',$request->id)->get();
     return response()->json($data);//then sent this data to aax success
 }
 
@@ -37,6 +40,13 @@ Public function category (){
     $arr['listings'] = Listing::all();
     return view ('pages.category')->with($arr);
     
+}
+
+public function showEventsPage()
+{
+    $carevents = Carevent::all();
+    view()->share('pages.eventspage', $carevents);
+ 
 }
 
 Public function single (Vehicle $vehicle){
@@ -72,12 +82,13 @@ Public function blog(){
 Public function contact_us(){
 
     return view ('pages.contact_us');
-    
+     
 }
 public function vehicle_search(Request $request){
     $arr['cities'] = City::all();
     $arr['makes'] = Carmake::all();
     $arr['models'] = Carmodel::all();
+    // $arr['price'] = 
     $price_max = 500000;
     $arr['listings'] = Listing::where([
         ['city_id', '!=', Null],
@@ -91,7 +102,7 @@ public function vehicle_search(Request $request){
         }]
 
     ])
-    ->orderBy("id", "desc")->paginate(4);
+    ->orderBy("id", "desc")->paginate(20);
 
   
     $arr['vehiclephotos'] = Vehicle_photo::where('photo_postion',1)->get();
@@ -112,7 +123,7 @@ public function vehicle_search(Request $request){
         }]
 
     ])
-    ->orderBy("id", "desc")->take(10)->get();  
+    ->orderBy("id", "desc")->take(20)->get();  
     
     return view ('pages.vehicleslist')->with($arr);
 }
@@ -139,7 +150,7 @@ Public function vehicleslist(){
     $arr['models'] = Carmodel::all();
     $arr['cities'] = City::all();
     $arr['vehicles'] = Vehicle::all();
-    $arr['listings'] = Listing::where('category_id',2)->paginate(4); //the 2 is the id of car category
+    $arr['listings'] = Listing::where('category_id',2)->paginate(20); //the 2 is the id of car category
    // $arr['carcities'] = Listing::where('category_id',2)->where('city_id',$request->city_id)->take(20)->get();
    $imagecount =! Null;
    $arr['imgcount'] = Vehicle::where(['front_img' => Null,'back_img'=> Null, 'right_img'=> Null, 'left_img'=> Null])->count();
@@ -205,6 +216,23 @@ Public function dashboard_archived_ads(){
     
 }
 
+public function addToFavorites(Request $request)
+{
+    // Get the vehicle ID and user ID from the form
+    $vehicleId = $request->input('vehicle_id');
+    $user = $request->user();
+    // You can check if the user is authenticated here
+
+    // Create a new Favourite record in the database
+    $favourite = new Vehicle();
+    $favourite->user_id = $user;
+    $favourite->vehicle_id = $vehicleId;
+    $favourite->save();
+
+    // Redirect back to the previous page or wherever you want
+    return back()->with('success', 'Vehicle added to favorites.');
+}
+
 
 Public function dashboard_favorites(){
 
@@ -239,7 +267,8 @@ Public function signup(){
     
 }
 
-Public function storeuser(Request $request, User $user){
+public function storeuser(Request $request, User $user)
+{
     $validatedData = $this->validate($request, [
         'name' => 'required|max:255',
         'email' => 'required|unique:users|email|max:255',
@@ -249,17 +278,26 @@ Public function storeuser(Request $request, User $user){
         'identification_number' => '',
         'kra_pin' => '',  
         'role' => 'required',
-        
     ]);
-   
+
+    // Check if the phone number starts with '+254'
+    $phoneNumber = $validatedData['phone_number'];
+    if (!str_starts_with($phoneNumber, '+254')) {
+        // If it doesn't start with '+254', prepend it
+        $phoneNumber = '+254' . $phoneNumber;
+    }
+
+    $validatedData['phone_number'] = $phoneNumber; // Update the phone_number in the validated data
+
     $user = User::create($validatedData);
     $user->roles()->sync($request->input('role',[]));
 
+    return redirect()->route('user.my_list')->with('success', 'Successfully Added');
+}
 
-  return redirect() -> route('user.my_list')->with('success','Succesfully Added');
   
     
-}
+
 
 Public function login(){
 
@@ -267,6 +305,17 @@ Public function login(){
     
 }
 
+public function events(){
+    return view ('pages.eventspage');
+}
+
+public function show($id)
+{
+    // Retrieve the event by its ID
+    $carevent = Carevent::find($id);
+  // Pass the retrieved event to the view for display
+    return view('pages.single_event', compact('carevent'));
+}
 
 Public function register(){
 

@@ -12,7 +12,7 @@
                     <h2 class="font-weight-bold">Featured Categories</h2>
                 </div>
             </div>
- <!--           
+           
             <div class="col-lg-4 col-md-6">
                 <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
                     <div class="package-content-heading border-bottom">
@@ -26,7 +26,7 @@
                     <a href="{{ route('user.create_carhire')}}" class="btn btn-primary">Choose</a>
                 </div>
             </div>
--->
+
             <div class="col-lg-4 col-md-6">
                 <div class="package-content bg-light border text-center my-2 my-lg-0 p-5">
                     <div class="package-content-heading border-bottom">
@@ -35,28 +35,28 @@
                  
                     </div>
                     <ul>
-                        <li class="my-4"> <i class="fa fa-check"></i> Click the "choose" to countiue with listing process</li>
+                        <li class="my-4"> <i class="fa fa-check"></i> Click the "choose" to countinue with listing process</li>
                 
                     </ul>
                     <a href="{{ route('user.create_vehiclesale')}}" class="btn btn-primary">Choose</a>
                 </div>
             </div>
- <!--
+ 
             <div class="col-lg-4 col-md-6">
                 <div class="package-content bg-light border text-center my-2 my-lg-0 p-5">
                     <div class="package-content-heading border-bottom">
-                            <i class="fa fa-cog"></i>
-                        <h2>Sale Vehicle Parts</h2>
+                            <i class="fa fa-car"></i>
+                        <h2>Create Car Event</h2>
                  
                     </div>
                     <ul>
                         <li class="my-4"> <i class="fa fa-check"></i> Click the "choose" to countiue with listing process</li>
                 
                     </ul>
-                    <a href="#" class="btn btn-primary">Choose</a>
+                    <a href="{{ route('user.create_carevent')}}" class="btn btn-primary">Choose</a>
                 </div>
             </div>
--->
+
 
         </div>
     </div>

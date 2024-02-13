@@ -16,8 +16,8 @@ class CareventController extends Controller
      */
     public function index()
     {
-        $arr['carevents'] = Carevent::where('user_id', Auth::id())->orderBy('id','desc')->get();
-        return view('user.index_carevent')->with($arr);
+        $carevents = Carevent::all(); // Replace with your actual logic to fetch events
+        return view('pages.eventspage', ['carevents' => $carevents]);
     }
 
     /**
@@ -81,10 +81,6 @@ class CareventController extends Controller
      * @param  \App\Models\Carevent  $carevent
      * @return \Illuminate\Http\Response
      */
-    public function show(Carevent $carevent)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
