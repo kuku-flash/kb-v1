@@ -27,6 +27,9 @@
 														<li class="list-inline-item">
 								<a href="{{ route('spareparts') }}"><i class="fa fa-car"></i> Vehicle Parts</a>
 							</li>
+                            <li class="list-inline-item">
+								<a href="{{ route('carhire') }}"><i class="fa fa-car"></i> Car Hire</a>
+							</li>
 
 						</ul>
 					</div>
